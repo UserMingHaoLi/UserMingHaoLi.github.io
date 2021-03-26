@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="[toc] UML类图地址本次只讲类图有道云笔记地址 http:&#x2F;&#x2F;note.youdao.com&#x2F;noteshare?id&#x3D;d5f8c56d206389f849b9738adffc3926&amp;sub&#x3D;73EADB667CA7499E8C7A55834FF75F01   有机会一定自己部署一个这个类图服务器, 现在图都裂了. 在线绘图地址 http:&#x2F;&#x2F;www.plantuml.com&#x2F;pl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML类图绘制">
+<meta property="og:url" content="http://example.com/ml-20190615-183700-g2/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="[toc] UML类图地址本次只讲类图有道云笔记地址 http:&#x2F;&#x2F;note.youdao.com&#x2F;noteshare?id&#x3D;d5f8c56d206389f849b9738adffc3926&amp;sub&#x3D;73EADB667CA7499E8C7A55834FF75F01   有机会一定自己部署一个这个类图服务器, 现在图都裂了. 在线绘图地址 http:&#x2F;&#x2F;www.plantuml.com&#x2F;pl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.plantuml.com/plantuml/png/RLBDJi904BxlK-mHnFR0kGUUmZj1Z2O82U09JTe3Ag899eWXg0GXGG_OQdhWH_1bkjtjMpZhRDfLEK3d-_acqo_DrUhvQltak4GAfNojHaDl6dhT6FXgObSllFNQ81aQFhHuTyXkrtBkUL7_CbYDXVUSmYIjP7TbZXvcAscmy8KZHZUfD3bJcwBvi27vpJfq1p2mNX_-WtbR3DgQZNyrnRaTPsPircbiymMVJhHeRfNOP1eD792YyPCONOEI-UU1YvdTLu1VtF7DHExQOxFx90MhROs0y56vNgmUv0j5YYHavFH72vPB_huIhY_SHt28jmyOz0Ex7M4xy7A_HQAQj4nJzGwChqDyKElKC6IV1CkYbc7i_63ueOZ59HZRIZ1MHD26L7mKqSy7pJGr3NkZLh8JLqcceeeas0r6KIQvOdaVFhPl">
+<meta property="article:published_time" content="2019-06-15T10:37:00.000Z">
+<meta property="article:modified_time" content="2019-06-15T10:37:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="UML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/RLBDJi904BxlK-mHnFR0kGUUmZj1Z2O82U09JTe3Ag899eWXg0GXGG_OQdhWH_1bkjtjMpZhRDfLEK3d-_acqo_DrUhvQltak4GAfNojHaDl6dhT6FXgObSllFNQ81aQFhHuTyXkrtBkUL7_CbYDXVUSmYIjP7TbZXvcAscmy8KZHZUfD3bJcwBvi27vpJfq1p2mNX_-WtbR3DgQZNyrnRaTPsPircbiymMVJhHeRfNOP1eD792YyPCONOEI-UU1YvdTLu1VtF7DHExQOxFx90MhROs0y56vNgmUv0j5YYHavFH72vPB_huIhY_SHt28jmyOz0Ex7M4xy7A_HQAQj4nJzGwChqDyKElKC6IV1CkYbc7i_63ueOZ59HZRIZ1MHD26L7mKqSy7pJGr3NkZLh8JLqcceeeas0r6KIQvOdaVFhPl">
+
+<link rel="canonical" href="http://example.com/ml-20190615-183700-g2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>UML类图绘制 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20190615-183700-g2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UML类图绘制
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-15 18:37:00" itemprop="dateCreated datePublished" datetime="2019-06-15T18:37:00+08:00">2019-06-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">写作基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[toc]</p>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>本次只讲类图<br>有道云笔记地址 <a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=d5f8c56d206389f849b9738adffc3926&amp;sub=73EADB667CA7499E8C7A55834FF75F01">http://note.youdao.com/noteshare?id=d5f8c56d206389f849b9738adffc3926&amp;sub=73EADB667CA7499E8C7A55834FF75F01</a>  </p>
+<p>有机会一定自己部署一个这个类图服务器, 现在图都裂了.</p>
+<p>在线绘图地址 <a target="_blank" rel="noopener" href="http://www.plantuml.com/plantuml/uml/">http://www.plantuml.com/plantuml/uml/</a><br>文档 <a target="_blank" rel="noopener" href="http://plantuml.com/zh/class-diagram">http://plantuml.com/zh/class-diagram</a><br>关系参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/tianhai110/article/details/6339565">https://blog.csdn.net/tianhai110/article/details/6339565</a><br>看下类图 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35642036/article/details/79663378">https://blog.csdn.net/qq_35642036/article/details/79663378</a></p>
+<span id="more"></span>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>在<code>@startuml</code>和<code>enduml</code>之间编写uml语句</p>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>关键字<code>Title</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Title &quot;类图标题&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>使用<code>&#39;</code>来表示注释<br>或者使用<code>/</code>来表示块注释</p>
+<h3 id="创建类-接口-抽象类"><a href="#创建类-接口-抽象类" class="headerlink" title="创建类, 接口, 抽象类"></a>创建类, 接口, 抽象类</h3><p>正常的创建语法即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class MyClass&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">interface Iinterface&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">abstract class MyAbclass&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法和属性"><a href="#方法和属性" class="headerlink" title="方法和属性"></a>方法和属性</h3><p>无他 正常声明即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void Main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问权限"><a href="#访问权限" class="headerlink" title="访问权限"></a>访问权限</h3><p>四种</p>
+<ul>
+<li>-private</li>
+<li>#protected</li>
+<li>+public</li>
+<li>~package private //不常用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- private void Main()</span><br><span class="line">+ public int GetResult()</span><br><span class="line"># protected void Action()</span><br><span class="line">- private int ccc &#123;get;set;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加上这些符号, 会有一个小icon在方法或者属性的前面</p>
+<p>实际的UML原理是, 检测符号, 形成icon, 然后原样copy后面的文字.<br>也就是说, 你可以随意的书写内容<br>当然, 由于有icon标识了, 我们就不写访问修饰符了.</p>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>这是一个大块, 所以我提了一级标题.</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>就是正常的类之间继承.<br>使用<code>&lt;|--</code>来表示一个空心实线箭头. 这就是继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c1 &lt;|-- c2</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>实现自纯抽象类或者接口可以使用此表示<br><code>&lt;|..</code>这是一个空心虚线箭头  </p>
+<blockquote>
+<p>实际上所有的<code>--</code>都可以替换为<code>..</code>来将实线替换为虚线.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i1 &lt;|.. c1</span><br></pre></td></tr></table></figure>
+
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><p>一个类一定需要另一个类, 否则就都会失效, 这就是组合.<br><code>*--</code><br>可以表示为生命周期相同, 机同时生成, 同时销毁.<br>一般表示为一个类在另一个类的构造方法中实例化.</p>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><p>一个类包含另一个类, 但是另一个类可以独立存在.<br><code>o--</code><br>一般表示为一个类持有一组另一个类</p>
+<h3 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h3><p>强依赖关系, 通常表现为一个类出现在另一个类的属性中<br><code>--&gt;</code> 实心实线箭头<br>表示一个类持有看另一个类</p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>弱依赖关系哦, 表现为参数关系<br><code>..&gt;</code><br>表示一个类需要另一个类做参数, 临时持有</p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>也可以叫命名空间<br><code>namespace</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class BaseClass</span><br><span class="line"></span><br><span class="line">namespace net.dummy #DDDDDD &#123;</span><br><span class="line">    .BaseClass &lt;|-- Person</span><br><span class="line">    Meeting o-- Person</span><br><span class="line"></span><br><span class="line">    .BaseClass &lt;|- Meeting</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace net.foo &#123;</span><br><span class="line">  net.dummy.Person  &lt;|- Person</span><br><span class="line">  .BaseClass &lt;|-- Person</span><br><span class="line"></span><br><span class="line">  net.dummy.Meeting o-- Person</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BaseClass &lt;|-- net.unused.Person</span><br><span class="line"></span><br><span class="line">class net.unused.Person &#123;</span><br><span class="line">  + public void test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>然后是一个具体的实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class 氧气</span><br><span class="line">class 水</span><br><span class="line">class 动物&#123;</span><br><span class="line">+ 有生命</span><br><span class="line">+ 新陈代谢(氧气 o2, 水 h2o)</span><br><span class="line">+ 繁衍()</span><br><span class="line">&#125;</span><br><span class="line">class 鸟&#123;</span><br><span class="line">+ 羽毛</span><br><span class="line">+ 喙</span><br><span class="line">+ 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">class 翅膀</span><br><span class="line">class 鸭子&#123;</span><br><span class="line">+ 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">class 企鹅&#123;</span><br><span class="line">+ 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">class 大雁&#123;</span><br><span class="line">+飞行()</span><br><span class="line">+下蛋()</span><br><span class="line">&#125;</span><br><span class="line">class 气候</span><br><span class="line">class 燕群&#123;</span><br><span class="line">+ V字飞行()</span><br><span class="line">+ 一字飞行()</span><br><span class="line">&#125;</span><br><span class="line">interface 飞行&#123;</span><br><span class="line">+ 飞()</span><br><span class="line">&#125;</span><br><span class="line">interface 人类说话&#123;</span><br><span class="line">+讲话()</span><br><span class="line">&#125;</span><br><span class="line">class 唐老鸭&#123;</span><br><span class="line">+讲话()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">氧气 &lt;.. 动物</span><br><span class="line">水 &lt;.. 动物</span><br><span class="line">动物 &lt;|-- 鸟</span><br><span class="line">翅膀 &lt;--* 鸟</span><br><span class="line">鸟 &lt;|-- 鸭子</span><br><span class="line">鸟 &lt;|-- 企鹅</span><br><span class="line">鸟 &lt;|-- 大雁</span><br><span class="line">鸭子 &lt;|-- 唐老鸭</span><br><span class="line">人类说话 &lt;|.. 唐老鸭</span><br><span class="line">气候 &lt;-- 企鹅</span><br><span class="line">大雁 &lt;--o 燕群</span><br><span class="line">飞行 &lt;|.. 大雁</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+
+<p>他最后是这样的</p>
+<p><img src="http://www.plantuml.com/plantuml/png/RLBDJi904BxlK-mHnFR0kGUUmZj1Z2O82U09JTe3Ag899eWXg0GXGG_OQdhWH_1bkjtjMpZhRDfLEK3d-_acqo_DrUhvQltak4GAfNojHaDl6dhT6FXgObSllFNQ81aQFhHuTyXkrtBkUL7_CbYDXVUSmYIjP7TbZXvcAscmy8KZHZUfD3bJcwBvi27vpJfq1p2mNX_-WtbR3DgQZNyrnRaTPsPircbiymMVJhHeRfNOP1eD792YyPCONOEI-UU1YvdTLu1VtF7DHExQOxFx90MhROs0y56vNgmUv0j5YYHavFH72vPB_huIhY_SHt28jmyOz0Ex7M4xy7A_HQAQj4nJzGwChqDyKElKC6IV1CkYbc7i_63ueOZ59HZRIZ1MHD26L7mKqSy7pJGr3NkZLh8JLqcceeeas0r6KIQvOdaVFhPl" alt="UMLClassMap"></p>
+<p>元地址如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![UMLClassMap][image1]</span><br><span class="line"></span><br><span class="line">[image1]: http:&#x2F;&#x2F;www.plantuml.com&#x2F;plantuml&#x2F;png&#x2F;RLBDJi904BxlK-mHnFR0kGUUmZj1Z2O82U09JTe3Ag899eWXg0GXGG_OQdhWH_1bkjtjMpZhRDfLEK3d-_acqo_DrUhvQltak4GAfNojHaDl6dhT6FXgObSllFNQ81aQFhHuTyXkrtBkUL7_CbYDXVUSmYIjP7TbZXvcAscmy8KZHZUfD3bJcwBvi27vpJfq1p2mNX_-WtbR3DgQZNyrnRaTPsPircbiymMVJhHeRfNOP1eD792YyPCONOEI-UU1YvdTLu1VtF7DHExQOxFx90MhROs0y56vNgmUv0j5YYHavFH72vPB_huIhY_SHt28jmyOz0Ex7M4xy7A_HQAQj4nJzGwChqDyKElKC6IV1CkYbc7i_63ueOZ59HZRIZ1MHD26L7mKqSy7pJGr3NkZLh8JLqcceeeas0r6KIQvOdaVFhPl</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+              <a href="/tags/UML/" rel="tag"># UML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20190605-221900-g4/" rel="prev" title="Markdown进阶">
+      <i class="fa fa-chevron-left"></i> Markdown进阶
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20190615-183900-g1/" rel="next" title="UML流程图绘制">
+      UML流程图绘制 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">UML类图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80"><span class="nav-number">1.1.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%B1%BB-%E6%8E%A5%E5%8F%A3-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.2.3.</span> <span class="nav-text">创建类, 接口, 抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%92%8C%E5%B1%9E%E6%80%A7"><span class="nav-number">1.2.4.</span> <span class="nav-text">方法和属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="nav-number">1.2.5.</span> <span class="nav-text">访问权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">1.3.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88"><span class="nav-number">1.3.3.</span> <span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88"><span class="nav-number">1.3.4.</span> <span class="nav-text">聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94"><span class="nav-number">1.3.5.</span> <span class="nav-text">关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.6.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F"><span class="nav-number">1.3.7.</span> <span class="nav-text">域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.4.</span> <span class="nav-text">实践</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

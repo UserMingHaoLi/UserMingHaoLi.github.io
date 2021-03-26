@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="规整并删除了其他Markdown文章,都集合到这篇来了以后所有MarkDown都在此更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown总汇">
+<meta property="og:url" content="http://example.com/ml-20210312-233000-g3/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="规整并删除了其他Markdown文章,都集合到这篇来了以后所有MarkDown都在此更新">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github-readme-stats.vercel.app/api?username=UserMingHaoLi">
+<meta property="og:image" content="http://example.com/ml-20210312-233000-g3/%E6%A8%A1%E6%9D%BF/UML%E7%B1%BB%E5%9B%BE%E6%A8%A1%E6%9D%BF.png">
+<meta property="article:published_time" content="2021-03-12T15:30:00.000Z">
+<meta property="article:modified_time" content="2021-03-14T11:11:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github-readme-stats.vercel.app/api?username=UserMingHaoLi">
+
+<link rel="canonical" href="http://example.com/ml-20210312-233000-g3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Markdown总汇 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210312-233000-g3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Markdown总汇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-12 23:30:00" itemprop="dateCreated datePublished" datetime="2021-03-12T23:30:00+08:00">2021-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-14 19:11:00" itemprop="dateModified" datetime="2021-03-14T19:11:00+08:00">2021-03-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">写作基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>规整并删除了其他Markdown文章,都集合到这篇来了<br>以后所有MarkDown都在此更新</p>
+<span id="more"></span>
+
+<ul>
+<li><a href="#%E5%9C%A8vscode%E4%B8%8A%E7%BC%96%E5%86%99markdown">在VSCode上编写Markdown</a><ul>
+<li><a href="#%E5%87%86%E5%A4%87">准备</a></li>
+<li><a href="#%E6%8F%92%E4%BB%B6">插件</a><ul>
+<li><a href="#%E5%85%B6%E4%BB%96%E6%8F%92%E4%BB%B6">其他插件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#github%E4%B8%8A%E7%9A%84markdown%E8%AF%AD%E6%B3%95">GitHub上的MarkDown语法</a><ul>
+<li><a href="#%E6%A0%87%E9%A2%98">标题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%A0%E5%A5%BD">你好</a><ul>
+<li><a href="#%E4%BD%A0%E5%A5%BD-1">你好</a><ul>
+<li><a href="#%E4%BD%A0%E5%A5%BD-2">你好</a><ul>
+<li><a href="#%E4%BD%A0%E5%A5%BD-3">你好</a><ul>
+<li><a href="#%E4%BD%A0%E5%A5%BD-4">你好</a><ul>
+<li><a href="#%E4%BD%A0%E5%A5%BD-5">你好</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%A0%B7%E5%BC%8F%E6%96%87%E6%9C%AC">样式文本</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8%E6%96%87%E6%9C%AC">引用文本</a><ul>
+<li><a href="#%E5%8D%95%E8%A1%8C%E5%BC%95%E7%94%A8">单行引用</a></li>
+<li><a href="#%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8">多行引用</a><ul>
+<li><a href="#%E5%88%86%E6%95%A3%E7%9A%84%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8">分散的多行引用</a></li>
+<li><a href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8">集合的多行引用</a></li>
+<li><a href="#%E6%87%92%E6%83%B0%E7%9A%84%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8">懒惰的多行引用</a></li>
+<li><a href="#%E5%B5%8C%E5%A5%97%E5%BC%95%E7%94%A8">嵌套引用</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95">引用中的Markdown语法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%88%97%E8%A1%A8">列表</a><ul>
+<li><a href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8">无序列表</a></li>
+<li><a href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8">有序列表</a><ul>
+<li><a href="#%E9%A1%BA%E5%BA%8F%E7%89%88%E6%9C%AC">顺序版本</a></li>
+<li><a href="#%E9%9D%9E%E9%A1%BA%E5%BA%8F%E7%89%88%E6%9C%AC">非顺序版本</a></li>
+</ul>
+</li>
+<li><a href="#%E6%87%92%E6%83%B0%E5%88%97%E8%A1%A8">懒惰列表</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97">代码区块</a><ul>
+<li><a href="#%E5%B5%8C%E5%85%A5%E5%9C%A8%E6%96%87%E5%AD%97%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81">嵌入在文字中的代码</a></li>
+<li><a href="#%E4%B8%80%E6%95%B4%E5%9D%97%E4%BB%A3%E7%A0%81">一整块代码</a></li>
+<li><a href="#%E4%B8%80%E6%95%B4%E5%9D%97%E4%BB%A3%E7%A0%81%E5%B8%A6%E6%9C%89%E9%A2%9C%E8%89%B2">一整块代码(带有颜色)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%86%E9%9A%94%E7%BA%BF">分隔线</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接</a><ul>
+<li><a href="#%E8%B6%85%E9%93%BE%E6%8E%A5">超链接</a></li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E9%93%BE%E6%8E%A5">快速链接</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5">图片链接</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%8D%E9%80%89%E6%A1%86">复选框</a></li>
+<li><a href="#html%E4%BB%A3%E7%A0%81">html代码</a></li>
+<li><a href="#%E8%A1%A8%E6%A0%BC">表格</a></li>
+<li><a href="#%E6%B3%A8%E9%87%8A">注释</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E9%9D%9Egithub%E6%94%AF%E6%8C%81%E7%9A%84markdown%E5%86%85%E5%AE%B9">其他非GitHub支持的MarkDown内容</a></li>
+<li><a href="#%E6%8B%BC%E5%86%99%E6%8F%90%E7%A4%BA">拼写提示</a></li>
+<li><a href="#%E5%AE%8C%E6%AF%95">完毕</a></li>
+</ul>
+<h1 id="在VSCode上编写Markdown"><a href="#在VSCode上编写Markdown" class="headerlink" title="在VSCode上编写Markdown"></a>在VSCode上编写Markdown</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>首先肯定是需要准备一个<a target="_blank" rel="noopener" href="https://code.visualstudio.com/" title="VSCode 官网下载">VSCode</a></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><blockquote>
+<p>以下内容使用前最好都查阅其文档</p>
+</blockquote>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans" title="VSCode 中文语言包 插件 官网">中文（简体）语言包</a>  </li>
+<li>Markdown编辑器 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" title="VSCode Markdown All in One 插件 官网">Markdown All in One</a>  </li>
+<li>快速黏贴图片到文章中 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image" title="VSCode Paste Image 插件 官网">Paste Image</a>  </li>
+</ol>
+<h3 id="其他插件"><a href="#其他插件" class="headerlink" title="其他插件"></a>其他插件</h3><p>有其他需求的还可与继续选择以下插件</p>
+<p><em>后续还可能会不断更新</em></p>
+<ol>
+<li>输出Markdown导出为<code>PDF</code>,<code>PNG</code>,<code>HTML</code> <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhanced</a> 这个插件有专门的<a target="_blank" rel="noopener" href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/">中文文档</a></li>
+<li>快速发布文章到<a target="_blank" rel="noopener" href="https://www.limfx.pro/">limfx.pro</a>而且还具备数学公式环境的插件 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Limfx-Lee.limfxcodeex">LimfxCodeEx</a><br> *. 注意<code>LimfxCodeEx</code>还需要依赖其他插件,具体请自行查阅文档</li>
+</ol>
+<p><strong>此时就完成了全部的环境搭建工作了</strong></p>
+<h1 id="GitHub上的MarkDown语法"><a href="#GitHub上的MarkDown语法" class="headerlink" title="GitHub上的MarkDown语法"></a>GitHub上的MarkDown语法</h1><blockquote>
+<p>GitHub上通用的Markdown规范, 称其为 <code>GitHub Flavored Markdown</code>  </p>
+</blockquote>
+<blockquote>
+<p>实际上Markdown只负责写,实际上不知道怎么渲染<br>所以在不同的网站上有不同的渲染规则,得出的展示界面也不一样  </p>
+</blockquote>
+<blockquote>
+<p>本文基于 <a target="_blank" rel="noopener" href="https://docs.github.com/cn/github/writing-on-github" title="开始在 GitHub 上编写">GitHub Docs 写作文档</a><br>更基础的Markdown规范可以前往 <a target="_blank" rel="noopener" href="http://www.markdown.cn/" title="markdown.cn 官网">markdown.cn</a> 查阅原生支持<br>更多示例请参阅 <a target="_blank" rel="noopener" href="https://github.github.com/gfm" title="gfm规范演示">GitHub Flavored Markdown 规范</a></p>
+</blockquote>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>使用 <code>#</code> 号来表示一个大号加粗的标题, 连续的 <code>#</code> 最多支持6个, 约多越小</p>
+<pre><code># 你好
+## 你好
+### 你好
+#### 你好
+##### 你好
+###### 你好
+</code></pre>
+<p><em>以上文字转化后就是下面这样的</em></p>
+<h1 id="你好"><a href="#你好" class="headerlink" title="你好"></a>你好</h1><h2 id="你好-1"><a href="#你好-1" class="headerlink" title="你好"></a>你好</h2><h3 id="你好-2"><a href="#你好-2" class="headerlink" title="你好"></a>你好</h3><h4 id="你好-3"><a href="#你好-3" class="headerlink" title="你好"></a>你好</h4><h5 id="你好-4"><a href="#你好-4" class="headerlink" title="你好"></a>你好</h5><h6 id="你好-5"><a href="#你好-5" class="headerlink" title="你好"></a>你好</h6><blockquote>
+<p>注意, 标题在一般的编辑器中是有目录作用的.  </p>
+</blockquote>
+<h2 id="样式文本"><a href="#样式文本" class="headerlink" title="样式文本"></a>样式文本</h2><blockquote>
+<p>标题中也可以使用样式文本,事实上,他们几乎可以在Markdown影响的任何地方使用.但无法在代码块和HTML块中使用</p>
+</blockquote>
+<p>有时候可能需要 <strong>粗体</strong> <em>斜体</em> <del>删除线</del> 来表示一些其他语义</p>
+<table>
+<thead>
+<tr>
+<th>样式</th>
+<th>语法</th>
+<th>可能的快捷键</th>
+<th>示例</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>粗体</td>
+<td><code>** **</code>或者<code>__ __</code></td>
+<td>Ctrl + B</td>
+<td><code>**这是粗体**</code></td>
+<td><strong>这是粗体</strong></td>
+</tr>
+<tr>
+<td>斜体</td>
+<td><code>* *</code>或者<code>_ _</code></td>
+<td>Ctrl + i</td>
+<td><code>*这是斜体*</code></td>
+<td><em>这是斜体</em></td>
+</tr>
+<tr>
+<td>删除线</td>
+<td><code>~~ ~~</code></td>
+<td></td>
+<td><code>~~这是删除线~~</code></td>
+<td><del>这是删除线</del></td>
+</tr>
+<tr>
+<td>粗体和嵌入的斜体</td>
+<td><code>** **</code> 和 <code>_ _</code></td>
+<td></td>
+<td><code>**此文本 _非常_ 重要**</code></td>
+<td><strong>此文本 <em>非常</em> 重要</strong></td>
+</tr>
+<tr>
+<td>全部粗体和斜体</td>
+<td><code>*** ***</code></td>
+<td></td>
+<td><code>***所有这些文本都很重要***</code></td>
+<td><em><strong>所有这些文本都很重要</strong></em></td>
+</tr>
+</tbody></table>
+<h2 id="引用文本"><a href="#引用文本" class="headerlink" title="引用文本"></a>引用文本</h2><h3 id="单行引用"><a href="#单行引用" class="headerlink" title="单行引用"></a>单行引用</h3><p>在一行的开头使用 <code>&gt;</code> 可以使他看起来像是一行引用.</p>
+<pre><code>&gt;本文来自 ML-Blog
+</code></pre>
+<p><em>转化后就是</em></p>
+<blockquote>
+<p>本文来自 ML-Blog</p>
+</blockquote>
+<h3 id="多行引用"><a href="#多行引用" class="headerlink" title="多行引用"></a>多行引用</h3><p>当然, 连续的使用<code>&gt;</code>, 那就会产生区块引用, 或者说多行引用</p>
+<h4 id="分散的多行引用"><a href="#分散的多行引用" class="headerlink" title="分散的多行引用"></a>分散的多行引用</h4><pre><code>&gt;本文来自 ML-Blog
+
+&gt;如果你喜欢, 记得帮我推广
+
+&gt;谢谢
+</code></pre>
+<p><em>如果你每行有一个空行, 那么, 就像下面这样</em></p>
+<blockquote>
+<p>本文来自 ML-Blog</p>
+</blockquote>
+<blockquote>
+<p>如果你喜欢, 记得帮我推广</p>
+</blockquote>
+<blockquote>
+<p>谢谢</p>
+</blockquote>
+<h4 id="集合的多行引用"><a href="#集合的多行引用" class="headerlink" title="集合的多行引用"></a>集合的多行引用</h4><pre><code>&gt;本文来自 ML-Blog  
+&gt;如果你喜欢, 记得帮我推广  
+&gt;谢谢  
+</code></pre>
+<p><em>如果你没有空行, 只是在每行的末尾使用两个空格, 如下</em></p>
+<blockquote>
+<p>本文来自 ML-Blog<br>如果你喜欢, 记得帮我推广<br>谢谢  </p>
+</blockquote>
+<h4 id="懒惰的多行引用"><a href="#懒惰的多行引用" class="headerlink" title="懒惰的多行引用"></a>懒惰的多行引用</h4><blockquote>
+<p>不推荐此写法</p>
+</blockquote>
+<pre><code>&gt;本文来自 ML-Blog  
+如果你喜欢, 记得帮我推广  
+谢谢  
+</code></pre>
+<p><em>如果你使用两个空格的方式, markdown允许你只在头部使用<code>&gt;</code>, 效果和全部使用并无差异</em></p>
+<blockquote>
+<p>本文来自 ML-Blog<br>如果你喜欢, 记得帮我推广<br>谢谢  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意: 你可以认为两个空格代表小间隔,回车代表大间隔.这在大多数Markdown格式中都适用.</p>
+</blockquote>
+</blockquote>
+<h4 id="嵌套引用"><a href="#嵌套引用" class="headerlink" title="嵌套引用"></a>嵌套引用</h4><pre><code>&gt;本文来自 ML-Blog  
+&gt;&gt;如果你喜欢, 记得帮我推广  
+&gt;&gt;&gt;谢谢 
+&gt;&gt;最后  //此处没有回归第二层
+&gt;
+&gt;感谢   //使用空行引用, 回到第一层
+</code></pre>
+<p><em>使用多个箭头来表示你的引用关系层级, 如果你希望回撤引用层级, 你需要一个引用空行</em></p>
+<blockquote>
+<p>本文来自 ML-Blog  </p>
+<blockquote>
+<p>如果你喜欢, 记得帮我推广  </p>
+<blockquote>
+<p>谢谢<br>最后  //此处没有回归第二层</p>
+</blockquote>
+</blockquote>
+<p>感谢   //使用空行引用, 回到第一层</p>
+</blockquote>
+<h4 id="引用中的Markdown语法"><a href="#引用中的Markdown语法" class="headerlink" title="引用中的Markdown语法"></a>引用中的Markdown语法</h4><pre><code>&gt; # 本文来自 ML-Blog
+&gt;&gt;*如果你喜欢, 记得帮我推广*
+&gt;&gt;&gt;* 谢谢 
+</code></pre>
+<p><em>在引用中一样可以使用语法</em></p>
+<blockquote>
+<h1 id="本文来自-ML-Blog"><a href="#本文来自-ML-Blog" class="headerlink" title="本文来自 ML-Blog"></a>本文来自 ML-Blog</h1><blockquote>
+<p><em>如果你喜欢, 记得帮我推广</em></p>
+<blockquote>
+<ul>
+<li>谢谢 </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Markdown 支持有序列表和无序列表。</p>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表使用<code>*</code>、<code>+</code>或是<code>-</code>作为列表标记：</p>
+<pre><code>* 第一项
++ 第二项
+- 第三项
+- 第四项
+</code></pre>
+<p><em>你可以从项的间隔中发现, 使用不同的符号, 不是同一个列表</em><br><em>第一项和第二项都是自己单独成列表, 第三项和第四项则是一个列表</em></p>
+<ul>
+<li>第一项</li>
+</ul>
+<ul>
+<li>第二项</li>
+</ul>
+<ul>
+<li>第三项</li>
+<li>第四项</li>
+</ul>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>使用数字和<code>.</code>号来表示一个项</p>
+<h4 id="顺序版本"><a href="#顺序版本" class="headerlink" title="顺序版本"></a>顺序版本</h4><pre><code>1. 第一项
+2. 第二项
+3. 第三项
+</code></pre>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ol>
+<h4 id="非顺序版本"><a href="#非顺序版本" class="headerlink" title="非顺序版本"></a>非顺序版本</h4><pre><code>1. 第一项
+3. 第二项
+2. 第三项
+99. 第九十九项
+</code></pre>
+<p><em>可以看出, 其实所谓的有序列表只是markdown显示排序, 和你自己标号的数组并没有关系</em></p>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+<li> 第九十九项</li>
+</ol>
+<h3 id="懒惰列表"><a href="#懒惰列表" class="headerlink" title="懒惰列表"></a>懒惰列表</h3><blockquote>
+<p>不推荐此写法</p>
+</blockquote>
+<pre><code>* 你好  
+我想你
+* 不  
+你不想
+</code></pre>
+<blockquote>
+<p>你可以在一行的开头使用<code>*</code>, 之后使用两个空格,在换行.</p>
+</blockquote>
+<ul>
+<li>你好<br>我想你</li>
+<li>不<br>你不想</li>
+</ul>
+<pre><code>1. 你好  
+我想你
+2. 不  
+你不想
+</code></pre>
+<blockquote>
+<p>类似的, 有序列表也可以这样</p>
+</blockquote>
+<ol>
+<li>你好<br>我想你</li>
+<li>不<br>你不想</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong>, 如果你一定要书写一个数字后加上<code>.</code>然后再空格.<br>例如<br>1986. What a great season.<br>希望你能加上转义字符 <code>1986\. What a great season.</code></p>
+</blockquote>
+<p>1986. What a great season.<br>这样就不会被识别为列表, <code>.</code>也能正常显示</p>
+<blockquote>
+<p>GitHub还有一套缩进规则,详情请看<a target="_blank" rel="noopener" href="https://github.github.com/gfm/#example-265">gfm-example-265</a></p>
+</blockquote>
+<h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><p>其实我更喜欢称呼它为<strong>原样显示区块</strong>  </p>
+<h3 id="嵌入在文字中的代码"><a href="#嵌入在文字中的代码" class="headerlink" title="嵌入在文字中的代码"></a>嵌入在文字中的代码</h3><p>使用一对<code>``</code>可标注句子中的代码或命令。 反引号中的文本<strong>不会被格式化</strong>。<br>而且在大多数的Markdown渲染器中,还会被特殊颜色标记, 达到<code>醒目</code>的效果</p>
+<p><em>例如上面那段话中的醒目</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用一对&#96; &#96;&#96; &#96;可标注句子中的代码或命令。 反引号中的文本**不会被格式化**。  </span><br><span class="line">而且在大多数的Markdown渲染器中,还会被特殊颜色标记, 达到&#96;醒目&#96;的效果</span><br></pre></td></tr></table></figure>
+
+<h3 id="一整块代码"><a href="#一整块代码" class="headerlink" title="一整块代码"></a>一整块代码</h3><p>在任何两个<code>```</code>之间的代码都<strong>不会被格式化</strong></p>
+<blockquote>
+<p>也可以在任何行后面再次缩进一个<code>tab</code>也就是<code>\t</code>,又称制表符.表示进入代码区块,但是不推荐这种方式,在原文中不够直观<br>不过这次教学必须使用<code>tab</code>不然无法为你显示<code>```</code></p>
+</blockquote>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里就是代码区块了</span><br><span class="line">它可以有多行</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p><em>下面我们演示代码区块</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里就是代码区块了</span><br><span class="line">它可以有多行</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意, 处于这个区块的代码,  Markdown 语法不会被转换</p>
+</blockquote>
+<h3 id="一整块代码-带有颜色"><a href="#一整块代码-带有颜色" class="headerlink" title="一整块代码(带有颜色)"></a>一整块代码(带有颜色)</h3><p>在上面代码块第一个三点的指定渲染格式即可. <code>```C#</code></p>
+<pre><code><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Log(<span class="string">&quot;本文来自 ML-Blog&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p><em>转化之后就带有C#标准的颜色了</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Log(<span class="string">&quot;本文来自 ML-Blog&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>GitHub支持的渲染格式请前往<a target="_blank" rel="noopener" href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" title="GitHub支持的语言渲染格式列表">语言YAML文件</a></p>
+</blockquote>
+<h2 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h2><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
+<pre><code>* * *
+***
+*****
+- - -
+---------------------------------------
+</code></pre>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[GitHub Docs 写作文档][github.docs.writing]  &lt;!-- &#x2F;&#x2F;[描述][定义的链接] --&gt;</span><br><span class="line">[github.docs.writing]:https:&#x2F;&#x2F;docs.github.com&#x2F;cn&#x2F;github&#x2F;writing-on-github  &quot;hexo.io 官网&quot; &lt;!-- &#x2F;&#x2F;[定义的链接][实际网址] --&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>转化后如下</em></p>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/cn/github/writing-on-github" title="开始在 GitHub 上编写">GitHub Docs 写作文档</a></p>
+<!-- [github.docs.writing]:https://docs.github.com/cn/github/writing-on-github  "开始在 GitHub 上编写"  //这个地址已经在最下面定义了,此处就不重复定义了 -->
+
+<blockquote>
+<p>此时鼠标移动带蓝色标签上, 可以看到描述内容</p>
+</blockquote>
+<p>可以看到,使用一个链接需要定义,但是定义可以在使用之后,所以一般将定义放置与文章末尾,方便统一管理.<br>而且<code>github.docs.writing</code>是我定义的别名,这个别名是可以随意修改的,多了一层更方便管理<br>这样<code>github.docs.writing</code>这个别名还可与多处使用,推荐这种定义方式.</p>
+<blockquote>
+<p>还可与使用相对链接来跳转到本地文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[hello](hello-world.md) &lt;!-- &#x2F;&#x2F;[描述][定义的链接] --&gt;</span><br><span class="line">[hello-world.md]:hello-world.md &quot;hello-world.md&quot; &lt;!-- &#x2F;&#x2F;[定义的链接][实际网址] --&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>实际效果如下</em></p>
+<p><a href="hello-world.md">hello-world</a></p>
+<h3 id="快速链接"><a href="#快速链接" class="headerlink" title="快速链接"></a>快速链接</h3><p>还有一种方式可以省略定义步骤.<br>使用<code>[]</code>包裹要显示的内容,跟上<code>()</code>包裹链接地址和描述内容,<br>描述地址和链接地址需要一个空格隔开, 描述地址需要使用<code>&quot;&quot;</code>括住.</p>
+<p><code>[通往GitHub](https://www.github.com &quot;github链接&quot;) </code></p>
+<p><em>如下</em></p>
+<p><a target="_blank" rel="noopener" href="https://www.github.com/" title="github链接">通往GitHub</a></p>
+<blockquote>
+<p>这样就是可以直接在正文中看到链接,但是管理不是很方便,后面要修改就要全文找.</p>
+</blockquote>
+<h3 id="图片链接"><a href="#图片链接" class="headerlink" title="图片链接"></a>图片链接</h3><p>事实上, 图片和链接是一回事, 你只需要在链接的语法最前面加上<code>!</code></p>
+<blockquote>
+<p>下面使用快速链接来演示,实际也可以使用定义的方式.各位可以自行尝试</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![UserMingHaoLi GitHub stats](https:&#x2F;&#x2F;github-readme-stats.vercel.app&#x2F;api?username&#x3D;UserMingHaoLi)</span><br></pre></td></tr></table></figure>
+
+<p><em>可以看到图片显示出来了</em></p>
+<p><img src="https://github-readme-stats.vercel.app/api?username=UserMingHaoLi" alt="UserMingHaoLi GitHub stats"></p>
+<blockquote>
+<p>此图片来自<a target="_blank" rel="noopener" href="https://github.com/anuraghazra/github-readme-stats" title="github-readme-stats">github-readme-stats</a></p>
+</blockquote>
+<blockquote>
+<p>图片也可以使用相对链接来显示本地图片</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![UserMingHaoLi GitHub stats](模板&#x2F;UML类图模板.png)</span><br></pre></td></tr></table></figure>
+
+<p><em>就像这样</em></p>
+<p><img src="%E6%A8%A1%E6%9D%BF/UML%E7%B1%BB%E5%9B%BE%E6%A8%A1%E6%9D%BF.png" alt="UserMingHaoLi GitHub stats"></p>
+<h2 id="复选框"><a href="#复选框" class="headerlink" title="复选框"></a>复选框</h2><p>也叫代办项,或者任务列表 在任何列表的基础上使用 空格<code>[空格]</code>,这里使用<code>-</code>空格<code>[空格]</code>来表示一个未办项目, 替换<code>[x]</code>则为已办项目<br>支持<code>tab</code>缩进多级代办</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. [ ] 未办理项目</span><br><span class="line">    * [ ] 未办理项目二级</span><br><span class="line">- [x] 已办理项目</span><br><span class="line">    + [x] 已办理项目二级</span><br></pre></td></tr></table></figure>
+
+<p><em>实际上由于不是用一种列表,下面的已办和未办不是同一个代办列表, 所以最好是使用同样的列表符号</em></p>
+<ol>
+<li><input disabled="" type="checkbox"> 未办理项目<ul>
+<li><input disabled="" type="checkbox"> 未办理项目二级</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 已办理项目<ul>
+<li><input checked="" disabled="" type="checkbox"> 已办理项目二级</li>
+</ul>
+</li>
+</ul>
+<p>如果任务列表项说明以括号开头，则需要使用 <code>\</code> 进行规避：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- [ ] \(Optional) 打开后续议题</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><input disabled="" type="checkbox"> (Optional) 打开后续议题</li>
+</ul>
+<h2 id="html代码"><a href="#html代码" class="headerlink" title="html代码"></a>html代码</h2><p>在Markdown中书写<code>HTML</code>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;!--在这里插入内容--&gt;</span><br><span class="line">&lt;p&gt;nihao&lt;&#x2F;p&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>如下,具体内容可自行尝试</em></p>
+<html>
+<!--在这里插入内容-->
+<p>nihao</p>
+</html>
+
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>制表需要使用大量的<code>|</code> 用于分隔每项<br>第一行是表头, 会加粗,<br>第二行是对其方式, 使用<code>---</code>表示居中,<code>-</code>最少三个<br>将最左边或者最右边的<code>-</code>替换为<code>:</code>表示居于其中一边<br>最后自行往下写就可以了, 注意使用<code>|</code>分隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| header 1       |        header 2 |</span><br><span class="line">| :------------- | --------------: |</span><br><span class="line">| row 1 col 1232 | row 1 col 22323 |</span><br><span class="line">| row 2 col 1    |     row 2 col 2 |</span><br></pre></td></tr></table></figure>
+
+<p><em>如果在文中想使用<code>|</code>则需要配合<code>\</code>. 变为<code>\|</code></em></p>
+<table>
+<thead>
+<tr>
+<th align="left">header 1</th>
+<th align="right">header 2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">row 1 col 1232</td>
+<td align="right">row 1 col 22323</td>
+</tr>
+<tr>
+<td align="left">row 2 col 1</td>
+<td align="right">row 2 col 2</td>
+</tr>
+</tbody></table>
+<p>在<code>Markdown All in One</code>插件的帮助下,你可以使用<code>Alt</code> + <code>Shift</code> + <code>F</code> 来让表格变得容易阅读,具体可以参阅<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" title="VSCode Markdown All in One 插件 官网">文档</a></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--注释--&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>注释当然看不到啦~~~</em></p>
+<!--注释-->
+
+<h1 id="其他非GitHub支持的MarkDown内容"><a href="#其他非GitHub支持的MarkDown内容" class="headerlink" title="其他非GitHub支持的MarkDown内容"></a>其他非GitHub支持的MarkDown内容</h1><blockquote>
+<p>详细可看我的另一篇文章 <code>Markdown进阶</code></p>
+</blockquote>
+<h1 id="拼写提示"><a href="#拼写提示" class="headerlink" title="拼写提示"></a>拼写提示</h1><ol>
+<li><code>Markdown</code>的M大写但d没有大写,表示这是一整个单词,而不是<code>Mark</code>和<code>Down</code></li>
+<li><code>VSCode</code>的VSC为大写,其中<code>VS</code>表示<code>visualstudio</code>的缩写,<code>C</code>表示<code>Code</code>这整个单词的开头</li>
+<li><code>GitHub</code>的G和H是大写的,表示分为<code>Git</code>和<code>Hub</code>两词</li>
+</ol>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+
+<!-- 链接 -->
+
+<!-- VSCode篇 -->
+<!-- GitHub For Markdown篇 -->
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210312-225200-g-1/" rel="prev" title="hexo模板">
+      <i class="fa fa-chevron-left"></i> hexo模板
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210315-220300-g6/" rel="next" title="Hexo部署Github个人博客">
+      Hexo部署Github个人博客 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8VSCode%E4%B8%8A%E7%BC%96%E5%86%99Markdown"><span class="nav-number">1.</span> <span class="nav-text">在VSCode上编写Markdown</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%8F%92%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">其他插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub%E4%B8%8A%E7%9A%84MarkDown%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">GitHub上的MarkDown语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">标题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%A0%E5%A5%BD"><span class="nav-number">3.</span> <span class="nav-text">你好</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%A5%BD-1"><span class="nav-number">3.1.</span> <span class="nav-text">你好</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E5%A5%BD-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">你好</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%A0%E5%A5%BD-3"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">你好</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%A0%E5%A5%BD-4"><span class="nav-number">3.1.1.1.1.</span> <span class="nav-text">你好</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%A0%E5%A5%BD-5"><span class="nav-number">3.1.1.1.1.1.</span> <span class="nav-text">你好</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E6%96%87%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">样式文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%96%87%E6%9C%AC"><span class="nav-number">3.3.</span> <span class="nav-text">引用文本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%A1%8C%E5%BC%95%E7%94%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">单行引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">多行引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%95%A3%E7%9A%84%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">分散的多行引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">集合的多行引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%87%92%E6%83%B0%E7%9A%84%E5%A4%9A%E8%A1%8C%E5%BC%95%E7%94%A8"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">懒惰的多行引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E5%BC%95%E7%94%A8"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">嵌套引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E4%B8%AD%E7%9A%84Markdown%E8%AF%AD%E6%B3%95"><span class="nav-number">3.3.2.5.</span> <span class="nav-text">引用中的Markdown语法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E6%9D%A5%E8%87%AA-ML-Blog"><span class="nav-number">4.</span> <span class="nav-text">本文来自 ML-Blog</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">4.1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">4.1.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">有序列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E7%89%88%E6%9C%AC"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">顺序版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E9%A1%BA%E5%BA%8F%E7%89%88%E6%9C%AC"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">非顺序版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%87%92%E6%83%B0%E5%88%97%E8%A1%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">懒惰列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97"><span class="nav-number">4.2.</span> <span class="nav-text">代码区块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%9C%A8%E6%96%87%E5%AD%97%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-number">4.2.1.</span> <span class="nav-text">嵌入在文字中的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%95%B4%E5%9D%97%E4%BB%A3%E7%A0%81"><span class="nav-number">4.2.2.</span> <span class="nav-text">一整块代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%95%B4%E5%9D%97%E4%BB%A3%E7%A0%81-%E5%B8%A6%E6%9C%89%E9%A2%9C%E8%89%B2"><span class="nav-number">4.2.3.</span> <span class="nav-text">一整块代码(带有颜色)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%9A%94%E7%BA%BF"><span class="nav-number">4.3.</span> <span class="nav-text">分隔线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">4.4.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="nav-number">4.4.1.</span> <span class="nav-text">超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E9%93%BE%E6%8E%A5"><span class="nav-number">4.4.2.</span> <span class="nav-text">快速链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5"><span class="nav-number">4.4.3.</span> <span class="nav-text">图片链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E9%80%89%E6%A1%86"><span class="nav-number">4.5.</span> <span class="nav-text">复选框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html%E4%BB%A3%E7%A0%81"><span class="nav-number">4.6.</span> <span class="nav-text">html代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">4.7.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">4.8.</span> <span class="nav-text">注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%9D%9EGitHub%E6%94%AF%E6%8C%81%E7%9A%84MarkDown%E5%86%85%E5%AE%B9"><span class="nav-number">5.</span> <span class="nav-text">其他非GitHub支持的MarkDown内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%BC%E5%86%99%E6%8F%90%E7%A4%BA"><span class="nav-number">6.</span> <span class="nav-text">拼写提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">7.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

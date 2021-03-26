@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="内容引用  Docker官方文档Docker国内镜像博客-Docker-ComposeRSSHubAwesome-TTRSS腾讯云开发者实验室-nextcloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker自建RSS与NextCloud">
+<meta property="og:url" content="http://example.com/ml-20191009-203900-g9/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="内容引用  Docker官方文档Docker国内镜像博客-Docker-ComposeRSSHubAwesome-TTRSS腾讯云开发者实验室-nextcloud">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-09T12:39:00.000Z">
+<meta property="article:modified_time" content="2019-10-09T12:39:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="云服务器">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="RSS">
+<meta property="article:tag" content="NextCloud">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20191009-203900-g9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Docker自建RSS与NextCloud | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20191009-203900-g9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker自建RSS与NextCloud
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-09 20:39:00" itemprop="dateCreated datePublished" datetime="2019-10-09T20:39:00+08:00">2019-10-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index"><span itemprop="name">工具部署</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>内容引用</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" title="ubuntu">Docker官方文档</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hujyhfwfh2/article/details/83934415" title="镜像">Docker国内镜像</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hujyhfwfh2/article/details/83934415" title="blog">博客-Docker-Compose</a><br><a target="_blank" rel="noopener" href="https://github.com/DIYgod/RSSHubv" title="RSSHub">RSSHub</a><br><a target="_blank" rel="noopener" href="https://ttrss.henry.wang/" title="ttrss">Awesome-TTRSS</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/labs/lab/10381">腾讯云开发者实验室-nextcloud</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="搭建Docker"><a href="#搭建Docker" class="headerlink" title="搭建Docker"></a>搭建Docker</h1><p>阅读官方文档即可快速搭建</p>
+<p>命令如果无效, 建议使用sudo权限</p>
+<h2 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h2><blockquote>
+<p>apt-get remove docker docker-engine docker.io containerd runc</p>
+</blockquote>
+<h2 id="更新apt"><a href="#更新apt" class="headerlink" title="更新apt"></a>更新apt</h2><blockquote>
+<p>apt-get update</p>
+</blockquote>
+<h2 id="允许apt使用Https"><a href="#允许apt使用Https" class="headerlink" title="允许apt使用Https"></a>允许apt使用Https</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    gnupg-agent \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加Docker官方密钥"><a href="#添加Docker官方密钥" class="headerlink" title="添加Docker官方密钥"></a>添加Docker官方密钥</h2><blockquote>
+<p>curl -fsSL <a target="_blank" rel="noopener" href="https://download.docker.com/linux/ubuntu/gpg">https://download.docker.com/linux/ubuntu/gpg</a> | sudo apt-key add -</p>
+</blockquote>
+<p>其实上面这句话是下载并存储为密钥.</p>
+<h2 id="检验密钥是否完成"><a href="#检验密钥是否完成" class="headerlink" title="检验密钥是否完成"></a>检验密钥是否完成</h2><blockquote>
+<p>apt-key fingerprint 0EBFCD88</p>
+</blockquote>
+<p>此时显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pub   rsa4096 2017-02-22 [SCEA]</span><br><span class="line">      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88</span><br><span class="line">uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;</span><br><span class="line">sub   rsa4096 2017-02-22 [S]</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置稳定存储库"><a href="#设置稳定存储库" class="headerlink" title="设置稳定存储库"></a>设置稳定存储库</h2><p>你也可以设置测试库或者更先进的每晚库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   &quot;deb [arch&#x3D;amd64] https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;ubuntu \</span><br><span class="line">   $(lsb_release -cs) \</span><br><span class="line">   stable&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h2><p>先更新apt</p>
+<blockquote>
+<p>apt-get update</p>
+</blockquote>
+<p>之后安装</p>
+<blockquote>
+<p>apt-get install docker-ce docker-ce-cli containerd.io</p>
+</blockquote>
+<p>完成之后使用hello-world进行校验</p>
+<blockquote>
+<p>docker run hello-world</p>
+</blockquote>
+<p><strong>此时可以看到运行了官方的hello-world镜像</strong></p>
+<h1 id="部署Docker-Compose"><a href="#部署Docker-Compose" class="headerlink" title="部署Docker-Compose"></a>部署Docker-Compose</h1><p>docker-Compose是Docker的一个外挂组件, 通过配置文件快速运行Docker. 省去很多命令. 维护也省心.</p>
+<p>首先前往 <a target="_blank" rel="noopener" href="http://get.daocloud.io/">http://get.daocloud.io/</a> 查看目前最新的镜像下载地址</p>
+<h2 id="下载Docker-Compose"><a href="#下载Docker-Compose" class="headerlink" title="下载Docker-Compose"></a>下载Docker-Compose</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https:&#x2F;&#x2F;get.daocloud.io&#x2F;docker&#x2F;compose&#x2F;releases&#x2F;download&#x2F;1.24.1&#x2F;docker-compose-&#96;uname -s&#96;-&#96;uname -m&#96; &gt; &#x2F;usr&#x2F;local&#x2F;bin&#x2F;docker-compose</span><br></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><blockquote>
+<p>chmod +x /usr/local/bin/docker-compose</p>
+</blockquote>
+<h1 id="部署RSSHub"><a href="#部署RSSHub" class="headerlink" title="部署RSSHub"></a>部署RSSHub</h1><p>参照RSSHub官网进行安装即可</p>
+<h2 id="下载源代码"><a href="#下载源代码" class="headerlink" title="下载源代码"></a>下载源代码</h2><p><strong>非必须</strong>, 其实我们只是需要其中的 <code>docker-compose.yml</code> 文件</p>
+<blockquote>
+<p>你可以使用任何方式将此文件移动到之前安装Docker的服务器上, 记得新建文件夹.</p>
+</blockquote>
+<p>RSSHub推荐的指令(实际我是使用ftp上传上去的.)</p>
+<blockquote>
+<p>wget <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/DIYgod/RSSHub/master/docker-compose.yml">https://raw.githubusercontent.com/DIYgod/RSSHub/master/docker-compose.yml</a></p>
+</blockquote>
+<h2 id="使用Redis缓存"><a href="#使用Redis缓存" class="headerlink" title="使用Redis缓存"></a>使用Redis缓存</h2><blockquote>
+<p>$ docker volume create redis-data</p>
+</blockquote>
+<p>此命令实际上是使用Docker创建了一个Redis镜像.</p>
+<h2 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h2><p>需要编辑之前的文件以便达到自定义的效果.</p>
+<p>首先看下源文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  service.rsshub:</span><br><span class="line">    image: diygod&#x2F;rsshub</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;1200:1200&quot;</span><br><span class="line">    environment:</span><br><span class="line">      NODE_ENV: production</span><br><span class="line">      CACHE_TYPE: redis</span><br><span class="line">      REDIS_URL: &#39;redis:&#x2F;&#x2F;db.redis:6379&#x2F;&#39;</span><br><span class="line">      PUPPETEER_WS_ENDPOINT: &#39;ws:&#x2F;&#x2F;service.browserless:3000&#39;</span><br><span class="line">    depends_on:</span><br><span class="line">      - db.redis</span><br><span class="line">      - service.browserless</span><br><span class="line"></span><br><span class="line">  service.browserless:</span><br><span class="line">    image: browserless&#x2F;chrome</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  db.redis:</span><br><span class="line">    image: redis</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">        - redis-data:&#x2F;data</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  redis-data:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>之后根据RSSHub官网给的参数自行编辑即可</strong></p>
+<p>以下是我编辑后的文件, 希望不要抄作业哦. 自己自定义才是最好的.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  service.rsshub:</span><br><span class="line">    image: diygod&#x2F;rsshub</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;1200:1200&quot;</span><br><span class="line">    environment:</span><br><span class="line">      NODE_ENV: production</span><br><span class="line">      CACHE_TYPE: redis</span><br><span class="line">      REDIS_URL: &#39;redis:&#x2F;&#x2F;db.redis:6379&#x2F;&#39;</span><br><span class="line">      PUPPETEER_WS_ENDPOINT: &#39;ws:&#x2F;&#x2F;service.browserless:3000&#39;</span><br><span class="line">      CACHE_EXPIRE: &#39;3600&#39;</span><br><span class="line">      CACHE_CONTENT_EXPIRE: &#39;14400&#39;</span><br><span class="line">      LISTEN_INADDR_ANY: &#39;3&#39;</span><br><span class="line">      PORT: &#39;1200&#39;</span><br><span class="line">    depends_on:</span><br><span class="line">      - db.redis</span><br><span class="line">      - service.browserless</span><br><span class="line"></span><br><span class="line">  service.browserless:</span><br><span class="line">    image: browserless&#x2F;chrome</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  db.redis:</span><br><span class="line">    image: redis</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">        - redis-data:&#x2F;data</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  redis-data:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>只需要运行以下指令即可启动RSSHub</p>
+<blockquote>
+<p>docker-compose up -d </p>
+</blockquote>
+<h2 id="停止启动"><a href="#停止启动" class="headerlink" title="停止启动"></a>停止启动</h2><p>docker-compose down</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>使用最新的<code>docker-compose.yml</code> 文件重新配置并运行即可</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>此时访问你的云服务器相应端口即可. 记得开放你服务器商的安全组相关端口</p>
+<blockquote>
+<p>如果你使用以上配置, 那么端口是<code>1200</code></p>
+</blockquote>
+<h1 id="TTRSS"><a href="#TTRSS" class="headerlink" title="TTRSS"></a>TTRSS</h1><p>相信你已经通过上面的流程学会了使用Docker-compose. 那么下面就不会这么详细了.</p>
+<h2 id="下载配置文件"><a href="#下载配置文件" class="headerlink" title="下载配置文件"></a>下载配置文件</h2><p><code>docker-compose.yml</code></p>
+<blockquote>
+<p>注意新建文件夹, 不同的服务要运行在不同的文件夹里面</p>
+</blockquote>
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p>按照自己的需要修改配置</p>
+<p>配置就不放了, 就是修改了以下数据库密码和实例地址.</p>
+<h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><p>还是使用 </p>
+<blockquote>
+<p>docker-compose up -d </p>
+</blockquote>
+<h2 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h2><p>通过你自定义的实例地址访问, 注意实例地址的端口要和你配置的端口号一样.</p>
+<blockquote>
+<p>打不开记得检查云服务器的安全组有没有开放相关端口.</p>
+</blockquote>
+<h1 id="nextcloud"><a href="#nextcloud" class="headerlink" title="nextcloud"></a>nextcloud</h1><p>私有云盘是好东西, 不过一般云服务器的硬盘都很小, 所以后面会挂载一个腾讯云Cos存储(收费存储服务)</p>
+<h2 id="编写一个配置文件"><a href="#编写一个配置文件" class="headerlink" title="编写一个配置文件"></a>编写一个配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  db:</span><br><span class="line">    image: mariadb</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;home&#x2F;ubuntu&#x2F;nextcloud&#x2F;db:&#x2F;var&#x2F;lib&#x2F;mysql</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_ROOT_PASSWORD&#x3D;nextcloud</span><br><span class="line">      - MYSQL_PASSWORD&#x3D;nextcloud</span><br><span class="line">      - MYSQL_DATABASE&#x3D;nextcloud</span><br><span class="line">      - MYSQL_USER&#x3D;nextcloud</span><br><span class="line"></span><br><span class="line">  app:  </span><br><span class="line">    image: nextcloud</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 1999:80</span><br><span class="line">    links:</span><br><span class="line">      - db</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;home&#x2F;ubuntu&#x2F;nextcloud&#x2F;www:&#x2F;var&#x2F;www&#x2F;html</span><br></pre></td></tr></table></figure>
+
+<p>注意其中的地址 <code>/home/ubuntu/nextcloud</code> 这个是我创建的文件夹, 根据你自己的需求修改.</p>
+<p>然后是端口<code>1999:80</code> 根据自己的需要映射.</p>
+<p><strong>数据库的相关设置自行修改</strong></p>
+<h2 id="运行-2"><a href="#运行-2" class="headerlink" title="运行"></a>运行</h2><p>老规矩</p>
+<blockquote>
+<p>docker-compose up -d </p>
+</blockquote>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>访问你的相关IP和端口即可.</p>
+<h2 id="额外的坑"><a href="#额外的坑" class="headerlink" title="额外的坑"></a>额外的坑</h2><p>注意, 第一次访问会写配置, 之后就只能通过这个地址访问了, 如果还想扩展安全地址, 需要修改相关配置</p>
+<p>到你服务的目录下找到 www/config/config.php 进行修改即可</p>
+<p><strong>修改完之后记得重新启动服务</strong></p>
+<h1 id="挂载腾讯云Cos到服务器"><a href="#挂载腾讯云Cos到服务器" class="headerlink" title="挂载腾讯云Cos到服务器"></a>挂载腾讯云Cos到服务器</h1><p>这个就相当云给你的服务器添加一个远程的硬盘,容量大, 速度取决于网速. 根据使用情况收费, 具体看文档.</p>
+<p>挂载比较繁琐, 先看下使用到的工具吧.</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/436/6883">cosfs文档</a></p>
+<h2 id="获取源码"><a href="#获取源码" class="headerlink" title="获取源码"></a>获取源码</h2><blockquote>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/tencentyun/cosfs">https://github.com/tencentyun/cosfs</a> /usr/cosfs</p>
+</blockquote>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><blockquote>
+<p>sudo apt-get install automake autotools-dev g++ git libcurl4-gnutls-dev libfuse-dev libssl-dev libxml2-dev make pkg-config fuse</p>
+</blockquote>
+<h2 id="编译和安装"><a href="#编译和安装" class="headerlink" title="编译和安装"></a>编译和安装</h2><blockquote>
+<p>cd /usr/cosfs<br>./autogen.sh<br>./configure<br>make<br>sudo make install<br>cosfs –version</p>
+</blockquote>
+<h2 id="配置密钥"><a href="#配置密钥" class="headerlink" title="配置密钥"></a>配置密钥</h2><blockquote>
+<p>echo ‘BucketName-APPID’:’SecretId’:’SecretKey’ &gt; /etc/passwd-cosfs</p>
+</blockquote>
+<p>首先是 ‘BucketName-APPID’ 这个替换为你存储桶的名称加桶的ID.</p>
+<p>例如 <code>mingcheng-123456789</code> 这样</p>
+<p>后面的 ‘SecretId’ 和 ‘SecretKey’ 分别是你的API访问密钥ID和Key. 用来使用你的存储API. 没有可能需要申请一个. 由于存储是明文的, 建议使用子账号, 只给Cos相关的权限, 否则后果自负.</p>
+<p>联合起来可以举一个例子</p>
+<blockquote>
+<p>echo mingcheng-123456789:nidemiyaoid:nidemiyaomima &gt; /etc/passwd-cosfs</p>
+</blockquote>
+<p>这句话就是写入一个字符串到相关位置.</p>
+<h2 id="运行-3"><a href="#运行-3" class="headerlink" title="运行"></a>运行</h2><blockquote>
+<p>cosfs ‘BucketName-APPID’ ‘MountPoint’ -ourl=’CosDomainName’ -odbglevel=info</p>
+</blockquote>
+<p>首先 ‘MountPoint’ 是要挂在那个目录, 是你本地的目录地址.</p>
+<blockquote>
+<p>注意只能放在你配置文件目录的 <code>www/</code>文件夹以下. 不然后面无法通过nextcloud访问.</p>
+</blockquote>
+<p>然后 ‘CosDomainName’ 是你的桶地区代号</p>
+<p>例如 <code>http://cos.ap-beijing.myqcloud.com</code> 这个可以在官网查到</p>
+<p><strong>注意后面还有可选参数</strong> 比如我自己就带了的 <code>-oallow_other</code> 全用户可访问</p>
+<blockquote>
+<p>df -h</p>
+</blockquote>
+<p>上面这句查看磁盘, 看到你指定的文件夹变成一个256T的磁盘就表示成功了.</p>
+<h2 id="挂载到nextcloud"><a href="#挂载到nextcloud" class="headerlink" title="挂载到nextcloud"></a>挂载到nextcloud</h2><p>NextCloud网站, 选中右上角的应用, 启用最下面的外部扩展插件</p>
+<p>之后到设置, 外部扩展进行挂载操作, 挂载类型是<code>本地</code>. </p>
+<p><strong>路径是 /var/www/目录</strong> 这个www实际上就是Docker映射过来的.</p>
+<p>你在机器里面看不到, 如果你直接设置 <code>/var</code>作为外挂目录就可以看到多了一个<code>www/</code>目录. 这就到你的服务里面了.</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p>谢谢阅读.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 云服务器</a>
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/RSS/" rel="tag"># RSS</a>
+              <a href="/tags/NextCloud/" rel="tag"># NextCloud</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20190617-221800-g10/" rel="prev" title="CSharp序列化快速加载配置">
+      <i class="fa fa-chevron-left"></i> CSharp序列化快速加载配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20191124-195100-g31/" rel="next" title="001简单工厂模式">
+      001简单工厂模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BADocker"><span class="nav-number">1.</span> <span class="nav-text">搭建Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E6%97%A7%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0apt"><span class="nav-number">1.2.</span> <span class="nav-text">更新apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%81%E8%AE%B8apt%E4%BD%BF%E7%94%A8Https"><span class="nav-number">1.3.</span> <span class="nav-text">允许apt使用Https</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Docker%E5%AE%98%E6%96%B9%E5%AF%86%E9%92%A5"><span class="nav-number">1.4.</span> <span class="nav-text">添加Docker官方密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E5%AF%86%E9%92%A5%E6%98%AF%E5%90%A6%E5%AE%8C%E6%88%90"><span class="nav-number">1.5.</span> <span class="nav-text">检验密钥是否完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%A8%B3%E5%AE%9A%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">1.6.</span> <span class="nav-text">设置稳定存储库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="nav-number">1.7.</span> <span class="nav-text">正式安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Docker-Compose"><span class="nav-number">2.</span> <span class="nav-text">部署Docker-Compose</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDDocker-Compose"><span class="nav-number">2.1.</span> <span class="nav-text">下载Docker-Compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2RSSHub"><span class="nav-number">3.</span> <span class="nav-text">部署RSSHub</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.</span> <span class="nav-text">下载源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Redis%E7%BC%93%E5%AD%98"><span class="nav-number">3.2.</span> <span class="nav-text">使用Redis缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">设置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.4.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2%E5%90%AF%E5%8A%A8"><span class="nav-number">3.5.</span> <span class="nav-text">停止启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">3.6.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">3.7.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TTRSS"><span class="nav-number">4.</span> <span class="nav-text">TTRSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">下载配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-1"><span class="nav-number">4.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE"><span class="nav-number">4.4.</span> <span class="nav-text">访问</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nextcloud"><span class="nav-number">5.</span> <span class="nav-text">nextcloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">编写一个配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-2"><span class="nav-number">5.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="nav-number">5.3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E5%9D%91"><span class="nav-number">5.4.</span> <span class="nav-text">额外的坑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E8%85%BE%E8%AE%AF%E4%BA%91Cos%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">挂载腾讯云Cos到服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%BA%90%E7%A0%81"><span class="nav-number">6.1.</span> <span class="nav-text">获取源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">6.2.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">6.3.</span> <span class="nav-text">编译和安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5"><span class="nav-number">6.4.</span> <span class="nav-text">配置密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-3"><span class="nav-number">6.5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%88%B0nextcloud"><span class="nav-number">6.6.</span> <span class="nav-text">挂载到nextcloud</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">7.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

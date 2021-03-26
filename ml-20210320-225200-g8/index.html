@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在 GitHub 上搜索可以前往 GitHub高级搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHubDoc_搜索">
+<meta property="og:url" content="http://example.com/ml-20210320-225200-g8/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="在 GitHub 上搜索可以前往 GitHub高级搜索">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-20T14:52:00.000Z">
+<meta property="article:modified_time" content="2021-03-21T03:53:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210320-225200-g8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>GitHubDoc_搜索 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210320-225200-g8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GitHubDoc_搜索
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-20 22:52:00" itemprop="dateCreated datePublished" datetime="2021-03-20T22:52:00+08:00">2021-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-21 11:53:00" itemprop="dateModified" datetime="2021-03-21T11:53:00+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docs/" itemprop="url" rel="index"><span itemprop="name">Docs</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="在-GitHub-上搜索"><a href="#在-GitHub-上搜索" class="headerlink" title="在 GitHub 上搜索"></a>在 GitHub 上搜索</h1><p>可以前往 <a target="_blank" rel="noopener" href="https://github.com/search/advanced">GitHub高级搜索</a></p>
+<span id="more"></span>
+
+<h2 id="搜索语法"><a href="#搜索语法" class="headerlink" title="搜索语法"></a>搜索语法</h2><p>你可以使用<code>&gt;</code>,<code>&gt;=</code>,<code>&lt;</code>,<code>&lt;=</code>这些来进行过滤</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cats stars:&gt;=<span class="number">1000</span></span><br><span class="line">cats topics:&lt;=<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>或是简写方式,他们是等同的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cats stars:<span class="number">1000.</span>.* </span><br><span class="line">cats topics:*.<span class="number">.5</span></span><br></pre></td></tr></table></figure>
+
+<p>稍微扩展一下,还可与指定范围</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cats stars:<span class="number">10.</span><span class="number">.50</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用<code>YYYY-MM-DD</code>格式查询日期</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cats created:&gt;=<span class="number">2017</span><span class="number">-04</span><span class="number">-01</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这同样适用于上述简写和范围方式</p>
+</blockquote>
+<p>时间也可以指定小时和区间</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cats created:<span class="number">2016</span><span class="number">-03</span><span class="number">-21</span>T14:<span class="number">11</span>:<span class="number">00</span>Z.<span class="number">.2016</span><span class="number">-04</span><span class="number">-07</span>T20:<span class="number">45</span>:<span class="number">00</span>Z </span><br><span class="line"><span class="comment">//匹配在 2016 年 3 月 21 日下午 2:11 与 2016 年 4 月 7 日晚上 8:45 之间创建的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想排除某些结果,可以使用<code>NOT</code> 关键字</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello NOT world </span><br><span class="line"><span class="comment">//匹配含有 &quot;hello&quot; 字样但不含有 &quot;world&quot; 字样的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以通过<code>-</code>前缀来排除搜索结果的子集</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cats stars:&gt;<span class="number">10</span> -language:javascript </span><br><span class="line"><span class="comment">//匹配含有 &quot;cats&quot; 字样、有超过 10 个星号但并非以 JavaScript 编写的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以搜索参与者</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mentions:defunkt -org:github </span><br><span class="line"><span class="comment">//匹配提及 @defunkt 且不在 GitHub 组织仓库中的议题</span></span><br></pre></td></tr></table></figure>
+
+<p>如果搜索含有空格的查询，您需要用引号将其括起来。 例如</p>
+<ul>
+<li><code>cats NOT &quot;hello world&quot;</code> 匹配含有 “cats” 字样但不含有 “hello world” 字样的仓库。</li>
+<li><code>build label:&quot;bug fix&quot;</code> 匹配具有标签 “bug fix”、含有 “build” 字样的议题。</li>
+</ul>
+<hr>
+<p>如果搜索查询包含需要用户名的限定符，例如 <code>user</code>、<code>actor</code> 或 <code>assignee</code>，您可以使用任何 GitHub 用户名指定特定人员，或使用 @me 指定当前用户。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">author:nat <span class="comment">//匹配 @nat 创作的提交。</span></span><br><span class="line">is:issue assignee:@me <span class="comment">//匹配已分配给结果查看者的议题</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>在 GitHub 上搜索时，查询的长度有一些限制：</p>
+<ul>
+<li>不支持长度超过 256 个字符的查询</li>
+<li>您无法使用超过五个 AND、OR 或 NOT 运算符构造查询</li>
+</ul>
+<h2 id="搜索排序"><a href="#搜索排序" class="headerlink" title="搜索排序"></a>搜索排序</h2><p>你可以使用<code>sort</code>关键字来排序</p>
+<p>所有排序都可以以<code>-desc</code>或<code>-asc</code>后缀来安排顺序</p>
+<p><code>sort:interactions</code> 限定符按最高反应和评论总数排序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org:github sort:interactions </span><br><span class="line"><span class="comment">//匹配 GitHub 所拥有仓库中的议题，按最高反应和评论总数排序。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sort:reactions</code> 限定符按反应数量或类型排序。</p>
+<blockquote>
+<p>注意,支持表情</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">org:github sort:reactions </span><br><span class="line"><span class="comment">//匹配 GitHub 所拥有仓库中的议题，按最高反应数量排序。</span></span><br><span class="line">org:github sort:reactions-heart </span><br><span class="line"><span class="comment">//匹配 GitHub 所拥有仓库中的议题，按最多红心 (❤️) 反应数排序。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sort:author-date</code> 限定符按作者日期降序或升序排序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">feature org:github sort:author-date </span><br><span class="line"><span class="comment">//匹配 GitHub 所拥有仓库中含有 &quot;feature&quot; 字样的提交，按作者日期降序排序。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sort:committer-date</code> 限定符按提交者日期降序或升序排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">feature org:github sort:committer-date </span><br><span class="line"><span class="comment">//匹配 GitHub 所拥有仓库中含有 &quot;feature&quot; 字样的提交，按提交者日期降序排序。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sort:updated</code> 限定符按项目最近更新日期排序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">feature sort:updated </span><br><span class="line"><span class="comment">//匹配含有 &quot;feature&quot; 字样的仓库，按最近更新日期排序。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在-GitHub-上查找文件"><a href="#在-GitHub-上查找文件" class="headerlink" title="在 GitHub 上查找文件"></a>在 GitHub 上查找文件</h2><p>文件查找器的结果不包括某些目录，例如 <code>build</code>、<code>log</code>、<code>tmp</code> 和 <code>vendor</code>。</p>
+<p>导航到仓库的主页面,单击 <strong>Go to file（转到文件）</strong></p>
+<h2 id="搜索仓库"><a href="#搜索仓库" class="headerlink" title="搜索仓库"></a>搜索仓库</h2><p>要在搜索结果中包括复刻，您需要将 <code>fork:true</code> 或 <code>fork:only</code> 添加到查询</p>
+<blockquote>
+<p>GitHub只为Start数量大于源仓库的复刻添加索引.</p>
+</blockquote>
+<p>通过 <code>in</code> 限定符，您可以将搜索限制为仓库名称、仓库说明、自述文件内容或这些的任意组合。 如果省略此限定符，则只搜索仓库名称和说明。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">jquery in:name </span><br><span class="line"><span class="comment">//匹配仓库名称中含有 &quot;jquery&quot; 的仓库。</span></span><br><span class="line">jquery in:name,description </span><br><span class="line"><span class="comment">//匹配仓库名称或说明中含有 &quot;jquery&quot; 的仓库。</span></span><br><span class="line">jquery in:readme </span><br><span class="line"><span class="comment">//匹配仓库自述文件中提及 &quot;jquery&quot; 的仓库。</span></span><br><span class="line">repo:octocat/hello-world </span><br><span class="line"><span class="comment">//匹配特定仓库名称。</span></span><br></pre></td></tr></table></figure>
+
+<p>要在特定用户或组织拥有的所有仓库中搜索，您可以使用 <code>user</code> 或 <code>org</code> 限定符</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user:defunkt forks:&gt;<span class="number">100</span> </span><br><span class="line"><span class="comment">//匹配来自 @defunkt、拥有超过 100 复刻的仓库。</span></span><br><span class="line">org:github </span><br><span class="line"><span class="comment">//匹配来自 GitHub 的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>size</code> 限定符使用大于、小于和范围限定符查找匹配特定大小（以千字节为单位）的仓库。 </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size:<span class="number">1000</span> <span class="comment">//匹配恰好为 1 MB 的仓库。</span></span><br><span class="line">size:&gt;=<span class="number">30000</span> <span class="comment">//匹配至少为 30 MB 的仓库。</span></span><br><span class="line">size:&lt;<span class="number">50</span> <span class="comment">//匹配小于 50 KB 的仓库。</span></span><br><span class="line">size:<span class="number">50.</span><span class="number">.120</span> <span class="comment">//匹配介于 50 KB 与 120 KB 之间的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>按关注者数量搜索可以使用<code>followers</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node followers:&gt;=<span class="number">10000</span> </span><br><span class="line"><span class="comment">//匹配有 10,000 或更多关注者提及文字 &quot;node&quot; 的仓库。</span></span><br><span class="line">styleguide linter followers:<span class="number">1.</span><span class="number">.10</span> </span><br><span class="line"><span class="comment">//匹配拥有 1 到 10 个关注者并且提及 &quot;styleguide linter&quot; 一词的的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>按复刻数量搜索使用<code>forks</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">forks:<span class="number">5</span> <span class="comment">//匹配只有 5 个复刻的仓库。</span></span><br><span class="line">forks:&gt;=<span class="number">205</span> <span class="comment">//匹配具有至少 205 个复刻的仓库。</span></span><br><span class="line">forks:&lt;<span class="number">90</span> <span class="comment">//匹配具有少于 90 个复刻的仓库。</span></span><br><span class="line">forks:<span class="number">10.</span><span class="number">.20</span> <span class="comment">//匹配具有 10 到 20 个复刻的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>按星星搜索使用<code>stars</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stars:<span class="number">500</span> </span><br><span class="line"><span class="comment">//匹配恰好具有 500 个星号的仓库。</span></span><br><span class="line">stars:<span class="number">10.</span><span class="number">.20</span> </span><br><span class="line"><span class="comment">//匹配具有 10 到 20 个星号、小于 1000 KB 的仓库。</span></span><br><span class="line">stars:&gt;=<span class="number">500</span> fork:<span class="literal">true</span> language:php </span><br><span class="line"><span class="comment">//匹配具有至少 500 个星号，包括复刻的星号（以 PHP 编写）的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>按仓库创建或上次更新时间搜索</p>
+<ul>
+<li><code>created</code>表示创建</li>
+<li><code>pushed</code>表示推送<blockquote>
+<p>这些时间仍然可以精确到秒并且支持区间形式</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">webos created:&lt;<span class="number">2011</span><span class="number">-01</span><span class="number">-01</span> </span><br><span class="line"><span class="comment">//匹配具有 &quot;webos&quot; 字样、在 2011 年之前创建的仓库。</span></span><br><span class="line">css pushed:&gt;<span class="number">2013</span><span class="number">-02</span><span class="number">-01</span> </span><br><span class="line"><span class="comment">//匹配具有 &quot;css&quot; 字样、在 2013 年 1 月之后收到推送的仓库。</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>可以根据仓库中代码的语言搜索仓库,使用<code>language</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rails language:javascript </span><br><span class="line"><span class="comment">//匹配具有 &quot;rails&quot; 字样、以 JavaScript 编写的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>可以找到按特定主题分类的所有仓库,<code>topic</code></p>
+<blockquote>
+<p>GitHub有topic页面,如: <a target="_blank" rel="noopener" href="https://github.com/topics/unity">https://github.com/topics/unity</a></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">topic:unity</span><br><span class="line"><span class="comment">//匹配已归类为 &quot;unity&quot; 主题的仓库</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想搜索的项目横跨多个主题,使用<code>topics</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">topics:<span class="number">5</span> </span><br><span class="line"><span class="comment">//匹配具有五个主题的仓库。</span></span><br><span class="line">topics:&gt;<span class="number">3</span> </span><br><span class="line"><span class="comment">//匹配超过三个主题的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>按许可搜索<code>license</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">license:apache<span class="number">-2.0</span> </span><br><span class="line"><span class="comment">//匹配根据 Apache License 2.0 授权的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<p>据仓库的可见性过滤搜索</p>
+<blockquote>
+<p>这个也用的很多,下面不再重复</p>
+</blockquote>
+<ul>
+<li>is:public</li>
+<li>is:internal</li>
+<li>is:private</li>
+</ul>
+<p>基于仓库是否为镜像搜索</p>
+<ul>
+<li>mirror:true</li>
+<li>mirror:false</li>
+</ul>
+<p>基于仓库是否已存档搜索</p>
+<ul>
+<li>archived:true</li>
+<li>archived:false</li>
+</ul>
+<hr>
+<p>还有个有趣的.<br>基于标签搜索,现在好像就支持两种标签</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">good-first-issues:&gt;<span class="number">2</span> javascript </span><br><span class="line"><span class="comment">//匹配具有超过两个标签为 good-first-issue 的议题且包含 &quot;javascript&quot; 字样的仓库。</span></span><br><span class="line"></span><br><span class="line">help-wanted-issues:&gt;<span class="number">4</span> react </span><br><span class="line"><span class="comment">//匹配具有超过四个标签为 help-wanted 的议题且包含 &quot;React&quot; 字样的仓库。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索主题"><a href="#搜索主题" class="headerlink" title="搜索主题"></a>搜索主题</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">is:curated javascript </span><br><span class="line"><span class="comment">//匹配精心策划且含有 &quot;javascript&quot; 字样的主题。</span></span><br><span class="line">is:featured javascript </span><br><span class="line"><span class="comment">//匹配 https://github.com/topics/ 上提供且含有 &quot;javascript&quot; 字样的主题。</span></span><br><span class="line">is:<span class="keyword">not</span>-curated javascript </span><br><span class="line"><span class="comment">//匹配没有额外信息（例如说明或徽标）且含有 &quot;javascript&quot; 字样的主题。</span></span><br><span class="line">is:<span class="keyword">not</span>-featured javascript </span><br><span class="line"><span class="comment">//匹配 https://github.com/topics/ 上未提供且含有 &quot;javascript&quot; 字样的主题。</span></span><br><span class="line">repositories:&gt;<span class="number">5000</span> </span><br><span class="line"><span class="comment">//匹配超过 5000 个仓库的主题。</span></span><br><span class="line">Serverless created:&gt;<span class="number">2019</span><span class="number">-01</span><span class="number">-01</span> </span><br><span class="line"><span class="comment">//匹配含有 &quot;serverless&quot; 字样、在 2018 年之后创建的主题。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索代码"><a href="#搜索代码" class="headerlink" title="搜索代码"></a>搜索代码</h2><p>由于搜索代码的复杂性，执行搜索的方式有一些限制：</p>
+<ul>
+<li>您必须登录到 GitHub 上的用户帐户才能在所有公共仓库中搜索代码。</li>
+<li>复刻中的代码仅当复刻的星号超过父级仓库时可搜索。 星号少于父仓库的复刻不为代码搜索编索引。 要在搜索结果中包括星号比其父项多的复刻，您需要将 fork:true 或 fork:only 添加到查询。 更多信息请参阅“在复刻中搜索”。</li>
+<li>只有默认分支被索引用于代码搜索。</li>
+<li>只有小于 384 KB 的文件可搜索。</li>
+<li>只能搜索少于 500,000 个文件的仓库。</li>
+<li>只能搜索去年有活动或已在搜索结果中返回的仓库。</li>
+<li>除了 filename 搜索以外，搜索源代码时必须始终包括至少一个搜索词。 例如，搜索 language:javascript 无效，而搜索 amazing language:javascript 有效。</li>
+<li>搜索结果最多可显示同一文件的两个分段，但文件内可能有更多结果。</li>
+<li>您无法使用以下通配符作为搜索查询的一部分：. , : ; / \ ` ‘ “ = * ! ? # $ &amp; + ^ | ~ &lt; &gt; ( ) { } [ ]. 搜索只会忽略这些符号。</li>
+</ul>
+<p>先来个小菜</p>
+<blockquote>
+<p>这里有一个技巧,如果你连续使用同个类型匹配,可以省略前缀,如<code>in:file,path</code></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">octocat in:file </span><br><span class="line"><span class="comment">//匹配文件内容中出现 &quot;octocat&quot; 的代码。</span></span><br><span class="line">octocat in:path </span><br><span class="line"><span class="comment">//匹配文件路径中出现 &quot;octocat&quot; 的代码。</span></span><br><span class="line">octocat in:file,path </span><br><span class="line"><span class="comment">//匹配文件内容或文件路径中出现 &quot;octocat&quot; 的代码。</span></span><br></pre></td></tr></table></figure>
+
+<p>然后是基于用户的搜索</p>
+<blockquote>
+<p>后续会经常用到.不再重复</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user:defunkt extension:rb </span><br><span class="line"><span class="comment">//匹配来自 @defunkt、以 .rb 结尾的代码。</span></span><br><span class="line">org:github extension:js </span><br><span class="line"><span class="comment">//匹配来自 GitHub、以 .js 结尾的代码。</span></span><br><span class="line">repo:mozilla/shumway extension:as </span><br><span class="line"><span class="comment">//匹配来自 @mozilla 的 shumway 项目、以 .as 结尾的代码。</span></span><br></pre></td></tr></table></figure>
+
+<p>按文件位置搜索</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">octocat filename:readme path:/ </span><br><span class="line"><span class="comment">//匹配位于仓库根目录级别且含有 &quot;octocat&quot; 字样的 readme 文件。</span></span><br><span class="line">form path:cgi-bin language:perl </span><br><span class="line"><span class="comment">//匹配位于 cgi-bin 目录或其任何子目录中且含有 &quot;form&quot; 字样的 Perl 文件。</span></span><br><span class="line">console path:app/<span class="keyword">public</span> language:javascript </span><br><span class="line"><span class="comment">//匹配 app/public 目录或其任何子目录（即使其位于 app/public/js/form-validators 中）中且含有 &quot;console&quot; 字样的 JavaScript 文件。</span></span><br></pre></td></tr></table></figure>
+
+<p>按语言搜索,我们经常用的<code>language:LANGUAGE</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">element language:xml size:<span class="number">100</span> </span><br><span class="line"><span class="comment">//匹配标记为 XML 且恰好有 100 个字节的并含有 &quot;element&quot; 字样的代码。</span></span><br><span class="line">display language:scss </span><br><span class="line"><span class="comment">//匹配标记为 SCSS 且含有 &quot;display&quot; 字样的代码。</span></span><br><span class="line">org:mozilla language:markdown </span><br><span class="line"><span class="comment">//匹配标记为 Markdown 且来自所有 @mozilla 仓库的代码。</span></span><br></pre></td></tr></table></figure>
+
+<p>按文件大小搜索,之前就介绍的<code>size:n</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function size:&gt;<span class="number">10000</span> language:python </span><br><span class="line"><span class="comment">//匹配含有 &quot;function&quot; 字样、以 Python 编写、位于大于 10 KB 的文件中的代码。</span></span><br></pre></td></tr></table></figure>
+
+<p>按文件名搜索<code>filename:FILENAME</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">filename:linguist </span><br><span class="line"><span class="comment">//匹配名为 &quot;linguist&quot; 的文件。</span></span><br><span class="line">filename:.vimrc commands </span><br><span class="line"><span class="comment">//匹配含有 &quot;commands&quot; 字样的 .vimrc 文件。</span></span><br><span class="line">filename:test_helper path:test language:ruby </span><br><span class="line"><span class="comment">//匹配 test 目录内名为 test_helper 的 Ruby 文件。</span></span><br></pre></td></tr></table></figure>
+
+<p>按文件扩展名搜索<code>extension:EXTENSION</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">form path:cgi-bin extension:pm </span><br><span class="line"><span class="comment">//匹配含有 &quot;form&quot; 字样、位于 cgi-bin 下且具有 .pm 文件扩展名的代码。</span></span><br><span class="line">icon size:&gt;<span class="number">200000</span> extension:css </span><br><span class="line"><span class="comment">//匹配大于 200 KB、以 .css 结尾且含有 &quot;icon&quot; 字样的文件。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索提交"><a href="#搜索提交" class="headerlink" title="搜索提交"></a>搜索提交</h2><blockquote>
+<p>当您搜索提交时，仅搜索仓库的默认分支</p>
+</blockquote>
+<p>使用 <code>author</code> 或 <code>committer</code> 限定符按特定用户查找提交</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">author:defunkt </span><br><span class="line"><span class="comment">//匹配 @defunkt 创作的提交。</span></span><br><span class="line">committer:defunkt </span><br><span class="line"><span class="comment">//匹配 @defunkt 提交的提交。</span></span><br></pre></td></tr></table></figure>
+
+<p><em>或者也可使用搜索形式</em></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">author-name:wanstrath </span><br><span class="line"><span class="comment">//匹配作者姓名中包含 &quot;wanstrath&quot; 的提交。</span></span><br><span class="line">committer-name:wanstrath </span><br><span class="line"><span class="comment">//匹配提交者姓名中包含 &quot;wanstrath&quot; 的提交。</span></span><br></pre></td></tr></table></figure>
+
+<p><em>还有Email形式</em></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">author-email:chris@github.com </span><br><span class="line"><span class="comment">//匹配 chris@github.com 创作的提交。</span></span><br><span class="line">committer-email:chris@github.com </span><br><span class="line"><span class="comment">//匹配 chris@github.com 提交的提交。</span></span><br></pre></td></tr></table></figure>
+
+<p>按创作或提交日期搜索</p>
+<blockquote>
+<p>还记得时间用法吗?</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">author-date:&lt;<span class="number">2016</span><span class="number">-01</span><span class="number">-01</span> </span><br><span class="line"><span class="comment">//匹配 2016-01-01 之前创作的提交。</span></span><br><span class="line">committer-date:&gt;<span class="number">2016</span><span class="number">-01</span><span class="number">-01</span> </span><br><span class="line"><span class="comment">//匹配 2016-01-01 之后的提交。</span></span><br></pre></td></tr></table></figure>
+
+<p>merge 限定符过滤合并提交</p>
+<ul>
+<li>merge:true</li>
+<li>merge:false</li>
+</ul>
+<p>hash 限定符匹配具有指定 SHA-1 哈希的提交</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hash:<span class="number">124</span>a9a0ee1d8f1e15e833aff432fbb3b02632105 </span><br><span class="line"><span class="comment">//略</span></span><br></pre></td></tr></table></figure>
+
+<p>parent 限定符匹配其父项具有指定 SHA-1 哈希的提交</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parent:<span class="number">124</span>a9a0ee1d8f1e15e833aff432fbb3b02632105 </span><br><span class="line"><span class="comment">//略</span></span><br></pre></td></tr></table></figure>
+
+<p>tree 限定符匹配具有指定 SHA-1 git 树哈希的提交</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tree:<span class="number">99</span>ca967 </span><br><span class="line"><span class="comment">//匹配引用树哈希 99ca967 的提交</span></span><br></pre></td></tr></table></figure>
+
+<p>在用户或组织的仓库内搜索,<code>user</code>,<code>org</code>,<code>repo</code><br><strong>老三样 略</strong></p>
+<p>按仓库可见性过滤<br><strong>老三样 略</strong></p>
+<h2 id="搜索议题或拉取请求"><a href="#搜索议题或拉取请求" class="headerlink" title="搜索议题或拉取请求"></a>搜索议题或拉取请求</h2><p>默认会全部搜索,使用<code>type</code>,<code>is</code>来筛选种类</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat type:pr </span><br><span class="line"><span class="comment">//匹配含有 &quot;cat&quot; 字样的拉取请求。</span></span><br><span class="line">github commenter:defunkt type:issue </span><br><span class="line"><span class="comment">//匹配含有 &quot;github&quot; 字样且由 @defunkt 评论的议题。</span></span><br><span class="line">event is:pr </span><br><span class="line"><span class="comment">//匹配含有 &quot;event&quot; 字样的拉取请求。</span></span><br><span class="line">is:issue label:bug is:closed </span><br><span class="line"><span class="comment">//匹配具有标签 &quot;bug&quot; 的已关闭议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>in</code> 限定符，您可以将搜索限制为标题、正文、评论或这些的任意组合。 如果省略此限定符，则标题、正文和评论全部搜索。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">warning in:title </span><br><span class="line"><span class="comment">//匹配其标题中含有 &quot;warning&quot; 的议题。</span></span><br><span class="line">error in:title,body </span><br><span class="line"><span class="comment">//匹配其标题或正文中含有 &quot;error&quot; 的议题。</span></span><br><span class="line">shipit in:comments </span><br><span class="line"><span class="comment">//匹配其评论中提及 &quot;shipit&quot; 的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>user</code> 或 <code>org</code> 搜索指定用户和仓库</p>
+<p><strong>老三样 略</strong></p>
+<p>按开放或关闭状态搜索,<code>state</code>,<code>is</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">libraries state:open mentions:vmg </span><br><span class="line"><span class="comment">//匹配提及 @vmg 且含有 &quot;libraries&quot; 字样的开放议题。</span></span><br><span class="line">design state:closed in:body </span><br><span class="line"><span class="comment">//匹配正文中含有 &quot;design&quot; 字样的已关闭议题。</span></span><br><span class="line">performance is:open is:issue </span><br><span class="line"><span class="comment">//匹配含有 &quot;performance&quot; 字样的开放议题。</span></span><br><span class="line">android is:closed </span><br><span class="line"><span class="comment">//匹配含有 &quot;android&quot; 字样的已关闭议题和拉取请求。</span></span><br></pre></td></tr></table></figure>
+
+<p>按仓库可见性过滤<br><strong>老三样,上面讲过了</strong></p>
+<p><code>author</code> 限定符</p>
+<p><strong>也讲过了</strong></p>
+<p>按受理人搜索<code>assignee</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assignee:vmg repo:libgit2/libgit2 匹配分配给 @vmg 的 libgit2 项目 libgit2 中的议题和拉取请求。</span><br></pre></td></tr></table></figure>
+
+<p>按提及搜索<code>mentions</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resque mentions:defunkt </span><br><span class="line"><span class="comment">//匹配含有 &quot;resque&quot; 字样、提及 @defunkt 的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>按团队提及搜索<code>team</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">team:jekyll/owners </span><br><span class="line"><span class="comment">//匹配提及 @jekyll/owners 团队的议题。</span></span><br><span class="line">team:myorg/ops is:open is:pr </span><br><span class="line"><span class="comment">//匹配提及 @myorg/ops 团队的打开拉取请求。</span></span><br></pre></td></tr></table></figure>
+
+<p>按评论者搜索 <code>commenter </code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github commenter:defunkt org:github </span><br><span class="line"><span class="comment">//匹配位于 GitHub 拥有的仓库中、含有 &quot;github&quot; 字样且由 @defunkt 评论的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>involves</code> 限定符查找以某种方式涉及特定用户的议题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">involves:defunkt involves:jlord </span><br><span class="line"><span class="comment">//匹配涉及 @defunkt 或 @jlord 的议题。</span></span><br><span class="line">NOT bootstrap in:body involves:mdo </span><br><span class="line"><span class="comment">//匹配涉及 @mdo 且正文中未包含 &quot;bootstrap&quot; 字样的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>搜索链接的议题和拉取请求</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">repo:desktop/desktop is:open linked:pr </span><br><span class="line"><span class="comment">//匹配 desktop/desktop 仓库中通过关闭引用链接到拉取请求的开放议题。</span></span><br><span class="line">repo:desktop/desktop is:closed linked:issue </span><br><span class="line"><span class="comment">//匹配 desktop/desktop 仓库中链接到拉取请求可能已关闭的议题的已关闭拉取请求。</span></span><br><span class="line">repo:desktop/desktop is:open -linked:pr </span><br><span class="line"><span class="comment">//匹配 desktop/desktop 仓库中未通过关闭引用链接到拉取请求的开放议题。</span></span><br><span class="line">repo:desktop/desktop is:open -linked:issue </span><br><span class="line"><span class="comment">//匹配 desktop/desktop 仓库中未链接至拉取请求可能关闭的议题的开放拉取请</span></span><br></pre></td></tr></table></figure>
+
+<p>按标签搜索<code>label</code>,之前一直用的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">label:<span class="string">&quot;help wanted&quot;</span> language:ruby </span><br><span class="line"><span class="comment">//匹配标签为 &quot;help wanted&quot;、位于 Ruby 仓库中的议题。</span></span><br><span class="line">broken in:body -label:bug label:priority </span><br><span class="line"><span class="comment">//匹配正文中含有 &quot;broken&quot; 字样、没有 &quot;bug&quot; 标签但有 &quot;priority&quot; 标签的议题。</span></span><br><span class="line">label:bug label:resolved </span><br><span class="line"><span class="comment">//匹配含有 &quot;bug&quot; 和 &quot;resolved&quot; 标签的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>按里程碑搜索<code>milestone</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">milestone:<span class="string">&quot;overhaul&quot;</span> </span><br><span class="line"><span class="comment">//匹配位于名为 &quot;overhaul&quot; 的里程碑中的议题。</span></span><br><span class="line">milestone:<span class="string">&quot;bug fix&quot;</span> </span><br><span class="line"><span class="comment">//匹配位于名为 &quot;bug fix&quot; 的里程碑中的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>按项目板搜索<code>project </code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">project:github/<span class="number">57</span> </span><br><span class="line"><span class="comment">//匹配 GitHub 拥有的、与组织项目板 57 关联的议题。</span></span><br><span class="line">project:github/linguist/<span class="number">1</span> </span><br><span class="line"><span class="comment">//匹配与 @github 的 linguist 仓库中的项目板 1 关联的议题。</span></span><br></pre></td></tr></table></figure>
+
+<p>按提交状态搜索<code>status</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">language:go status:pending </span><br><span class="line"><span class="comment">//匹配在状态为待定的 Go 仓库中打开的拉取请求。</span></span><br><span class="line">is:open status:success finally in:body </span><br><span class="line"><span class="comment">//匹配正文中含有 &quot;finally&quot; 字样、具有成功状态的打开拉取请求。</span></span><br><span class="line">created:<span class="number">2015</span><span class="number">-05</span><span class="number">-01.</span><span class="number">.2015</span><span class="number">-05</span><span class="number">-30</span> status:failure </span><br><span class="line"><span class="comment">//匹配在 2015 年 5 月打开、具有失败状态的拉取请求。</span></span><br></pre></td></tr></table></figure>
+
+<p>按提交 SHA 搜索</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e1109ab </span><br><span class="line"><span class="comment">//匹配具有开头为 e1109ab 的提交 SHA 的拉取请求。</span></span><br><span class="line"><span class="number">0</span>eff326d6213c is:merged </span><br><span class="line"><span class="comment">//匹配具有开头为 0eff326d6213c 的提交 SHA 的合并拉取请求</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里可能是掉了一个 <code>SHA:</code> 头部</p>
+</blockquote>
+<p>按分支名称搜索</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">head:change is:closed is:unmerged </span><br><span class="line"><span class="comment">//匹配从名称以 &quot;change&quot; 字样开头的已关闭分支打开的拉取请求。</span></span><br><span class="line">base:gh-pages </span><br><span class="line"><span class="comment">//匹配合并到 gh-pages 分支中的拉取请求。</span></span><br></pre></td></tr></table></figure>
+
+<p>按语言搜索<code>language:LANGUAGE</code></p>
+<p>按评论数量搜索<code>comments:n</code></p>
+<p>按交互数量搜索<code>interactions:n</code></p>
+<p>按反应数量搜索<code>reactions:n</code></p>
+<p>//搜索草稿拉取请求 <strong>略</strong></p>
+<p>基于拉取请求的审查状态（无、必需、批准或请求更改）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">type:pr review:none </span><br><span class="line"><span class="comment">//匹配尚未审查的拉取请求。</span></span><br><span class="line">type:pr review:required </span><br><span class="line"><span class="comment">//匹配需要审查然后才能合并的拉取请求。</span></span><br><span class="line">type:pr review:approved </span><br><span class="line"><span class="comment">//匹配审查者已批准的拉取请求。</span></span><br><span class="line">type:pr review:changes_requested </span><br><span class="line"><span class="comment">//匹配审查者已请求更改的拉取请求。</span></span><br><span class="line">type:pr reviewed-by:gjtorikian </span><br><span class="line"><span class="comment">//匹配特定人员审查的拉取请求。</span></span><br><span class="line">type:pr review-requested:benbalter </span><br><span class="line"><span class="comment">//匹配特定人员申请审查的拉取请求。 申请的审查者在其审查拉取请求后不再在搜索结果中列出。 如果申请的人员在申请审查的团队中，则该团队的审查请求也将在搜索结果中显示。</span></span><br><span class="line">type:pr team-review-requested:atom/design </span><br><span class="line"><span class="comment">//匹配已审查团队 atom/design 请求的拉取请求。 申请的审查者在其审查拉取请求后不再在搜索结果中列出。</span></span><br></pre></td></tr></table></figure>
+
+<p>基于创建时间或上次更新时间过滤议题</p>
+<ul>
+<li><code>created:YYYY-MM-DD</code></li>
+<li><code>updated:YYYY-MM-DD</code></li>
+<li>还可以按关闭时间和合并时间*</li>
+<li><code>merged:YYYY-MM-DD</code></li>
+<li><code>closed:YYYY-MM-DD</code></li>
+</ul>
+<p>使用 is 限定符基于拉取请求已合并还是未合并进行过滤</p>
+<ul>
+<li>is:merged</li>
+<li>is:unmerged</li>
+</ul>
+<p>基于仓库是否已存档搜索</p>
+<ul>
+<li>archived:true    </li>
+<li>archived:false</li>
+</ul>
+<p>基于对话是否已锁定搜索</p>
+<ul>
+<li>is:locked</li>
+<li>is:unlocked</li>
+</ul>
+<p>按缺少的元数据搜索 <code>no</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">priority no:label </span><br><span class="line"><span class="comment">//匹配没有任何标签且含有 &quot;priority&quot; 字样的议题和拉取请求。</span></span><br><span class="line">sprint no:milestone type:issue </span><br><span class="line"><span class="comment">//匹配未与含有 &quot;sprint&quot; 字样的里程碑关联的议题。</span></span><br><span class="line">important no:assignee language:java type:issue </span><br><span class="line"><span class="comment">//匹配未与受理人关联、含有 &quot;important&quot; 字样且位于 Java 仓库中的议题。</span></span><br><span class="line">build no:project </span><br><span class="line"><span class="comment">//匹配未与项目板关联、含有 &quot;build&quot; 字样的议题。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索讨论"><a href="#搜索讨论" class="headerlink" title="搜索讨论"></a>搜索讨论</h2><p>按标题、正文或评论搜索</p>
+<ul>
+<li>in:title</li>
+<li>in:body</li>
+<li>in:comments</li>
+</ul>
+<p>在用户或组织的仓库内搜索</p>
+<p><strong>老三样 <code>user</code>,<code>org</code>,<code>repo</code></strong></p>
+<p>按仓库可见性过滤</p>
+<p><strong>老三样 略</strong></p>
+<p>按作者搜索<code>author:USERNAME</code></p>
+<p>按评论者搜索<code>commenter:USERNAME</code></p>
+<p>按涉及讨论的用户搜索<code>involves:USERNAME</code></p>
+<p>按评论数量搜索<code>comments:n</code></p>
+<p>按交互数量搜索<code>interactions:n</code></p>
+<p>按反应数量搜索<code>reactions:n</code></p>
+<p>按讨论创建或上次更新时间搜索</p>
+<ul>
+<li>created:YYYY-MM-DD</li>
+<li>updated:YYYY-MM-DD</li>
+</ul>
+<h2 id="搜索用户"><a href="#搜索用户" class="headerlink" title="搜索用户"></a>搜索用户</h2><p>仅搜索用户或组织<br><strong>老三样 略</strong></p>
+<p>使用 user 或 org 限定符根据个人用户或组织帐户的名称过滤搜索<br>通过 in 限定符，您可以将搜索限制为用户名 (login)、全名、公共电子邮件或这些的任意组合</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">user:octocat </span><br><span class="line"><span class="comment">//匹配用户名为 &quot;octocat&quot; 的用户。</span></span><br><span class="line">org:electron type:users </span><br><span class="line"><span class="comment">//匹配 Electron 组织的帐户名。</span></span><br><span class="line">kenya in:login </span><br><span class="line"><span class="comment">//匹配其用户名中含 &quot;kenya&quot; 字样的用户。</span></span><br><span class="line">bolton in:name </span><br><span class="line"><span class="comment">//匹配其真实姓名含有 &quot;bolton&quot; 字样的用户。</span></span><br><span class="line">fullname:nat friedman </span><br><span class="line"><span class="comment">//匹配全名为 &quot;Nat Friedman&quot; 的用户。 注：此搜索限定符区分空格。</span></span><br><span class="line">data in:email </span><br><span class="line"><span class="comment">//匹配其电子邮件中含有 &quot;data&quot; 字样的用户。</span></span><br></pre></td></tr></table></figure>
+
+<p>按用户拥有的仓库数量搜索<code>repos:n</code></p>
+<p>按位置搜索<code>location:LOCATION</code></p>
+<p>按仓库语言搜索<code>language:LANGUAGE</code></p>
+<p>按用户帐户创建时间搜索<code>created:YYYY-MM-DD</code></p>
+<p>按关注者数量搜索<code>followers:n</code></p>
+<h2 id="搜索包"><a href="#搜索包" class="headerlink" title="搜索包"></a>搜索包</h2><p>搜索用户或组织的包</p>
+<ul>
+<li>user:USERNAME</li>
+<li>org:ORGNAME</li>
+</ul>
+<p>按包可见性过滤</p>
+<ul>
+<li>is:public</li>
+<li>is:private</li>
+</ul>
+<h2 id="搜索-wiki"><a href="#搜索-wiki" class="headerlink" title="搜索 wiki"></a>搜索 wiki</h2><p>在用户或组织的仓库内搜索</p>
+<p><strong>老三样 <code>user</code>,<code>org</code>,<code>repo</code></strong></p>
+<p>在 wiki 页面标题或正文文本中搜索</p>
+<ul>
+<li>in:title</li>
+<li>in:body</li>
+</ul>
+<p>按上次更新日期搜索<code>updated:YYYY-MM-DD</code></p>
+<h2 id="在复刻中搜索"><a href="#在复刻中搜索" class="headerlink" title="在复刻中搜索"></a>在复刻中搜索</h2><p>默认情况下，forks 不会在搜索结果中显示。 如果复刻满足特定条件，您可以选择在仓库搜索以及在代码搜索中包括它们。</p>
+<p>仅当复刻具有比父仓库更多的星号时，才会为代码搜索编索引。 您无法在比父项具有更少星号的复刻中搜索代码。 </p>
+<p><code>fork:true</code> 限定符查找匹配搜索查询的所有结果，包括复刻。 <code>fork:only</code> 限定符仅查找匹配搜索查询的复刻。</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+
+
+<!-- 链接 -->
+
+
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210318-225200-g11/" rel="prev" title="CSharp本质论">
+      <i class="fa fa-chevron-left"></i> CSharp本质论
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210324-205600-g101/" rel="next" title="单元测试NUnit">
+      单元测试NUnit <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8-GitHub-%E4%B8%8A%E6%90%9C%E7%B4%A2"><span class="nav-number">1.</span> <span class="nav-text">在 GitHub 上搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">搜索语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%8E%92%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">搜索排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-GitHub-%E4%B8%8A%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">在 GitHub 上查找文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E4%BB%93%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">搜索仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E4%B8%BB%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">搜索主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E4%BB%A3%E7%A0%81"><span class="nav-number">1.6.</span> <span class="nav-text">搜索代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%8F%90%E4%BA%A4"><span class="nav-number">1.7.</span> <span class="nav-text">搜索提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E8%AE%AE%E9%A2%98%E6%88%96%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82"><span class="nav-number">1.8.</span> <span class="nav-text">搜索议题或拉取请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E8%AE%A8%E8%AE%BA"><span class="nav-number">1.9.</span> <span class="nav-text">搜索讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E7%94%A8%E6%88%B7"><span class="nav-number">1.10.</span> <span class="nav-text">搜索用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%8C%85"><span class="nav-number">1.11.</span> <span class="nav-text">搜索包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2-wiki"><span class="nav-number">1.12.</span> <span class="nav-text">搜索 wiki</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%A4%8D%E5%88%BB%E4%B8%AD%E6%90%9C%E7%B4%A2"><span class="nav-number">1.13.</span> <span class="nav-text">在复刻中搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">2.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
