@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="C# 1.0 本系列均参考自  微软官方文档博客园   根据微软官方C#发展历史, 此时的c#主要功能包括  类 结构 接口 事件 属性 委托 表达式 语句 特性 文本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo模板">
+<meta property="og:url" content="http://example.com/ml-20210329-221100-g106/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="C# 1.0 本系列均参考自  微软官方文档博客园   根据微软官方C#发展历史, 此时的c#主要功能包括  类 结构 接口 事件 属性 委托 表达式 语句 特性 文本">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-29T14:11:00.000Z">
+<meta property="article:modified_time" content="2021-03-29T14:11:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp版本更新">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210329-221100-g106/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>hexo模板 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210329-221100-g106/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hexo模板
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-29 22:11:00" itemprop="dateCreated datePublished" datetime="2021-03-29T22:11:00+08:00">2021-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">CSharp版本更新</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="C-1-0"><a href="#C-1-0" class="headerlink" title="C# 1.0"></a>C# 1.0</h1><blockquote>
+<p>本系列均参考自</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/whats-new/csharp-version-history" title="微软官方文档">微软官方文档</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dxy1982/tag/C%23/" title="博客园C#版本更细">博客园</a></p>
+</blockquote>
+</blockquote>
+<p>根据微软官方<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/whats-new/csharp-version-history" title="C#历史">C#发展历史</a>, 此时的c#主要功能包括</p>
+<ul>
+<li>类</li>
+<li>结构</li>
+<li>接口</li>
+<li>事件</li>
+<li>属性</li>
+<li>委托</li>
+<li>表达式</li>
+<li>语句</li>
+<li>特性</li>
+<li>文本</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="C-1-0是C-最初始的版本"><a href="#C-1-0是C-最初始的版本" class="headerlink" title="C#1.0是C#最初始的版本"></a>C#1.0是C#最初始的版本</h1><p>由于创建时间较晚, 良好的吸取了前人经验, 拥有面向对象架构的同时拥有一些自己独特的东西.<br>如果只是想入门C# 可以参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/index" title="C#指南">微软官方C#指南</a><br>本文提供的是C#历史变更记录, 有时候会涉及到一些略微底层的东西, 有利于程序员的灵魂.</p>
+<h1 id="面向对象基本特性-封装-继承-多态"><a href="#面向对象基本特性-封装-继承-多态" class="headerlink" title="面向对象基本特性 -封装, 继承, 多态"></a>面向对象基本特性 -<strong>封装</strong>, <strong>继承</strong>, <strong>多态</strong></h1><p>任何一门现代面向对象语言都会有的基本能力</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a><strong>封装</strong></h2><p>提供对实现细节的隐藏</p>
+<p>具体实现可以参考<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/access-modifiers" title="C#访问修饰符 -封装">MSDN访问修饰符(C#参考)</a></p>
+<p>简单讲一下大概就是以下四个关键字</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="comment">//公开的</span></span><br><span class="line"><span class="keyword">protected</span> <span class="comment">//仅继承的</span></span><br><span class="line"><span class="keyword">internal</span> <span class="comment">//仅当前程序集的</span></span><br><span class="line"><span class="keyword">private</span> <span class="comment">//私有的</span></span><br></pre></td></tr></table></figure>
+
+<p>但又有两组关键字组合的访问修饰符</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">internal</span>  <span class="comment">//在程序集中和继承中都可访问</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">protected</span>   <span class="comment">//C#7.2新增 在继承类中访问私有成员</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a><strong>继承</strong></h2><p>在类的声明是使用<code>:</code>来进行继承类或者实现接口, 也可以继续跟<code>,</code>来继续实现接口<br>如下</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">ISon</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//接口</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Base</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//父类</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Son</span>:<span class="title">Base</span>, <span class="title">ISon</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//子类, 继承, 实现接口</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">IInterfaceSon</span>:<span class="title">Ison</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//仅实现接口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a><strong>多态</strong></h2><p>多态可以说是面向对象编程的关键, 非一日之功, 不是一时半会可以讲清楚的.<br>我只说一个大概吧<br>继续刚刚的类, 我们写一个Main</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Base m_base = <span class="keyword">new</span> Son();    <span class="comment">//声明一个父类, 实际里面装的子类</span></span><br><span class="line">    ISon m_Son = <span class="keyword">new</span> Son();     <span class="comment">//声明一个接口, 里面装的一个实现接口的类</span></span><br><span class="line">    <span class="comment">//调用的时候内容以声明的为准.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上就是一个最简单的多态.<br>更细的资料可以 <a target="_blank" rel="noopener" href="https://www.baidu.com/" title="百度一下">百度</a> OR <a target="_blank" rel="noopener" href="https://www.google.com/" title="谷歌官网 需要FQ">Google</a></p>
+<h1 id="数据类型-值类型-引用类型"><a href="#数据类型-值类型-引用类型" class="headerlink" title="数据类型 -值类型, 引用类型"></a>数据类型 -<strong>值类型</strong>, <strong>引用类型</strong></h1><p>数据就是程序的根本, 任何语言都应该有数据类型 哪怕是<code>var</code>  </p>
+<p>C# 充分吸取教训, 既有常用的值类型, 也有更灵活的引用类型, 还支持自定义值类型<code>struct</code></p>
+<h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a><strong>值类型</strong></h2><p>可以参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/value-types" title="C# 值类型">MSDN 值类型</a> 内有值类型相关详细定义和关键字说明</p>
+<p>这里只讲值类型的根本和实际操作中的易忽略项.</p>
+<p>例如: 值类型的深拷贝</p>
+<blockquote>
+<p>所有值类型的赋值, 实际上都是将自己完全赋值一份, 也就是说 从一份变成了两份</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">int</span> b = a;</span><br><span class="line">b = <span class="number">3</span>;</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a><strong>引用类型</strong></h2><p>引用类型与值类型最大的不同就是浅拷贝</p>
+<p>当声明一个引用类型的时候</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M_Class A = <span class="keyword">new</span> M_Class();</span><br></pre></td></tr></table></figure>
+
+<p>此时 A并没有装下一个M_Class, 而是装下了一个M_Class的地址  </p>
+<p>此时重复之前值类型的操作试试.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">M_Class A = <span class="keyword">new</span> M_Class();</span><br><span class="line">M_Class B = A;</span><br><span class="line">B.num = <span class="number">3</span>;</span><br><span class="line">print(B.num)</span><br><span class="line">print(B.num)</span><br></pre></td></tr></table></figure>
+
+<p>没错! 都是<code>3</code></p>
+<p>这是因为<code>A</code> 和 <code>B</code> 都拥有同一个地址.</p>
+<p>当声明一个 <code>A</code> 的时候, 实际上是在 栈上分配了一个空间(大小根据操作系统而定, 但都很小)</p>
+<p>里面实际上只存储了一小串堆的地址<br>大概类似于 <code>FABC11</code> 这种<br>这串地址在计算机中意味着一段新内存, 计算机通过解析这段地址到达一个新的地方, 也就是</p>
+<p><code>new M_Class()</code> 做的事情, 他在堆上分配了一个大空间, 大到足以容纳整个<code>M_Class</code></p>
+<p>我们只是通过A来查找之前 <code>new</code> 出来的M_Class而已.</p>
+<p>所以, 当<code>B=A</code> 实际B的内容和A一样 都是 <code>FABC11</code> 所以他们都指向同一个 <code>M_Class</code> .<br>当B修改, 最后A访问的时候, 得到的是修改后的值.</p>
+<h2 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a><strong>装箱和拆箱</strong></h2><p>之前提到了 </p>
+<blockquote>
+<p>所有值类型都派生自<code>Object.System.ValueType</code> </p>
+</blockquote>
+<p>但是我们知道, <code>Object</code> 是一个引用类型, 其子类也是引用类型, 那为什么会有值类型呢.</p>
+<p>这就是微软变得一个戏法了.</p>
+<p>实际上可以通过向父类转型来将一个值类型变成一个引用类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">1</span></span><br><span class="line">Object obj = (Object)a</span><br></pre></td></tr></table></figure>
+
+<p>这样 就将原本的值类型包装成了一个引用类型, 这就叫装箱.</p>
+<p>相反的</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="built_in">int</span>)obj</span><br></pre></td></tr></table></figure>
+<p>这是拆箱</p>
+<p>其中 在一个变量前使用(int)或者是(Object)或者是其他任何类型(?), 这是一种C#语法, 叫做强制转换. 可以将一个类型强制转换为另一个类型.</p>
+<p><em>由于是程序员强制要求的,所以编译器不会再做检查. 可能导致严重错误.</em></p>
+<p>另外 在以前 装箱和拆箱都是严重的性能消耗.</p>
+<p>还可以通过<code>ICloneable</code>接口来自定义拷贝. </p>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>大概就是 List Array Queue Stack Dictionary 这种吧.</p>
+<p>是大量同类型数据的集, 并提供了一些读取,写入, 群体操作的基本方法. 配合<code>Linq</code>还是很好玩的.</p>
+<p>参阅<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/collections" title="集合">微软 C#集合</a></p>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>迭代器其实算是集合的一部分, 不过它太关键了, 还是拉出来讲.<br>所谓迭代器, 其实是两个接口 <code>IEnumerable</code> 和 <code>IEnumerator</code></p>
+<p>实际 <code>IEnumerable</code> 要求返回一个 <code>IEnumerator</code> 对象, 也就是说, 底层还是<code>IEnumerator</code></p>
+<p>来看看他们的源码</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEnumerable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">IEnumerator <span class="title">GetEnumerator</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEnumerator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">object</span> Current&#123;<span class="keyword">get</span>;&#125; <span class="comment">//当前项</span></span><br><span class="line">    <span class="function"><span class="built_in">bool</span> <span class="title">MoveNext</span>(<span class="params"></span>)</span>;     <span class="comment">//前进</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Reset</span>(<span class="params"></span>)</span>;        <span class="comment">//重置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际的所谓迭代器, 就是通过<code>MoveNext()</code>之后使用<code>Current</code>遍历全部元素而已, 也可以继承这些接口, 实现自己的迭代器.</p>
+<p> <code>foreach</code> 关键字正是使用了迭代器进行遍历.</p>
+<p>还有一个关键因素, Current只有Get属性, 也就是说, 不可能在迭代器内修改值类型.<br>实际上, 不推荐在迭代器内修改任何数据, 可以使用标志法, 即先给物体打上一个标记, 可以使用另一个集合保存被标记数据的位置, 等遍历结束后, 再进行操作.这样是比较正规的做法.</p>
+<h1 id="消息机制-事件与代理"><a href="#消息机制-事件与代理" class="headerlink" title="消息机制, 事件与代理"></a>消息机制, 事件与代理</h1><p>实际上就是 <code>delegate</code> 关键字和 <code>event</code> 关键字</p>
+<p>windows的基调就是回调, 消息, 通知, 这些全都由以上两个关键字全权负责了.</p>
+<p><code>delegate</code> 实际上是一个函数的指针, </p>
+<p>持有一个函数的地址可以干什么呢? 这就是回调函数, 持有一个函数, 就可以在任何时间点调用它, 使程序具有传递性和延时性.</p>
+<p>还有消息和通知, 其实就是将函数注册到其他的地方, 由其他方法回调, 这样就形成了订阅, 通知模式, 这涉及到一种设计模式 <code>观察者模式</code></p>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>不讲.</p>
+<h1 id="Attribute-特性"><a href="#Attribute-特性" class="headerlink" title="Attribute 特性"></a>Attribute 特性</h1><p>实际上就是在类或者方法前面加上一个标签, 这样他们就有额外的元数据, 在编译时候可以进行一些基于这些额外元数据的操作.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestAttribute</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> TestStruct &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个 <code>TestAttribute</code> 就是自定义的Attribute, 也可以使用以下C#自带的.</p>
+<p>[<code>Obsolete</code>] 　<br>声明一个函数被废弃, 之后会在控制台输出错误信息.</p>
+<p>[<code>Conditional(DEBUG)</code>]<br>声明一个函数只能运行在<code>DEBUG</code>宏模式下. 可以更改()内的内容兼容其他宏</p>
+<h1 id="自动垃圾回收"><a href="#自动垃圾回收" class="headerlink" title="自动垃圾回收"></a>自动垃圾回收</h1><p>其实也就是大名鼎鼎的 <code>GC</code> GC它是全自动的, 也可以手动调用 <code>GC.Collect();</code> 强制进行, 一般我们并不会手动调用.</p>
+<p>GC相关还有一个接口 <code>IDisposible</code> 他的同胞兄弟是 关键字 <code>using</code> 区块</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span>(File.Opne(<span class="string">&quot;XXX&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//使用完毕之后自动调用 IDisposible 接口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有一个 <code>~</code> 构析函数, 与构造函数对应, 垃圾回收会调用这些函数</p>
+<h1 id="反射和动态创建"><a href="#反射和动态创建" class="headerlink" title="反射和动态创建"></a>反射和动态创建</h1><p>是一个运行时动态创建类或者修改数据的东西<br>一般可以用于解析配置文件来改变程序状态．<br>我一般用于处理棘手的数据处理问题, 之后应当重构.</p>
+<blockquote>
+<p>也可以用于解析特性<code>[Attr]</code></p>
+</blockquote>
+<h1 id="类库"><a href="#类库" class="headerlink" title="类库"></a>类库</h1><p>不必多言, 就是库.</p>
+<blockquote>
+<p>自此 C# 1.0 就此完结<br>最后,所有C#程序员都应该看下CIL<br><a target="_blank" rel="noopener" href="https://referencesource.microsoft.com/" title="微软官方 C#源码">C#源码地址</a></p>
+</blockquote>
+<h1 id="C-1-2增补"><a href="#C-1-2增补" class="headerlink" title="C#1.2增补"></a>C#1.2增补</h1><p>随 Visual Studio 2003 一起提供的 C# 版本 1.2。 它对语言做了一些小改进。 最值得注意的是，从此版本开始，当 <code>IEnumerator</code> 实现 <code>IDisposable</code> 时，<code>foreach</code> 循环中生成的代码会在 <code>IEnumerator</code> 上调用 <code>Dispose</code>。</p>
+<h1 id="1-0基础入门详解"><a href="#1-0基础入门详解" class="headerlink" title="1.0基础入门详解."></a>1.0基础入门详解.</h1><p>上面讲的太深了, 这个偏基础一点</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>说到类就要说名词空间<br>先看一个基本的C#项目结构</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorldTests.Tests</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProgramTests</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>namespace</code> 关键字标属的是名词空间.<br><code>class</code>是类关键字, 类里面的Main这是方法名称.<br>其中 <code>public</code>关键字是访问级别, 表示公开的.<br>此时, 我们就声明了一个完整的类, 然后我们使用它.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ProgramTests mc = <span class="function">New <span class="title">ProgramTests</span>(<span class="params"></span>)</span>;</span><br><span class="line">mc.Main();</span><br></pre></td></tr></table></figure>
+
+<p>第一句声明了一个<code>ProgramTests</code>类的栈上引用<code>mc</code>和一个堆上空间<code>new</code><br>将堆的地址赋值给<code>mc</code>, 此时<code>mc</code>存储有<code>New ProgramTests()</code>的所在地址.<br>于是可以通过<code>mc.Main()</code>来调用这个<code>ProgramTests</code>类的方法.<br>再看一个例子</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ProgramTests mc</span><br></pre></td></tr></table></figure>
+
+<p>如果只声明了栈空间, 那么它暂时不指向任何堆空间, 此时使用它会引发异常.</p>
+<blockquote>
+<p>注意: 如果一个方法名称和类名称相同, 那么就属于构造方法, 不需要返回值, 可以使用<code>new</code>关键字来调用, 如果没有, 编辑器会默认生成一个<code>空</code>的构造方法.</p>
+</blockquote>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>结构和类的声明相似, 但是运行方式却截然不同.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> MyStruct</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//结构内的数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Coords</span>(<span class="params"><span class="built_in">int</span> p1, <span class="built_in">int</span> p2</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        x = p1;</span><br><span class="line">        y = p2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MyStruct m1 = <span class="keyword">new</span> Coords(); <span class="comment">//此时 x=y=0 因为0是int的默认值</span></span><br><span class="line">    MyStruct m1 = <span class="keyword">new</span> Coords(<span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只是将<code>class</code>替换为了<code>struct</code>但是内部机理却从引用类型变成了值类型.</p>
+<ul>
+<li>在结构声明中，除非将字段声明为 <code>const</code> 或 <code>static</code>，否则无法初始化。</li>
+<li>结构不能声明默认构造函数（没有参数的构造函数）或终结器(<code>~</code>)。</li>
+<li>结构在分配时进行复制(深拷贝)。 </li>
+<li>将结构分配给新变量时，将复制所有数据，并且对新副本所做的任何修改不会更改原始副本的数据。在处理值类型的集合（如 Dictionary&lt;string, myStruct&gt;）时，请务必记住这一点。</li>
+<li>结构是值类型，不同于类，类是引用类型。</li>
+<li>与类不同，无需使用 new 运算符即可对结构进行实例化(此时使用结构内所有数据自带的默认值)。</li>
+<li>结构可以声明具有参数的构造函数。</li>
+<li>一个结构无法继承自另一个结构或类，并且它不能为类的基类。 所有结构都直接继承自 ValueType，后者继承自Object。</li>
+<li>结构可以实现接口。</li>
+<li>结构不能为 null，并且不能向结构变量分配 null，除非将变量声明为可为 null 的类型。</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>用于定义类或者结构需要实现的功能描述, 不具体实现某个功能.<br>接口是实现多态的重要功能, 是C#程序员, 乃至所有面向对象程序员必须要学习理解的概念.<br>由于C#不支持类的多继承,单支持接口的多实现, 所以接口又显得格外重要.</p>
+<p>使用<code>interface</code>关键字定义一组接口.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IInterFace</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>由于接口是约定好的功能实现描述, 所以接口, 和接口内地方法都是默认public类型的, 无需手动指定修饰符.</li>
+<li>接口只负责显示约定, 不负责具体实现</li>
+<li>接口名称一般以<code>I</code>开头, 之后的名字也遵循大驼峰写法.</li>
+<li>如果其他类或者接口要实现本接口, 那么他们的类或者结构中必然要有接口内地全部方法.</li>
+<li>接口可以包含方法、属性、事件、索引器或这四种成员类型的任意组合</li>
+</ul>
+<p>下面演示一个继承接口的实现</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyNumber</span> : <span class="title">IInterFace</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>MyNumber</code>实现<code>IInterFace</code>, 所以他必须有<code>Add</code>方法.<br>基于这一条, 可以实现某种多态</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IInterFace uadd = <span class="keyword">new</span> MyNumber()</span><br><span class="line">uadd.Add(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可以声明一个接口, 但是其内部是实现过改接口的其他类. 这样就遮蔽了其他实现, 只留下接口想要的方法, 达成多态.  </p>
+<blockquote>
+<p>注意: 接口的实现可能违背意愿, 如下</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyNumber</span> : <span class="title">IInterFace</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> x - y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时 <code>Add</code>方法并不返回相加后的结果, 而是进行了减法, 但是它完全符合接口定义,<br>相同的返回值<code>int</code><br>相同的方法名称<code>Add</code><br>相同的参数<code>(int,int)</code><br>但是这并不是接口想要的实现, 所以接口只是一个规定, 具体实现还得看人.</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>其实应该先讲委托, 因为事件基于委托. 观看此部分默认你已经先观看过委托了.</p>
+<p>实际上, 事件只是在声明委托实例的时候, 加上一个<code>event</code>关键字</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">event</span> Add MyAdd;</span><br></pre></td></tr></table></figure>
+
+<p>此时完成了一个事件的声明,<br>事件与委托的最大区别在于, 只允许在事件声明的类中使用<code>=</code>为事件赋值,<br>在声明类之外的地方只允许使用<code>+=</code>和<code>-=</code><br>这样就保证了事件不会在外界被莫名其妙的消失掉了.<br>也就是说事件实际上是委托的封装.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">event</span> EventHandler&lt;SearchDirectoryArgs&gt; DirectoryChanged</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">add</span> &#123; directoryChanged += <span class="keyword">value</span>; &#125;</span><br><span class="line">    <span class="keyword">remove</span> &#123; directoryChanged -= <span class="keyword">value</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个是完整的声明, 其中add对应<code>+=</code>, remove对应<code>-=</code>.</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>属性是字段的延伸, 实际本质是方法, 但是C#为我们准备了语法糖.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> FirstName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>只需要在字段后面移除<code>;</code>在加上一对大括号, 内书<code>get</code> <code>set</code>. 即可让编辑器帮你自动生成属性.<br>实际上, get和set中还可以填写相关逻辑  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> FirstName </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> firstName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        firstname = <span class="keyword">value</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就表明了属性实际上是两个方法的本质.<br>实际你使用 <code>string myname = FirstName</code> 或者 <code>FirstName = &quot;nic&quot;</code> 这时候就是在调用 get, set方法.<br>你可能注意到了<code>set</code>方法里面的<code>value</code>, 这是由于, set方法实际上没有定义参数, 但是赋值会带来一个参数,<br>value就是这个作用, 他是一个上下文关键字, 只在这里的时候作为关键字使用, 表示参数.</p>
+<p>下面做一个简单的访问控制  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> FirstName</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> firstName</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrWhiteSpace(<span class="keyword">value</span>))</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">&quot;First name must not be blank&quot;</span>);</span><br><span class="line">            firstName = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>自此, 属性演示完毕.</p>
+<h2 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h2><p>使用委托, 你需要<code>delegate</code>关键字, 他映射的是<code>MulticastDelegate</code>类, 这个类是从<code>Delegate</code>类中派生出来的.<br>但是你并不能从代码中直接访问他们, 你只能使用<code>delegate</code>关键字, 由编辑器为你创建委托.<br>这保证了委托的安全性, 下面看一个创建委托的例子.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>看起来很像是一个方法声明是吧, 只是在<code>public</code>后面 返回值前面添加了一个<code>delegate</code>关键字而已.<br>但是这里声明的并不是一个方法, 而是一个委托,<br>委托和方法不同级别, 委托实际上是一个继承自<code>MulticastDelegate</code>类的类型. 也就是<code>class</code><br>自然是类型, 那么除了有类型本身, 还应该有相对应的实例, 我们下面声明一个刚刚的委托实例.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Add MyAdd;</span><br></pre></td></tr></table></figure>
+
+<p>没错, 这就声明完成了, 看起来似乎是一个<code>null</code>值, 实际上的确是一个<code>null</code>直接使用会造成异常.<br>虽然委托是一个类型, 但是我们并不需要<code>new</code>一个委托来赋值给他.<br>在讲为委托赋值之前, 我们先看下委托存在的意义,和用法.</p>
+<p>委托, 顾名思义, 是指将自己的事情交给其他人来做.<br>实际上, 委托与接口类似, 声明了一个办事基准, 只要是符合这个基准的方法都交给委托来执行.<br>委托常用以参数形式传递方法, 之后执行<code>回调函数</code>或者是传递<code>事件</code>.  </p>
+<p>那么, 我们究竟该如何为委托赋值呢.<br>观看委托的声明, 我们发现委托基本就是一个方法的声明格式,  实际上, 委托的确是需要接收符合该格式的方法.  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Addint</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyAdd = Addint</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意, 此处是将方法本体赋值给了委托, 不需要后面的小括号, 如果使用了, 小括号, 就会调用方法, 返回一个int出来, 就不符合委托的需求了.</p>
+</blockquote>
+<p>此时, MyAdd里面就存储了一个和他定义一致的方法, 之后, 可以通过调用MyAdd来调用Addint, 以下两种方法皆可.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyAdd.Invoke();</span><br><span class="line">MyAdd();</span><br></pre></td></tr></table></figure>
+
+<p>那么, 我们在来提现一下传递参数的特性吧.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestCallBack</span>(<span class="params">Add delegateAdd</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    delegateAdd();</span><br><span class="line">&#125;</span><br><span class="line">TestCallBack(MyAdd);</span><br></pre></td></tr></table></figure>
+
+<p>此时, 我们就将一个方法化成一个参数进行了传递, 而之后这个方法何时调用则由方法内部决定了.<br>实际上, 可以不用传递实际的委托, 而是直接传递一个方法, 如果该方法符合这个参数的标准, 会自动转化为一个同类型委托.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TestCallBack(Addint);</span><br></pre></td></tr></table></figure>
+
+<p>实际上系统默认委托足够90%状态下使用了.<br><code> Action&lt;T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16&gt;</code>, 最多支持 16个泛型参数, 最少0个.<br><code> Func&lt;T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,TResult&gt;</code>, 最多支持15个泛型参数和1个返回值, 最少0个参数和1个返回值<br>这些委托都是系统定义好的, 你需要使用的时候只需要</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>, <span class="built_in">int</span>&gt; myfunc</span><br><span class="line">myfunc = Addint</span><br></pre></td></tr></table></figure>
+
+<p>省去了一步<code>delegate</code>定义</p>
+<p>实际还有一个系统委托 <code>bool Predicate&lt;T&gt;</code> 传入一个参数, 返回一个bool,<br>但是他其实可以被<code>Func</code>完全取代.  </p>
+<blockquote>
+<p>注意, 实际上1.0的版本中,是没有泛型的, 也就是说, 上面所有的<code>T</code>都不存在. 请在至少2.0版本中实验.</p>
+</blockquote>
+<blockquote>
+<p>注意 1.0版本的委托还是需要new的, 在2.0之后才能直接将方法赋值给委托.</p>
+</blockquote>
+<h3 id="多播委托"><a href="#多播委托" class="headerlink" title="多播委托"></a>多播委托</h3><p>关键字看起来高大上, 实际上就是指一个委托可以累加复制, 形成一个委托引用多个方法.<br>使用<code>+=</code>关键字, 相应的,减少也要使用<code>-=</code>关键字.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyAdd +&#x3D; Addint</span><br><span class="line">MyAdd +&#x3D; Addint2</span><br><span class="line">MyAdd +&#x3D; Addint3</span><br></pre></td></tr></table></figure>
+<p>此时调用<code>MyAdd()</code>则会依次调用添加进去的所有方法.<br>如果中途不小心调用了一次<code>=</code>, 那么逻辑就会和你预想的有差异, 而且极其不好排查错误, 毕竟只是一个符号差距.<br>于是就引申出了事件.</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/" rel="tag"># CSharp版本更新</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210326-233600-g105/" rel="prev" title="单元测试NUnit_习题">
+      <i class="fa fa-chevron-left"></i> 单元测试NUnit_习题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210329-225200-g107/" rel="next" title="hexo模板">
+      hexo模板 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-1-0"><span class="nav-number">1.</span> <span class="nav-text">C# 1.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-1-0%E6%98%AFC-%E6%9C%80%E5%88%9D%E5%A7%8B%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">C#1.0是C#最初始的版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7-%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">面向对象基本特性 -封装, 继承, 多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">3.3.</span> <span class="nav-text">多态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">数据类型 -值类型, 引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1"><span class="nav-number">4.3.</span> <span class="nav-text">装箱和拆箱</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">5.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6-%E4%BA%8B%E4%BB%B6%E4%B8%8E%E4%BB%A3%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">消息机制, 事件与代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attribute-%E7%89%B9%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">Attribute 特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-number">10.</span> <span class="nav-text">自动垃圾回收</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%92%8C%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA"><span class="nav-number">11.</span> <span class="nav-text">反射和动态创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%BA%93"><span class="nav-number">12.</span> <span class="nav-text">类库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-1-2%E5%A2%9E%E8%A1%A5"><span class="nav-number">13.</span> <span class="nav-text">C#1.2增补</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-0%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E8%AF%A6%E8%A7%A3"><span class="nav-number">14.</span> <span class="nav-text">1.0基础入门详解.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">14.1.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">14.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">14.3.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">14.4.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">14.5.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A7%94%E6%89%98"><span class="nav-number">14.6.</span> <span class="nav-text">委托</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E6%92%AD%E5%A7%94%E6%89%98"><span class="nav-number">14.6.1.</span> <span class="nav-text">多播委托</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">15.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

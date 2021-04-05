@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="泛型 分部类型 匿名方法 可以为 null 的类型 迭代器 协变和逆变 getter&#x2F;setter 单独可访问性 方法组转换（委托） 静态类 委托推断   完毕">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo模板">
+<meta property="og:url" content="http://example.com/ml-20210329-225200-g107/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="泛型 分部类型 匿名方法 可以为 null 的类型 迭代器 协变和逆变 getter&#x2F;setter 单独可访问性 方法组转换（委托） 静态类 委托推断   完毕">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-29T14:52:00.000Z">
+<meta property="article:modified_time" content="2021-03-29T14:52:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp版本更新">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210329-225200-g107/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>hexo模板 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210329-225200-g107/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hexo模板
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-29 22:52:00" itemprop="dateCreated datePublished" datetime="2021-03-29T22:52:00+08:00">2021-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/" itemprop="url" rel="index"><span itemprop="name">CSharp版本更新</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><a href="#%E6%B3%9B%E5%9E%8B">泛型</a></li>
+<li><a href="#%E5%88%86%E9%83%A8%E7%B1%BB%E5%9E%8B">分部类型</a></li>
+<li><a href="#%E5%8C%BF%E5%90%8D%E6%96%B9%E6%B3%95">匿名方法</a></li>
+<li><a href="#%E5%8F%AF%E4%BB%A5%E4%B8%BA-null-%E7%9A%84%E7%B1%BB%E5%9E%8B">可以为 null 的类型</a></li>
+<li><a href="#%E8%BF%AD%E4%BB%A3%E5%99%A8">迭代器</a></li>
+<li><a href="#%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98">协变和逆变</a></li>
+<li><a href="#gettersetter-%E5%8D%95%E7%8B%AC%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7">getter/setter 单独可访问性</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E7%BB%84%E8%BD%AC%E6%8D%A2%E5%A7%94%E6%89%98">方法组转换（委托）</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E7%B1%BB">静态类</a><ul>
+<li><a href="#%E5%A7%94%E6%89%98%E6%8E%A8%E6%96%AD">委托推断</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%8C%E6%AF%95">完毕</a></li>
+</ul>
+<span id="more"></span>
+
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型, 也就是我们经常看到的<code>T</code>类型这个<code>T</code>是一个约定俗成的参数名称, 实际可以随意自己命名.<br>我们经常在C#类库中看到<code>List&lt;T&gt;</code>, 这就是一种泛型. 下面使用一下试试.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="built_in">int</span>&gt; intList = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>这样就声明了一个<Int>类型的List. 同理, 可以声明<code>String</code>类型, 或者<code>double</code>类型.<br>但是他们在源码中都归属于<code>List&lt;T&gt;</code>类型, 这一对<code>&lt;&gt;</code>加上里面的参数, 就构成了泛型. 泛型可以在运行时转化为各种形态, 等下我们会谈到他的CIL支持.</p>
+<p>下面我们自己声明一些泛型</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">T</span>&gt; &#123;&#125;;</span><br><span class="line"><span class="keyword">interface</span> <span class="title">INode</span>&lt;<span class="title">T</span>&gt; &#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetNode</span>&lt;<span class="title">T</span>, <span class="title">T2</span>&gt;(<span class="params">T2 index</span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="built_in">delegate</span> T <span class="title">DGetNode</span>&lt;<span class="title">T</span>, <span class="title">T2</span>&gt;(<span class="params">T2 index</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码显示了一些关键因素</p>
+<ul>
+<li>泛型可以随意命名, 例如<code>T2</code></li>
+<li>泛型可以声明多个, 实际上之前将到的Action和Func都是例子</li>
+<li>泛型可以用于声明类, 接口, 方法, 代理.</li>
+</ul>
+<p>接下来我们在内部代码使用泛型.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetNode</span>&lt;<span class="title">T2</span>&gt;(<span class="params">T2 index</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T result = <span class="keyword">this</span>.NodeList[index];</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出, T就是一个类型, 可以当做Class级别来使用.<br>这里就引申出了一个问题, 由于C#是强类型语言, 如果不能再编译时确定类型,<br>那么就无法使用你想用的类的方法.<br>泛型到底是如何判断所谓的<code>T</code>到底是什么东西的呢?<br>下面我们介绍泛型的约束.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetNode</span>&lt;<span class="title">T</span>, <span class="title">T2</span>&gt;(<span class="params">T2 index</span>) <span class="keyword">where</span> T : <span class="keyword">class</span> <span class="keyword">where</span> T2 : <span class="keyword">class</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>where</code>关键字, 来指定T到底属于什么类型范围, 如果不使用, 默认为object<br>也就是说, 你只能使用object类型的方法和数据.<br>如果最后还是在里面进行强制转化过来, 那就失去了泛型的意义了.</p>
+<p>泛型的具体约束规则如下.</p>
+<table>
+<thead>
+<tr>
+<th align="left">约束</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">where T : struct</td>
+<td align="left">类型参数必须是值类型。 可以指定除 Nullable<T> 以外的任何值类型。 有关可以为 null 的类型的详细信息，请参阅可以为 null 的类型。</td>
+</tr>
+<tr>
+<td align="left">where T : class</td>
+<td align="left">类型参数必须是引用类型。 此约束还应用于任何类、接口、委托或数组类型。</td>
+</tr>
+<tr>
+<td align="left">where T : unmanaged</td>
+<td align="left">类型参数不能是引用类型，并且任何嵌套级别均不能包含任何引用类型成员。</td>
+</tr>
+<tr>
+<td align="left">where T : new()</td>
+<td align="left">类型参数必须具有公共无参数构造函数。 与其他约束一起使用时，new() 约束必须最后指定。</td>
+</tr>
+<tr>
+<td align="left">where T : &lt;基类名&gt;</td>
+<td align="left">类型参数必须是指定的基类或派生自指定的基类。</td>
+</tr>
+<tr>
+<td align="left">where T : &lt;接口名称&gt;</td>
+<td align="left">类型参数必须是指定的接口或实现指定的接口。 可指定多个接口约束。 约束接口也可以是泛型。</td>
+</tr>
+<tr>
+<td align="left">where T : U</td>
+<td align="left">为 T 提供的类型参数必须是为 U 提供的参数或派生自为 U 提供的参数。</td>
+</tr>
+</tbody></table>
+<p>某些约束是互斥的。 所有值类型必须具有可访问的无参数构造函数。 <code>struct</code> 约束包含 <code>new()</code> 约束，且 <code>new()</code> 约束不能与 <code>struct</code> 约束结合使用。 <code>unmanaged</code> 约束包含 <code>struct</code> 约束。 <code>unmanaged</code> 约束不能与 <code>struct</code> 或 <code>new()</code> 约束结合使用。</p>
+<blockquote>
+<p>unmanaged 是C#7.2新增的.</p>
+</blockquote>
+<blockquote>
+<p>运行时可以通过反射获取泛型具体是什么.</p>
+</blockquote>
+<blockquote>
+<p>由于无法确定其类型, 所以泛型重载是以参数个数判断的.</p>
+</blockquote>
+<p>接下来我们说下反射的CIL实现.</p>
+<p>当泛型指定的是值类型的时候, CIL直接创建一个对应的类型, 每次都会创建一个.<br>也就是说, 当你使用<code>List&lt;int&gt;</code> <code>List&lt;dobule&gt;</code> 实际上CIL就将原本的T都替换为这个类型, 之后连续创建了两个新的类.<br>其中一个是支持<code>int</code>另一个支持<code>double</code></p>
+<p>但是引用类型不同.<br>考虑到性能优化, 仅当你使用第一引用类型的时候, CIL才会初始化一个引用类型的泛型.<br>之后无论使用改泛型的任何版本, 只要是引用类型, 都是使用的此类型, 也就是说, 引用类型的泛型是唯一的.  </p>
+<blockquote>
+<p>产生这种行为的原因其实是因为堆和栈, 由于值类型栈上空间不同, 所以干脆创建多个,<br>但是引用类型的栈上空间是相同的, 都是一个引用而已, 所以只需要替换引用地址, 即可达成更换引用泛型的目的.<br>最终结果其实还是因为CIL直接面对内存, 使用指针实现这种操作.</p>
+</blockquote>
+<h1 id="分部类型"><a href="#分部类型" class="headerlink" title="分部类型"></a>分部类型</h1><p>使用关键字<code>partial</code>可以用于定义分布的类, 接口, 方法.<br>他允许你在两个不同的文件中使用同一个类, 接口, 方法.  </p>
+<p>一般用于<br>处理大型项目时，使一个类分布于多个独立文件中可以让多位程序员同时对该类进行处理。<br>使用自动生成的源文件时, 例如Windows 窗体<br>Web服务包装器代码等.你可以创建使用这些类的代码，这样就不需要修改由Visual Studio生成的文件.</p>
+<blockquote>
+<p>如果将任意部分声明为抽象的，则整个类型都被视为抽象的。 如果将任意部分声明为密封的，则整个类型都被视为密封的。 如果任意部分声明基类型，则整个类型都将继承该类。</p>
+</blockquote>
+<blockquote>
+<p>各个部分可以指定不同的基接口，最终类型将实现所有分部声明所列出的全部接口。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoWork</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GoToLunch</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Container</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Nested</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Test</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Nested</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Test2</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面两段代码表示了如何显示使用分布类和分布方法.</p>
+<h1 id="匿名方法"><a href="#匿名方法" class="headerlink" title="匿名方法"></a>匿名方法</h1><p>在1.0, 声明委托只能使用完全限定模式, 现在可以使用匿名方法了.而在3.0后, 可以使用<code>Lambda</code>表达式.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C# 1.0的方式 M是一个声明好的方法</span></span><br><span class="line">TestDelegate testDelA = <span class="keyword">new</span> TestDelegate(M);</span><br><span class="line"></span><br><span class="line"><span class="comment">//C# 2.0 匿名方法</span></span><br><span class="line">TestDelegate testDelB = <span class="built_in">delegate</span>(<span class="built_in">string</span> s) &#123; Console.WriteLine(s); &#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建委托时，对外部变量的引用被视为已捕获   不同于本地变量，已捕获的变量的生存期一直延伸至引用匿名方法的委托具有垃圾回收资格为止。</p>
+</blockquote>
+<p>看一个例子</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> List&lt;Action&gt; actions = <span class="keyword">new</span> List&lt;Action&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    Action item = <span class="built_in">delegate</span> () &#123; Console.WriteLine(i); &#125;;</span><br><span class="line">    actions.Add(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> actions)</span><br><span class="line">&#123;</span><br><span class="line">    item.Invoke();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后输出的结果全是<code>5</code>, 这是由于i变量只有一个, 而且生命被延续到持有它的匿名函数结束为止,<br>于是等到延时调用匿名函数时, i已经累加完毕了, 输出自然是最大的数.</p>
+<p>解决办法是在匿名函数内部声明一个变量, 立刻存储一次.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> j = i;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这种现象叫做<code>闭包</code></p>
+</blockquote>
+<h1 id="可以为-null-的类型"><a href="#可以为-null-的类型" class="headerlink" title="可以为 null 的类型"></a>可以为 null 的类型</h1><p>这是由于值类型不能为<code>Null</code>但是值类型本身就是引用类型引发的一个新玩意,<br>据微软说是为了解决数据库的数据没有的时候不好定义初始值用的.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int? x &#x3D; 10;</span><br><span class="line">int? y &#x3D; null</span><br></pre></td></tr></table></figure>
+
+<p>使用也很简单, 就是值类型后面带上一个<code>?</code>即可, 这样就声明了一个可以为<code>null</code>的值类型.<br>它具有一些特殊的操作</p>
+<ul>
+<li><code>x.HasValue</code>获取一个表示其是否为<code>null</code>的<code>bool</code>值</li>
+<li><code>x.Value</code>获取它的值, 可能为<code>null</code></li>
+<li><code>x.GetValueOrDefault()</code>获取它的值, 如果为<code>null</code>,返回该值类型的默认值.</li>
+<li>你可以使用<code>==</code>, <code>!=</code>来比较可空类型.</li>
+</ul>
+<blockquote>
+<p>你可以使用<code>??</code>操作符来跳过<code>null</code>, 自己指定一个数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return x ?? 10</span><br></pre></td></tr></table></figure>
+
+<p>这样, 如果 x 为<code>null</code>那么就返回后面的数. 可以连续跟<code>x ?? y ?? z ?? 10</code></p>
+<blockquote>
+<p>下面讲一下它的原理</p>
+</blockquote>
+<p>实际上可空类型是一个泛型 <code> System.Nullable&lt;T&gt;</code>结构的实例<br>例如声明 <code>int?</code> 的时候, 实际是声明了一个 <code>System.Nullable&lt;int&gt;</code><br>基础类型 T 可以是任何不可为 null 的值类型。 T 不能是引用类型。</p>
+<blockquote>
+<p>不得嵌套可以为 null 的类型。 不会编译下面的一行代码：Nullable&lt;Nullable<int>&gt; n;</p>
+</blockquote>
+<p>如个使用运算符, 其中任何一方为<code>null</code>结果为null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int? a &#x3D; 10;</span><br><span class="line">int? b &#x3D; null;</span><br><span class="line">int? c &#x3D; 10;</span><br><span class="line"></span><br><span class="line">a++;        &#x2F;&#x2F; a is 11.</span><br><span class="line">a &#x3D; a * c;  &#x2F;&#x2F; a is 110.</span><br><span class="line">a &#x3D; a + b;  &#x2F;&#x2F; a is null.</span><br></pre></td></tr></table></figure>
+
+<p>如果使用比较运算符的有一方为null, 那么结果 既不大于等于 null，也不小于 null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int? num1 &#x3D; 10;</span><br><span class="line">int? num2 &#x3D; null;</span><br><span class="line">if (num1 &gt;&#x3D; num2)</span><br><span class="line"></span><br><span class="line">if (num1 &lt; num2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果都是<code>false</code></p>
+<p>对于 bool? 的比较, 有下表</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>x且y</th>
+<th>x或y</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>true</td>
+<td>False</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>true</td>
+<td>null</td>
+<td>null</td>
+<td>true</td>
+</tr>
+<tr>
+<td>False</td>
+<td>true</td>
+<td>False</td>
+<td>true</td>
+</tr>
+<tr>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False</td>
+<td>null</td>
+<td>False</td>
+<td>null</td>
+</tr>
+<tr>
+<td>null</td>
+<td>true</td>
+<td>null</td>
+<td>true</td>
+</tr>
+<tr>
+<td>null</td>
+<td>False</td>
+<td>False</td>
+<td>null</td>
+</tr>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<p>其原理是<br>且, 如果有两个true, 为true. 如果有false, 为false. 如果有null和true, 为null<br>或, 如果有两个false, 为false, 如果有true, 为true, 如果有null和false, 为null</p>
+<blockquote>
+<p>实际不应该在未确定null值的时候使用可空类型做运算, 对于其他程序员会对结果产生困惑</p>
+</blockquote>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p>迭代器在1.0版本就有, 当时是两个接口<code> IEnumerable</code> <code>IEnumerator </code><br>由于加入了泛型, 这么重要的接口当然受到了第一时间的泛型支持, <code>IEnumerable&lt;T&gt;</code> <code>IEnumerator&lt;T&gt;</code>  </p>
+<p>然后引入关键字, <code>yield</code>,<br>拥有这个关键字后, 我们使用迭代器就不必实现接口了, 直接<code>yield</code>, 由编辑器帮我们转化为接口.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="function"><span class="built_in">int</span> number <span class="keyword">in</span> <span class="title">SomeNumbers</span>(<span class="params"></span>))</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.Write(number.ToString() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Output: 3 5 8</span></span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> System.Collections.<span class="function">IEnumerable <span class="title">SomeNumbers</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以使用 <code>yield break</code> 语句来终止迭代。</p>
+</blockquote>
+<p>yield的原理是运行到一个<code>yield return</code>后就停下, 等待下一次运行. 直到结束.<br>这样就形成了一个集合, 于是可以被转化为迭代器, 实际上就是在模拟<code>MoveNext()</code></p>
+<blockquote>
+<p>注意 迭代器没有Reset(). </p>
+</blockquote>
+<h1 id="协变和逆变"><a href="#协变和逆变" class="headerlink" title="协变和逆变"></a>协变和逆变</h1><p>这玩意看的头痛, 得上手做才懂.</p>
+<p>可以使用<code>out</code>关键字声明参数参与协变.<br><code>in</code>关键字是逆变</p>
+<p>网上的例子一般以<code>IEnumerable&lt;out T&gt;</code> 和 <code>Action&lt;in T&gt;</code>讲解, 致使不了解的朋友们听不明白, 本例子会使用玩家自主类来讲解, 希望你们听懂.</p>
+<p>首先明确概念, 协变和逆变是用于解决泛型的隐式转化用的,<br>因为我们知道, 泛型对于我们程序员来说, 实际上每一个都是单独的类型, 不能向父类转化的.</p>
+<p>然后我们仿照 <code>IEnumerable&lt;out T&gt;</code> 来写一个接口和一个类型.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IOut_Interface</span>&lt;<span class="keyword">out</span> <span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">T <span class="title">GetR</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">COut_Class</span>&lt;<span class="title">T</span>&gt; : <span class="title">IOut_Interface</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">GetR</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">default</span>(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就声明了一个协变的接口和一个实现该接口的类.<br>此时, 我们可以尝试添加T为参数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">GetR</span>(<span class="params">T t</span>)</span>;<span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+
+<p>==报错了, 错误信息是==</p>
+<blockquote>
+<p>类型参数“T”必须是在“Program.IOut_Interface<T>.GetR(T)”上有效的逆变式。”T”为 协变</p>
+</blockquote>
+<p>可见我们已经成功声明了协变, 之后声明一个逆变.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IIn_Interface</span>&lt;<span class="title">U</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetU</span>(<span class="params">U u</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title">CIn_Class</span>&lt;<span class="title">U</span>&gt; : <span class="title">IIn_Interface</span>&lt;<span class="title">U</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetU</span>(<span class="params">U u</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="keyword">typeof</span>(U));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>==老规矩. 将接口返回的<code>void</code> 修改为<code>U</code>==</p>
+<blockquote>
+<p> 类型参数“U”必须是在“Program.IIn_Interface<U>.SetU(U)”上有效的 协变式。“U”为 逆变。</p>
+</blockquote>
+<p>准备工作完毕后, 我们准备写<code>Main</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    IOut_Interface&lt;<span class="built_in">object</span>&gt; c1 = <span class="keyword">new</span> COut_Class&lt;<span class="built_in">object</span>&gt;();</span><br><span class="line">    IOut_Interface&lt;<span class="built_in">string</span>&gt; c12 = <span class="keyword">new</span> COut_Class&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">    c1 = c12;</span><br><span class="line">   <span class="comment">// c12 = c1; error</span></span><br><span class="line"></span><br><span class="line">    IIn_Interface&lt;<span class="built_in">object</span>&gt; c2 = <span class="keyword">new</span> CIn_Class&lt;<span class="built_in">object</span>&gt;();</span><br><span class="line">    IIn_Interface&lt;<span class="built_in">string</span>&gt; c21 = <span class="keyword">new</span> CIn_Class&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">    c21 = c2;</span><br><span class="line">   <span class="comment">// c2 = c21; error</span></span><br><span class="line"> </span><br><span class="line">    Console.Read();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先看前半部分,  我们分别声明了<code>&lt;object&gt;</code>和<code>&lt;string&gt;</code>类型, 并存放在接口中.<br>我们知道. 此接口只有返回, 没有参数, 也就是说,<br>两个类的方法, 分别会返回<code>string</code>和<code>object</code>类型, 那么理所当然,<br>可以将<code>string</code>赋值给<code>object</code><br>但是真的是理所当然吗?  </p>
+<p>我们尝试删除接口的<code>out</code>关键字.</p>
+<blockquote>
+<p>无法将类型“HelloWorldTests.Program.IOut_Interface<string>”隐式转换为“HelloWorldTests.Program.IOut_Interface<object>”。存在一个显式转换(是否缺少强制转换?)</p>
+</blockquote>
+<p>并不是. 这是为什么呢, 这就关系到一个类型安全问题.<br>因为泛型并没有约束你用它做任何事, 你可以将它做参数, 也可以做返回值, 甚至什么也不做. 但是一旦你使用它做参数, 那么<code>c1 = c12</code>还正确吗?  </p>
+<p>本来接口要求传入<code>string</code>参数, 你传入一个<code>object</code>满足吗?  </p>
+<p><code>out</code>关键字协变, 就是要求你不能将泛型用作参数. 用于保证安全.<br>其实和约束类似了.  </p>
+<p>那么, 聪明的朋友可能已经推断除了<code>in</code>关键字的用途了吧,<br><code>in</code>就是约束你不能将泛型用作返回值. 用于保证一个参数的安全.</p>
+<p>于是你可以看到, 代码的下半部分实际上是将一个<code>object</code>的泛型赋值给了<code>string</code>泛型.  这是因为在参数上, <code>string</code>完全可以代替<code>object</code>.  </p>
+<blockquote>
+<p>如果你不明白继承, 希望你继续学习C#基础.</p>
+</blockquote>
+<blockquote>
+<p>你可以在一个接口中定义多个泛型, 随意指定他们的<code>out</code> <code>in</code>, 只要你遵守协议即可以正常运行.</p>
+</blockquote>
+<h1 id="getter-setter-单独可访问性"><a href="#getter-setter-单独可访问性" class="headerlink" title="getter/setter 单独可访问性"></a>getter/setter 单独可访问性</h1><p>也就是属性中的<code>get</code> <code>set</code>可以单独指定访问修饰符</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> FirstName</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> firstName</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">protected</span> <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrWhiteSpace(<span class="keyword">value</span>))</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">&quot;First name must not be blank&quot;</span>);</span><br><span class="line">            firstName = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以用于只公布一个对外参数.</p>
+<p>由于定义<code>FirstName</code>时, 指定了其访问修饰符为<code>public</code>,默认get,set都是这个级别</p>
+<p>所以不能定义两个方法都为其他级别, 只能定义一个或者都不定义.</p>
+<h1 id="方法组转换（委托）"><a href="#方法组转换（委托）" class="headerlink" title="方法组转换（委托）"></a>方法组转换（委托）</h1><p>实际上就是使用一个方法, 但不使用其<code>()</code><br>用于为委托赋值和委托推断, 实际上1.0的委托是需要声明的, 2.0只需要赋值.<br>类似语法糖吧,  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C# 1.0中创建委托实例</span></span><br><span class="line">ReverseStringHandler reverseStringHandler = <span class="keyword">new</span> ReverseStringHandler(ReverseString);</span><br><span class="line"></span><br><span class="line"><span class="comment">//C# 2.0中通过方法组转换创建委托实例</span></span><br><span class="line">reverseStringHandler = ReverseString;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果你在错误列表中发现有关方法组的信息, 检查你的小括号.</p>
+</blockquote>
+<h1 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h1><p>使用<code>static</code>修饰类, 如此修饰过的类中存在的任何都必须是静态的.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title">C1</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>声明为静态类的方法不能拥有<code>New</code>构造器, 但是可以拥有静态的构造器.<br>只需要在传统构造器中加入<code>static</code>关键字即可.<br>如果你没写, 编辑器帮你.  </p>
+<p>实际上, 在任何类中书写的即刻赋值, 都会被移动到构造器中进行, 无论是实例构造还是静态构造.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> a = <span class="number">1</span>;  <span class="comment">//移动到实例构造</span></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">int</span> b = <span class="number">2</span>;   <span class="comment">//移动到静态构造.</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>会移动到前排,所以会被真正构造器的代码覆盖</p>
+</blockquote>
+<p>按照微软的说法, 只有在你使用的时候才会进行静态初始化, 经过我测试,<br>实则不然.<br>先上结论</p>
+<blockquote>
+<p>如果你不声明构造函数转而由编译器声明, 那么一旦载入程序, 立刻就会初始化<br>如果你自己写构造, 只有在使用的时候初始化.<br>如果你既在构造函数写了也在外面声明的时候写了,在使用时候占用双倍内存初始化.</p>
+</blockquote>
+<p>下面是代码实测.</p>
+<blockquote>
+<p><code>Process.GetCurrentProcess().WorkingSet64</code> 是当前进程内存占用量.</p>
+</blockquote>
+<p>首先声明一个自动初始化的类</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title">sc</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">char</span>[] cs = <span class="keyword">new</span> <span class="built_in">char</span>[<span class="number">204800000</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是<code>Main</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> rl = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    rl = Console.ReadLine();</span><br><span class="line">    <span class="keyword">if</span> (rl == <span class="string">&quot;cw&quot;</span>) &#123; <span class="keyword">var</span> mcs = sc.cs; &#125;</span><br><span class="line">    Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().WorkingSet64);</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>看下结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">15450112</span><br><span class="line">a</span><br><span class="line">15921152</span><br><span class="line">cw</span><br><span class="line">15953920</span><br><span class="line">cw</span><br><span class="line">15986688</span><br><span class="line">a</span><br><span class="line">16011264</span><br><span class="line">a</span><br><span class="line">16035840</span><br></pre></td></tr></table></figure>
+
+<p>可以看到没有明显增幅.<br>然后看下手动初始化</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">char</span>[] cs;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="title">sc</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cs = <span class="keyword">new</span> <span class="built_in">char</span>[<span class="number">204800000</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">14385152</span><br><span class="line">a</span><br><span class="line">14843904</span><br><span class="line">cw</span><br><span class="line">15724544</span><br><span class="line">cw</span><br><span class="line">15757312</span><br><span class="line">a</span><br><span class="line">15781888</span><br><span class="line">a</span><br><span class="line">15806464</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有明显增幅, 确定是在调用的时候进行了初始化,<br>而且初始化后的数字也与上一个自动的相当.<br>最后看一个里外都赋值的</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title">sc</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">char</span>[] cs = <span class="keyword">new</span> <span class="built_in">char</span>[<span class="number">204800000</span>];</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">sc</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        cs = <span class="keyword">new</span> <span class="built_in">char</span>[<span class="number">204800000</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">14397440</span><br><span class="line">a</span><br><span class="line">14876672</span><br><span class="line">cw</span><br><span class="line">16781312</span><br><span class="line">cw</span><br><span class="line">16789504</span><br><span class="line">a</span><br><span class="line">16793600</span><br><span class="line">a</span><br><span class="line">16818176</span><br></pre></td></tr></table></figure>
+
+<p>可以明显看出进行了双倍初始化. 而且短时间不会被释放.<br>我们进行一次GC试试.<br>添加代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().WorkingSet64);</span><br><span class="line">    <span class="keyword">if</span> (rl == <span class="string">&quot;cw&quot;</span>) &#123; GC.Collect(); &#125;</span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">14442496</span><br><span class="line">a</span><br><span class="line">14921728</span><br><span class="line">cw</span><br><span class="line">16830464</span><br><span class="line">cw</span><br><span class="line">16441344</span><br><span class="line">a</span><br><span class="line">16465920</span><br><span class="line">a</span><br><span class="line">16490496</span><br></pre></td></tr></table></figure>
+<p>可以看到确实是清理了垃圾资源, 但是还是没有回到单次初始化的水平,<br>推测是GC本身第一次运行初始化占用了资源.</p>
+<h2 id="委托推断"><a href="#委托推断" class="headerlink" title="委托推断"></a>委托推断</h2><p>和方法组一个类别, 基于方法组实现的自动推断方法类型是否符合, 如果符合,<br>可以直接赋值方法给委托, 不必用委托再包装一遍.</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/" rel="tag"># CSharp版本更新</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210329-221100-g106/" rel="prev" title="hexo模板">
+      <i class="fa fa-chevron-left"></i> hexo模板
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210331-234200-g108/" rel="next" title="CSharp3.0">
+      CSharp3.0 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E9%83%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">分部类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">匿名方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E4%B8%BA-null-%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">可以为 null 的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E5%8F%98%E5%92%8C%E9%80%86%E5%8F%98"><span class="nav-number">6.</span> <span class="nav-text">协变和逆变</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getter-setter-%E5%8D%95%E7%8B%AC%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7"><span class="nav-number">7.</span> <span class="nav-text">getter&#x2F;setter 单独可访问性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%BB%84%E8%BD%AC%E6%8D%A2%EF%BC%88%E5%A7%94%E6%89%98%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">方法组转换（委托）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E7%B1%BB"><span class="nav-number">9.</span> <span class="nav-text">静态类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A7%94%E6%89%98%E6%8E%A8%E6%96%AD"><span class="nav-number">9.1.</span> <span class="nav-text">委托推断</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">10.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
