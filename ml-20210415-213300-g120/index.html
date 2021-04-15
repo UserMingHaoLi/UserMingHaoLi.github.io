@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="hexo模板moreUp">
+  <meta name="description" content="时序图 PlantUML对于每个图片类型的代码有不一样的格式要求.这些图片都可以被任何PlantUML直接反编译为源代码.   或者你可以直接查看文章原文的源代码   简单示例12345678910@startuml plantuml模板用户 -&gt; 认证中心: 登录操作认证中心 -&gt; 缓存: 存放(key&#x3D;token+ip,value&#x3D;token)token用户 &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo模板">
+<meta property="og:title" content="plantuml使用指南_时序图">
 <meta property="og:url" content="http://example.com/ml-20210415-213300-g120/index.html">
 <meta property="og:site_name" content="minghaoli-Blog">
-<meta property="og:description" content="hexo模板moreUp">
+<meta property="og:description" content="时序图 PlantUML对于每个图片类型的代码有不一样的格式要求.这些图片都可以被任何PlantUML直接反编译为源代码.   或者你可以直接查看文章原文的源代码   简单示例12345678910@startuml plantuml模板用户 -&gt; 认证中心: 登录操作认证中心 -&gt; 缓存: 存放(key&#x3D;token+ip,value&#x3D;token)token用户 &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-12T14:52:00.000Z">
-<meta property="article:modified_time" content="2021-03-12T14:52:00.000Z">
+<meta property="article:published_time" content="2021-04-15T13:33:00.000Z">
+<meta property="article:modified_time" content="2021-04-15T13:33:00.000Z">
 <meta property="article:author" content="MingHaoLi">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="写作">
+<meta property="article:tag" content="UML">
+<meta property="article:tag" content="PlantUML">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/ml-20210415-213300-g120/">
@@ -46,7 +49,7 @@
   };
 </script>
 
-  <title>hexo模板 | minghaoli-Blog</title>
+  <title>plantuml使用指南_时序图 | minghaoli-Blog</title>
   
 
 
@@ -175,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo模板
+          plantuml使用指南_时序图
         </h1>
 
         <div class="post-meta">
@@ -185,7 +188,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-03-12 22:52:00" itemprop="dateCreated datePublished" datetime="2021-03-12T22:52:00+08:00">2021-03-12</time>
+              <time title="创建时间：2021-04-15 21:33:00" itemprop="dateCreated datePublished" datetime="2021-04-15T21:33:00+08:00">2021-04-15</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,7 +196,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">写作</span></a>
                 </span>
             </span>
 
@@ -208,13 +215,247 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="hexo模板moreUp"><a href="#hexo模板moreUp" class="headerlink" title="hexo模板moreUp"></a>hexo模板moreUp</h1><span id="more"></span>
+        <h1 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h1><blockquote>
+<p>PlantUML对于每个图片类型的代码有不一样的格式要求.<br>这些图片都可以被任何PlantUML直接反编译为源代码. </p>
+<blockquote>
+<p>或者你可以直接查看文章原文的源代码</p>
+</blockquote>
+</blockquote>
+<h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line">用户 -&gt; 认证中心: 登录操作</span><br><span class="line">认证中心 -&gt; 缓存: 存放(key&#x3D;token+ip,value&#x3D;token)token</span><br><span class="line"></span><br><span class="line">用户 &lt;- 认证中心: 认证成功返回token</span><br><span class="line">用户 -&gt; 认证中心: 下次访问头部携带token认证</span><br><span class="line">认证中心 &lt;- 缓存: key&#x3D;token+ip获取token</span><br><span class="line">其他服务 &lt;- 认证中心: 存在且校验成功则跳转到用户请求的其他服务</span><br><span class="line">其他服务 --&gt; 用户: 信息</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
 
-<!-- 
-id: ml-20210415-213300-g120
-每次使用自觉+1.
--->
+<p>使用 <code>-&gt;</code> <code>&lt;-</code>来绘制箭头<br>也可以使用<code>--&gt;</code> <code>&lt;--</code>来绘制虚线箭头</p>
+<blockquote>
+<p>下面的高级内容快速过一遍,不必要强行使用,等需要的时候再来学习即可.</p>
+</blockquote>
+<span id="more"></span>
 
+<h1 id="重要高级内容索引"><a href="#重要高级内容索引" class="headerlink" title="重要高级内容索引"></a>重要高级内容索引</h1><ul>
+<li>声明参与者</li>
+<li>在参与者中使用非字母符号</li>
+<li>给自己发消息</li>
+<li>修改箭头颜色</li>
+<li>组合消息</li>
+<li>给消息添加注释</li>
+<li>生命线的激活与撤销</li>
+<li>创建参与者</li>
+<li>包裹参与者</li>
+</ul>
+<p><em>选修</em></p>
+<ul>
+<li>文字在箭头下方</li>
+<li>对消息序列编号</li>
+<li>页眉,页脚,标题</li>
+<li>跨越所有参与者的备注</li>
+<li>在同一级对齐多个备注</li>
+<li>分隔符</li>
+<li>引用</li>
+<li>延迟</li>
+<li>控件(空白范围)</li>
+<li>return语法</li>
+<li>激活,撤销和创建的快捷语法</li>
+<li>进入和发出消息</li>
+<li>缩短的进入与发出</li>
+<li>锚定和持续时间</li>
+<li>构造类型和圆圈Icon</li>
+<li>移除脚注</li>
+</ul>
+<p><em>没啥用</em></p>
+<ul>
+<li>分割示意图</li>
+<li>支持Creole和HTML</li>
+<li>文本换行</li>
+<li>更多标题和creole</li>
+<li>外观参数(skinparam)</li>
+<li>箭头图鉴一部分</li>
+<li>额外</li>
+</ul>
+<hr>
+<h1 id="声明参与者"><a href="#声明参与者" class="headerlink" title="声明参与者"></a>声明参与者</h1><p>使用下面关键字来表明参与者图像<br><em>原文这里提到了<code>participant</code>,如果你不声明,默认就是这个</em></p>
+<ul>
+<li>participant(参与者:默认值)</li>
+<li>actor(角色)</li>
+<li>boundary(边界)</li>
+<li>control(控制)</li>
+<li>entity(实体)</li>
+<li>database(数据库)</li>
+<li>collections(集合)</li>
+<li>queue(队列)</li>
+</ul>
+<p><em>然后可以使用<code>as</code>关键字来指定别名</em></p>
+<p>首先是定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml 声明参与则-变量定义</span><br><span class="line">&#39;声明变量</span><br><span class="line">participant my as user1 #99FF99</span><br><span class="line">participant you as user2 #red</span><br><span class="line"></span><br><span class="line">user1 -&gt; user2</span><br><span class="line">user2 -&gt; user1</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>注意:可以指定颜色</em></p>
+<p>之前的位置都是由服务器排序的.<br><em><code>order</code>关键字进行手动排序</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@startuml order关键字</span><br><span class="line">participant 最后 order 30</span><br><span class="line">participant 中间 order 20</span><br><span class="line">participant 首个 order 10</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="在参与者中使用非字母符号"><a href="#在参与者中使用非字母符号" class="headerlink" title="在参与者中使用非字母符号"></a>在参与者中使用非字母符号</h1><p>这需要使用<code>&quot;&quot;</code>夹住内容, 之后使用<code>as</code>关键字定义别名<br><em>可以省略<code>as</code>但之后使用也需要<code>&quot;&quot;</code>包裹,不是很方便</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">participant &quot;Bob()&quot; as 最后 order 30</span><br><span class="line">participant &quot;This is Very&quot; as 中间 order 20</span><br><span class="line">participant &quot;Long____---;;;\&#39;&quot; as 首个 order 10</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="给自己发消息"><a href="#给自己发消息" class="headerlink" title="给自己发消息"></a>给自己发消息</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">A-&gt;A: 自己给自己\n发消息</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以使用<code>\n</code>换行文字</p>
+</blockquote>
+<h1 id="文本对齐"><a href="#文本对齐" class="headerlink" title="文本对齐"></a>文本对齐</h1><h2 id="文字在箭头下方"><a href="#文字在箭头下方" class="headerlink" title="文字在箭头下方"></a>文字在箭头下方</h2><p>使用预处理<br><code>skinparam ResponseMessageBelowArrow true</code><br>来指定返回方的箭头文字在下方</p>
+<blockquote>
+<p>更多内容查看<code>skinparam</code>章节</p>
+</blockquote>
+<h2 id="修改箭头样式"><a href="#修改箭头样式" class="headerlink" title="修改箭头样式"></a>修改箭头样式</h2><ul>
+<li><code>-&gt;x</code><ul>
+<li>表示丢失的消息</li>
+</ul>
+</li>
+<li>将<code>&lt;</code>或<code>&gt;</code>替换为<code>\</code>或<code>/</code><ul>
+<li>箭头只有上半或下半</li>
+</ul>
+</li>
+<li>使用两次箭头<code>&gt;&gt;</code>,<code>\\</code><ul>
+<li>细箭头</li>
+</ul>
+</li>
+<li>用<code>--</code>代替<code>-</code><ul>
+<li>虚线箭头</li>
+</ul>
+</li>
+<li><code>-&gt;o</code><ul>
+<li>末尾加圆圈</li>
+</ul>
+</li>
+<li><code>&lt;-&gt;</code><ul>
+<li>双向箭头</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">participant Bob as UB</span><br><span class="line">participant Alice as UA</span><br><span class="line">UB -&gt;x UA</span><br><span class="line">UB -\ UA</span><br><span class="line">UB -&#x2F; UA</span><br><span class="line">UB -&gt;&gt; UA</span><br><span class="line">UB -\\ UA</span><br><span class="line">UB --&gt; UA</span><br><span class="line">UB --\ UA</span><br><span class="line">UB --&gt;o UA</span><br><span class="line">UB &lt;&lt;--\\o UA</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改箭头颜色"><a href="#修改箭头颜色" class="headerlink" title="修改箭头颜色"></a>修改箭头颜色</h1><p><em>在第一个<code>-</code>后面带上颜色<code>[#red]</code>或<code>[#FF00FF]</code></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UB -[#red]&gt; UA</span><br><span class="line">UB -[#FF00FF]-&gt; UA</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="对消息序列编号"><a href="#对消息序列编号" class="headerlink" title="对消息序列编号"></a>对消息序列编号</h1><p>关键字<code>autonumber</code><br><code>autonumber [Count = 1] [AddCount = 1] [style = null]</code>  </p>
+<p>中括号中的内容都是可省略的,并表示了省略后的默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">autonumber</span><br><span class="line">UA -&gt; UB</span><br><span class="line">UA -&gt; UB</span><br><span class="line">autonumber 15 2</span><br><span class="line">UA -&gt; UB</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p><em>对于<code>[style]</code>项,可以跳过前两项直接指定,内容符合HTML写法</em><br>注意:<code>[style]</code>需要使用<code>&quot;&quot;</code>包裹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">autonumber &quot;&lt;b&gt;[000]&quot;</span><br><span class="line">UA -&gt; UB</span><br><span class="line">UA -&gt; UB</span><br><span class="line">autonumber 15 &quot;&lt;b&gt;+content &lt;u&gt;##&lt;&#x2F;u&gt;&quot;</span><br><span class="line">UA -&gt; UB</span><br><span class="line">autonumber stop</span><br><span class="line">UA -&gt; UB</span><br><span class="line">autonumber resume</span><br><span class="line">UA -&gt; UB</span><br><span class="line">autonumber 30 8 &quot;&lt;font color&#x3D;red&gt;Message 0 -&quot;</span><br><span class="line">UA -&gt; UB: 666</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>还可以继续使用<br><code>autonumber stop</code><br><code>autonumber resume [Count = StopTimeCount] [AddCount = PreAddCount] [style = Prestyle]</code><br>来暂停或继续使用自动编号,继续的时候可以重新指定参数,不指定则默认为上次的后续  </p>
+<h1 id="页眉-页脚-标题"><a href="#页眉-页脚-标题" class="headerlink" title="页眉,页脚,标题"></a>页眉,页脚,标题</h1><p>在通用部分有讲,这里只作演示.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">header header</span><br><span class="line">title title</span><br><span class="line">legend left </span><br><span class="line">legendContent</span><br><span class="line">end legend</span><br><span class="line">caption captionContent</span><br><span class="line">footer footer</span><br><span class="line"></span><br><span class="line">UA -&gt; UB</span><br><span class="line">note left of UA #red</span><br><span class="line">消息注释</span><br><span class="line">end note</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p><em>实际上还有<code>caption</code>,<code>note</code>和<code>legend</code>都能在这里用</em></p>
+<h1 id="分割示意图"><a href="#分割示意图" class="headerlink" title="分割示意图"></a>分割示意图</h1><p>关键字<code>newpage</code><br>这可能在打印的时候好用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB</span><br><span class="line">newpage titleA</span><br><span class="line">UA -&gt; UB</span><br><span class="line">newpage titleB</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>预览都显示不出来…看来只有需要打印的长图才能体验下了.</p>
+</blockquote>
+<h1 id="组合消息"><a href="#组合消息" class="headerlink" title="组合消息"></a>组合消息</h1><p>将消息分组,并给与标签.<br>使用以下关键字</p>
+<ul>
+<li>alt/else</li>
+<li>opt</li>
+<li>loop</li>
+<li>par</li>
+<li>break</li>
+<li>critical</li>
+<li>group</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB: 请求认证</span><br><span class="line">alt 成功</span><br><span class="line">else 一种失败情况</span><br><span class="line">UA -&gt;x UB: 认证失败</span><br><span class="line">group 自定义标签 [自定义副标题]</span><br><span class="line">	UA -&gt; UC: 记录攻击日志</span><br><span class="line">	loop 1000次(Count)</span><br><span class="line">		UA -[#red]&gt;o UB: DNS攻击 </span><br><span class="line">		UA -[#00FF00]&gt; UC: 写入日志</span><br><span class="line">	end</span><br><span class="line">	UA -&gt; UC: 停止记录日志</span><br><span class="line">end</span><br><span class="line">else 另一种失败情况</span><br><span class="line">UA -&gt;&gt; UB: 重复请求</span><br><span class="line">end</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>可以看到,这些标签都长得一样,所以区别只是Title,没有特殊功能.</p>
+<h2 id="次级分组标签"><a href="#次级分组标签" class="headerlink" title="次级分组标签"></a>次级分组标签</h2><p>对于<code>group</code>而言,可以在标题后方跟<code>[content]</code>来编写副标题<br>就像上面的例子</p>
+<h1 id="给消息添加注释"><a href="#给消息添加注释" class="headerlink" title="给消息添加注释"></a>给消息添加注释</h1><p>在消息后使用<code>note</code>关键字,可以编辑一个注释.<br>实际上是绘制一张贴纸,看起来还行.<br>上面<em>标题和页眉页脚</em>部分有演示.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">note left of UA #red</span><br><span class="line">注释A</span><br><span class="line">end note</span><br><span class="line">UA -&gt; UB</span><br><span class="line">note right of UB #blue</span><br><span class="line">注释B</span><br><span class="line">end note</span><br><span class="line">UA -&gt; UB</span><br><span class="line">hnote over UB,UA #00FF00</span><br><span class="line">注释C</span><br><span class="line">end note</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>这次注意<code>over</code>形式,他表示嵌入到UB,UA中.<br>可以看到,注释和箭头是依据同一顺序绘制的.</p>
+<h2 id="改变注释框形状"><a href="#改变注释框形状" class="headerlink" title="改变注释框形状"></a>改变注释框形状</h2><ul>
+<li>hnote<ul>
+<li>六边形</li>
+</ul>
+</li>
+<li>rnote<ul>
+<li>正方形</li>
+</ul>
+</li>
+</ul>
+<p>它们可以代替<code>note</code>关键字, 可以理解为继承于<code>note</code><br>上面例子使用了一个<code>hnoge</code>,并可以用<code>end note</code>结束</p>
+<h1 id="跨越所有参与者的备注"><a href="#跨越所有参与者的备注" class="headerlink" title="跨越所有参与者的备注"></a>跨越所有参与者的备注</h1><p><code>note across</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB</span><br><span class="line">UB -&gt; UC</span><br><span class="line">UC -&gt; UD</span><br><span class="line">note over UA,UD</span><br><span class="line">Over指定一个start和一个end</span><br><span class="line"></span><br><span class="line">官方推荐使用的是</span><br><span class="line">note across: 内容</span><br><span class="line">但是我这里版本好像比较低,报错.</span><br><span class="line">end note</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="在同一级对齐多个备注"><a href="#在同一级对齐多个备注" class="headerlink" title="在同一级对齐多个备注"></a>在同一级对齐多个备注</h1><p>关键字<code>/ note</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB</span><br><span class="line">note left of UA: A</span><br><span class="line">&#x2F;note left of UB: B</span><br><span class="line">UB -&gt; UC</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>好像只有紧挨着的才能对齐</em><br><em>如果到下一个箭头下面,则不能违背规则的拉上来对齐</em></p>
+<h1 id="支持Creole和HTML"><a href="#支持Creole和HTML" class="headerlink" title="支持Creole和HTML"></a>支持Creole和HTML</h1><p>详见通用<br>就是一些文字和横线,主要大头是HTMl</p>
+<h1 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h1><p>关键字<code>== ==</code><br>可以在中间书写分割Title</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">autonumber</span><br><span class="line">UA -&gt; UB</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">UA -&gt; UB</span><br><span class="line">&#x3D;&#x3D;重复&#x3D;&#x3D;</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>关键字<code>ref over</code><br>像是<code>note</code>和<code>group</code>的组合体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">autonumber</span><br><span class="line">UA -&gt; UB</span><br><span class="line">ref over UA: init</span><br><span class="line">ref over UA,UB: ReSet</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h1><p>关键字<code>...</code><br>还可以书写额外注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB</span><br><span class="line">...</span><br><span class="line">...第二次等待...</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="文本换行"><a href="#文本换行" class="headerlink" title="文本换行"></a>文本换行</h1><p><em>预处理</em>关键字<code>maxMessageSize</code><br>文档说不支持中文自动换行,不演示了.<br>推荐使用手动换行<code>\n</code></p>
+<h1 id="控件-空白范围"><a href="#控件-空白范围" class="headerlink" title="控件(空白范围)"></a>控件(空白范围)</h1><p>关键字<code>|||</code>增加控件<br>可以使用<code>||100||</code>来指定增加多大.</p>
+<h1 id="生命线的激活与撤销"><a href="#生命线的激活与撤销" class="headerlink" title="生命线的激活与撤销"></a>生命线的激活与撤销</h1><p>关键字 <code>activate</code> 和 <code>deactivate</code> 用于展示生命线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">activate UA #FFBBCC</span><br><span class="line">activate UB #8899FF</span><br><span class="line">UA -&gt; UB</span><br><span class="line">UB -&gt; UC</span><br><span class="line">activate UC #00F0F0</span><br><span class="line">UC -&gt; UB</span><br><span class="line">deactivate UC</span><br><span class="line">UB -&gt; UA</span><br><span class="line">deactivate UB</span><br><span class="line">deactivate UA</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可以看到,这里也支持颜色</em></p>
+<p>也可以使用关键字<code>autoactivate</code>来自动化生命线<br>关闭则需要<code>return</code>关键字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">autoactivate on</span><br><span class="line">UA -&gt; UB </span><br><span class="line">UB -&gt; UC </span><br><span class="line">UC -&gt; UB #005500</span><br><span class="line">return done in thread 2</span><br><span class="line">UB -&gt; UA </span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见上面有一种新的颜色用法,在此时表示自动生命线的颜色</em></p>
+<h1 id="return语法"><a href="#return语法" class="headerlink" title="return语法"></a>return语法</h1><p>如上例中的<code>return</code><br>它的用处是返回到上一级的生命线中. 后续内容是一个展示用字符串</p>
+<h1 id="创建参与者"><a href="#创建参与者" class="headerlink" title="创建参与者"></a>创建参与者</h1><p>关键字<code>create</code>用于在中途创建一个对象<br>他比其他自动生成或者手动定义的对象表现得声明周期少一点.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB</span><br><span class="line">create control UC</span><br><span class="line">&#39;UA -&gt; UB error</span><br><span class="line">UA -&gt; UC</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>使用<code>create</code>之后必须创建指定的这个对象,不然报错</em><br><em><code>create</code>的时候任然可以指定参与者类型</em></p>
+<h1 id="激活-撤销和创建的快捷语法"><a href="#激活-撤销和创建的快捷语法" class="headerlink" title="激活,撤销和创建的快捷语法"></a>激活,撤销和创建的快捷语法</h1><ul>
+<li>++<ul>
+<li>激活目标</li>
+</ul>
+</li>
+<li>– <ul>
+<li>撤销激活</li>
+</ul>
+</li>
+<li><code>**</code><ul>
+<li>创建目标实例</li>
+</ul>
+</li>
+<li>!!<ul>
+<li>销毁目标实例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">UA -&gt; UB ++ : P1</span><br><span class="line">UB -&gt; UB ++ #red: P2</span><br><span class="line">UB -&gt; UB --: p3</span><br><span class="line">UB -&gt; UC --** :create</span><br><span class="line">UC -&gt; UD !! : delete</span><br><span class="line">UB -&gt; UC !! : delete</span><br><span class="line">UD -&gt; UA </span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见这些符号可以重复使用,包括<code>--++</code></em><br>删除实际上就是打了个大号<code>X</code></p>
+<h1 id="进入和发出消息"><a href="#进入和发出消息" class="headerlink" title="进入和发出消息"></a>进入和发出消息</h1><p>你可以从最左边和最右边不存在任何参与者的地方发送或接受信息<br>关键字<code>[</code>和<code>]</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">[-&gt;UA:进入</span><br><span class="line">UA -&gt;]: 发出</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>相当于是<code>plantuml</code>预定义了两个实体,名为<code>[</code>和<code>]</code></em></p>
+<h1 id="缩短的进入与发出"><a href="#缩短的进入与发出" class="headerlink" title="缩短的进入与发出"></a>缩短的进入与发出</h1><p>使用<code>?</code>来代替<code>[</code>和<code>]</code><br>这样箭头会缩短</p>
+<h1 id="锚定和持续时间"><a href="#锚定和持续时间" class="headerlink" title="锚定和持续时间"></a>锚定和持续时间</h1><p>使用预处理<code>!pragma teoz true</code>, 之后通过<code>&#123;target&#125;</code>来标记点位<br>就可以用<code>&#123;target1&#125;&lt;-&gt;&#123;target2&#125;</code>来标记中间段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">!pragma teoz true</span><br><span class="line"></span><br><span class="line">&#123;sValue&#125; UA -&gt; UB</span><br><span class="line">||100||</span><br><span class="line">&#123;eContent&#125; UB -&gt; UA</span><br><span class="line">&#123;sValue&#125;&lt;-&gt;&#123;eContent&#125;:内容</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见标签是可以自定义的</em></p>
+<h1 id="构造类型和圆圈Icon"><a href="#构造类型和圆圈Icon" class="headerlink" title="构造类型和圆圈Icon"></a>构造类型和圆圈Icon</h1><p>在声明参与者的时候,可以使用<code>&lt;&lt;content&gt;&gt;</code>来为参与者声明一个标题.<br>在标题中额外使用<code>(content,color)</code>格式,定义一个圆圈Icon<br><code>content</code>仅限单字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">participant UA &lt;&lt;生成UA&gt;&gt;</span><br><span class="line">participant UB &lt;&lt; (你,#AADDBB) 生成UB&gt;&gt;</span><br><span class="line">UA -&gt; UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>有一个预处理<code>skinparam guillemet false</code>来开关尖括号样式</p>
+<h1 id="更多标题和creole"><a href="#更多标题和creole" class="headerlink" title="更多标题和creole"></a>更多标题和creole</h1><p>参考通用</p>
+<h1 id="包裹参与者"><a href="#包裹参与者" class="headerlink" title="包裹参与者"></a>包裹参与者</h1><p>可以使用box和end box 添加一个盒子包裹参与者<br>还可以添加盒子的颜色或标题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line"></span><br><span class="line">box 一个盒子 #red</span><br><span class="line">participant UA</span><br><span class="line">end box</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">UA -&gt; UB</span><br><span class="line">&#39;UB -&gt; UC 开关此行,可能导致第二个格子的内容变化</span><br><span class="line">box 又一个盒子</span><br><span class="line">UC -&gt; UD</span><br><span class="line">end box</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>看到,定义在内容中的盒子实际上是不稳定的</em><br><em>建议在定义参与者的时候同时定义盒子,准确些</em></p>
+<h1 id="移除脚注"><a href="#移除脚注" class="headerlink" title="移除脚注"></a>移除脚注</h1><p>关键字<code>hide footbox</code>来移除底下那一半参与者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">hide footbox</span><br><span class="line">UA -&gt; Ub</span><br><span class="line">UB -&gt; UC</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="外观参数-skinparam"><a href="#外观参数-skinparam" class="headerlink" title="外观参数(skinparam)"></a>外观参数(skinparam)</h1><p>这是一个大关键字<br>用于修改各种外观设置</p>
+<p><em>文档中例子如下</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">skinparam SequenceArrowThickness 2</span><br><span class="line">skinparam RoundCorner 20</span><br><span class="line">skinparam MaxMessageSize 60</span><br><span class="line">skinparam SequenceParticipant underline</span><br><span class="line"></span><br><span class="line">skinparam BackgroundColor #EDEDCC</span><br><span class="line">skinparam Handwritten true</span><br><span class="line"></span><br><span class="line">skinparam sequence&#123;</span><br><span class="line">    ArrowColor DeepSkyBlue</span><br><span class="line">	</span><br><span class="line">	LifeLineStrategy nosolid</span><br><span class="line">    LifeLineBorderColor blue</span><br><span class="line">    LifeLineBackgroundColor #A9DCDF</span><br><span class="line"></span><br><span class="line">    ParticipantBorderColor DeepSkyBlue</span><br><span class="line">    ParticipantBackgroundColor DodgerBlue</span><br><span class="line">    ParticipantFontSize 17</span><br><span class="line">    ParticipantFontColor #A9DCDF</span><br><span class="line"></span><br><span class="line">    ActorBorderColor DeepSkyBlue</span><br><span class="line">    ActorBackgroundColor aqua</span><br><span class="line">    ActorFontColor DeepSkyBlue</span><br><span class="line">    ActorFontSize 17</span><br><span class="line">    ActorFontName Aapex</span><br><span class="line"></span><br><span class="line">	ParticipantPadding 20</span><br><span class="line">    BoxPadding 10</span><br><span class="line"></span><br><span class="line">	&#39;styke strictuml &#39;严格UML模式</span><br><span class="line">&#125;</span><br><span class="line">UA -&gt; UB: content1</span><br><span class="line">||100||</span><br><span class="line">UB -&gt; UC: content2</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="箭头图鉴一部分"><a href="#箭头图鉴一部分" class="headerlink" title="箭头图鉴一部分"></a>箭头图鉴一部分</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">participant AContent as A</span><br><span class="line">participant BContent as B</span><br><span class="line">A -&gt; 	B: &quot;&quot;-&gt; 	&quot;&quot;</span><br><span class="line">A -&gt;&gt; 	B: &quot;&quot;-&gt;&gt; 	&quot;&quot;</span><br><span class="line">A -\ 	B: &quot;&quot;-\ 	&quot;&quot;</span><br><span class="line">A -\\ 	B: &quot;&quot;-\\ 	&quot;&quot;</span><br><span class="line">A -&#x2F; 	B: &quot;&quot;-&#x2F; 	&quot;&quot;</span><br><span class="line">A -&#x2F;&#x2F; 	B: &quot;&quot;-&#x2F;&#x2F; 	&quot;&quot;</span><br><span class="line">A -&gt;x 	B: &quot;&quot;-&gt;x 	&quot;&quot;</span><br><span class="line">A x-&gt; 	B: &quot;&quot;x-&gt; 	&quot;&quot;</span><br><span class="line">A x-&gt;x 	B: &quot;&quot;x-&gt;x 	&quot;&quot;</span><br><span class="line">A -&gt;o 	B: &quot;&quot;-&gt;o 	&quot;&quot;</span><br><span class="line">A o-&gt; 	B: &quot;&quot;o-&gt; 	&quot;&quot;</span><br><span class="line">A o-&gt;o 	B: &quot;&quot;o-&gt;o 	&quot;&quot;</span><br><span class="line">A &lt;-&gt; 	B: &quot;&quot;&lt;-&gt; 	&quot;&quot;</span><br><span class="line">A o&lt;-&gt;o B: &quot;&quot;o&lt;-&gt;o 	&quot;&quot;</span><br><span class="line">A x&lt;-&gt;x B: &quot;&quot;x&lt;-&gt;x 	&quot;&quot;</span><br><span class="line">A -\o 	B: &quot;&quot;-\o 	&quot;&quot;</span><br><span class="line">A -\\o 	B: &quot;&quot;-\\o 	&quot;&quot;</span><br><span class="line">A -&#x2F;o 	B: &quot;&quot;-&#x2F;o 	&quot;&quot;</span><br><span class="line">A -&#x2F;&#x2F;o 	B: &quot;&quot;-&#x2F;&#x2F;o 	&quot;&quot;</span><br><span class="line">A x-&gt;o 	B: &quot;&quot;x-&gt;o 	&quot;&quot;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>以上只是一部分</p>
+<ul>
+<li>可以使用<code>[</code>,<code>]</code>来表示从外面来和到外面去</li>
+<li>可以使用<code>?</code>代替<code>[</code>,<code>]</code>来表示<em>短一些的</em>从外面来和到外面去</li>
+</ul>
+<h1 id="额外"><a href="#额外" class="headerlink" title="额外"></a>额外</h1><p>关键字<code>hide unlinked</code>隐藏未链接的参与者  </p>
 <h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
 <!-- 图片 -->
 
@@ -230,7 +471,10 @@ id: ml-20210415-213300-g120
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/%E5%86%99%E4%BD%9C/" rel="tag"># 写作</a>
+              <a href="/tags/UML/" rel="tag"># UML</a>
+              <a href="/tags/PlantUML/" rel="tag"># PlantUML</a>
           </div>
 
         
@@ -239,13 +483,10 @@ id: ml-20210415-213300-g120
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/ml-20200515-221919-g54/" rel="prev" title="024访问者模式">
-      <i class="fa fa-chevron-left"></i> 024访问者模式
+    <a href="/ml-20210413-222300-g119/" rel="prev" title="CSharp编程指南_基本概念">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_基本概念
     </a></div>
-      <div class="post-nav-item">
-    <a href="/cknixj3ri0008xwm3hfeld3py/" rel="next" title="GitHubDoc">
-      GitHubDoc <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -304,7 +545,7 @@ id: ml-20210415-213300-g120
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E6%A8%A1%E6%9D%BFmoreUp"><span class="nav-number">1.</span> <span class="nav-text">hexo模板moreUp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">2.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">时序图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简单示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E9%AB%98%E7%BA%A7%E5%86%85%E5%AE%B9%E7%B4%A2%E5%BC%95"><span class="nav-number">2.</span> <span class="nav-text">重要高级内容索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%82%E4%B8%8E%E8%80%85"><span class="nav-number">3.</span> <span class="nav-text">声明参与者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E5%8F%82%E4%B8%8E%E8%80%85%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%AD%97%E6%AF%8D%E7%AC%A6%E5%8F%B7"><span class="nav-number">4.</span> <span class="nav-text">在参与者中使用非字母符号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%99%E8%87%AA%E5%B7%B1%E5%8F%91%E6%B6%88%E6%81%AF"><span class="nav-number">5.</span> <span class="nav-text">给自己发消息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%AF%B9%E9%BD%90"><span class="nav-number">6.</span> <span class="nav-text">文本对齐</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E5%9C%A8%E7%AE%AD%E5%A4%B4%E4%B8%8B%E6%96%B9"><span class="nav-number">6.1.</span> <span class="nav-text">文字在箭头下方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AE%AD%E5%A4%B4%E6%A0%B7%E5%BC%8F"><span class="nav-number">6.2.</span> <span class="nav-text">修改箭头样式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AE%AD%E5%A4%B4%E9%A2%9C%E8%89%B2"><span class="nav-number">7.</span> <span class="nav-text">修改箭头颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E6%B6%88%E6%81%AF%E5%BA%8F%E5%88%97%E7%BC%96%E5%8F%B7"><span class="nav-number">8.</span> <span class="nav-text">对消息序列编号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E7%9C%89-%E9%A1%B5%E8%84%9A-%E6%A0%87%E9%A2%98"><span class="nav-number">9.</span> <span class="nav-text">页眉,页脚,标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="nav-number">10.</span> <span class="nav-text">分割示意图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%B6%88%E6%81%AF"><span class="nav-number">11.</span> <span class="nav-text">组合消息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E5%88%86%E7%BB%84%E6%A0%87%E7%AD%BE"><span class="nav-number">11.1.</span> <span class="nav-text">次级分组标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%99%E6%B6%88%E6%81%AF%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="nav-number">12.</span> <span class="nav-text">给消息添加注释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E6%B3%A8%E9%87%8A%E6%A1%86%E5%BD%A2%E7%8A%B6"><span class="nav-number">12.1.</span> <span class="nav-text">改变注释框形状</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%A8%E8%B6%8A%E6%89%80%E6%9C%89%E5%8F%82%E4%B8%8E%E8%80%85%E7%9A%84%E5%A4%87%E6%B3%A8"><span class="nav-number">13.</span> <span class="nav-text">跨越所有参与者的备注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E5%90%8C%E4%B8%80%E7%BA%A7%E5%AF%B9%E9%BD%90%E5%A4%9A%E4%B8%AA%E5%A4%87%E6%B3%A8"><span class="nav-number">14.</span> <span class="nav-text">在同一级对齐多个备注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%AF%E6%8C%81Creole%E5%92%8CHTML"><span class="nav-number">15.</span> <span class="nav-text">支持Creole和HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E9%9A%94%E7%AC%A6"><span class="nav-number">16.</span> <span class="nav-text">分隔符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">17.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F"><span class="nav-number">18.</span> <span class="nav-text">延迟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C"><span class="nav-number">19.</span> <span class="nav-text">文本换行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A7%E4%BB%B6-%E7%A9%BA%E7%99%BD%E8%8C%83%E5%9B%B4"><span class="nav-number">20.</span> <span class="nav-text">控件(空白范围)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E7%BA%BF%E7%9A%84%E6%BF%80%E6%B4%BB%E4%B8%8E%E6%92%A4%E9%94%80"><span class="nav-number">21.</span> <span class="nav-text">生命线的激活与撤销</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#return%E8%AF%AD%E6%B3%95"><span class="nav-number">22.</span> <span class="nav-text">return语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8F%82%E4%B8%8E%E8%80%85"><span class="nav-number">23.</span> <span class="nav-text">创建参与者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB-%E6%92%A4%E9%94%80%E5%92%8C%E5%88%9B%E5%BB%BA%E7%9A%84%E5%BF%AB%E6%8D%B7%E8%AF%AD%E6%B3%95"><span class="nav-number">24.</span> <span class="nav-text">激活,撤销和创建的快捷语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E5%92%8C%E5%8F%91%E5%87%BA%E6%B6%88%E6%81%AF"><span class="nav-number">25.</span> <span class="nav-text">进入和发出消息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%A9%E7%9F%AD%E7%9A%84%E8%BF%9B%E5%85%A5%E4%B8%8E%E5%8F%91%E5%87%BA"><span class="nav-number">26.</span> <span class="nav-text">缩短的进入与发出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%9A%E5%AE%9A%E5%92%8C%E6%8C%81%E7%BB%AD%E6%97%B6%E9%97%B4"><span class="nav-number">27.</span> <span class="nav-text">锚定和持续时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%9C%86%E5%9C%88Icon"><span class="nav-number">28.</span> <span class="nav-text">构造类型和圆圈Icon</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E6%A0%87%E9%A2%98%E5%92%8Ccreole"><span class="nav-number">29.</span> <span class="nav-text">更多标题和creole</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85%E8%A3%B9%E5%8F%82%E4%B8%8E%E8%80%85"><span class="nav-number">30.</span> <span class="nav-text">包裹参与者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E8%84%9A%E6%B3%A8"><span class="nav-number">31.</span> <span class="nav-text">移除脚注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E8%A7%82%E5%8F%82%E6%95%B0-skinparam"><span class="nav-number">32.</span> <span class="nav-text">外观参数(skinparam)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%9B%BE%E9%89%B4%E4%B8%80%E9%83%A8%E5%88%86"><span class="nav-number">33.</span> <span class="nav-text">箭头图鉴一部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96"><span class="nav-number">34.</span> <span class="nav-text">额外</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">35.</span> <span class="nav-text">完毕</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
