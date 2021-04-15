@@ -220,50 +220,7 @@
 <span id="more"></span>
 
 <hr>
-<ul>
-<li><p>维护代码时应风格应该接近,<strong>不要特立独行</strong>.</p>
-</li>
-<li><p>注重标识符的<strong>清晰</strong>而不是简短<br>不要使用单词缩写.<br>如果是被广泛使用的单词缩写,可以适当考虑,但不建议<br>如果使用缩写,只有两个字母则全大写,更多则只有首字母大写.<br>不要为变量添加前缀  </p>
-</li>
-<li><p>命名法:对外全单词首字母大写.对内第一个可以小写<br>一般不建议命名使用下划线<br>尽量少使用非字母非数字来命名</p>
-</li>
-<li><p>使用@开头可以规避关键字 如<code>@return</code>可以用作参数.</p>
-</li>
-<li><p>尽量少使用注释,多编写简单明了的代码  </p>
-</li>
-<li><p>//工作时还是多写注释好点,不能尽信书*</p>
-</li>
-<li><p>使用基础数据类型时尽量使用关键字,而不是类型本体名称.<br>比如,应该使用<code>string</code>,而不是<code>String</code>.</p>
-</li>
-<li><p><code>float</code>有效7位,<code>double</code>有效15位.<br>所有浮点数无法清晰表达分母非2的整数次幂的数字.如果不是以下分母 2.4.8.16.32…..则必定有精度损失.<br>这涉及到准与速派系之争 |･ω･｀)</p>
-</li>
-<li><p>不要硬编码!</p>
-</li>
-<li><p>使用大写后缀如1.7F</p>
-</li>
-<li><p>输出16进制使用“{0:X}”<br>使用{0:R}可以原样输出硬编码的数字.</p>
-</li>
-<li><p>在字符串前面书写@可以逐个描述.所有内容不会被转义例如@“/n/t”会原样输出,不会被转义.<br>跨平台换行可以使用System.Environment.NewLine<br>WriteLine就是这样实现的.</p>
-</li>
-<li><p>System.Text.StringBuilder用于拼接字符串而减少内存占用.</p>
-</li>
-<li><p>checked和unchecked用于代码块声明是否捕获溢出异常.可能还有别的作用.待研究.</p>
-</li>
-<li><p>使用TryParse而不是Parse</p>
-</li>
-<li><p>使用default(int)关键字获得任何类型的默认值.</p>
-</li>
-<li><p>对于交错数组和二维数组,他们的Length有点特殊.</p>
-</li>
-</ul>
-<p>如果有算式A()+B()*C() 将会先从左到右计算方法值,再按结合优先级计算乘法，加法.</p>
-<p>char类型也可以用于算式,因为他们实际上是数字.此方法可以打印char字符的背后数字.</p>
-<p>1234567F+0.1234567F=1234567F,这是由于float精度只有7位.</p>
-<p>Assert()断言 导入System.Diagnostics库</p>
-<p>Infinity 数据溢出可能导致结果无穷(还分正无穷合负无穷.)</p>
-<p>++i和i++都不是线程安全的!!!<br>c++的i++和++i在同一句的话，取决于编译器.不要让他们在同一句是最好的<br>由于可能的复制黏贴，所以c#也应该注意点.少些++,歧义非常大.</p>
-<p>如果你要使用数学常量，尝试System.Math空间.</p>
-<p>二进制负数,开头为1标记为负数.此时将他们为0的位置视为倒转的1. 即111….001=-7<br>所以10000….00就是最小的负数.<br>对于左移和右移操作符.空出来的位置正数填0,负数填1</p>
+<p>整理了一波,现在没了</p>
 <h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
 <!-- 图片 -->
 
@@ -371,20 +328,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

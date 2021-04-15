@@ -158,6 +158,486 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200515-221905-g40/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20200515-221905-g40/" class="post-title-link" itemprop="url">010观察者模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:19:05" itemprop="dateCreated datePublished" datetime="2020-05-15T22:19:05+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>观察者模式是依赖倒置的典型模式. 他将具体的观察者和通知者完全隔离, 使他们都依赖于抽象.</p>
+<p>使用<code>c#</code>自带的委托能更好的实现观察者模式.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20200515-221905-g40/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200515-221904-g39/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20200515-221904-g39/" class="post-title-link" itemprop="url">009建造者模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:19:04" itemprop="dateCreated datePublished" datetime="2020-05-15T22:19:04+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><p>对于一个复杂对象, 分离它的属性和行动的创建过程,<br>通过进一步派生, 可以分理处理不同的属性和行动的产品.  </p>
+<p>产品本身具有全部的属性和行为,<br>等到builder层先初始化他的属性, 再提供方法来初始化他的行为.<br>这个方法最后调不调用, 怎么个顺序调用, 都是Director来决定的.<br>最后扩展Builder和Director就可以达成修改产品属性和行为的目的.  </p>
+<p>还可以进一步抽象, 将产品也变成抽象类或者接口. 这样产品本身也可以继续派生.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20200515-221904-g39/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200515-221903-g38/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20200515-221903-g38/" class="post-title-link" itemprop="url">008外观模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:19:03" itemprop="dateCreated datePublished" datetime="2020-05-15T22:19:03+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h1><p>外观模式通过集成底部功能类来为具体调用类提供更高层次的接口.<br>使这一系列的功能更容易被使用者调用. 使用更轻松简单.</p>
+<blockquote>
+<p>你可以理解为<em>垃圾堆</em></p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20200515-221903-g38/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200515-221902-g37/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20200515-221902-g37/" class="post-title-link" itemprop="url">007模板模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:19:02" itemprop="dateCreated datePublished" datetime="2020-05-15T22:19:02+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h1><p>模板模式将变化留给子类, 父辈实现所有不变部分的一种设计.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20200515-221902-g37/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200515-221901-g36/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20200515-221901-g36/" class="post-title-link" itemprop="url">006原型模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:19:01" itemprop="dateCreated datePublished" datetime="2020-05-15T22:19:01+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h1><p>原型模式实际上就是Copy, 是面向对象的精髓, 代码复用.<br>使用Clone方法将自己完整的Copy一份, 以供使用摒弃了繁琐的初始化操作.<br>由于实在太常用, DotNet提供了默认接口<code>ICloneable</code><br>并且在object类中默认实现了浅拷贝方法<code>MemberwiseClone()</code></p>
+<blockquote>
+<p>注意: 该方法是<code>浅拷贝</code>, 如果要实现<code>深拷贝</code>,需要自行实现, 或者递归调用, 详情参考下面 <a href="##Code">code</a></p>
+</blockquote>
+<blockquote>
+<p>注意下面的报错, 如果你的类允许继承,那么必须重写Clone方法, 否则在其继承类中运行可能发生错误.</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20200515-221901-g36/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200515-221900-g35/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20200515-221900-g35/" class="post-title-link" itemprop="url">005工厂模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:19:00" itemprop="dateCreated datePublished" datetime="2020-05-15T22:19:00+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><p>工厂模式是简单工厂模式的拓展, 将对修改完全封闭, 只允许扩展新的子类.<br>更符合面向对象<code>开放封闭原则</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20200515-221900-g35/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/ml-20200327-211900-g0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -481,484 +961,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20191124-195100-g31/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20191124-195100-g31/" class="post-title-link" itemprop="url">001简单工厂模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-24 19:51:00" itemprop="dateCreated datePublished" datetime="2019-11-24T19:51:00+08:00">2019-11-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><p>通过一个传入Type的静态方式实现传入不同参数返回不同实例.<br>如果引入相关接口, 可以实现封装创建逻辑.</p>
-<ul>
-<li>封装创建逻辑</li>
-<li>客户端知道工厂, 工厂Type, 返回类的基类
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20191124-195100-g31/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20191009-203900-g9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20191009-203900-g9/" class="post-title-link" itemprop="url">Docker自建RSS与NextCloud</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-09 20:39:00" itemprop="dateCreated datePublished" datetime="2019-10-09T20:39:00+08:00">2019-10-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index"><span itemprop="name">工具部署</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>内容引用</strong></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" title="ubuntu">Docker官方文档</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hujyhfwfh2/article/details/83934415" title="镜像">Docker国内镜像</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hujyhfwfh2/article/details/83934415" title="blog">博客-Docker-Compose</a><br><a target="_blank" rel="noopener" href="https://github.com/DIYgod/RSSHubv" title="RSSHub">RSSHub</a><br><a target="_blank" rel="noopener" href="https://ttrss.henry.wang/" title="ttrss">Awesome-TTRSS</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/labs/lab/10381">腾讯云开发者实验室-nextcloud</a></p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20191009-203900-g9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20190617-221800-g10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20190617-221800-g10/" class="post-title-link" itemprop="url">CSharp序列化快速加载配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-17 22:18:00" itemprop="dateCreated datePublished" datetime="2019-06-17T22:18:00+08:00">2019-06-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">小知识</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="CSharp序列化快速加载配置"><a href="#CSharp序列化快速加载配置" class="headerlink" title="CSharp序列化快速加载配置"></a>CSharp序列化快速加载配置</h1><p>这次不是搬运, 是我在公司做存储配置和解析配置的是否突然想到C#好像有序列化的东西.<br>于是了解了一番.  </p>
-<p>使用C#自带的序列化, 能让你不必编写繁琐的配置解析代码, 直接使用api将类存储为文件, 之后也可以反序列化将文件变为类. 主要用于数据的存储.</p>
-<p>除了解析配置, 还有其他使用情况请自行探索</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lsy131479/p/8371858.html" title="参考">参考</a> </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20190617-221800-g10/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20190615-183900-g1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20190615-183900-g1/" class="post-title-link" itemprop="url">UML流程图绘制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-15 18:39:00" itemprop="dateCreated datePublished" datetime="2019-06-15T18:39:00+08:00">2019-06-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">写作基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[toc]</p>
-<h1 id="UML流程图"><a href="#UML流程图" class="headerlink" title="UML流程图"></a>UML流程图</h1><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b421cc723da5">流程图教程-简书</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20190615-183900-g1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20190615-183700-g2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20190615-183700-g2/" class="post-title-link" itemprop="url">UML类图绘制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-15 18:37:00" itemprop="dateCreated datePublished" datetime="2019-06-15T18:37:00+08:00">2019-06-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">写作基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[toc]</p>
-<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>本次只讲类图<br>有道云笔记地址 <a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=d5f8c56d206389f849b9738adffc3926&amp;sub=73EADB667CA7499E8C7A55834FF75F01">http://note.youdao.com/noteshare?id=d5f8c56d206389f849b9738adffc3926&amp;sub=73EADB667CA7499E8C7A55834FF75F01</a>  </p>
-<p>有机会一定自己部署一个这个类图服务器, 现在图都裂了.</p>
-<p>在线绘图地址 <a target="_blank" rel="noopener" href="http://www.plantuml.com/plantuml/uml/">http://www.plantuml.com/plantuml/uml/</a><br>文档 <a target="_blank" rel="noopener" href="http://plantuml.com/zh/class-diagram">http://plantuml.com/zh/class-diagram</a><br>关系参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/tianhai110/article/details/6339565">https://blog.csdn.net/tianhai110/article/details/6339565</a><br>看下类图 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35642036/article/details/79663378">https://blog.csdn.net/qq_35642036/article/details/79663378</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20190615-183700-g2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20190605-221900-g4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20190605-221900-g4/" class="post-title-link" itemprop="url">Markdown进阶</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-05 22:19:00" itemprop="dateCreated datePublished" datetime="2019-06-05T22:19:00+08:00">2019-06-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-27 21:42:00" itemprop="dateModified" datetime="2020-03-27T21:42:00+08:00">2020-03-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%86%99%E4%BD%9C%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">写作基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[toc]</p>
-<h1 id="Markdown进阶"><a href="#Markdown进阶" class="headerlink" title="Markdown进阶"></a>Markdown进阶</h1><p>今天就先移动这么多吧, 每次玩游戏, 都感觉到一种深深的负罪感. 长此以往我可能会有精神问题.</p>
-<p>进阶篇的内容有写解释器支持有写不支持, 也不知道hexo怎么样. 看看吧.</p>
-<p>内容大多数都是有道云笔记支持的.</p>
-<blockquote>
-<p>内容来自 <a target="_blank" rel="noopener" href="http://note.youdao.com/iyoudao/?p=2411">http://note.youdao.com/iyoudao/?p=2411</a> 是Markdown进阶支持</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20190605-221900-g4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1024,20 +1030,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

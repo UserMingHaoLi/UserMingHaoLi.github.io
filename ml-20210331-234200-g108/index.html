@@ -222,11 +222,11 @@
 <h1 id="自动实现的属性"><a href="#自动实现的属性" class="headerlink" title="自动实现的属性"></a>自动实现的属性</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> Myint &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以更简单的方式生成一条属性, 其背后的字段交给编辑器,<br>这种属性由于没有编写代码, 默认实现和一下代码相当</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int myint;</span><br><span class="line">int Myint </span><br><span class="line">&#123; </span><br><span class="line">    get</span><br><span class="line">    &#123;</span><br><span class="line">        return myint;</span><br><span class="line">    &#125;</span><br><span class="line">    set</span><br><span class="line">    &#123;</span><br><span class="line">        myint &#x3D; value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> myint;</span><br><span class="line"><span class="built_in">int</span> Myint </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> myint;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        myint = <span class="keyword">value</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>但是极大的减少了工作量,<br>你可能在想, 既然这样我为什么不直接用字段呢?<br>面向对象的基本原理中第一条就是封装, 只有更好的准备,才可以更好的面对问题<br>包装一层属性, 未来就可以随时扩展成完全体, 添加一些逻辑方法.<br>总比满工程找个这个字段修改来的痛快.<br>多写几个字符, 未来节省几小时甚至数天的时间.</p>
 <h1 id="匿名类型"><a href="#匿名类型" class="headerlink" title="匿名类型"></a>匿名类型</h1><p>匿名类型和js中的objcet有些相似.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var v &#x3D; new &#123; Amount &#x3D; 108, Message &#x3D; &quot;Hello&quot; &#125;; </span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> v = <span class="keyword">new</span> &#123; Amount = <span class="number">108</span>, Message = <span class="string">&quot;Hello&quot;</span> &#125;; </span><br></pre></td></tr></table></figure>
 
 <p>由于并不清楚什么类型, 只能是用<code>var</code>来接收, 生成对象一定要使用<code>new</code></p>
 <p>实际项目中, 我们经常会临时的少量使用一个类, 如果有匿名类型, 那就不用写一个完整的类了.</p>
@@ -268,11 +268,11 @@
 <p>对于CIL来说, 你仍然是调用的静态方法. 编辑器的障眼法而已.<br>与接口或类方法具有相同名称和签名的扩展方法永远不会被调用</p>
 </blockquote>
 <h1 id="隐式类型本地变量"><a href="#隐式类型本地变量" class="headerlink" title="隐式类型本地变量"></a>隐式类型本地变量</h1><p><code>var</code>, 这就是一个偷懒写法, 如果编辑器可以推断类型, 你为什么要声明他呢.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var i &#x3D; 10;</span><br><span class="line">int i &#x3D; 10;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">int</span> i = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
 <p>如果无法推断, 还得手写.</p>
 <h1 id="分部方法"><a href="#分部方法" class="headerlink" title="分部方法"></a>分部方法</h1><p>分布方法可以让你在一处定义方法, 在另一处实现.<br>如果你不实现, 编译器在编译时删除该方法.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">partial class A</span><br><span class="line">&#123;</span><br><span class="line">    partial void OnSomethingHappened(string s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; This part can be in a separate file.</span><br><span class="line">partial class A</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; Comment out this method and the program</span><br><span class="line">    &#x2F;&#x2F; will still compile.</span><br><span class="line">    partial void OnSomethingHappened(String s)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;Something happened: &#123;0&#125;&quot;, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">OnSomethingHappened</span>(<span class="params"><span class="built_in">string</span> s</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This part can be in a separate file.</span></span><br><span class="line"><span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Comment out this method and the program</span></span><br><span class="line">    <span class="comment">// will still compile.</span></span><br><span class="line">    <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">OnSomethingHappened</span>(<span class="params">String s</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Something happened: &#123;0&#125;&quot;</span>, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="对象和集合初始值设定项"><a href="#对象和集合初始值设定项" class="headerlink" title="对象和集合初始值设定项"></a>对象和集合初始值设定项</h1><p>实际是<code>&#123;&#125;</code></p>
 <p>你可以在声明对象和集合的时候直接使用<code>&#123;&#125;</code>来进行初始化.<br>你可以在初始化的时候访问任何可以访问的字段和属性.<br>甚至可以忽略构造方法, 默认调用空构造.</p>
@@ -307,8 +307,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/ml-20210329-225200-g107/" rel="prev" title="hexo模板">
-      <i class="fa fa-chevron-left"></i> hexo模板
+    <a href="/ml-20210329-225200-g107/" rel="prev" title="CSharp2.0">
+      <i class="fa fa-chevron-left"></i> CSharp2.0
     </a></div>
       <div class="post-nav-item">
     <a href="/ml-20210401-002800-g109/" rel="next" title="CSharp4.0">
@@ -386,20 +386,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

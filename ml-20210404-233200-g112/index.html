@@ -389,6 +389,14 @@
 <p>现在可以自动推断了.</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;<span class="built_in">string</span>, <span class="built_in">bool</span>&gt; foo = <span class="literal">default</span>;</span><br></pre></td></tr></table></figure>
 
+<p>从规范里面抄了些用法过来</p>
+<ul>
+<li>声明局部变量 <code>(ImmutableArray&lt;SomeType&gt; x = default;)</code></li>
+<li>三元操作 <code>(var x = flag ? default : ImmutableArray&lt;SomeType&gt;.Empty;)</code></li>
+<li>在方法和 <code>lambda</code> 中返回 <code>(return default;)</code></li>
+<li>为可选参数声明默认值 <code>(void Method(ImmutableArray&lt;SomeType&gt; arrayOpt = default))</code></li>
+<li>在数组创建表达式中包含默认值 <code>(var x = new[] &#123; default, ImmutableArray.Create(y) &#125;;)</code></li>
+</ul>
 <h2 id="推断元组元素名称"><a href="#推断元组元素名称" class="headerlink" title="推断元组元素名称"></a>推断元组元素名称</h2><p>可以根据右侧名称自动推断名称.</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> count = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">string</span> label = <span class="string">&quot;Colors used in the map&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> pair = (count, label);</span><br></pre></td></tr></table></figure>
 <p>此时内容就是<code>count</code>和<code>label</code></p>
@@ -523,20 +531,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

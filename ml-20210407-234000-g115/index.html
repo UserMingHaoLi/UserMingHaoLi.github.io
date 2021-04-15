@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="快速开始C#共有以下内置类型,背后的class(.NET 类型)先不讲,以后有机会出源码讲解再说.     关键字 .NET 类型 范围 默认值 大小    1 sbyte System.SByte -128 到 127 0 有符号 8 位整   2 byte System.Byte 0 到 255 0 无符号的 8 位整数   3 short System.Int16 -32,768 到 32,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_值类型">
+<meta property="og:url" content="http://example.com/ml-20210407-234000-g115/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="快速开始C#共有以下内置类型,背后的class(.NET 类型)先不讲,以后有机会出源码讲解再说.     关键字 .NET 类型 范围 默认值 大小    1 sbyte System.SByte -128 到 127 0 有符号 8 位整   2 byte System.Byte 0 到 255 0 无符号的 8 位整数   3 short System.Int16 -32,768 到 32,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-07T15:40:00.000Z">
+<meta property="article:modified_time" content="2021-04-07T15:40:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210407-234000-g115/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_值类型 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210407-234000-g115/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_值类型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-07 23:40:00" itemprop="dateCreated datePublished" datetime="2021-04-07T23:40:00+08:00">2021-04-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><p>C#共有以下内置类型,背后的class(<em>.NET 类型</em>)先不讲,以后有机会出源码讲解再说.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>关键字</th>
+<th>.NET 类型</th>
+<th>范围</th>
+<th>默认值</th>
+<th>大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>sbyte</code></td>
+<td>System.SByte</td>
+<td>-128 到 127</td>
+<td>0</td>
+<td>有符号 8 位整</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>byte</code></td>
+<td>System.Byte</td>
+<td>0 到 255</td>
+<td>0</td>
+<td>无符号的 8 位整数</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>short</code></td>
+<td>System.Int16</td>
+<td>-32,768 到 32,767</td>
+<td>0</td>
+<td>有符号 16 位整数</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>ushort</code></td>
+<td>System.UInt16</td>
+<td>0 到 65,535</td>
+<td>0</td>
+<td>无符号 16 位整数</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>int</code></td>
+<td>System.Int32</td>
+<td>-2,147,483,648 到 2,147,483,647</td>
+<td>0</td>
+<td>有符号 32 位整数</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>uint</code></td>
+<td>System.UInt32</td>
+<td>0 到 4,294,967,295</td>
+<td>0</td>
+<td>无符号 32 位整</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>long</code></td>
+<td>System.Int64</td>
+<td>-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+<td>0</td>
+<td>有符号 64 位整</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>ulong</code></td>
+<td>System.UInt64</td>
+<td>0 到 18,446,744,073,709,551,615</td>
+<td>0</td>
+<td>无符号 64 位</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>nint</code></td>
+<td>System.IntPtr</td>
+<td>取决于平台</td>
+<td>0</td>
+<td>有符号 32 位或64位整数(取决于平台)</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>nuint</code></td>
+<td>System.UIntPtr</td>
+<td>取决于平台</td>
+<td>0</td>
+<td>无符号 32 位或64位整数(取决于平台)</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>float</code></td>
+<td>System.Single</td>
+<td>1.5 × 10 ^ −45到3.4 × 10 ^ 38     7位精度</td>
+<td>0.0f</td>
+<td>4 个字节</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>double</code></td>
+<td>System.Double</td>
+<td>5.0 × 10 ^ −324到1.7 × 10 ^ 308    15位精度</td>
+<td>0.0d</td>
+<td>8 个字节</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>decimal</code></td>
+<td>System.Decimal</td>
+<td>1.0 × 10 ^ −28到7.9 × 10 ^ 28    28位精度</td>
+<td>0.0m</td>
+<td>16 个字节</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>bool</code></td>
+<td>System.Boolean</td>
+<td><code>true</code>或<code>false</code></td>
+<td><code>false</code></td>
+<td>1个字节(也有可能是4个或者更多)</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>char</code></td>
+<td>System.Char</td>
+<td>U+0000 到 U+FFFF</td>
+<td>U+0000</td>
+<td>16位</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>Enum</code></td>
+<td>System.Enum</td>
+<td>略</td>
+<td>略</td>
+<td>(em)0</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>struct </code></td>
+<td>System.ValueType</td>
+<td>略</td>
+<td>略</td>
+<td>略</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>值元组 </code></td>
+<td>System.ValueTuple</td>
+<td>略</td>
+<td>略</td>
+<td>略</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<blockquote>
+<p><code>位</code>,<code>字节</code>,<code>字</code>是计算机数据存储的单位,<code>位</code>是<em>最小的存储单位</em>，每一个<code>位</code>存储一个<em>二进制</em>码(即<code>0</code>或<code>1</code>)，一个<code>字节</code>由<strong>8位</strong>组成。而<code>字</code>通常为<em>16</em>,<em>32</em>,<em>64</em>个<code>位</code>组成(取决于平台)</p>
+</blockquote>
+<p>可为空的值类型暂时没有记录在其中,它属于<code>System.Nullable&lt;T&gt;</code>实例<br>每个值类型都继承自-&gt;<code>ValueType</code>-&gt;<code>Object</code>  </p>
+<p>官方<strong>推荐使用关键字</strong>而不是类名,因为编译器做了很多优化.</p>
+<blockquote>
+<p>对于<code>Bool</code>类型,CIL的认为它是1字节的,但实际实现的时候由于种种原因(内存对齐,平台,等…),可能超过这个大小.</p>
+</blockquote>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>值类型的变量包含类型的实例<br>在传递值类型的过程中,总是会复制相应的类型实例  </p>
+<blockquote>
+<p>除非显示声明例外<code>ref</code>,<code>out</code>等..</p>
+</blockquote>
+<blockquote>
+<p>若要使代码更不易出错、更可靠，请定义并使用不可变的值类型。</p>
+</blockquote>
+<p>值类型可以是  </p>
+<ul>
+<li>结构类型(<code>struct</code>)</li>
+<li>枚举类型</li>
+<li>值元组<blockquote>
+<p>还有一个可为Null的值类型</p>
+</blockquote>
+</li>
+</ul>
+<p>目前,C#中有以上的值类型.<br>其中前10个是整数类型,后续是3个浮点类型,然后是bool,char,Enum,Struct,值元组.</p>
+<h1 id="特殊的char"><a href="#特殊的char" class="headerlink" title="特殊的char"></a>特殊的<code>char</code></h1><p><code>char</code>实际被微软认为是整数类型,但又比较特殊.<br>可以隐式转化为一些整数类型,最后得到Unicode编码的序号.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">char</span> @char = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"><span class="comment">//sbyte @sbyte = @char;</span></span><br><span class="line"><span class="comment">//byte @byte = @char;</span></span><br><span class="line"><span class="comment">//short @short = @char;</span></span><br><span class="line"><span class="built_in">ushort</span> @ushort = @char;</span><br><span class="line"><span class="built_in">int</span> @int = @char;</span><br><span class="line">uint @uint = @char;</span><br><span class="line"><span class="built_in">long</span> @long = @char;</span><br><span class="line"><span class="comment">//nint @nint = @char;</span></span><br><span class="line"><span class="comment">//nuint @nint = @char;</span></span><br><span class="line">Console.WriteLine(@int);<span class="comment">//输出: 65</span></span><br></pre></td></tr></table></figure>
+<p>所以可以看到<code>A</code>对应的Unicode编码为65.<br><em>被注释的代码是无法发生隐式转化的</em><br><code>nint</code>和<code>uint</code>需要9.0支持,实际上就是<code>IntPtr</code>和<code>UIntPtr</code>. 但也无法隐式转化.</p>
+<hr>
+<h1 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h1><p>所有的整数类型可以通过文本来直接描述</p>
+<ul>
+<li>二进制 使用<code>0b</code>或<code>0B</code></li>
+<li>十进制 正常表示即可</li>
+<li>十六进制 使用<code>0X</code>或<code>0X</code></li>
+</ul>
+<blockquote>
+<p>从 C# 7.0 开始提供用<code>_</code>分割文本字面量的支持</p>
+</blockquote>
+<p>指定无符号,使用后缀<code>u</code>或<code>U</code><br>指定长整型,使用后缀<code>l</code>或<code>L</code>  </p>
+<blockquote>
+<p>使用小写<code>l</code>将会生成一个警告,因为他和<code>1</code>非常相近.</p>
+</blockquote>
+<blockquote>
+<p>如果字面量所表示的值超出了 <code>UInt64.MaxValue</code>，则将出现编译器错误.<br>如果文本的值不在目标类型的范围内，则发生编译器错误,但使用强制转换不会发生编译错误(有可能发生运行时错误,这取决于项目设置)<br>使用关键字<code>checked</code>, <code>unchecked</code>可以指定区块是否检查运算和转换的溢出, 也就是异常<code>System.OverflowException</code></p>
+</blockquote>
+<h1 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h1><p><strong>使用标准<code>IEEE 754</code></strong></p>
+<p><em>此标准下,浮点数可能产生非预期的<code>NaN</code>和<code>Infinity</code>, 具体等源码再讲.</em></p>
+<p>常规的字面计算,其结果都默认为整形,若想声明字面量为浮点,则需要使用后缀<code>F</code>,<code>D</code>,<code>M</code><br>整形之间的计算结果也会得出整形,若想要得出浮点类型,则需要至少其中一方为浮点类型.此时可以使用强制转化.<br>对于混合类型的预算,总是转型到式子中最高的类型,也就是有<code>float</code>就转化为<code>float</code>,之后是<code>double</code>,<code>dicimal</code></p>
+<p><em>此标准下,浮点数总有不能精确表示的值.</em></p>
+<p>浮点数仅只能精准表示分母为2的幂的数字,如果不是,则精度必有损失.<br>想要能准确表示的浮点数,建议使用<code>decimal</code>.<br>精准就意味着存储量变少,<code>decimal</code>占有最大的空间,但只能描述较少的范围.</p>
+<p>decimal 类型和 float 或 double 类型之间不存在隐式转换</p>
+<p><strong>任何整型数值类型都可以隐式转换为任何浮点数值类型</strong></p>
+<h1 id="bool类型"><a href="#bool类型" class="headerlink" title="bool类型"></a>bool类型</h1><p>C#的<code>bool</code>类型是独特的, 不存在整数到bool的隐式转化.</p>
+<blockquote>
+<p>注意: 对于可为null的bool类型,有更复杂的运算结果集.</p>
+</blockquote>
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>默认情况下，枚举成员的关联常数值为类型 int；它们从零开始，并按定义文本顺序递增 1<br>可以显式指定任何其他整数数值类型作为枚举类型的基础类型。 还可以显式指定关联的常数值<br>枚举类型 E 的默认值是由表达式 (E)0 生成的值，即使零没有相应的枚举成员也是如此</p>
+<blockquote>
+<p>如果没有0值代表的枚举,则(E)0的结果总是0.</p>
+</blockquote>
+<p>如果要使用组合枚举,则需要声明<code>[Flags]</code>特性.<br>如果不声明此特性也可以使用,但是需要自己定义计算方式.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Flags</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> Days</span><br><span class="line">&#123;<span class="comment">//定义可组合枚举时,建议使用`0B`格式,方便查看和记忆.</span></span><br><span class="line">    None      = <span class="number">0b</span>_0000_0000,  <span class="comment">// 0</span></span><br><span class="line">    Monday    = <span class="number">0b</span>_0000_0001,  <span class="comment">// 1</span></span><br><span class="line">    Tuesday   = <span class="number">0b</span>_0000_0010,  <span class="comment">// 2</span></span><br><span class="line">    Wednesday = <span class="number">0b</span>_0000_0100,  <span class="comment">// 4</span></span><br><span class="line">    Thursday  = <span class="number">0b</span>_0000_1000,  <span class="comment">// 8</span></span><br><span class="line">    Friday    = <span class="number">0b</span>_0001_0000,  <span class="comment">// 16</span></span><br><span class="line">    Saturday  = <span class="number">0b</span>_0010_0000,  <span class="comment">// 32</span></span><br><span class="line">    Sunday    = <span class="number">0b</span>_0100_0000,  <span class="comment">// 64</span></span><br><span class="line">    Weekend   = Saturday | Sunday</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果上述<code>enum</code>没有定义<code>[Flags]</code>特性的类型,则不能使用枚举字面值表示中间数字.</p>
+<p>例子:  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine((Days)<span class="number">3</span>);</span><br><span class="line">Console.WriteLine((Days)<span class="number">96</span>);</span><br></pre></td></tr></table></figure>
+<p><em>有[Flags]</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Monday, Tuesday</span><br><span class="line">Weekend</span><br></pre></td></tr></table></figure>
+<p><em>无[Flags]</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">Weekend</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有兴趣可以扩展阅读<code>Enum.HasFlag</code>方法</p>
+</blockquote>
+<blockquote>
+<p>C#7.3开始可以使用<code>System.Enum</code>约束,此约束总满足<code>struct</code>约束,且是不可为<code>null</code>的值类型</p>
+</blockquote>
+<blockquote>
+<p>使用枚举要注意可能存在的装箱拆箱</p>
+</blockquote>
+<h1 id="结构类型"><a href="#结构类型" class="headerlink" title="结构类型"></a>结构类型</h1><p>使用<code>struct</code>来定义自己的结构类型</p>
+<p>例子:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> Coords</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Coords</span>(<span class="params"><span class="built_in">double</span> x, <span class="built_in">double</span> y</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        X = x;</span><br><span class="line">        Y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> X &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> Y &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">string</span> <span class="title">ToString</span>(<span class="params"></span>)</span> =&gt; <span class="string">$&quot;(<span class="subst">&#123;X&#125;</span>, <span class="subst">&#123;Y&#125;</span>)&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>C#的值类型都是<code>struct</code></p>
+</blockquote>
+<h1 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h1><p>将多个数据组合到一起,称为元组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(double, int) t1 &#x3D; (4.5, 3);</span><br></pre></td></tr></table></figure>
+
+<p>元组类型是值类型,元组元素是公共字段,这使得元组为<strong>可变的值类型</strong></p>
+<p>目前的元组都是<code>System.ValueTuple</code>类型,但是你也可以使用<code>System.Tupl</code>类型.  </p>
+<ul>
+<li><code>ValueTuple</code> 类型是值类型。 <code>Tuple</code> 类型是引用类型。</li>
+<li><code>ValueTuple</code> 类型是可变的。 <code>Tuple</code> 类型是不可变的。</li>
+<li><code>ValueTuple</code> 类型的数据成员是字段。 <code>Tuple</code> 类型的数据成员是属性。</li>
+</ul>
+<h1 id="可为空的值类型"><a href="#可为空的值类型" class="headerlink" title="可为空的值类型"></a>可为空的值类型</h1><p>任何可为空的值类型都是泛型 <code>System.Nullable&lt;T&gt;</code> 结构的实例</p>
+<p>定义可为空的值类型,需要在对于值类型后跟上一个<code>?</code>符号.<br>如 </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span>? isValue = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p>故名思意,此种类型的值可以为<code>null</code><br>所以使用时经常需要<code>Nullable&lt;T&gt;.HasValue</code>来检查.<br>或使用<code>is</code>运算符</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? a = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">if</span> (a <span class="keyword">is</span> <span class="built_in">int</span> valueOfA)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;a is <span class="subst">&#123;valueOfA&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用<code>c != null</code>来比较,但还是推荐使用<code>HasValue</code></p>
+<p>也可以使用<code>Null合并运算</code>来转化可空值类型  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? a = <span class="number">28</span>;</span><br><span class="line"><span class="built_in">int</span> b = a ?? <span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在运行时，如果可为空的值类型的值为 null，则显式强制转换将抛出 <code>InvalidOperationException</code></p>
+<blockquote>
+<p>一般来说,只建议在与数据库交互的时候使用可为空的值类型.<br>其他任何时候,这种类型只会成倍的增加维护成本.</p>
+</blockquote>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>由于多出了一个<code>null</code>值的维度,很多的运算符结果会发生意想不到的变化.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? a = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">int</span>? b = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">int</span>? c = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">a++;        <span class="comment">// a is 11</span></span><br><span class="line">a = a * c;  <span class="comment">// a is 110</span></span><br><span class="line">a = a + b;  <span class="comment">// a is null</span></span><br></pre></td></tr></table></figure>
+
+<p>这表明,<code>null</code>有传播性.  </p>
+<blockquote>
+<p>对于 <code>bool?</code> 类型，预定义的 <code>&amp;</code> 和 <code>|</code> 运算符不遵循此部分中描述的规则：即使其中一个操作数为 <code>null</code>，运算符计算结果也可以不为 null, 若一定要使用,建议查表</p>
+</blockquote>
+<p>对于比较运算符,可能得到一个不在区间内的结果.<br>即  </p>
+<ul>
+<li>既不大于等于 null，</li>
+<li>也不小于 null</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? a = <span class="number">10</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;a&#125;</span> &gt;= null is <span class="subst">&#123;a &gt;= <span class="literal">null</span>&#125;</span>&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;a&#125;</span> &lt; null is <span class="subst">&#123;a &lt; <span class="literal">null</span>&#125;</span>&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;a&#125;</span> == null is <span class="subst">&#123;a == <span class="literal">null</span>&#125;</span>&quot;</span>);</span><br><span class="line"><span class="comment">// 10 &gt;= null is False</span></span><br><span class="line"><span class="comment">// 10 &lt; null is False</span></span><br><span class="line"><span class="comment">// 10 == null is False</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? b = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">int</span>? c = <span class="literal">null</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;null &gt;= null is <span class="subst">&#123;b &gt;= c&#125;</span>&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;null == null is <span class="subst">&#123;b == c&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>对于相等运算符 <code>==</code>，如果两个操作数都为 null，则结果为 true；如果只有一个操作数为 null，则结果为 false；否则，将比较操作数的包含值。</p>
+<p>对于不等运算符 <code>!=</code>，如果两个操作数都为 null，则结果为 false；如果只有一个操作数为 null，则结果为 true；否则，将比较操作数的包含值。</p>
+<h2 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h2><p>如果 <code>HasValue</code> 返回 <code>false</code>,则生成空引用。<br>如果 <code>HasValue</code> 返回 <code>true</code>,则基础值类型 T 的对应值将装箱,而不对 Nullable<T> 的实例进行装箱.</p>
+<p>如果要确定实例是否是可为空的值类型，请不要使用 <code>Object.GetType</code> 方法, 而是使用<code>typeof</code>关键字<br>因为使用<code>Object</code>的方法,则该实例将装箱到 <code>Object</code>, 此时结果可能为<code>T</code>的基础类型<code>Type</code></p>
+<p>另外，请勿使用 is 运算符来确定实例是否是可为空的值类型  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? a = <span class="number">14</span>;</span><br><span class="line"><span class="keyword">if</span> (a <span class="keyword">is</span> <span class="built_in">int</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;int? instance is compatible with int&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> b = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">if</span> (b <span class="keyword">is</span> <span class="built_in">int</span>?)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;int instance is compatible with int?&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// int? instance is compatible with int</span></span><br><span class="line"><span class="comment">// int instance is compatible with int?**</span></span><br></pre></td></tr></table></figure>
+
+<p>可使用以下示例中提供的代码来确定实例是否是可为空的值类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>? a = <span class="number">14</span>;</span><br><span class="line">Console.WriteLine(IsOfNullableType(a));  <span class="comment">// output: True</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> b = <span class="number">17</span>;</span><br><span class="line">Console.WriteLine(IsOfNullableType(b));  <span class="comment">// output: False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">bool</span> <span class="title">IsOfNullableType</span>&lt;<span class="title">T</span>&gt;(<span class="params">T o</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> type = <span class="keyword">typeof</span>(T);</span><br><span class="line">    <span class="keyword">return</span> Nullable.GetUnderlyingType(type) != <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>看完这些警告和规范,相信你已经了解到了可控值类型的麻烦之处. 如非必要,切勿使用. 用了也赶快转为正常类型.</p>
+</blockquote>
+<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><p>有关更多信息，请参阅 C# 语言规范的以下部分：</p>
+<ul>
+<li>可以为 null 的类型</li>
+<li>提升的运算符</li>
+<li>隐式可为空转换</li>
+<li>显式可为空转换</li>
+<li>提升的转换运算符</li>
+</ul>
+<p>C# 参考</p>
+<ul>
+<li>“提升”的准确含义是什么？</li>
+<li>System.Nullable<T></li>
+<li>System.Nullable</li>
+<li>Nullable.GetUnderlyingType</li>
+<li>可为空引用类型</li>
+</ul>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210405-231500-g114/" rel="prev" title="CSharp9.0">
+      <i class="fa fa-chevron-left"></i> CSharp9.0
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210408-235400-g116/" rel="next" title="CSharp编程指南_基本概念">
+      CSharp编程指南_基本概念 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84char"><span class="nav-number">3.</span> <span class="nav-text">特殊的char</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">4.</span> <span class="nav-text">字面量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">浮点数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bool%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">bool类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.</span> <span class="nav-text">枚举类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">结构类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">元组类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">10.</span> <span class="nav-text">可为空的值类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">10.1.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1"><span class="nav-number">10.2.</span> <span class="nav-text">装箱和拆箱</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A"><span class="nav-number">11.</span> <span class="nav-text">更多</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">12.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

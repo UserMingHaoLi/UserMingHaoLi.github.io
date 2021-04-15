@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="引言C#编程指南,内容来自 Microsoft官方文档 本系列为本人阅读后加工得出,实际内容不止指南篇,还会包含概念,参考等部分.基本等同于全文阅读并笔记.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_基本概念">
+<meta property="og:url" content="http://example.com/ml-20210408-235400-g116/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="引言C#编程指南,内容来自 Microsoft官方文档 本系列为本人阅读后加工得出,实际内容不止指南篇,还会包含概念,参考等部分.基本等同于全文阅读并笔记.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-08T15:54:00.000Z">
+<meta property="article:modified_time" content="2021-04-08T15:54:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210408-235400-g116/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_基本概念 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210408-235400-g116/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_基本概念
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-08 23:54:00" itemprop="dateCreated datePublished" datetime="2021-04-08T23:54:00+08:00">2021-04-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>C#编程指南,内容来自 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/" title="CSharp官方文档">Microsoft官方文档</a></p>
+<p>本系列为本人阅读后加工得出,实际内容不止指南篇,还会包含概念,参考等部分.基本等同于全文阅读并笔记.</p>
+<span id="more"></span>
+
+<h1 id="应用程序启动"><a href="#应用程序启动" class="headerlink" title="应用程序启动"></a>应用程序启动</h1><p>每个应用程序都从<code>Main</code>方法进入<br>但是<code>Main</code>方法并没有任何额外的元数据,所以编译器要求每个应用程序只能拥有一入口.  </p>
+<p><em>以下版本的<code>Main</code>都被视为入口</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span> &#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">int</span> <span class="title">Main</span>(<span class="params"></span>)</span> &#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">int</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果你一定要定义多个<code>入口</code>,可以由编译器设置决定用哪个.</p>
+</blockquote>
+<p>上述例子表明,<code>Main</code>可以接受<code>string[] args</code>,<br>也可以返回<code>int</code>类型.</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>该 <code>string[]</code> 参数包含在启动应用程序时指定的命令行参数.<br><em>详细点说就是从<code>cmd</code>启动时填写在后面的任何追加内容</em></p>
+<p><code>string[]</code>参数决不会为 <code>null</code>,但如果未指定命令行参数，则其长度可能为零.</p>
+<p><code>入口</code><em>不受访问性约束</em>,具体而言执行环境总是可以访问应用程序的入口点,无论其声明的可访问性如何.</p>
+<p>应用程序入口点方法不能在泛型类声明中</p>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>用于<code>应用程序终止</code></p>
+<h1 id="应用程序终止"><a href="#应用程序终止" class="headerlink" title="应用程序终止"></a>应用程序终止</h1><p>如果应用程序的 <code>入口</code> 方法的返回类型为 <code>int</code>, 则返回的值将用作应用程序的 <em>终止状态代码</em>.<br>此代码的目的是允许向执行环境进行成功或失败的通信.</p>
+<p>如果返回值为<code>void</code>,则在运行完毕后默认返回状态代码<code>0</code></p>
+<p>在应用程序终止之前,将调用其所有尚未进行垃圾回收的对象的析构函数.<br>除非已通过调用库方法明确终止, 例如<code>GC.SuppressFinalize</code></p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p><em>声明,是程序员对编辑器的一种交代,这表明程序员知道自己在干什么</em></p>
+<p>字段声明和局部变量声明的顺序决定了其初始值设定的顺序</p>
+<p>如果不声明枚举的值,则枚举成员的声明顺序将隐式且顺序的表达它们的值.</p>
+<blockquote>
+<p>一般声明冲突或者错误,都会有编辑器提醒你.</p>
+</blockquote>
+<h1 id="成员"><a href="#成员" class="headerlink" title="成员"></a>成员</h1><blockquote>
+<p>写在我里面就叫我的成员, 受到到我的随意支配.  </p>
+<blockquote>
+<p>但是基类,接口,构造函数和构析函数有些特殊. 这取决于它们本身,或者声明的可访问性.</p>
+</blockquote>
+</blockquote>
+<h2 id="命名空间成员"><a href="#命名空间成员" class="headerlink" title="命名空间成员"></a>命名空间成员</h2><p>所有没有封闭的命名空间是 <code>全局命名空间</code> 的成员. 这直接对应于它们声明的名称.  </p>
+<p>命名空间中声明的其他命名空间和类型是该命名空间的成员.这直接对应于它们声明的名称.<br>命名空间没有任何访问限制, 不能声明私有,受保护的或内部命名空间,并且命名空间名称始终是可公开访问的.</p>
+<h2 id="结构成员"><a href="#结构成员" class="headerlink" title="结构成员"></a>结构成员</h2><p><code>结构成员</code>是指<code>值类型成员</code>,也就是<code>struct</code>结构<br>他们的成员只包含他们内部声明的成员类型和从值类型基类继承来的成员<code>System.ValueType</code>,<code>object</code></p>
+<h2 id="枚举成员"><a href="#枚举成员" class="headerlink" title="枚举成员"></a>枚举成员</h2><p>枚举的成员是枚举中声明的常量,<br>以及从枚举的直接基类 <code>System.Enum</code> 和间接基类和继承的成员 <code>System.ValueType</code>,<code>object</code></p>
+<h2 id="类成员"><a href="#类成员" class="headerlink" title="类成员"></a>类成员</h2><p>类声明可以包含  </p>
+<ul>
+<li></li>
+<li>常量</li>
+<li>字段</li>
+<li>方法</li>
+<li>属性</li>
+<li>事件</li>
+<li>索引器</li>
+<li>运算符</li>
+<li>实例构造函数</li>
+<li>析构函数</li>
+<li>静态构造函数</li>
+<li>类型的声明</li>
+</ul>
+<blockquote>
+<p><code>类型的声明</code>就是说类型可以嵌套.</p>
+</blockquote>
+<h2 id="接口成员"><a href="#接口成员" class="headerlink" title="接口成员"></a>接口成员</h2><p>就是所有接口.</p>
+<h2 id="数组成员"><a href="#数组成员" class="headerlink" title="数组成员"></a>数组成员</h2><p>来自<code>System.Array</code></p>
+<h2 id="委托成员"><a href="#委托成员" class="headerlink" title="委托成员"></a>委托成员</h2><p><code>System.Delegate</code></p>
+<h1 id="成员访问"><a href="#成员访问" class="headerlink" title="成员访问"></a>成员访问</h1><p>在访问成员时,根据成员声明时存在的区域,以及指定的可访问性来确认是否可以访问.</p>
+<h2 id="声明的可访问性"><a href="#声明的可访问性" class="headerlink" title="声明的可访问性"></a>声明的可访问性</h2><ul>
+<li>Public: 含义为 <em>访问不受限制</em></li>
+<li>Private: 含义为 <em>访问限制为包含类型</em>,即仅限声明的区域使用.</li>
+<li>internal: 含义为 <em>访问此程序限制</em>,即仅限于程序内部访问,可以理解为对自己程序<code>public</code>对外部程序<code>private</code></li>
+<li>Protected：含义为 <em>访问限制为包含类或派生自包含类的类型</em>,对比<code>Private</code>多出了派生类可以访问的权限</li>
+<li>Protected internal: 含义为 <em>访问此程序或派生自包含类的类型</em>, 就是上面两个关键字,是<code>且</code>关系</li>
+</ul>
+<p>当成员声明中不包含任何访问修饰符时,会依据上下文进行判断,给出一个默认的访问权限.</p>
+<ul>
+<li>命名空间隐式为<code>public</code>, 且命名空间声明中不允许使用访问修饰符</li>
+<li>在编译单元或命名空间中声明的类型可以具有 <code>public</code> 或 <code>internal</code> 声明可访问性,并且默认为 <code>internal</code></li>
+<li>类成员可以有全部五种声明的可访问性,默认值为 <code>private</code>.</li>
+<li>结构成员可以有 <code>public</code> 、 <code>internal</code> 或 <code>private</code> 访问性，并且默认为 <code>private</code></li>
+<li>接口成员隐式 <code>public</code> ,接口成员声明中不允许使用访问修饰符。</li>
+<li>枚举成员隐式 <code>public</code> ,枚举成员声明中不允许使用访问修饰符(但枚举本体类似于类)</li>
+</ul>
+<blockquote>
+<p>注意: 可访问性是传递的,如果父类<code>private</code>,子类就不能是<code>public</code>. 编译器会提醒你.</p>
+</blockquote>
+<h1 id="签名和重载"><a href="#签名和重载" class="headerlink" title="签名和重载"></a>签名和重载</h1><p>签名实际是一种约定, 表示方法,索引器,运算符本来的真实面目.<br>编译器的大多数推算都是基于签名的.</p>
+<p><em>举个例子</em><br>方法的签名由方法的<code>名称</code>、<code>类型参数的数目</code>以及其<code>每个形参的类型和种类</code> ，按<em>从左到右</em>的顺序排列</p>
+<p>可见,这其中不包含<code>返回类型</code>. 因为编译器难以推断.<br>同时也不包括<code>参数修饰符</code>和<code>可选参数约束</code></p>
+<p>对于任何形式的重载,必须保证每个重载的签名是唯一的,不然调用时就有歧义.  </p>
+<blockquote>
+<p>编辑器会提示你.</p>
+</blockquote>
+<ul>
+<li><code>out</code>和<code>ref</code>在C#中被视为修饰符,但为了兼容CLI则不可以用其做推断.  </li>
+<li><code>object</code>和<code>dynamic</code>都签名被视为相同类型.</li>
+<li><code>params</code>也不被视为签名的一部分,因为无法区分一个和一群.</li>
+</ul>
+<h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><p>略.</p>
+<ul>
+<li>哪里声明就在哪里使用</li>
+<li>两个区域都拥有同样签名的内容,以较近的域为准.</li>
+<li>注意<code>闭包</code>.</li>
+</ul>
+<h1 id="命名空间和类型名称"><a href="#命名空间和类型名称" class="headerlink" title="命名空间和类型名称"></a>命名空间和类型名称</h1><p>每个命名空间和类型都有一个 <em>完全限定的名称</em></p>
+<p>如<code>System.Int32</code></p>
+<h1 id="自动内存管理"><a href="#自动内存管理" class="headerlink" title="自动内存管理"></a>自动内存管理</h1><p>又称<code>GC</code>  </p>
+<p>如果对象或它的任何部分不能通过任何可能的执行继续进行访问.<br>则将由<code>GC</code>进行收集.<br>并于一个不确定的时间进行统一销毁.</p>
+<blockquote>
+<p>所以实际上被收集但是未被销毁的对象是可以<code>复活</code>的…</p>
+</blockquote>
+<h1 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h1><p>略.</p>
+<p>想保证执行顺序建议使用<code>lock</code>关键字.</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210407-234000-g115/" rel="prev" title="CSharp编程指南_值类型">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_值类型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210410-181700-g117/" rel="next" title="plantuml汇总">
+      plantuml汇总 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8"><span class="nav-number">2.</span> <span class="nav-text">应用程序启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%BB%88%E6%AD%A2"><span class="nav-number">3.</span> <span class="nav-text">应用程序终止</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E5%91%98"><span class="nav-number">5.</span> <span class="nav-text">成员</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E6%88%90%E5%91%98"><span class="nav-number">5.1.</span> <span class="nav-text">命名空间成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E6%88%90%E5%91%98"><span class="nav-number">5.2.</span> <span class="nav-text">结构成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E6%88%90%E5%91%98"><span class="nav-number">5.3.</span> <span class="nav-text">枚举成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98"><span class="nav-number">5.4.</span> <span class="nav-text">类成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%88%90%E5%91%98"><span class="nav-number">5.5.</span> <span class="nav-text">接口成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%88%90%E5%91%98"><span class="nav-number">5.6.</span> <span class="nav-text">数组成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A7%94%E6%89%98%E6%88%90%E5%91%98"><span class="nav-number">5.7.</span> <span class="nav-text">委托成员</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E5%91%98%E8%AE%BF%E9%97%AE"><span class="nav-number">6.</span> <span class="nav-text">成员访问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E7%9A%84%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7"><span class="nav-number">6.1.</span> <span class="nav-text">声明的可访问性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%BE%E5%90%8D%E5%92%8C%E9%87%8D%E8%BD%BD"><span class="nav-number">7.</span> <span class="nav-text">签名和重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">8.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E7%B1%BB%E5%9E%8B%E5%90%8D%E7%A7%B0"><span class="nav-number">9.</span> <span class="nav-text">命名空间和类型名称</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">10.</span> <span class="nav-text">自动内存管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">11.</span> <span class="nav-text">执行顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">12.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

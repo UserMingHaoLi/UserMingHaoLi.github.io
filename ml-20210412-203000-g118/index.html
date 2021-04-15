@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="引用类型根据C#定义,包含以下类型.  class] object dynamic string   interface array delegate   特别注意,null不是引用类型,但与所有引用类型兼容,代表此引用不包含实例.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_引用类型">
+<meta property="og:url" content="http://example.com/ml-20210412-203000-g118/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="引用类型根据C#定义,包含以下类型.  class] object dynamic string   interface array delegate   特别注意,null不是引用类型,但与所有引用类型兼容,代表此引用不包含实例.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-12T12:30:00.000Z">
+<meta property="article:modified_time" content="2021-04-12T12:30:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210412-203000-g118/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_引用类型 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210412-203000-g118/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_引用类型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-12 20:30:00" itemprop="dateCreated datePublished" datetime="2021-04-12T20:30:00+08:00">2021-04-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h1><p>根据C#定义,包含以下类型.</p>
+<ul>
+<li>class]<ul>
+<li>object</li>
+<li>dynamic</li>
+<li>string</li>
+</ul>
+</li>
+<li>interface</li>
+<li>array</li>
+<li>delegate</li>
+</ul>
+<blockquote>
+<p>特别注意,<code>null</code>不是引用类型,但与所有引用类型兼容,代表此引用不包含实例.</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="预定义的特殊引用类型"><a href="#预定义的特殊引用类型" class="headerlink" title="预定义的特殊引用类型"></a>预定义的特殊引用类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>System.Object</td>
+<td>所有其他类型的最终基类</td>
+</tr>
+<tr>
+<td>System.String</td>
+<td>C # 语言的字符串类型</td>
+</tr>
+<tr>
+<td>System.ValueType</td>
+<td>所有值类型的基类</td>
+</tr>
+<tr>
+<td>System.Enum</td>
+<td>所有枚举类型的基类</td>
+</tr>
+<tr>
+<td>System.Array</td>
+<td>所有数组类型的基类</td>
+</tr>
+<tr>
+<td>System.Delegate</td>
+<td>所有委托类型的基类</td>
+</tr>
+<tr>
+<td>System.Exception</td>
+<td>所有异常类型的基类</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>还有我们值类型说过的,几个特殊值类型<code>System.Nullable&lt;T&gt;</code>和<code>System.ValueTuple</code></p>
+</blockquote>
+<h1 id="System-Object"><a href="#System-Object" class="headerlink" title="System.Object"></a>System.Object</h1><p><code>object</code>类型是所有其他类型的最终基类.<br>C # 中的每个类型都直接或间接从 <code>object</code> 类型派生.</p>
+<blockquote>
+<p>后续有机会讲一下<code>object</code>源码</p>
+</blockquote>
+<h1 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h1><p><code>dynamic</code>类型可以引用任何对象,编辑器不会检查任何和<code>dynamic</code>相关的语句,但运行时会检查.<br>所以错误可能推迟到运行时,将引发异常.</p>
+<p><em><code>dynamic</code>和<code>object</code>视为同样的签名</em></p>
+<h1 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h1><p><code>string</code>类型是直接从<code>object</code>继承的密封类, <code>string</code> 表示 <code>Unicode</code> 字符串, 也就是<code>char</code>的合集</p>
+<p><code>string</code>支持直接使用字符串字面量赋值.</p>
+<p>尽管<code>string</code>是引用类型,但是仍然可以使用<code>==</code>,<code>!=</code>来对其进行逐字的比较,这是C#做的优化.<br>这使得对字符串相等性的测试更为直观</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> a = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> b = <span class="string">&quot;h&quot;</span>;</span><br><span class="line">b += <span class="string">&quot;ello&quot;</span>;<span class="comment">//此时生成新的引用字符串</span></span><br><span class="line">Console.WriteLine(a == b);<span class="comment">//true 逐字比较相等</span></span><br><span class="line">Console.WriteLine(<span class="built_in">object</span>.ReferenceEquals(a, b));<span class="comment">//false 引用不相等</span></span><br></pre></td></tr></table></figure>
+
+<p>上述使用的<code>+</code>运算符并非真的进行了链接操作,而是使用两边的字符串生成了一个新的字符串, 所以内存中拥有三个字符串实例.</p>
+<p><strong>字符串是不可变的</strong>,所有看起来改变了值的字符串,都是新的字符串实例.<br>若要使用可变字符串来节省内存,请参考<code>StringBuilder</code>类.</p>
+<p>由于字符串实际是<code>char</code>的合集,所以也可以使用<code>\u0066</code>这种写法,但是要注意对<code>\</code>的转义</p>
+<h1 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h1><p>数组内的元素可以是引用类型或者值类型,但数组本体是引用类型的.<br>所以通过数组本体赋值操作,可以从多个地方访问同一个数组.</p>
+<h1 id="委托类型"><a href="#委托类型" class="headerlink" title="委托类型"></a>委托类型</h1><p>类似于其他语言中的方法指针,此引用类型引用了一个方法的地址.</p>
+<h1 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h1><p>由于值类型<code>ValueType</code>也继承至<code>object</code><br>所以任何值类型可以向<code>object</code>进行强制转换而不损失任何数据.  </p>
+<p>此时将会吧值类型的值放置于堆中, 之后通过<code>object</code>引用访问就是引用类型.<br>下次强制转化会值类型, 也只是从堆中拷贝一份. 这样保持值类型的特性.</p>
+<p>概念上大概如下所示,但实际实现有差别.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> i = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">object</span> box = <span class="keyword">new</span> Box&lt;<span class="built_in">int</span>&gt;(i);</span><br></pre></td></tr></table></figure>
+<p>继续看如下代码</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Point p = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">object</span> box = p;</span><br><span class="line">p.x = <span class="number">20</span>;</span><br><span class="line">Console.Write(((Point)box).x); <span class="comment">//输出10</span></span><br></pre></td></tr></table></figure>
+<p>这时我们知道了,box在堆中创建的内容,实际上只是拷贝.  </p>
+<p>如果我们修改一下</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Point p = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">object</span> box = p;</span><br><span class="line">((Point)box).x = <span class="number">20</span>;<span class="comment">//Error: 无法修改取消装箱转化的结果</span></span><br><span class="line">Console.Write(((Point)box).x);</span><br></pre></td></tr></table></figure>
+<p>想向box内的x赋值是不行的,因为box是<code>object</code>类型,没有<code>x</code>字段.<br>所以需要强制转化回<code>Point</code>类型,但是编辑器提示无法修改,这是因为一定进行转化,就会赋值一份堆上的数据到栈上,但是此时并没有任何临时变量接住这个栈上的值, 所以最后此次修改必定被丢弃,于是编译器阻止了此操作.</p>
+<p><em>拆箱的概念大概如下,实际实现有差异</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">object</span> box = <span class="keyword">new</span> Box&lt;<span class="built_in">int</span>&gt;(<span class="number">123</span>);</span><br><span class="line"><span class="built_in">int</span> i = ((Box&lt;<span class="built_in">int</span>&gt;)box).<span class="keyword">value</span>;</span><br></pre></td></tr></table></figure>
+
+<p>所以如果没有<code>i</code>,那么对于拆出来值的修改,都无法在正文中的到.</p>
+<h1 id="class"><a href="#class" class="headerlink" title="class"></a>class</h1><p>即用户自定义类型</p>
+<p>如下</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Queue</span> &#123;...&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title">Queue</span>&lt;<span class="title">TElement</span>&gt; &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="record"><a href="#record" class="headerlink" title="record"></a>record</h1><p>C#9.0提供,暂时不讲.<br>主要用于提供类似于<code>string</code>的<strong>值相等性</strong></p>
+<h1 id="表达式树"><a href="#表达式树" class="headerlink" title="表达式树"></a>表达式树</h1><p>可以允许你使用代码生成表达式, 很强大,建议专门学习.</p>
+<h1 id="可为null的引用类型"><a href="#可为null的引用类型" class="headerlink" title="可为null的引用类型"></a>可为null的引用类型</h1><p>目前,所有引用类型都是可为<code>null</code>的.但是再<code>C#8.0</code>之后,你可以通过编译器设置来指定默认所有引用类型不可为<code>null</code><br>此时,于可为<code>null</code>的值类型相同,可通过<code>T?</code>来声明可为<code>null</code>的引用类型.  </p>
+<p>这主要是为了避免永无止境的<code>t == null</code>的判断,之前也出过<code>null传播符</code>和<code>null合并运算</code>. 现在总算是除了强制不可为<code>null</code></p>
+<p><strong>编译器不会为不可为 null 的引用类型添加任何运行时检查</strong><br>只在编译器层面报出警告或者错误,这取决于你的项目设置.</p>
+<h1 id="void"><a href="#void" class="headerlink" title="void"></a>void</h1><p><code>void</code>不属于任何类型,通常用于返回值,表示不返回任何值.<br>有些时候还用作表示指向未知类型的指针, 所以归类为引用类型吧.</p>
+<h1 id="var"><a href="#var" class="headerlink" title="var"></a>var</h1><p>由编译器自动推断,运行时不存在var这种类型.</p>
+<h1 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h1><p>对于任何引用类型,如果只定义,不赋值.<br>那么默认值都是<code>null</code><br>如果开启了不可为<code>null</code>模式,则编译器提示你一个警告或者错误.</p>
+<blockquote>
+<p>在运行时,如果 <code>System.Type</code> 实例表示一个值类型,则可以使用 <code>Activator.CreateInstance(Type)</code> 方法来调用无参数构造函数,以获取该类型的默认值.</p>
+</blockquote>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210410-181700-g117/" rel="prev" title="plantuml汇总">
+      <i class="fa fa-chevron-left"></i> plantuml汇总
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210413-222300-g119/" rel="next" title="CSharp编程指南_基本概念">
+      CSharp编程指南_基本概念 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E7%9A%84%E7%89%B9%E6%AE%8A%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">预定义的特殊引用类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#System-Object"><span class="nav-number">3.</span> <span class="nav-text">System.Object</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">动态类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A7%94%E6%89%98%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.</span> <span class="nav-text">委托类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1"><span class="nav-number">8.</span> <span class="nav-text">装箱和拆箱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#class"><span class="nav-number">9.</span> <span class="nav-text">class</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#record"><span class="nav-number">10.</span> <span class="nav-text">record</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91"><span class="nav-number">11.</span> <span class="nav-text">表达式树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E4%B8%BAnull%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">12.</span> <span class="nav-text">可为null的引用类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#void"><span class="nav-number">13.</span> <span class="nav-text">void</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#var"><span class="nav-number">14.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">15.</span> <span class="nav-text">默认值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">16.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="编码约定来自微软官方文档和C#本质论.具体规定还需以实际项目为准.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_基本概念">
+<meta property="og:url" content="http://example.com/ml-20210413-222300-g119/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="编码约定来自微软官方文档和C#本质论.具体规定还需以实际项目为准.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-13T14:23:00.000Z">
+<meta property="article:modified_time" content="2021-04-13T14:23:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210413-222300-g119/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_基本概念 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210413-222300-g119/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_基本概念
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-13 22:23:00" itemprop="dateCreated datePublished" datetime="2021-04-13T22:23:00+08:00">2021-04-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="编码约定"><a href="#编码约定" class="headerlink" title="编码约定"></a>编码约定</h1><p>来自微软官方文档和C#本质论.<br>具体规定还需以实际项目为准.</p>
+<span id="more"></span>
+
+<h1 id="常用规范"><a href="#常用规范" class="headerlink" title="常用规范"></a>常用规范</h1><p>常用规范来自<code>C#本质论</code>的一些不能归类的规范, 比较实用,放到前面讲.</p>
+<ul>
+<li>维护代码时应风格应该接近,<strong>不要特立独行</strong>.</li>
+<li>尽量少使用注释,多编写简单明了的代码  <ul>
+<li>//工作时还是多写注释好点,不能尽信书</li>
+</ul>
+</li>
+<li>不要硬编码!</li>
+<li>如果有算式<code>A()+B()*C()</code> 将会先从左到右计算方法值,再按结合优先级计算乘法，加法.</li>
+<li><code>Assert()</code>断言 导入<code>System.Diagnostics</code>库</li>
+</ul>
+<h1 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h1><p>命名规范来自<code>.Net</code>文档.<br>框架设计准则-&gt;命名准则</p>
+<h2 id="大小写预定"><a href="#大小写预定" class="headerlink" title="大小写预定"></a>大小写预定</h2><p><code>PascalCasing</code> 约定用于除了参数名称外的所有标识符，使每个单词的第一个字符大写.</p>
+<p><code>CamelCasing</code> 约定仅用于参数名称，将每个单词的第一个字符（除第一个单词之外）设为大写</p>
+<blockquote>
+<p>实际上<code>CamelCasing</code>还用做非公开字段.</p>
+</blockquote>
+<p><strong>不要假设所有编程语言都区分大小写。 它们不是。 名称不能单独区分</strong></p>
+<h2 id="通用命名约定"><a href="#通用命名约定" class="headerlink" title="通用命名约定"></a>通用命名约定</h2><ul>
+<li>选择易于阅读的标识符名称</li>
+<li>提高可读性比简洁更好</li>
+<li><strong>不要</strong>使用下划线、连字符或任何其他非字母数字字符<ul>
+<li>吐槽下:下划线也不能用吗?用了好多年了…</li>
+</ul>
+</li>
+<li><strong>不要</strong>使用匈牙利表示法</li>
+<li>避免使用与广泛使用的编程语言的关键字冲突的标识符</li>
+<li>避免使用常见关键字的<code>@</code>版本</li>
+<li><strong>不要</strong>使用缩写作为标识符名称的一部分</li>
+<li>要使用未被广泛接受的任何首字母缩写，即使被广泛接受,也只在必要时使用</li>
+<li>确实使用有语义的名称，而不是类型名称的特定于语言的关键字<ul>
+<li>例如， <code>GetLength</code> 是比<code>GetInt</code> 更好的名称 </li>
+<li>在极少数情况下,如果标识符没有超出其类型的语义含义,则使用其语言的特定名称, 如<code>ToInt64</code>而不是<code>ToLong</code>(因为 <code>Int64</code> 是特定于 <code>c #</code> 的别名)</li>
+</ul>
+</li>
+<li>使用公用名（如 <code>value</code> 或 <code>item</code> ），而不是重复类型名称</li>
+<li>命名现有 Api 的新版本时<ul>
+<li>使用类似于旧 API 的名称</li>
+<li>添加后缀（而非前缀）<ul>
+<li>这将有助于在浏览文档,旧版本的 API 将被组织到新的 Api 附近,因为大部分文本阅读器都有基于首字母排序</li>
+</ul>
+</li>
+<li>考虑使用全新但有意义的标识符,而不是重复标识符</li>
+<li>使用数字后缀来指示现有 API 的新版本<ul>
+<li>除非 API 的现有名称是有意义的唯一名称, 例如行业标准</li>
+</ul>
+</li>
+<li><strong>不要</strong>使用标识符的 “Ex” (或类似的) 后缀来区分它与早期版本的同一 API</li>
+</ul>
+</li>
+</ul>
+<h2 id="程序集和-DLL-的名称"><a href="#程序集和-DLL-的名称" class="headerlink" title="程序集和 DLL 的名称"></a>程序集和 DLL 的名称</h2><p><code>&lt;Company&gt;.&lt;Component&gt;.dll</code></p>
+<h2 id="命名空间的名称"><a href="#命名空间的名称" class="headerlink" title="命名空间的名称"></a>命名空间的名称</h2><ul>
+<li>使用公司名称作为命名空间名称的前缀，以防不同公司的命名空间具有相同的名称</li>
+<li>在命名空间名称的第二级使用稳定的独立于版本的产品名称</li>
+<li><strong>不要</strong>使用组织层次结构作为命名空间层次结构中的名称的基础，因为公司内的组名通常是短期的</li>
+<li>使用 <code>PascalCasing</code></li>
+<li>考虑在适当的情况下使用复数命名空间名称<ul>
+<li>例如，请使用 <code>System.Collections </code>而不是<code> System.Collection</code></li>
+<li>品牌名称和首字母缩写是此规则的例外情况</li>
+<li>使用 <code>System.IO</code> 而不是 <code>System.IOs</code></li>
+</ul>
+</li>
+<li><strong>不要</strong>为命名空间和该命名空间中的类型使用相同的名称</li>
+<li><strong>不要</strong>引入泛型类型名称如<code>Element</code>,<code>Node</code>,<code>Message </code></li>
+<li>不要提供会与核心命名空间中的任何类型冲突的类型名称<ul>
+<li>这里的<code>核型</code>一般指<code>System</code>或你项目中经常,必须使用的空间.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>以上内容只是建议,还是应当以公司内部规定为主</p>
+</blockquote>
+<h2 id="类、结构和接口的名称"><a href="#类、结构和接口的名称" class="headerlink" title="类、结构和接口的名称"></a>类、结构和接口的名称</h2><ul>
+<li><strong>不要</strong>为类名称指定前缀</li>
+<li>考虑用基类的名称结束派生类的名称<ul>
+<li>一种 <code>ArgumentOutOfRangeException</code>, <code>Exception</code></li>
+<li>一种 <code>SerializableAttribute</code>, <code>Attribute</code> </li>
+</ul>
+</li>
+<li>使用字母 <code>I</code> 来为接口名称加上前缀，以指示该类型是接口</li>
+<li>使用描述性名称命名泛型类型参数</li>
+<li>考虑使用 <code>T</code> 作为具有一个单字母类型参数的类型的类型参数名称</li>
+</ul>
+<p>当命名类型派生自或实现某些 .NET Framework 类型时， 按照下表中所述的指导原则进行操作</p>
+<table>
+<thead>
+<tr>
+<th>基类型</th>
+<th>实现类型准则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>System.Attribute</td>
+<td>✔️将后缀 “Attribute” 添加到自定义特性类的名称中</td>
+</tr>
+<tr>
+<td>System.Delegate</td>
+<td>✔️将后缀 “EventHandler” 添加到在事件中使用的委托的名称</td>
+</tr>
+<tr>
+<td></td>
+<td>✔️将后缀 “Callback” 添加到作为事件处理程序使用的委托的名称</td>
+</tr>
+<tr>
+<td></td>
+<td>❌ 不要将后缀 “Delegate” 添加到委托。</td>
+</tr>
+<tr>
+<td>System.EventArgs</td>
+<td>✔️添加后缀 “EventArgs”</td>
+</tr>
+<tr>
+<td>System.Enum</td>
+<td>❌ 不要从此类派生;改为使用您的语言支持的关键字;例如，在 c # 中，使用 enum 关键字</td>
+</tr>
+<tr>
+<td></td>
+<td>❌ 不要添加后缀 “Enum” 或 “标志”</td>
+</tr>
+<tr>
+<td>System.Exception</td>
+<td>✔️添加后缀 “Exception”</td>
+</tr>
+<tr>
+<td>IDictionary</td>
+<td></td>
+</tr>
+<tr>
+<td>IDictionary&lt;TKey,TValue&gt;</td>
+<td>✔️添加后缀 “Dictionary”。 请注意， IDictionary 是一种特定类型的集合，但是此准则优先于下面的更常见的集合原则。</td>
+</tr>
+<tr>
+<td>IEnumerable</td>
+<td></td>
+</tr>
+<tr>
+<td>ICollection</td>
+<td></td>
+</tr>
+<tr>
+<td>IList</td>
+<td></td>
+</tr>
+<tr>
+<td>IEnumerable<T></td>
+<td></td>
+</tr>
+<tr>
+<td>ICollection<T></td>
+<td></td>
+</tr>
+<tr>
+<td>IList<T></td>
+<td>✔️添加后缀 “Collection”。</td>
+</tr>
+<tr>
+<td>System.IO.Stream</td>
+<td>✔️添加后缀 “Stream”。</td>
+</tr>
+<tr>
+<td>CodeAccessPermission IPermission</td>
+<td>✔️添加后缀 “Permission”</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>不要</strong>在枚举类型名称中使用 “Enum” 后缀<br><strong>不要</strong>在枚举类型名称中使用 “Flag” 或 “Flags” 后缀。<br><strong>不要</strong>在枚举值名称上使用前缀 (例如，将 “ad” 用于 ADO 枚举，使用 “rtf” 进行丰富文本枚举等 ) </p>
+</blockquote>
+<h2 id="类型成员的名称"><a href="#类型成员的名称" class="headerlink" title="类型成员的名称"></a>类型成员的名称</h2><ul>
+<li><strong>不要</strong>有与 “Get” 方法的名称相匹配的属性</li>
+<li>在布尔属性前面添加 “Is”、”Can” 或 “has” 前缀</li>
+<li>考虑为属性提供与其类型相同的名称</li>
+<li>例如，以下属性可正确获取和设置名为 <code>Color</code> 的枚举值，因此属性名为 <code>Color</code></li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> Color &#123;...&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Control</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Color Color &#123; <span class="keyword">get</span> &#123;...&#125; <span class="keyword">set</span> &#123;...&#125; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>不要使用 “Before” 或 “After” 前后缀来表示事件的先后.</p>
+</li>
+<li><p>命名事件处理程序应该使用 “EventHandler” 后缀的事件类型  </p>
+</li>
+<li><p>用 “EventArgs” 后缀命名事件参数类</p>
+</li>
+<li><p>不要对字段名称使用前缀</p>
+</li>
+</ul>
+<h2 id="命名参数"><a href="#命名参数" class="headerlink" title="命名参数"></a>命名参数</h2><ul>
+<li>考虑使用基于参数含义而不是参数类型的名称</li>
+<li><strong>不要</strong>对运算符重载参数名称使用缩写或数值索引</li>
+</ul>
+<h2 id="命名资源"><a href="#命名资源" class="headerlink" title="命名资源"></a>命名资源</h2><ul>
+<li>在命名资源中仅使用字母数字字符和下划线</li>
+<li>对异常消息资源使用以下命名约定<ul>
+<li>资源标识符应为异常类型名称和异常的简短标识符</li>
+<li>ArgumentExceptionIllegalCharacters </li>
+<li>ArgumentExceptionInvalidName </li>
+<li>ArgumentExceptionFileNameIsMalformed</li>
+</ul>
+</li>
+</ul>
+<h2 id="额外"><a href="#额外" class="headerlink" title="额外"></a>额外</h2><p>标识符不应包含两个连续的 <code>_</code> 字符。 这些名称保留给编译器生成的标识符</p>
+<h1 id="布局约定"><a href="#布局约定" class="headerlink" title="布局约定"></a>布局约定</h1><ul>
+<li>使用默认的代码编辑器设置(智能缩进、4 字符缩进、制表符保存为空格)</li>
+<li>每行只写一条语句</li>
+<li>每行只写一个声明</li>
+<li>如果连续行未自动缩进,请将它们缩进一个制表符位(四个空格).</li>
+<li>在方法定义与属性定义之间添加至少一个空白行</li>
+<li>使用括号突出表达式中的子句，如下面的代码所示</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((val1 &gt; val2) &amp;&amp; (val1 &gt; val3))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Take appropriate action.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="注释约定"><a href="#注释约定" class="headerlink" title="注释约定"></a>注释约定</h1><ul>
+<li>将注释放在单独的行上，而非代码行的末尾</li>
+<li>以大写字母开始注释文本</li>
+<li>以句点结束注释文本</li>
+<li>在注释分隔符 <code>//</code> 与注释文本之间插入一个空格,如下面的示例所示</li>
+<li>请勿在注释周围创建格式化的星号块,<ul>
+<li>即不要混用<code>//</code>和<code>/**/</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The following declaration creates a query. It does not run</span></span><br><span class="line"><span class="comment">// the query.</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="语言准则"><a href="#语言准则" class="headerlink" title="语言准则"></a>语言准则</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p><em>使用字符串内插来编写文本字面量</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> displayName = <span class="string">$&quot;<span class="subst">&#123;nameList[n].LastName&#125;</span>, <span class="subst">&#123;nameList[n].FirstName&#125;</span>&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>经常追加字符串,请使用<code>StringBuilder</code></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phrase = <span class="string">&quot;lalalalalalalalalalalalalalalalalalalalalalalalalalalalalala&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> manyPhrases = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    manyPhrases.Append(phrase);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Console.WriteLine(&quot;tra&quot; + manyPhrases);</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在字符串前面书写<code>@</code>可以逐个描述.所有内容不会被转义例如<code>@“/n/t”</code>会原样输出,不会被转义.  <ul>
+<li>跨平台换行可以使用<code>System.Environment.NewLine</code>  </li>
+<li><code>WriteLine</code>就是这样实现的.</li>
+</ul>
+</li>
+</ul>
+<h2 id="隐式类型本地变量"><a href="#隐式类型本地变量" class="headerlink" title="隐式类型本地变量"></a>隐式类型本地变量</h2><ul>
+<li>当变量类型明显来自赋值的右侧时,或者当精度类型不重要时,请对本地变量进行隐式类型化</li>
+<li>当类型并非明显来自赋值的右侧时,请勿使用 <code>var</code><ul>
+<li>请勿假设类型明显来自方法名称, 即使对于<code>X.ToInt()</code>函数,也不应该使用<code>var</code></li>
+<li>为<code>new</code>运算符, 推荐用<code>var</code></li>
+<li>显式强制转换, 推荐<code>var</code></li>
+</ul>
+</li>
+<li>请勿使用名称来代指类型, 如<code>var inputInt</code>, 这是不正确的.</li>
+<li>需要运行时进行推理,请使用<code>dynamic</code></li>
+<li>对于<code>for</code>循环,使用<code>var</code>来定义<code>i</code>.</li>
+<li>但对于<code>foreach</code>循环,则不应该使用<code>var</code>来定义<code>item</code></li>
+</ul>
+<blockquote>
+<p>对于所有迭代,不应该修改其内部的值, 运行时会报错.</p>
+</blockquote>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>通常使用<code>int</code>, 这更容易与其他开发者交互.</li>
+<li>使用<code>TryParse</code>而不是<code>Parse</code></li>
+<li><code>++i</code>和<code>i++</code>都<strong>不是线程安全</strong>的!!!<ul>
+<li><code>c++</code>的<code>i++</code>和<code>++i</code>在同一句的话，取决于编译器.<strong>不要</strong>让他们在同一句是最好的</li>
+<li>由于可能的复制黏贴，所以c#也应该注意点.少些++,歧义非常大.</li>
+</ul>
+</li>
+<li>如果你要使用数学常量，尝试<code>System.Math</code>空间.</li>
+<li>二进制负数,开头为1标记为负数.此时将他们为0的位置视为倒转的1. 即111….001=-7<ul>
+<li>所以10000….00就是最小的负数.</li>
+<li>对于左移和右移操作符.空出来的位置正数填0,负数填1</li>
+</ul>
+</li>
+</ul>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>如果能确认初始化内容,则使用简易的初始化</p>
+<p><em>简易初始化不能使用<code>var</code></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>[] vowels1 = &#123; <span class="string">&quot;a&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;i&quot;</span>, <span class="string">&quot;o&quot;</span>, <span class="string">&quot;u&quot;</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><em>显示初始化可以使用<code>var</code></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vowels2 = <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;a&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;i&quot;</span>, <span class="string">&quot;o&quot;</span>, <span class="string">&quot;u&quot;</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于交错数组和二维数组,他们的Length有点特殊,需要注意</li>
+</ul>
+<h2 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h2><p>尽量使用<code>C#</code>内置的<code>Func&lt;&gt;</code>和<code>Action&lt;&gt;</code>, 这有利于其他开发者理解其内容.</p>
+<p><em>简单方法可以直接使用委托形式创建</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Action&lt;<span class="built_in">string</span>&gt; ActionExample1 = x =&gt; Console.WriteLine(<span class="string">$&quot;x is: <span class="subst">&#123;x&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Action&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; ActionExample2 = (x, y) =&gt; </span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;x is: <span class="subst">&#123;x&#125;</span>, y is <span class="subst">&#123;y&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Func&lt;<span class="built_in">string</span>, <span class="built_in">int</span>&gt; FuncExample1 = x =&gt; Convert.ToInt32(x);</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>, <span class="built_in">int</span>&gt; FuncExample2 = (x, y) =&gt; x + y;</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>对于可能发生异常的地方,要积极的使用<code>try-catch</code>语句</p>
+<p>通过使用<code>using</code>语句来调用<code>IDisposable</code>释放资源.</p>
+<blockquote>
+<p>在 <code>C# 8</code> 及更高版本中，使用无需大括号的新的 <code>using</code> 语法</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C#8.0</span></span><br><span class="line"><span class="keyword">using</span> Font font3 = <span class="keyword">new</span> Font(<span class="string">&quot;Arial&quot;</span>, <span class="number">10.0f</span>);</span><br><span class="line"><span class="built_in">byte</span> charset3 = font3.GdiCharSet;</span><br></pre></td></tr></table></figure>
+
+<h2 id="amp-amp-和-运算符"><a href="#amp-amp-和-运算符" class="headerlink" title="&amp;&amp;和||运算符"></a>&amp;&amp;和||运算符</h2><p>尽量使用短路运算符<code>&amp;&amp;</code>和<code>||</code><br>它们尽可能少的计算表达式, 对以下列子很有用</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pizz != <span class="literal">null</span> &amp;&amp; pizz.IsOver())</span><br><span class="line">&#123;</span><br><span class="line">	 Console.WriteLine(<span class="string">$&quot;pizz = <span class="subst">&#123;pizz&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果此时使用的是非短路的<code>&amp;</code>,则必定会执行后面的一个表达式,导致有可能抛出空引用异常.<br>而短路形式的<code>&amp;&amp;</code>则会终止与<code>pizz != null</code>, 不再执行后续内容.</p>
+<h2 id="new运算符"><a href="#new运算符" class="headerlink" title="new运算符"></a>new运算符</h2><p>使用<code>var</code>来调用<code>new</code>关键字</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> ExampleClass();</span><br></pre></td></tr></table></figure>
+
+<p>使用对象初始化器</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance3 = <span class="keyword">new</span> ExampleClass </span><br><span class="line">	&#123; </span><br><span class="line">		Name = <span class="string">&quot;Desktop&quot;</span>,</span><br><span class="line">		ID = <span class="number">37414</span>,</span><br><span class="line">		Location = <span class="string">&quot;Redmond&quot;</span>,</span><br><span class="line">		Age = <span class="number">2.3</span> </span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="默认关键字"><a href="#默认关键字" class="headerlink" title="默认关键字"></a>默认关键字</h2><ul>
+<li>对于变量名字的输出,尽量使用<code>nameof</code>关键字</li>
+<li>如果可能,多使用<code>default</code>关键字来初始化变量</li>
+</ul>
+<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><p>对于临时的函数,使用<code>lambda</code>表达式</p>
+<h2 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h2><p>总是使用最明确的路径调用静态成员<code>ClassName.StaticMember</code><br>如果使用子类调用父类的静态成员,则子类自己可以使用相同成员,并破坏代码的预期.</p>
+<h2 id="LINQ查询"><a href="#LINQ查询" class="headerlink" title="LINQ查询"></a>LINQ查询</h2><p>对于查询结果的集合总是用有意义的名字,避免大家总是看繁琐的表达式.<br>对于查询结果的集合总是声明<code>var</code>变量存储</p>
+<p>对于查询出来的小写字段,使用别名包装成大写,用于遵守<code>Pascal </code>风格</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> localDistributors =</span><br><span class="line">    <span class="keyword">from</span> customer <span class="keyword">in</span> customers</span><br><span class="line">    <span class="keyword">join</span> distributor <span class="keyword">in</span> distributors <span class="keyword">on</span> customer.City <span class="keyword">equals</span> distributor.City</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">new</span> &#123; Customer = customer, Distributor = distributor &#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果有必要,为这些结果重命名为更准确的词汇,比如用<code>CustomerName</code>代替<code>Name</code></p>
+</blockquote>
+<p>对齐 <code>from</code> 子句下的查询子句.</p>
+<p>在其他查询子句之前使用 <code>where</code> 子句，以确保后面的查询子句作用于经过减少和筛选的数据集</p>
+<p>使用多行 from 子句代替 join 子句以访问内部集合</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h1><p>略.</p>
+<p>请查看官方安全编码准则.</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210412-203000-g118/" rel="prev" title="CSharp编程指南_引用类型">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_引用类型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210415-213300-g120/" rel="next" title="plantuml汇总">
+      plantuml汇总 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">编码约定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">常用规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">3.</span> <span class="nav-text">命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E9%A2%84%E5%AE%9A"><span class="nav-number">3.1.</span> <span class="nav-text">大小写预定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%91%BD%E5%90%8D%E7%BA%A6%E5%AE%9A"><span class="nav-number">3.2.</span> <span class="nav-text">通用命名约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%9B%86%E5%92%8C-DLL-%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="nav-number">3.3.</span> <span class="nav-text">程序集和 DLL 的名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="nav-number">3.4.</span> <span class="nav-text">命名空间的名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E3%80%81%E7%BB%93%E6%9E%84%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="nav-number">3.5.</span> <span class="nav-text">类、结构和接口的名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%88%90%E5%91%98%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="nav-number">3.6.</span> <span class="nav-text">类型成员的名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E5%8F%82%E6%95%B0"><span class="nav-number">3.7.</span> <span class="nav-text">命名参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%B5%84%E6%BA%90"><span class="nav-number">3.8.</span> <span class="nav-text">命名资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96"><span class="nav-number">3.9.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E7%BA%A6%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">布局约定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%E7%BA%A6%E5%AE%9A"><span class="nav-number">5.</span> <span class="nav-text">注释约定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%87%86%E5%88%99"><span class="nav-number">6.</span> <span class="nav-text">语言准则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">6.1.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E6%9C%AC%E5%9C%B0%E5%8F%98%E9%87%8F"><span class="nav-number">6.2.</span> <span class="nav-text">隐式类型本地变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">6.4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A7%94%E6%89%98"><span class="nav-number">6.5.</span> <span class="nav-text">委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number">6.6.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-amp-%E5%92%8C-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.7.</span> <span class="nav-text">&amp;&amp;和||运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.8.</span> <span class="nav-text">new运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">6.9.</span> <span class="nav-text">默认关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">6.10.</span> <span class="nav-text">事件处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="nav-number">6.11.</span> <span class="nav-text">静态成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LINQ%E6%9F%A5%E8%AF%A2"><span class="nav-number">6.12.</span> <span class="nav-text">LINQ查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">安全性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">9.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
