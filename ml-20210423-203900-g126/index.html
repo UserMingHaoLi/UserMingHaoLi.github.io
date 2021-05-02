@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="快速参考为不具有 in、ref 或 out 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为.  params 指定此参数采用可变数量的参数。 in 指定此参数由引用传递，但只由调用方法读取。 ref 指定此参数由引用传递，可能由调用方法读取或写入。 out 指定此参数由引用传递，由调用方法写入。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_方法参数关键字">
+<meta property="og:url" content="http://example.com/ml-20210423-203900-g126/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="快速参考为不具有 in、ref 或 out 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为.  params 指定此参数采用可变数量的参数。 in 指定此参数由引用传递，但只由调用方法读取。 ref 指定此参数由引用传递，可能由调用方法读取或写入。 out 指定此参数由引用传递，由调用方法写入。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-23T12:39:00.000Z">
+<meta property="article:modified_time" content="2021-04-23T12:39:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210423-203900-g126/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_方法参数关键字 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210423-203900-g126/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_方法参数关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-23 20:39:00" itemprop="dateCreated datePublished" datetime="2021-04-23T20:39:00+08:00">2021-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="快速参考"><a href="#快速参考" class="headerlink" title="快速参考"></a>快速参考</h1><p>为不具有 <code>in</code>、<code>ref</code> 或 <code>out</code> 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为.</p>
+<ul>
+<li><code>params</code> 指定此参数采用可变数量的参数。</li>
+<li><code>in</code> 指定此参数由引用传递，但只由调用方法读取。</li>
+<li><code>ref</code> 指定此参数由引用传递，可能由调用方法读取或写入。</li>
+<li><code>out</code> 指定此参数由引用传递，由调用方法写入。</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="params"><a href="#params" class="headerlink" title="params"></a>params</h1><p>使用 <code>params</code> 关键字可以指定采用数目可变的参数的方法参数。 参数类型必须是一维数组</p>
+<p>在方法声明中的 <code>params</code> 关键字之后不允许有任何其他参数，并且在方法声明中只允许有一个 <code>params</code> 关键字</p>
+<p>使用 params 参数调用方法时，可以传入：</p>
+<ul>
+<li>数组元素类型的参数的逗号分隔列表。</li>
+<li>指定类型的参数的数组。</li>
+<li>无参数。 如果未发送任何参数，则 <code>params</code> 列表的长度为<code>零</code></li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">UseParams</span>(<span class="params"><span class="keyword">params</span> <span class="built_in">int</span>[] list</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; list.Length; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Console.Write(list[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Console.WriteLine();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="in"><a href="#in" class="headerlink" title="in"></a>in</h1><p><code>in</code> 关键字会导致按引用传递参数，但确保未修改参数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> readonlyArgument = <span class="number">44</span>;</span><br><span class="line">InArgExample(readonlyArgument);</span><br><span class="line">Console.WriteLine(readonlyArgument);     <span class="comment">// value is still 44</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InArgExample</span>(<span class="params"><span class="keyword">in</span> <span class="built_in">int</span> number</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Uncomment the following line to see error CS8331</span></span><br><span class="line">    <span class="comment">//number = 19;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>调用处通常不需要 <code>in</code> 修饰符。 仅在方法声明中需要它</em></p>
+<blockquote>
+<p><code>in</code> 关键字还作为 <code>foreach</code> 语句的一部分，或作为 <code>LINQ</code> 查询中 <code>join</code> 子句的一部分，与泛型类型参数一起使用来指定该类型参数为逆变</p>
+</blockquote>
+<p><em><code>in</code> 参数修饰符可在 <code>C# 7.2</code> 及更高版本中使用</em></p>
+<p><strong><code>in</code>、<code>ref</code> 和 <code>out</code> 关键字不被视为用于重载决议的方法签名的一部分</strong></p>
+<p><em>定义使用 <code>in</code> 参数的方法是一项潜在的性能优化</em><br> 某些 <code>struct</code> 类型参数可能很大，在紧凑的循环或关键代码路径中调用方法时，复制这些结构的成本就很高<br> 这能节省一些性能,又不会造成更多安全隐患</p>
+<blockquote>
+<p>为了简化操作，前面的代码将 <code>int</code> 用作参数类型。 因为大多数新式计算机中的引用都比 <code>int</code> 大，所以将单个 <code>int</code> 作为只读引用传递没有任何好处</p>
+</blockquote>
+<p>不能将 <code>in</code>,<code>ref</code> 和 <code>out</code> 关键字用于以下几种方法：<br>异步方法，通过使用 <code>async</code> 修饰符定义。<br>迭代器方法，包括 <code>yield return</code> 或 <code>yield break</code> 语句。<br>扩展方法的第一个参数不能有 <code>in</code> 修饰符，除非该参数是结构。<br>扩展方法的第一个参数，其中该参数是泛型类型（即使该类型被约束为结构。）</p>
+<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><p><code>ref</code> 关键字指示按引用传递值</p>
+<ul>
+<li>在方法签名和方法调用中，按引用将参数传递给方法</li>
+<li>在方法签名中，按引用将值返回给调用方, 指<code>return ref</code></li>
+<li>在成员正文中，指示引用返回值是否作为调用方欲修改的引用被存储在本地。 或指示局部变量按引用访问另一个值。</li>
+<li>在 <code>struct</code> 声明中，声明 <code>ref struct</code> 或 <code>readonly ref struct</code></li>
+</ul>
+<blockquote>
+<p>当通过引用传递时，不会对值类型装箱</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Method</span>(<span class="params"><span class="keyword">ref</span> <span class="built_in">int</span> refArgument</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    refArgument = refArgument + <span class="number">44</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> number = <span class="number">1</span>;</span><br><span class="line">Method(<span class="keyword">ref</span> number);</span><br><span class="line">Console.WriteLine(number);</span><br><span class="line"><span class="comment">// Output: 45</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="引用返回值"><a href="#引用返回值" class="headerlink" title="引用返回值"></a>引用返回值</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">ref</span> <span class="built_in">int</span> <span class="title">Find</span>(<span class="params"><span class="built_in">int</span>[,] matrix, Func&lt;<span class="built_in">int</span>, <span class="built_in">bool</span>&gt; predicate</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; matrix.GetLength(<span class="number">0</span>); i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">0</span>; j &lt; matrix.GetLength(<span class="number">1</span>); j++)</span><br><span class="line">            <span class="keyword">if</span> (predicate(matrix[i, j]))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">ref</span> matrix[i, j];</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="string">&quot;Not found&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>调用此方法,并修改其返回值,实际结果可以反应到数组中.</em></p>
+<blockquote>
+<p>调用方法还可能会将返回值声明为 <code>ref readonly</code> 以按引用返回值，并坚持调用代码无法修改返回的值<br>这和上面的<code>in</code>是差不多的理念</p>
+</blockquote>
+<h2 id="ref-局部变量"><a href="#ref-局部变量" class="headerlink" title="ref 局部变量"></a>ref 局部变量</h2><p>ref 局部变量用于指代使用 return ref 返回的值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ref</span> <span class="built_in">decimal</span> estValue = <span class="function"><span class="keyword">ref</span> <span class="title">Find</span>(<span class="params">matrix, predicate</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>所以调用上面返回引用的方法就需要这个.</p>
+<p>也可以直接转化为临时引用对象</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ref</span> VeryLargeStruct reflocal = <span class="keyword">ref</span> veryLargeStruct;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从 <code>C# 7.3</code> 开始，<code>foreach</code> 语句的迭代变量可以是 <code>ref</code> 局部变量，也可以是 <code>ref readonly</code> 局部变量<br>从 <code>C# 7.3</code> 开始，可以使用 <code>ref</code> 赋值运算符重新分配 <code>ref local</code> 或 <code>ref readonly local</code> 变量</p>
+</blockquote>
+<h2 id="Ref-readonly-局部变量"><a href="#Ref-readonly-局部变量" class="headerlink" title="Ref readonly 局部变量"></a>Ref readonly 局部变量</h2><p><code>Ref readonly</code> 局部变量用于指代在其签名中具有 <code>ref readonly</code> 并使用 <code>return ref</code> 的方法或属性返回的值<br>所以说用法同上,只不过是拿<code>return ref readonly</code>的返回值</p>
+<h1 id="out-关键字通过引用传递参数"><a href="#out-关键字通过引用传递参数" class="headerlink" title="out 关键字通过引用传递参数"></a>out 关键字通过引用传递参数</h1><p>想用<code>out</code> 也可以参阅下<code>元组</code></p>
+<p><code>out</code>与 <code>ref</code> 关键字相似，只不过 <code>ref</code> 要求在传递之前初始化变量<br>作为 <code>out</code> 参数传递的变量在方法调用中传递之前不必进行初始化。 但是被调用的方法需要在返回之前赋一个值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> initializeInMethod;</span><br><span class="line">OutArgExample(<span class="keyword">out</span> initializeInMethod);</span><br><span class="line">Console.WriteLine(initializeInMethod);     <span class="comment">// value is now 44</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OutArgExample</span>(<span class="params"><span class="keyword">out</span> <span class="built_in">int</span> number</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    number = <span class="number">44</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>out</code> 关键字也可与泛型类型参数结合使用，以指定该类型参数是协变参数</p>
+</blockquote>
+<p>使用 <code>out</code> 参数声明方法是返回多个值的经典解决方法。 自 <code>C# 7.0</code> 起，可以考虑针对类似方案使用<code>值元组</code></p>
+<p>从 <code>C# 7.0</code> 开始，可以在方法调用的参数列表而不是单独的变量声明中声明 <code>out</code> 变量</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Int32.TryParse(numberAsString, <span class="keyword">out</span> <span class="built_in">int</span> number)</span><br><span class="line">Int32.TryParse(numberAsString, <span class="keyword">out</span> <span class="keyword">var</span> number) <span class="comment">//var也可以</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>所以大部分用途其实是性能优化,或者修改目标本体的值.</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210422-220900-g125/" rel="prev" title="plantuml使用指南_用例图">
+      <i class="fa fa-chevron-left"></i> plantuml使用指南_用例图
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210423-214900-g127/" rel="next" title="CSharp编程指南_命名空间关键字">
+      CSharp编程指南_命名空间关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">快速参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#params"><span class="nav-number">2.</span> <span class="nav-text">params</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in"><span class="nav-number">3.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref"><span class="nav-number">4.</span> <span class="nav-text">ref</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">4.1.</span> <span class="nav-text">引用返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref-%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">4.2.</span> <span class="nav-text">ref 局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref-readonly-%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">4.3.</span> <span class="nav-text">Ref readonly 局部变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#out-%E5%85%B3%E9%94%AE%E5%AD%97%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">out 关键字通过引用传递参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">6.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

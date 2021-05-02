@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简单示例123456789101112131415161718@startuml plantuml模板left to right directionactor Guest as gpackage Professional&amp;#123;    actor Chef as c    actor &quot;Food Critic&quot; as fc&amp;#125;package Restaurant&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="plantuml使用指南_用例图">
+<meta property="og:url" content="http://example.com/ml-20210416-201600-g121/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="简单示例123456789101112131415161718@startuml plantuml模板left to right directionactor Guest as gpackage Professional&amp;#123;    actor Chef as c    actor &quot;Food Critic&quot; as fc&amp;#125;package Restaurant&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-16T12:16:00.000Z">
+<meta property="article:modified_time" content="2021-04-16T12:16:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="写作">
+<meta property="article:tag" content="UML">
+<meta property="article:tag" content="PlantUML">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210416-201600-g121/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>plantuml使用指南_用例图 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210416-201600-g121/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          plantuml使用指南_用例图
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-16 20:16:00" itemprop="dateCreated datePublished" datetime="2021-04-16T20:16:00+08:00">2021-04-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">写作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line">left to right direction</span><br><span class="line">actor Guest as g</span><br><span class="line">package Professional&#123;</span><br><span class="line">    actor Chef as c</span><br><span class="line">    actor &quot;Food Critic&quot; as fc</span><br><span class="line">&#125;</span><br><span class="line">package Restaurant&#123;</span><br><span class="line">    usecase &quot;Eat Food&quot; as UC1</span><br><span class="line">    usecase &quot;Pay for Food&quot; as UC2</span><br><span class="line">    usecase &quot;Drink&quot; as UC3</span><br><span class="line">    usecase &quot;Review&quot; as UC4</span><br><span class="line">&#125;</span><br><span class="line">fc --&gt; UC4</span><br><span class="line">g --&gt; UC1</span><br><span class="line">g --&gt; UC2</span><br><span class="line">g --&gt; UC3</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>(content)</code>声明椭圆用例<br>也可以使用定义关键字<code>usecase content</code>,效果等同</p>
+<p>使用<code>&quot;content&quot;</code>声明角色<br>也可以使用定义关键字<code>actor content</code>,效果等同</p>
+<p>关键字<code>package content&#123;...&#125;</code>来声明一个包,用于分组</p>
+<p>使用<code>--&gt;</code>来链接用例</p>
+<blockquote>
+<p>之后的高级内容快速过一遍,不必要强行使用,等需要的时候再来学习即可.</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="重要高级内容索引"><a href="#重要高级内容索引" class="headerlink" title="重要高级内容索引"></a>重要高级内容索引</h1><ul>
+<li>声明用例</li>
+<li>声明角色</li>
+<li>使用包</li>
+<li>一个完整的例子</li>
+</ul>
+<p><em>选修</em></p>
+<ul>
+<li>更改角色样式</li>
+<li>用例描述</li>
+<li>连线</li>
+<li>继承</li>
+<li>注释(note)</li>
+<li>改变箭头方向</li>
+<li>变更线的颜色和样式</li>
+<li>变更Item颜色和样式</li>
+</ul>
+<p><em>没啥用</em></p>
+<ul>
+<li>构造类型</li>
+<li>分割图示</li>
+<li>从左往右构图</li>
+<li>显示参数</li>
+<li>切角的usecase</li>
+<li>切角的actor</li>
+</ul>
+<hr>
+<h1 id="声明用例"><a href="#声明用例" class="headerlink" title="声明用例"></a>声明用例</h1><p>关键字<code>usecase content</code>声明椭圆用例<br>快速方式则可以使用<em>圆括号</em><code>(content)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">(用例1)</span><br><span class="line">(用例2) as UA</span><br><span class="line">usecase 用例3</span><br><span class="line">usecase 用例4 as UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p><em>同样可以使用<code>as</code>指定别名</em></p>
+<h1 id="声明角色"><a href="#声明角色" class="headerlink" title="声明角色"></a>声明角色</h1><p>关键字<code>actor content</code>声明一个角色<br>快速方式则可以使用<em>两个引号</em><code>:content:</code><br>就是一个小人形状的Item</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">:角色1:</span><br><span class="line">:角色2: as UA</span><br><span class="line">actor 角色3</span><br><span class="line">actor 角色4 as UB</span><br><span class="line">不定义的角色1 -&gt; 不定义的角色2</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,允许不进行任何声明直接使用,就是角色</em></p>
+<h1 id="更改角色样式"><a href="#更改角色样式" class="headerlink" title="更改角色样式"></a>更改角色样式</h1><p>预处理关键字如下  </p>
+<ul>
+<li>skinparam actorStyle awesome</li>
+<li>skinparam actorStyle hellow</li>
+</ul>
+<h2 id="火柴人-默认"><a href="#火柴人-默认" class="headerlink" title="火柴人(默认)"></a>火柴人(默认)</h2><p>同<code>角色</code>,不演示了</p>
+<h2 id="用户头像"><a href="#用户头像" class="headerlink" title="用户头像"></a>用户头像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">skinparam actorStyle awesome</span><br><span class="line">:角色1:</span><br><span class="line">:角色2: as UA</span><br><span class="line">actor 角色3</span><br><span class="line">actor 角色4 as UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h2 id="透明人"><a href="#透明人" class="headerlink" title="透明人"></a>透明人</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">skinparam actorStyle hollow</span><br><span class="line">:角色1:</span><br><span class="line">:角色2: as UA</span><br><span class="line">actor 角色3</span><br><span class="line">actor 角色4 as UB</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="用例描述"><a href="#用例描述" class="headerlink" title="用例描述"></a>用例描述</h1><p>实际就是在用例中使用<code>通用</code>篇章内的语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line"></span><br><span class="line">usecase UA as &quot;</span><br><span class="line">正常文字</span><br><span class="line">--</span><br><span class="line">&#x2F;&#x2F;斜体文字&#x2F;&#x2F;</span><br><span class="line">&#x3D;标题</span><br><span class="line">&#x3D;&#x3D;</span><br><span class="line">..虚线包裹..&quot;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用包"><a href="#使用包" class="headerlink" title="使用包"></a>使用包</h1><p>关键字<code>package content&#123;..&#125;</code></p>
+<p>同<code>简单示例</code>,不演示了</p>
+<h1 id="连线"><a href="#连线" class="headerlink" title="连线"></a>连线</h1><p>使用<code>-&gt;</code>连线,其中<code>-</code>越多线越长</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">actor User1</span><br><span class="line">actor MainAdmin</span><br><span class="line">User1 --&gt; (Start)</span><br><span class="line">User1 --&gt; (User The App) : Label1</span><br><span class="line">MainAdmin ---&gt; (User The App) : Label2</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>下方有讲两个额外的线</p>
+<ul>
+<li><code>.&gt;</code>表示虚线箭头</li>
+<li><code>--</code>表示无箭头</li>
+</ul>
+<blockquote>
+<p>实时上还可以有很多种线,例如<code>-&gt;&gt;</code>也可以使用</p>
+</blockquote>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>使用<code>&lt;|--</code>表示继承<br>就是绘制一个空心箭头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">:UA: --|&gt; :UB: </span><br><span class="line">(TA) --|&gt; (TB)</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="注释-note"><a href="#注释-note" class="headerlink" title="注释(note)"></a>注释(note)</h1><p>就是<code>通用</code>介绍过的<code>note</code>  </p>
+<p>这次的注释可以通过<code>as</code>关键字指定别名<br>之后可以当作一个Item使用,与其他Item相连<br>想要指定别名,就不能使用区块模式,也就不能指定方向.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">note &quot;this note&quot; as N1</span><br><span class="line">:UA: --|&gt; N1</span><br><span class="line">N1 --|&gt; :UB: </span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="构造类型"><a href="#构造类型" class="headerlink" title="构造类型"></a>构造类型</h1><p>和<code>时序图</code>类似,你可以使用关键字<code>&lt;&lt;content&gt;&gt;</code>来定义构造<br>也就是多加一行信息到Item</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">User &lt;&lt; Human &gt;&gt; </span><br><span class="line">:Main Database: as MySql &lt;&lt; Application &gt;&gt; </span><br><span class="line">(Start) &lt;&lt;(你,#AADDBB) One Shot &gt;&gt; </span><br><span class="line">(Use the application) as (Use) &lt;&lt; Main &gt;&gt;</span><br><span class="line"></span><br><span class="line">User -&gt; (Start) </span><br><span class="line">User --&gt; (Use)</span><br><span class="line">MySql --&gt; (Use)</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,即使使用了<code>(content,color)</code>格式,也没有什么变化</em><br><em>这在用例图中无效,但也不会报错</em></p>
+<h1 id="改变箭头方向"><a href="#改变箭头方向" class="headerlink" title="改变箭头方向"></a>改变箭头方向</h1><p><code>--</code>表示竖向<br><code>-</code>表示横向</p>
+<p>还可以反转箭头来转向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">:UA: --&gt; UB</span><br><span class="line">UC -&gt; UA</span><br><span class="line">:UD: &lt;-- UC</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>或者给箭头添加方向书写来改变方向  </p>
+<ul>
+<li>-left</li>
+<li>-right</li>
+<li>-up</li>
+<li>-down</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line">actor user</span><br><span class="line">user -left-&gt; (dummyLeft)</span><br><span class="line">user -right-&gt; (dummyRight) </span><br><span class="line">user -up-&gt; (dummyUp) </span><br><span class="line">user -down-&gt; (dummyDown)</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="分割图示"><a href="#分割图示" class="headerlink" title="分割图示"></a>分割图示</h1><p>还是老朋友<code>newpage</code><br>还是一如既往的没啥用,不演示了</p>
+<h1 id="从左往右构图"><a href="#从左往右构图" class="headerlink" title="从左往右构图"></a>从左往右构图</h1><p>预处理关键字<code>top to bottom direction</code><br>还有<code>left to right direction</code></p>
+<p><code>简单示例</code>就是一个变种的例子,不演示了</p>
+<h1 id="显示参数"><a href="#显示参数" class="headerlink" title="显示参数"></a>显示参数</h1><p>一堆预处理参数,都是<code>skinparam</code><br>和时序图差不了太多,感兴趣看文档,不演示了.</p>
+<h1 id="一个完整的例子"><a href="#一个完整的例子" class="headerlink" title="一个完整的例子"></a>一个完整的例子</h1><p>和简单示例差不多的感觉…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">left to right direction</span><br><span class="line">skinparam packageStyle rectangle</span><br><span class="line">actor UA</span><br><span class="line">actor UB</span><br><span class="line">rectangle checkout &#123;</span><br><span class="line">  usecase T3</span><br><span class="line">  usecase T2</span><br><span class="line">  usecase T1</span><br><span class="line">&#125;</span><br><span class="line">UA -- T2</span><br><span class="line">T2 -- UB</span><br><span class="line">T2 .&gt; T1 : &quot;T2 to T1&quot; </span><br><span class="line">T3 .&gt; T2 : &quot;T3 to T2&quot;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>里面有些新东西  </p>
+<ul>
+<li><code>.&gt;</code>表示虚线箭头</li>
+<li><code>--</code>表示无箭头</li>
+</ul>
+<h1 id="切角的usecase"><a href="#切角的usecase" class="headerlink" title="切角的usecase"></a>切角的usecase</h1><p>关键字<code>usecase/</code>来替换<code>usercase</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">usecase&#x2F; UA</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="切角的actor"><a href="#切角的actor" class="headerlink" title="切角的actor"></a>切角的actor</h1><p>关键字<code>actor/</code>来替换<code>actor</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">actor&#x2F; UA</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="变更线的颜色和样式"><a href="#变更线的颜色和样式" class="headerlink" title="变更线的颜色和样式"></a>变更线的颜色和样式</h1><p>文档上的提示是<br><code>#color;line.[bold|dashed|dotted];text:color</code><br>实际是<br><code>#[color|line:color];line.[bold|dashed|dotted];text:color</code></p>
+<p>有如下几个关键字<br>需要在画线语句之后跟进使用,并用<code>;</code>间隔</p>
+<ul>
+<li><code>line:color</code></li>
+<li><code>line.style</code><ul>
+<li><code>line.bold</code></li>
+<li><code>line.dashed</code></li>
+<li><code>line.dotted</code></li>
+</ul>
+</li>
+<li><code>text:color</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">actor foo</span><br><span class="line">usecase bar</span><br><span class="line">usecase bar1</span><br><span class="line">usecase bar2</span><br><span class="line">usecase bar3</span><br><span class="line">foo --&gt; bar : normal</span><br><span class="line">foo --&gt;&gt; bar1 #line:red;line.bold;text:red : red bold</span><br><span class="line">foo --&gt;&gt; bar2 #line:green;line.dashed;text:green : green dashed</span><br><span class="line">foo --&gt;&gt; bar3 #line:blue;line.dotted;text:blue : blue dotted</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="变更Item颜色和样式"><a href="#变更Item颜色和样式" class="headerlink" title="变更Item颜色和样式"></a>变更Item颜色和样式</h1><p>文档上的提示是<br><code>#[color|back:color];line:color;line.[bold|dashed|dotted];text:color</code>  </p>
+<p>有如下几个关键字  </p>
+<ul>
+<li><code>back:color</code></li>
+<li><code>line:color</code></li>
+<li><code>line.style</code><ul>
+<li><code>line.bold</code></li>
+<li><code>line.dashed</code></li>
+<li><code>line.dotted</code></li>
+</ul>
+</li>
+<li><code>text:color</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">actor normal</span><br><span class="line">actor &quot;red bold&quot; #back:pink;line:red;line.bold;text:red</span><br><span class="line">usecase &quot;green dashed&quot; #back:palegreen;line:green;line.dashed;text:green</span><br><span class="line">usecase &quot;blue dotted&quot; #back:alicablue;line:blue;line.dotted;text:blue</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/%E5%86%99%E4%BD%9C/" rel="tag"># 写作</a>
+              <a href="/tags/UML/" rel="tag"># UML</a>
+              <a href="/tags/PlantUML/" rel="tag"># PlantUML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210415-213300-g120/" rel="prev" title="plantuml使用指南_时序图">
+      <i class="fa fa-chevron-left"></i> plantuml使用指南_时序图
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210417-212800-g122/" rel="next" title="CSharp编程指南_访问修饰符关键字">
+      CSharp编程指南_访问修饰符关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">简单示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E9%AB%98%E7%BA%A7%E5%86%85%E5%AE%B9%E7%B4%A2%E5%BC%95"><span class="nav-number">2.</span> <span class="nav-text">重要高级内容索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E7%94%A8%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">声明用例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E8%A7%92%E8%89%B2"><span class="nav-number">4.</span> <span class="nav-text">声明角色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%A7%92%E8%89%B2%E6%A0%B7%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">更改角色样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%81%AB%E6%9F%B4%E4%BA%BA-%E9%BB%98%E8%AE%A4"><span class="nav-number">5.1.</span> <span class="nav-text">火柴人(默认)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F"><span class="nav-number">5.2.</span> <span class="nav-text">用户头像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E4%BA%BA"><span class="nav-number">5.3.</span> <span class="nav-text">透明人</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E6%8F%8F%E8%BF%B0"><span class="nav-number">6.</span> <span class="nav-text">用例描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8C%85"><span class="nav-number">7.</span> <span class="nav-text">使用包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E7%BA%BF"><span class="nav-number">8.</span> <span class="nav-text">连线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">9.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A-note"><span class="nav-number">10.</span> <span class="nav-text">注释(note)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E7%B1%BB%E5%9E%8B"><span class="nav-number">11.</span> <span class="nav-text">构造类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E7%AE%AD%E5%A4%B4%E6%96%B9%E5%90%91"><span class="nav-number">12.</span> <span class="nav-text">改变箭头方向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E5%9B%BE%E7%A4%BA"><span class="nav-number">13.</span> <span class="nav-text">分割图示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E5%B7%A6%E5%BE%80%E5%8F%B3%E6%9E%84%E5%9B%BE"><span class="nav-number">14.</span> <span class="nav-text">从左往右构图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%8F%82%E6%95%B0"><span class="nav-number">15.</span> <span class="nav-text">显示参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">16.</span> <span class="nav-text">一个完整的例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E8%A7%92%E7%9A%84usecase"><span class="nav-number">17.</span> <span class="nav-text">切角的usecase</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E8%A7%92%E7%9A%84actor"><span class="nav-number">18.</span> <span class="nav-text">切角的actor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E6%9B%B4%E7%BA%BF%E7%9A%84%E9%A2%9C%E8%89%B2%E5%92%8C%E6%A0%B7%E5%BC%8F"><span class="nav-number">19.</span> <span class="nav-text">变更线的颜色和样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E6%9B%B4Item%E9%A2%9C%E8%89%B2%E5%92%8C%E6%A0%B7%E5%BC%8F"><span class="nav-number">20.</span> <span class="nav-text">变更Item颜色和样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">21.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

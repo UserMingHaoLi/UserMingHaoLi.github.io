@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="修饰符都属于关键字一类.关键字是预定义的保留标识符，对编译器有特殊意义.除非前面有 @ 前缀，否则不能在程序中用作标识符   关键字一览任意部分关键字           abstract as base bool   break byte case catch   char checked class const   continue decimal default delegate   do">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_修饰符关键字">
+<meta property="og:url" content="http://example.com/ml-20210417-220700-g123/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="修饰符都属于关键字一类.关键字是预定义的保留标识符，对编译器有特殊意义.除非前面有 @ 前缀，否则不能在程序中用作标识符   关键字一览任意部分关键字           abstract as base bool   break byte case catch   char checked class const   continue decimal default delegate   do">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-17T14:07:00.000Z">
+<meta property="article:modified_time" content="2021-04-17T14:07:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210417-220700-g123/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_修饰符关键字 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210417-220700-g123/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_修饰符关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-17 22:07:00" itemprop="dateCreated datePublished" datetime="2021-04-17T22:07:00+08:00">2021-04-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>修饰符都属于关键字一类.<br>关键字是预定义的保留标识符，对编译器有特殊意义.<br>除非前面有 <code>@</code> 前缀，否则不能在程序中用作标识符  </p>
+<h1 id="关键字一览"><a href="#关键字一览" class="headerlink" title="关键字一览"></a>关键字一览</h1><p>任意部分关键字</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abstract</td>
+<td>as</td>
+<td>base</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>break</td>
+<td>byte</td>
+<td>case</td>
+<td>catch</td>
+</tr>
+<tr>
+<td>char</td>
+<td>checked</td>
+<td>class</td>
+<td>const</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>decimal</td>
+<td>default</td>
+<td>delegate</td>
+</tr>
+<tr>
+<td>do</td>
+<td>double</td>
+<td>else</td>
+<td>enum</td>
+</tr>
+<tr>
+<td>event</td>
+<td>explicit</td>
+<td>extern</td>
+<td>false</td>
+</tr>
+<tr>
+<td>finally</td>
+<td>fixed</td>
+<td>float</td>
+<td>for</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>goto</td>
+<td>if</td>
+<td>implicit</td>
+</tr>
+<tr>
+<td>in</td>
+<td>int</td>
+<td>interface</td>
+<td>internal</td>
+</tr>
+<tr>
+<td>is</td>
+<td>lock</td>
+<td>long</td>
+<td>namespace</td>
+</tr>
+<tr>
+<td>new</td>
+<td>null</td>
+<td>object</td>
+<td>operator</td>
+</tr>
+<tr>
+<td>out</td>
+<td>override</td>
+<td>params</td>
+<td>private</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>public</td>
+<td>readonly</td>
+<td>ref</td>
+</tr>
+<tr>
+<td>return</td>
+<td>sbyte</td>
+<td>sealed</td>
+<td>short</td>
+</tr>
+<tr>
+<td>sizeof</td>
+<td>stackalloc</td>
+<td>static</td>
+<td>string</td>
+</tr>
+<tr>
+<td>struct</td>
+<td>switch</td>
+<td>this</td>
+<td>throw</td>
+</tr>
+<tr>
+<td>true</td>
+<td>try</td>
+<td>typeof</td>
+<td>uint</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>unchecked</td>
+<td>unsafe</td>
+<td>ushort</td>
+</tr>
+<tr>
+<td>using</td>
+<td>virtual</td>
+<td>void</td>
+<td>volatile</td>
+</tr>
+<tr>
+<td>while</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<p>上下文关键字</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>and</td>
+<td>alias</td>
+</tr>
+<tr>
+<td>ascending</td>
+<td>async</td>
+<td>await</td>
+</tr>
+<tr>
+<td>by</td>
+<td>descending</td>
+<td>dynamic</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>from</td>
+<td>get</td>
+</tr>
+<tr>
+<td>global</td>
+<td>group</td>
+<td>init</td>
+</tr>
+<tr>
+<td>into</td>
+<td>join</td>
+<td>let</td>
+</tr>
+<tr>
+<td>nameof</td>
+<td>nint</td>
+<td>not</td>
+</tr>
+<tr>
+<td>notnull</td>
+<td>nuint</td>
+<td>on</td>
+</tr>
+<tr>
+<td>or</td>
+<td>orderby</td>
+<td>partial（类型）</td>
+</tr>
+<tr>
+<td>partial（方法）</td>
+<td>record</td>
+<td>remove</td>
+</tr>
+<tr>
+<td>select</td>
+<td>set</td>
+<td>unmanaged（泛型类型约束）</td>
+</tr>
+<tr>
+<td>value</td>
+<td>var</td>
+<td>when（筛选条件）</td>
+</tr>
+<tr>
+<td>where（泛型类型约束）</td>
+<td>where（查询子句）</td>
+<td>with</td>
+</tr>
+<tr>
+<td>yield</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+
+<h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p><code>访问修饰符</code>请参阅另一篇单独的<a target="_blank" rel="noopener" href="https://github.com/UserMingHaoLi/ML_HexoBlogContentBackUp/blob/master/Content/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97_%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6.md">CSharp编程指南_访问修饰符</a></p>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><p>用于指定抽象类和抽象方法.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Shape</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="built_in">int</span> <span class="title">GetArea</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象方法是隐式的虚拟方法(<code>virtual</code>)</p>
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>指定方法为异步.</p>
+<p>说明此方法包含 <code>await</code> 语句；也包含异步操作</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;<span class="built_in">int</span>&gt; <span class="title">ExampleMethodAsync</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>常用于被<code>await</code>关键字修饰调用.</em><br><em>若如此做,此方法将会挂起并等待完成,之后再继续</em>  </p>
+<p><strong>这是上下文关键字,只有使用在方法定义时,才作为关键字</strong></p>
+<p>lambda和匿名方法都属于方法.</p>
+<p>异步方法可以有以下返回类型</p>
+<ul>
+<li>Task</li>
+<li>Task<TResult></li>
+<li>void</li>
+<li>从 C# 7.0 开始，任何具有可访问的 <code>GetAwaiter</code> 方法的类型都可以作为异步访问<ul>
+<li>参阅 <code>System.Threading.Tasks.ValueTask&lt;TResult&gt; </code></li>
+<li><code>System.Threading.Tasks.Extensions</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><p>声明常量</p>
+<p>常量是不变量,运行是不能进行任何更改,</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">int</span> X = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>常量只能有可识别的字面量组合, 包括<code>String</code>和<code>null</code><br>常量自己也是字面量.</p>
+<h1 id="event"><a href="#event" class="headerlink" title="event"></a>event</h1><p>用于声明事件<br>事件是委托的进一步包装</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//委托</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="keyword">void</span> <span class="title">SampleEventHandler</span>(<span class="params"><span class="built_in">object</span> sender, SampleEventArgs e</span>)</span>;</span><br><span class="line"><span class="comment">//事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">event</span> SampleEventHandler SampleEvent;</span><br></pre></td></tr></table></figure>
+
+<p>事件是一种特殊的多播委托<br>仅可以从声明的类中进行<code>=</code>操作和<code>调用</code>操作.</p>
+<p><em>事件可以自定义<code>Add</code>和<code>Remove</code>方法</em></p>
+<h1 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h1><p><code>extern</code> 修饰符用于声明在外部实现的方法<br>这经常用于导入外部<code>dll</code>文件.  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">DllImport(<span class="meta-string">&quot;avifil32.dll&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">AVIFileInit</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
+<p><em>这样便可以使用<code>avifil32.dll</code>中的<code>AVIFileInit</code>方法了</em></p>
+<blockquote>
+<p><code>extern</code>关键字还可以用来指定<code>外部别名</code>,用于处理程序集名称相同的情况</p>
+</blockquote>
+<h1 id="in-泛型修饰符"><a href="#in-泛型修饰符" class="headerlink" title="in(泛型修饰符)"></a>in(泛型修饰符)</h1><p><code>in</code> 关键字可指定泛型的类型参数是逆变的</p>
+<p>逆变使你使用的类型可以比泛型参数指定的类型派生程度更小<br>也就是说,需要一个父类,你可以传入一个子类.</p>
+<p>但是代价则是,你只能将声明为逆变的类型用作参数,而非返回值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IContravariant&lt;Object&gt; iobj = <span class="keyword">new</span> Sample&lt;Object&gt;();</span><br><span class="line">IContravariant&lt;String&gt; istr = <span class="keyword">new</span> Sample&lt;String&gt;();</span><br><span class="line">istr = iobj;</span><br><span class="line"><span class="comment">//现在可以通过传入`String`来调用原本的iobj. 这不会报错,因为`T`被限制只用作参数</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="new-成员修饰符"><a href="#new-成员修饰符" class="headerlink" title="new(成员修饰符)"></a>new(成员修饰符)</h1><p>在用作声明修饰符时，<code>new</code> 关键字可以显式隐藏从基类继承的成员<br>可以不使用 <code>new</code> 修饰符来隐藏成员，但将收到编译器警告,编译器为你生成隐藏的<code>new</code></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BaseC</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> x;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Invoke</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DerivedC</span> : <span class="title">BaseC</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Invoke</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>可见, 若要隐藏不是可派生类型的父类成员,可以使用<code>new</code>声明一个同名的成员</em></p>
+<p>new 修饰符会用同样的名称创建一个新成员并使原始成员变为隐藏</p>
+<h1 id="out-泛型修饰符"><a href="#out-泛型修饰符" class="headerlink" title="out(泛型修饰符)"></a>out(泛型修饰符)</h1><p><code>out</code> 关键字可指定泛型的类型参数是协变的</p>
+<p>协变使你使用的类型可以比泛型参数指定的类型派生程度更大<br>也就是说,需要一个子类,你可以传入一个父类.</p>
+<p>但是代价则是,你只能将声明为协变的类型用作返回值,而非参数</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;Object&gt; iobj = <span class="keyword">new</span> IEnumerable&lt;Object&gt;();</span><br><span class="line">IEnumerable&lt;String&gt; istr = <span class="keyword">new</span> IEnumerable&lt;String&gt;();</span><br><span class="line">iobj = istr;</span><br><span class="line"><span class="comment">//现在调用`iobj`实际是在调用`istr`这不会报错,因为`T`被限制只用作返回.  所以需求`Object`返回值的泛型自然可以接受`String`类型</span></span><br></pre></td></tr></table></figure>
+
+<p>此规则有一个例外。 如果在协变接口中将逆变泛型委托用作方法参数，则可以将协变类型用作此委托的泛型类型参数</p>
+<blockquote>
+<p>说实话没看懂,别搞骚操作就是了.</p>
+</blockquote>
+<h1 id="override"><a href="#override" class="headerlink" title="override"></a>override</h1><p>扩展或修改继承父类的成员.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Shape</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="built_in">int</span> <span class="title">GetArea</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Square</span> : <span class="title">Shape</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> side;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Square</span>(<span class="params"><span class="built_in">int</span> n</span>)</span> =&gt; side = n;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// GetArea method is required to avoid a compile-time error.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">int</span> <span class="title">GetArea</span>(<span class="params"></span>)</span> =&gt; side * side;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> sq = <span class="keyword">new</span> Square(<span class="number">12</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Area of the square = <span class="subst">&#123;sq.GetArea()&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output: Area of the square = 144</span></span><br></pre></td></tr></table></figure>
+
+<p>对于定义为<code>virtual</code>的父类成员,需要使用<code>override</code>来覆盖.<br><em><code>abstract</code>实际是隐藏的<code>virtual</code></em><br><em><code>override</code>本身也是隐藏的<code>virtual</code></em></p>
+<p><em>C# 9.0 开始，override 方法支持协变返回类型</em></p>
+<h1 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h1><p>在字段声明中，<code>readonly</code> 指示只能在声明期间或在同一个类的构造函数中向字段赋值.  </p>
+<p>由于值类型直接包含数据，因此属于 <code>readonly</code> 值类型的字段不可变<br>由于引用类型包含对其数据的引用，因此属于 readonly 引用类型的字段必须始终引用同一对象。 该对象是可变的.<br><em>类似于地址不变,堆内容可变</em><br><em>由于这不安全也不符合预期,将生成一个警告</em></p>
+<ul>
+<li>在 <code>readonly struct</code> 类型定义中，<code>readonly</code> 指示结构类型是不可变的</li>
+<li>在结构类型内的实例成员声明中，<code>readonly</code> 指示实例成员不修改结构的状态</li>
+<li>在 <code>ref readonly</code> 方法返回中,指示该方法返回一个引用，且不允许向该引用写入内容.<ul>
+<li>所返回的类型不需要为 <code>readonly struct</code>。 <code>ref</code> 能返回的任何类型都能由 <code>ref readonly</code> 返回</li>
+</ul>
+</li>
+</ul>
+<h1 id="sealed"><a href="#sealed" class="headerlink" title="sealed"></a>sealed</h1><p>应用于某个类时,<code>sealed</code>修饰符可阻止其他类继承自己  </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">A</span> &#123;&#125;</span><br><span class="line"><span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">B</span> : <span class="title">A</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><em><code>B</code>无法再次被继承</em></p>
+<p>不对类使用而对基类中的虚方法或属性的方法或属性使用 <code>sealed</code> 修饰符<br>这使你可以允许类派生自你的类并防止它们替代特定虚方法或属性</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">X</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">F</span>(<span class="params"></span>)</span> &#123; Console.WriteLine(<span class="string">&quot;X.F&quot;</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">F2</span>(<span class="params"></span>)</span> &#123; Console.WriteLine(<span class="string">&quot;X.F2&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Y</span> : <span class="title">X</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">sealed</span> <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">F</span>(<span class="params"></span>)</span> &#123; Console.WriteLine(<span class="string">&quot;Y.F&quot;</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">F2</span>(<span class="params"></span>)</span> &#123; Console.WriteLine(<span class="string">&quot;Y.F2&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Z</span> : <span class="title">Y</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">F2</span>(<span class="params"></span>)</span> &#123; Console.WriteLine(<span class="string">&quot;Z.F2&quot;</span>); &#125;</span><br><span class="line">	<span class="comment">//无法重写F()</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结构是隐式密封的,所以无法继承结构</strong></p>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><p>使用 <code>static</code> 修饰符可声明属于类型本身而不是属于特定对象的静态成员</p>
+<p>拥有此声明的成员无需实例即可访问.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title">CompanyEmployee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DoSomething</span>(<span class="params"></span>)</span> &#123; <span class="comment">/*...*/</span> &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DoSomethingElse</span>(<span class="params"></span>)</span> &#123; <span class="comment">/*...*/</span>  &#125;</span><br><span class="line">&#125;</span><br><span class="line">CompanyEmployee.DoSomething();<span class="comment">//无需实例化</span></span><br></pre></td></tr></table></figure>
+<p><em>这导致,每个 static 字段只有一个副本</em></p>
+<p><strong>类可以不声明为<code>static</code>,但如果声明了,则其中只能由<code>static</code>成员</strong><br><em>这种类可以用来做<code>扩展函数</code></em></p>
+<p><em>从 <code>C# 8.0</code>开始，可以将 <code>static</code> 修饰符添加到本地函数。 静态本地函数无法捕获局部变量或实例状态</em></p>
+<p><em>从 <code>C# 9.0</code> 开始，可将 <code>static</code> 修饰符添加到 <code>Lambda</code> 表达式或匿名方法。 静态<code>Lambda</code>表达式或匿名方法无法捕获局部变量或实例状态</em></p>
+<h1 id="unsafe"><a href="#unsafe" class="headerlink" title="unsafe"></a>unsafe</h1><p><code>unsafe</code> 关键字表示不安全上下文，该上下文是任何涉及<code>指针</code>的操作所必需的</p>
+<h1 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h1><p><code>virtual</code>用于指定自己的成员可以被子类重写</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">&#123;</span><br><span class="line">`	<span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="built_in">double</span> <span class="title">Area</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">return</span> x * y;</span><br><span class="line">	&#125;`</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">B</span>:<span class="title">A</span></span><br><span class="line">&#123;</span><br><span class="line">`	<span class="function"><span class="keyword">public</span> Override <span class="built_in">double</span> <span class="title">Area</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		<span class="keyword">return</span> x * y + <span class="number">1</span>;</span><br><span class="line">	&#125;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>虚拟成员的实现可由派生类中的替代成员更改</em></p>
+<p>调用虚拟方法时，将为替代的成员检查该对象的运行时类型<br>如果没有替代该成员，则它可能是原始成员</p>
+<p><em>默认情况下，方法是非虚拟的。 不能替代非虚方法</em></p>
+<h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><p><code>volatile</code> 关键字指示一个字段可以由多个同时执行的线程修改。 出于性能原因，编译器，运行时系统甚至硬件都可能重新排列对存储器位置的读取和写入</p>
+<p><em><code>double</code> 和 <code>long</code>无法标记为 <code>volatile</code>，因为对这些类型的字段的读取和写入不能保证是原子的</em></p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210417-212800-g122/" rel="prev" title="CSharp编程指南_访问修饰符关键字">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_访问修饰符关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210420-231700-g124/" rel="next" title="CSharp编程指南_语句关键字">
+      CSharp编程指南_语句关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%80%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">关键字一览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract"><span class="nav-number">2.1.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async"><span class="nav-number">2.2.</span> <span class="nav-text">async</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">3.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#event"><span class="nav-number">4.</span> <span class="nav-text">event</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">5.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in-%E6%B3%9B%E5%9E%8B%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">6.</span> <span class="nav-text">in(泛型修饰符)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new-%E6%88%90%E5%91%98%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">7.</span> <span class="nav-text">new(成员修饰符)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#out-%E6%B3%9B%E5%9E%8B%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">8.</span> <span class="nav-text">out(泛型修饰符)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#override"><span class="nav-number">9.</span> <span class="nav-text">override</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#readonly"><span class="nav-number">10.</span> <span class="nav-text">readonly</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sealed"><span class="nav-number">11.</span> <span class="nav-text">sealed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#static"><span class="nav-number">12.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unsafe"><span class="nav-number">13.</span> <span class="nav-text">unsafe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">14.</span> <span class="nav-text">virtual</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">15.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">16.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

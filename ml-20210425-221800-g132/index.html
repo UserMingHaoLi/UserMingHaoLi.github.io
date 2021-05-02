@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="上下文关键字用于在代码中提供特定含义，但它不是 C# 中的保留字只在特定上下文中用作关键字.    关键字 说明    add 定义一个自定义事件访问器，客户端代码订阅事件时会调用该访问器。   and 创建在两个嵌套模式均匹配时匹配的模式。   async 指示修改后的方法、lambda 表达式或匿名方法是异步的。   await 挂起异步方法，直到等待的任务完成。   dynamic 定义一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_上下文关键字">
+<meta property="og:url" content="http://example.com/ml-20210425-221800-g132/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="上下文关键字用于在代码中提供特定含义，但它不是 C# 中的保留字只在特定上下文中用作关键字.    关键字 说明    add 定义一个自定义事件访问器，客户端代码订阅事件时会调用该访问器。   and 创建在两个嵌套模式均匹配时匹配的模式。   async 指示修改后的方法、lambda 表达式或匿名方法是异步的。   await 挂起异步方法，直到等待的任务完成。   dynamic 定义一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-25T14:18:00.000Z">
+<meta property="article:modified_time" content="2021-04-25T14:18:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210425-221800-g132/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_上下文关键字 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210425-221800-g132/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_上下文关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-25 22:18:00" itemprop="dateCreated datePublished" datetime="2021-04-25T22:18:00+08:00">2021-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>上下文关键字用于在代码中提供特定含义，但它不是 C# 中的保留字<br>只在特定上下文中用作关键字.</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>定义一个自定义事件访问器，客户端代码订阅事件时会调用该访问器。</td>
+</tr>
+<tr>
+<td>and</td>
+<td>创建在两个嵌套模式均匹配时匹配的模式。</td>
+</tr>
+<tr>
+<td>async</td>
+<td>指示修改后的方法、lambda 表达式或匿名方法是异步的。</td>
+</tr>
+<tr>
+<td>await</td>
+<td>挂起异步方法，直到等待的任务完成。</td>
+</tr>
+<tr>
+<td>dynamic</td>
+<td>定义一个引用类型，实现发生绕过编译时类型检查的操作。</td>
+</tr>
+<tr>
+<td>get</td>
+<td>为属性或索引器定义访问器方法。</td>
+</tr>
+<tr>
+<td>global</td>
+<td>未以其他方式命名的全局命名空间的别名。</td>
+</tr>
+<tr>
+<td>init</td>
+<td>为属性或索引器定义访问器方法。</td>
+</tr>
+<tr>
+<td>nint</td>
+<td>定义本机大小的整数数据类型。</td>
+</tr>
+<tr>
+<td>not</td>
+<td>创建在否定模式不匹配时匹配的模式。</td>
+</tr>
+<tr>
+<td>nuint</td>
+<td>定义本机大小的无符号整数数据类型。</td>
+</tr>
+<tr>
+<td>or</td>
+<td>创建在任一嵌套模式匹配时匹配的模式。</td>
+</tr>
+<tr>
+<td>partial</td>
+<td>在整个同一编译单元内定义分部类、结构和接口。</td>
+</tr>
+<tr>
+<td>record</td>
+<td>用于定义记录类型。</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>定义一个自定义事件访问器，客户端代码取消订阅事件时会调用该访问器。</td>
+</tr>
+<tr>
+<td>set</td>
+<td>为属性或索引器定义访问器方法。</td>
+</tr>
+<tr>
+<td>value</td>
+<td>用于设置访问器和添加或删除事件处理程序。</td>
+</tr>
+<tr>
+<td>var</td>
+<td>使编译器能够确定在方法作用域中声明的变量类型。</td>
+</tr>
+<tr>
+<td>when</td>
+<td>指定 catch 块的筛选条件或 switch 语句的 case 标签。</td>
+</tr>
+<tr>
+<td>where</td>
+<td>将约束添加到泛型声明。 （另请参阅 where）。</td>
+</tr>
+<tr>
+<td>yield</td>
+<td>在迭代器块中使用，用于向枚举数对象返回值或用于表示迭代结束。</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h1 id="add"><a href="#add" class="headerlink" title="add"></a>add</h1><h1 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h1><p><code>add</code> 上下文关键字用于定义一个在客户端代码订阅你的事件时调用的自定义事件访问器。 如果提供自定义 <code>add</code> 访问器，还必须提供 <code>remove</code> 访问器</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Events</span> : <span class="title">IDrawingObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">event</span> EventHandler PreDrawEvent;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">event</span> EventHandler IDrawingObject.OnDraw</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">add</span> =&gt; PreDrawEvent += <span class="keyword">value</span>;</span><br><span class="line">        <span class="keyword">remove</span> =&gt; PreDrawEvent -= <span class="keyword">value</span>;</span><br><span class="line">    &#125;<span class="comment">//向事件中添加或者删除触发</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大多数情况下，使用声明事件时由编译器自动生成的访问器就足够了</p>
+<h1 id="not"><a href="#not" class="headerlink" title="not"></a>not</h1><h1 id="and"><a href="#and" class="headerlink" title="and"></a>and</h1><h1 id="or"><a href="#or" class="headerlink" title="or"></a>or</h1><p> <code>C# 9.0</code> 开始，可使用 <code>not</code>、<code>and</code> 和 <code>or</code> 模式连结符来创建以下逻辑模式</p>
+<p>否定 <code>not</code> 模式在否定模式与表达式不匹配时与表达式匹配</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (input <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>合取 <code>and</code> 模式在两个模式都与表达式匹配时与表达式匹配</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Classify</span>(<span class="params"><span class="built_in">double</span> measurement</span>)</span> =&gt; measurement <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    &lt; <span class="number">-40.0</span> =&gt; <span class="string">&quot;Too low&quot;</span>,</span><br><span class="line">    &gt;= <span class="number">-40.0</span> <span class="keyword">and</span> &lt; <span class="number">0</span> =&gt; <span class="string">&quot;Low&quot;</span>,</span><br><span class="line">    &gt;= <span class="number">0</span> <span class="keyword">and</span> &lt; <span class="number">10.0</span> =&gt; <span class="string">&quot;Acceptable&quot;</span>,</span><br><span class="line">    &gt;= <span class="number">10.0</span> <span class="keyword">and</span> &lt; <span class="number">20.0</span> =&gt; <span class="string">&quot;High&quot;</span>,</span><br><span class="line">    &gt;= <span class="number">20.0</span> =&gt; <span class="string">&quot;Too high&quot;</span>,</span><br><span class="line">    <span class="built_in">double</span>.NaN =&gt; <span class="string">&quot;Unknown&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>析取 <code>or</code> 模式在任一模式与表达式匹配时与表达式匹配</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">string</span> <span class="title">GetCalendarSeason</span>(<span class="params">DateTime date</span>)</span> =&gt; date.Month <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="number">3</span> <span class="keyword">or</span> <span class="number">4</span> <span class="keyword">or</span> <span class="number">5</span> =&gt; <span class="string">&quot;spring&quot;</span>,</span><br><span class="line">    <span class="number">6</span> <span class="keyword">or</span> <span class="number">7</span> <span class="keyword">or</span> <span class="number">8</span> =&gt; <span class="string">&quot;summer&quot;</span>,</span><br><span class="line">    <span class="number">9</span> <span class="keyword">or</span> <span class="number">10</span> <span class="keyword">or</span> <span class="number">11</span> =&gt; <span class="string">&quot;autumn&quot;</span>,</span><br><span class="line">    <span class="number">12</span> <span class="keyword">or</span> <span class="number">1</span> <span class="keyword">or</span> <span class="number">2</span> =&gt; <span class="string">&quot;winter&quot;</span>,</span><br><span class="line">    _ =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="keyword">nameof</span>(date), <span class="string">$&quot;Date with unexpected month: <span class="subst">&#123;date.Month&#125;</span>.&quot;</span>),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><em>可在模式中重复使用模式连结符</em></p>
+<p><code>and</code> 模式连结符的优先级高于 <code>or</code><br>如果混用,还是建议使用括号.</p>
+<blockquote>
+<p>检查模式的顺序是不确定的。 在运行时，可能先检查 <code>or</code> 和 <code>and</code> 模式的右侧嵌套模式。</p>
+</blockquote>
+<p>从 <code>C# 8.0</code> 开始，可使用属性模式来将表达式的属性或字段与嵌套模式进行匹配</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">IsConferenceDay</span>(<span class="params">DateTime date</span>)</span> =&gt; date <span class="keyword">is</span> &#123; Year: <span class="number">2020</span>, Month: <span class="number">5</span>, Day: <span class="number">19</span> <span class="keyword">or</span> <span class="number">20</span> <span class="keyword">or</span> <span class="number">21</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>从 <code>C# 8.0</code> 开始，可使用位置模式来解构表达式结果并将结果值与相应的嵌套模式匹配</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">struct</span> Point</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> X &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Y &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Point</span>(<span class="params"><span class="built_in">int</span> x, <span class="built_in">int</span> y</span>)</span> =&gt; (X, Y) = (x, y);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Deconstruct</span>(<span class="params"><span class="keyword">out</span> <span class="built_in">int</span> x, <span class="keyword">out</span> <span class="built_in">int</span> y</span>)</span> =&gt; (x, y) = (X, Y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Classify</span>(<span class="params">Point point</span>)</span> =&gt; point <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    (<span class="number">0</span>, <span class="number">0</span>) =&gt; <span class="string">&quot;Origin&quot;</span>,</span><br><span class="line">    (<span class="number">1</span>, <span class="number">0</span>) =&gt; <span class="string">&quot;positive X basis end&quot;</span>,</span><br><span class="line">    (<span class="number">0</span>, <span class="number">1</span>) =&gt; <span class="string">&quot;positive Y basis end&quot;</span>,</span><br><span class="line">    _ =&gt; <span class="string">&quot;Just a point&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>结合前面的两种用法，如以下示例所示</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title">WeightedPoint</span>(<span class="params"><span class="built_in">int</span> X, <span class="built_in">int</span> Y</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> Weight &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">IsInDomain</span>(<span class="params">WeightedPoint point</span>)</span> =&gt; <span class="function">point <span class="title">is</span> (<span class="params">&gt;= <span class="number">0</span>, &gt;= <span class="number">0</span></span>)</span> &#123; Weight: &gt;= <span class="number">0.0</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="function">input <span class="keyword">is</span> <span class="title">WeightedPoint</span> (<span class="params">&gt; <span class="number">0</span>, &gt; <span class="number">0</span></span>)</span> &#123; Weight: &gt; <span class="number">0.0</span> &#125; p)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="async"><a href="#async" class="headerlink" title="async"></a>async</h1><h1 id="await"><a href="#await" class="headerlink" title="await"></a>await</h1><p>略,详见微软文档.</p>
+<h1 id="dynamic"><a href="#dynamic" class="headerlink" title="dynamic"></a>dynamic</h1><p>这玩意看不出是个上下文类型,好像啥地方都可以用.</p>
+<p>就是不受编译器检测的动态运行时类型.</p>
+<h1 id="get"><a href="#get" class="headerlink" title="get"></a>get</h1><h1 id="set"><a href="#set" class="headerlink" title="set"></a>set</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">TimePeriod</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="built_in">double</span> _seconds;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="built_in">double</span> Seconds</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">get</span> &#123; <span class="keyword">return</span> _seconds; &#125;</span><br><span class="line">         <span class="keyword">set</span> &#123; _seconds = <span class="keyword">value</span>; &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="global"><a href="#global" class="headerlink" title="global"></a>global</h1><p><code>global</code> 别名，该别名是全局命名空间别名<br>与 <code>::</code> 限定符一起使用时，<code>global</code> 别名始终引用全局命名空间，即使存在用户定义的 <code>global</code> 命名空间别名也是如此</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyCompany.MyProduct.System</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        static void Main() =&gt; global::System.Console.WriteLine(&quot;Using global alias&quot;);//如果不适用`global`.那么会访问`MyCompany.MyProduct.System`</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Console</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> Suggestion =&gt; <span class="string">&quot;Consider renaming this class&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="init"><a href="#init" class="headerlink" title="init"></a>init</h1><p>在 <code>C# 9</code> 及更高版本中，<code>init</code> 关键字在属性或索引器中定义访问器方法。 <code>init-only</code> 资源库仅在对象构造期间为属性或索引器元素赋值. 相当于只读.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">InitExample</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="built_in">double</span> _seconds;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="built_in">double</span> Seconds</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">get</span> &#123; <span class="keyword">return</span> _seconds; &#125;</span><br><span class="line">         <span class="keyword">init</span> &#123; _seconds = <span class="keyword">value</span>; &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可简写</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">InitExampleAutoProperty</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">double</span> Hours &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="nint"><a href="#nint" class="headerlink" title="nint"></a>nint</h1><h1 id="unint"><a href="#unint" class="headerlink" title="unint"></a>unint</h1><p>实际就是<code>IntPtr</code>和<code>UIntPtr</code></p>
+<h1 id="partial"><a href="#partial" class="headerlink" title="partial"></a>partial</h1><p>用于指定分布类和分布方法.<br>允许在两个不同文件中书写同一个类或方法.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">PC</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">MethodA</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">MethodC</span>(<span class="params"></span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">PC</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">MethodB</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">MethodC</span>(<span class="params"></span>)</span> &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在处理大型项目或自动生成的代码（如 <code>Windows</code> 窗体设计器提供的代码）时，在多个文件间拆分类、结构或接口类型可能会非常有用</p>
+<h1 id="record"><a href="#record" class="headerlink" title="record"></a>record</h1><p>从 <code>C# 9</code> 开始，可以使用 <code>record</code> 关键字定义一个引用类型，用来提供用于封装数据的内置功能<br>称作<code>记录</code></p>
+<p>如下可以创建具有不可变属性的记录类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title">Person</span>(<span class="params"><span class="built_in">string</span> FirstName, <span class="built_in">string</span> LastName</span>)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FirstName &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> LastName &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还可以创建具有可变属性和字段的记录类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FirstName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> LastName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>虽然记录可以是可变的，但它们主要用于支持不可变的数据模型</p>
+<ul>
+<li>用于创建具有不可变属性的引用类型的简明语法</li>
+<li>内置行为对于以数据为中心的引用类型非常有用：<ul>
+<li>值相等性</li>
+<li>非破坏性变化的简明语法</li>
+<li>用于显示的内置格式设置</li>
+</ul>
+</li>
+<li>支持继承层次结构</li>
+</ul>
+<p>这些类型提供值相等性，并且很少或没有任何行为。 但对于相对较大的数据模型，结构类型有一些缺点</p>
+<ul>
+<li>不支持继承</li>
+<li>确定值相等性时效率较低</li>
+<li>某些情况下，会占用更多内存，因为每个实例都有所有数据的完整副本</li>
+</ul>
+<blockquote>
+<p>具体内容参阅微软文档.</p>
+</blockquote>
+<h1 id="value"><a href="#value" class="headerlink" title="value"></a>value</h1><p>上下文关键字 <code>value</code> 在属性和索引器声明的 <code>set</code> 访问器中使用  </p>
+<p>此关键字类似于方法的输入参数。 关键字 value 引用客户端代码尝试分配给属性或索引器的值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="built_in">int</span> Number</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">get</span> &#123; <span class="keyword">return</span> num; &#125;</span><br><span class="line">	<span class="keyword">set</span> &#123; num = <span class="keyword">value</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="var"><a href="#var" class="headerlink" title="var"></a>var</h1><p>隐式类型本地变量为强类型，就像用户已经自行声明该类型，但编译器决定类型一样</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">10</span>; <span class="comment">// Implicitly typed.</span></span><br><span class="line"><span class="built_in">int</span> i = <span class="number">10</span>; <span class="comment">// Explicitly typed.</span></span><br></pre></td></tr></table></figure>
+<p><em>以上代码其实是等同的</em></p>
+<h1 id="when"><a href="#when" class="headerlink" title="when"></a>when</h1><p>可以使用上下文关键字 when 在以下上下文中指定筛选条件</p>
+<ul>
+<li>在 <code>try/catch</code> 或 <code>try/catch/finally</code> 块的 <code>catch</code> 语句中。</li>
+<li>在 <code>switch</code> 语句的 <code>case</code> 标签中。</li>
+<li>在 <code>switch</code> 表达式中。</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">catch (ExceptionType [e]) <span class="keyword">when</span> (expr)</span><br></pre></td></tr></table></figure>
+<p>其中，<code>expr</code> 是一个表达式，其计算结果为布尔值。 如果该表达式返回 <code>true</code>，则执行异常处理程序；如果返回 <code>false</code>，则不执行</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> (expr) <span class="keyword">when</span> (<span class="keyword">when</span>-condition):</span><br></pre></td></tr></table></figure>
+<p>仅当筛选条件<code>when-condition</code>也为 <code>true</code> 时，与其相关联的 <code>case</code> 标签才为 <code>true</code></p>
+<h1 id="where"><a href="#where" class="headerlink" title="where"></a>where</h1><p><code>where</code> 子句指定对用作泛型参数的约束</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AGenericClass</span>&lt;<span class="title">T</span>&gt; <span class="keyword">where</span> <span class="title">T</span> : <span class="title">IComparable</span>&lt;<span class="title">T</span>&gt; &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p><em>此声明约束<code>T</code>实现<code>IComparable&lt;T&gt;</code>接口</em></p>
+<p>更多请看文档.</p>
+<h1 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h1><p>使用 <code>yield</code> 定义迭代器，可在实现自定义集合类型的 <code>IEnumerator&lt;T&gt;</code> 和 <code>IEnumerable</code> 模式时无需其他显式类</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> &lt;expression&gt;;</span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>yield break</code>类似于其他函数的<code>return</code>. 表示方法终止.<br>而 <code>yield return</code> 语句则是一次返回一个元素</p>
+<p>可通过使用 <code>foreach</code> 语句或 <code>LINQ</code> 查询来使用从迭代器方法返回的序列。 <code>foreach</code> 循环的每次迭代都会调用迭代器方法<br>迭代器方法运行到 <code>yield return</code> 语句时,会返回一个 <code>expression</code><br>并保留当前在代码中的位置<br>次调用迭代器函数时，将从该位置重新开始执行</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; elements = MyIteratorMethod();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="built_in">string</span> element <span class="keyword">in</span> elements)</span><br><span class="line">&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>MyIteratorMethod</code> 并不执行该方法的主体<br>该调用会将 <code>IEnumerable&lt;string&gt;</code> 返回到 <code>elements</code><br>在 <code>foreach</code> 循环迭代时，将为 <code>MoveNext</code> 调用 <code>elements</code> 方法<br> 此调用将执行 <code>MyIteratorMethod</code> 的主体，直至到达下一个 <code>yield return</code> 语句</p>
+<blockquote>
+<p>这玩意产生CG.</p>
+</blockquote>
+<h1 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h1><blockquote>
+<p><code>C# 3.0</code> 中引入的所有查询关键字也都是上下文相关的</p>
+</blockquote>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210425-221400-g131/" rel="prev" title="CSharp编程指南_文字关键字">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_文字关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210426-234200-g133/" rel="next" title="CSharp编程指南_查询关键字">
+      CSharp编程指南_查询关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#add"><span class="nav-number">1.</span> <span class="nav-text">add</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#remove"><span class="nav-number">2.</span> <span class="nav-text">remove</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#not"><span class="nav-number">3.</span> <span class="nav-text">not</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#and"><span class="nav-number">4.</span> <span class="nav-text">and</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#or"><span class="nav-number">5.</span> <span class="nav-text">or</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#async"><span class="nav-number">6.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#await"><span class="nav-number">7.</span> <span class="nav-text">await</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic"><span class="nav-number">8.</span> <span class="nav-text">dynamic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#get"><span class="nav-number">9.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#set"><span class="nav-number">10.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#global"><span class="nav-number">11.</span> <span class="nav-text">global</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#init"><span class="nav-number">12.</span> <span class="nav-text">init</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nint"><span class="nav-number">13.</span> <span class="nav-text">nint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unint"><span class="nav-number">14.</span> <span class="nav-text">unint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#partial"><span class="nav-number">15.</span> <span class="nav-text">partial</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#record"><span class="nav-number">16.</span> <span class="nav-text">record</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#value"><span class="nav-number">17.</span> <span class="nav-text">value</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#var"><span class="nav-number">18.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#when"><span class="nav-number">19.</span> <span class="nav-text">when</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#where"><span class="nav-number">20.</span> <span class="nav-text">where</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yield"><span class="nav-number">21.</span> <span class="nav-text">yield</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="nav-number">22.</span> <span class="nav-text">查询语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">23.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

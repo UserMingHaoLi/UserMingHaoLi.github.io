@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="namespace 关键字用于声明包含一组相关对象的作用域,称为命名空间 无论是否在 C# 源文件中显式声明命名空间，编译器都会添加一个默认命名空间 命名空间隐式具有公共访问权限，这是不可修改的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_命名空间关键字">
+<meta property="og:url" content="http://example.com/ml-20210423-214900-g127/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="namespace 关键字用于声明包含一组相关对象的作用域,称为命名空间 无论是否在 C# 源文件中显式声明命名空间，编译器都会添加一个默认命名空间 命名空间隐式具有公共访问权限，这是不可修改的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-23T13:49:00.000Z">
+<meta property="article:modified_time" content="2021-04-23T13:49:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210423-214900-g127/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_命名空间关键字 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210423-214900-g127/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_命名空间关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-23 21:49:00" itemprop="dateCreated datePublished" datetime="2021-04-23T21:49:00+08:00">2021-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><code>namespace</code> 关键字用于声明包含一组相关对象的作用域,称为<code>命名空间</code></p>
+<p>无论是否在 <code>C#</code> 源文件中显式声明命名空间，编译器都会添加一个默认命名空间</p>
+<p>命名空间隐式具有公共访问权限，这是不可修改的</p>
+<span id="more"></span>
+
+<h1 id="using"><a href="#using" class="headerlink" title="using"></a>using</h1><p><code>using</code> 关键字有三个主要用途</p>
+<ul>
+<li><code>using</code> 语句定义一个范围，在此范围的末尾将释放对象。</li>
+<li><code>using</code> 指令为命名空间创建别名，或导入在其他命名空间中定义的类型。</li>
+<li><code>using static</code> 指令导入单个类的成员。</li>
+</ul>
+<h1 id="using指令"><a href="#using指令" class="headerlink" title="using指令"></a>using指令</h1><p>允许在命名空间中使用类型，这样无需在该命名空间中限定某个类型的使用</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br></pre></td></tr></table></figure>
+
+<p>允许访问类型的静态成员和嵌套类型，而无需限定使用类型名称进行访问</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">static</span> System.Math;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>using static</code> 指令是在 <code>C# 6</code> 中引入的</p>
+</blockquote>
+<p>为命名空间或类型创建别名。 这称为 <code>using 别名指令</code></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Project = PC.MyCompany.Project;</span><br></pre></td></tr></table></figure>
+
+<h1 id="using-语句"><a href="#using-语句" class="headerlink" title="using 语句"></a>using 语句</h1><p>提供可确保正确使用 IDisposable 对象的方便语法</p>
+<blockquote>
+<p> 从 <code>C#8.0</code> 开始，<code>using</code> 语句可确保正确使用 <code>IAsyncDisposable</code> 对象</p>
+</blockquote>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> reader = <span class="keyword">new</span> StringReader(manyLines))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span>? item;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        item = reader.ReadLine();</span><br><span class="line">        Console.WriteLine(item);</span><br><span class="line">    &#125; <span class="keyword">while</span>(item != <span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有此类类型都必须实现 <code>IDisposable</code> 接口或 <code>IAsyncDisposable</code> 接口</p>
+<p>如果对象实现 <code>IAsyncDisposable</code> 而不是 <code>IDisposable</code>，<code>using</code> 语句将调用 <code>DisposeAsync</code> 和 <code>awaits</code> 返回的 <code>ValueTask</code></p>
+<p><em><code>using</code> 语句可确保调用 <code>Dispose</code> 或 <code>DisposeAsync</code>，即使 <code>using</code> 块中发生异常也是如此</em></p>
+<p>通过将对象放入 <code>try</code> 块中，然后调用 <code>finally</code> 块中的 <code>Dispose</code>（或 <code>DisposeAsync</code>），可以实现相同的结果</p>
+<p>这就是编译器转换 <code>using</code> 语句的方式<br>前面的代码示例在编译时将扩展到以下代码</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> StringReader(manyLines);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="built_in">string</span>? item;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		item = reader.ReadLine();</span><br><span class="line">		Console.WriteLine(item);</span><br><span class="line">	&#125; <span class="keyword">while</span>(item != <span class="literal">null</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span></span><br><span class="line">&#123;</span><br><span class="line">	reader?.Dispose();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="外部别名"><a href="#外部别名" class="headerlink" title="外部别名"></a>外部别名</h1><p>有时你可能不得不引用具有相同的完全限定类型名称的程序集的两个版本<br>通过使用外部程序集别名，可在别名命名的根级别命名空间内包装每个程序集的命名空间，使其能够在同一文件中使用</p>
+<blockquote>
+<p><code>extern</code>关键字还被用作方法修饰符，用于声明在非托管代码中编写的方法。</p>
+</blockquote>
+<p>命令行工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/r:GridV1=grid.dll</span><br><span class="line"></span><br><span class="line">/r:GridV2=grid20.dll</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">alias</span> GridV1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">alias</span> GridV2;</span><br></pre></td></tr></table></figure>
+
+<p>每个外部别名声明都会引入与全局命名空间并行（但不位于其中）的额外根级别命名空间。 因此，可以使用其完全限定的名称（根植于相应的命名空间别名中）无歧义地引用每个程序集的类型</p>
+<p>如果你使用的是 <code>Visual Studio</code>，可以按类似方式提供别名。<br>在 <code>Visual Studio</code> 中向项目添加 <code>grid.dll</code> 和 <code>grid20.dll</code> 的引用。 打开“属性”选项卡，并将别名从“全局”分别更改为“<code>GridV1</code>”和“<code>GridV2</code>”。</p>
+<p>之后随意使用即可</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">using Class1V1 = GridV1::Namespace.Class1;</span><br><span class="line"></span><br><span class="line">using Class1V2 = GridV2::Namespace.Class1;</span><br></pre></td></tr></table></figure>
+
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210423-203900-g126/" rel="prev" title="CSharp编程指南_方法参数关键字">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_方法参数关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210423-220600-g128/" rel="next" title="CSharp编程指南_类型测试关键字">
+      CSharp编程指南_类型测试关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#using"><span class="nav-number">1.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#using%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">using指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#using-%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">using 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E5%88%AB%E5%90%8D"><span class="nav-number">4.</span> <span class="nav-text">外部别名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">5.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

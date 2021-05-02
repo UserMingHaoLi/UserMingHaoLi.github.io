@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简单示例12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364@startuml plantuml模板package &quot;接口&quot; #FFFFFF &amp;#123;  interface 飞行 &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="plantuml使用指南_用例图">
+<meta property="og:url" content="http://example.com/ml-20210422-220900-g125/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="简单示例12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364@startuml plantuml模板package &quot;接口&quot; #FFFFFF &amp;#123;  interface 飞行 &amp;#123">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-22T14:09:00.000Z">
+<meta property="article:modified_time" content="2021-04-22T14:09:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="写作">
+<meta property="article:tag" content="UML">
+<meta property="article:tag" content="PlantUML">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210422-220900-g125/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>plantuml使用指南_用例图 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210422-220900-g125/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          plantuml使用指南_用例图
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-22 22:09:00" itemprop="dateCreated datePublished" datetime="2021-04-22T22:09:00+08:00">2021-04-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">写作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line">package &quot;接口&quot; #FFFFFF &#123;</span><br><span class="line">  interface 飞行 &#123;</span><br><span class="line">  + 飞()</span><br><span class="line">  &#125;</span><br><span class="line">  interface 人类讲话 &#123;</span><br><span class="line">  + 讲话()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;雁群&quot; #DDDDDD &#123;</span><br><span class="line">class 大雁 &#123;</span><br><span class="line">  + 飞行()</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">class 雁群 &#123;</span><br><span class="line">  + V字飞()</span><br><span class="line">  + 一字飞()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;环境&quot; #DDDDDD &#123;</span><br><span class="line">class 氧气</span><br><span class="line">class 水</span><br><span class="line">class 动物 &#123;</span><br><span class="line">  + 有生命</span><br><span class="line">  + 新陈代谢(氧气,水)</span><br><span class="line">  + 繁衍()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;企鹅生态&quot; #DDDDDD &#123;</span><br><span class="line">class 气候</span><br><span class="line">class 企鹅 &#123;</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;鸟-翅膀&quot; #DDDDDD &#123;</span><br><span class="line">class 翅膀</span><br><span class="line">class 鸟 &#123;</span><br><span class="line">  + 羽毛</span><br><span class="line">  + 喙</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;鸭子-唐老鸭&quot; #DDDDDD &#123;</span><br><span class="line">class 鸭子 &#123;</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 唐老鸭 &#123;</span><br><span class="line">  + 讲话</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">动物 -right-&gt; 氧气</span><br><span class="line">动物 -left-&gt; 水</span><br><span class="line">鸟 *-&gt; 翅膀</span><br><span class="line">鸟 --|&gt; 动物</span><br><span class="line">气候 &lt;- 企鹅  </span><br><span class="line">企鹅 --|&gt; 鸟</span><br><span class="line">鸭子 --|&gt; 鸟</span><br><span class="line">人类讲话 &lt;|.. 唐老鸭</span><br><span class="line">唐老鸭 --|&gt; 鸭子</span><br><span class="line">飞行 &lt;|.. 大雁</span><br><span class="line">大雁 --|&gt; 鸟</span><br><span class="line">雁群 o--&gt; 大雁</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="快速学习"><a href="#快速学习" class="headerlink" title="快速学习"></a>快速学习</h1><p>声明类可以直接用</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+ <span class="keyword">class</span> <span class="title">MyClass</span> &#123;</span><br><span class="line">+ &#123;<span class="keyword">static</span>&#125; <span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params">String[] arg</span>)</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">interface</span> MyInterface</span> &#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">MyAbstractClass</span> &#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>以上内容除了声明类,还使用了icon标记和static标记</em></p>
+<p><strong>icon与访问修饰符的关系</strong></p>
+<ul>
+<li><code>-</code><ul>
+<li>private</li>
+</ul>
+</li>
+<li><code>#</code><ul>
+<li>protected</li>
+</ul>
+</li>
+<li><code>~</code><ul>
+<li>package private</li>
+</ul>
+</li>
+<li><code>+</code><ul>
+<li>public</li>
+</ul>
+</li>
+</ul>
+<p><strong>额外访问修饰符</strong></p>
+<ul>
+<li><code>&#123;static&#125;</code></li>
+<li><code>&#123;abstract&#125;</code></li>
+</ul>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>类和类之间的关系用箭头标记来表示</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p><code>&lt;|--</code></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p><code>&lt;|..</code></p>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><p><code>*--</code></p>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><p><code>o--</code></p>
+<h3 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h3><p><code>--&gt;</code></p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p><code>..&gt;</code></p>
+<h1 id="重要高级内容索引"><a href="#重要高级内容索引" class="headerlink" title="重要高级内容索引"></a>重要高级内容索引</h1><ul>
+<li>元素声明</li>
+<li>类之间的关系</li>
+<li>关系上的标签</li>
+<li>添加方法</li>
+<li>定义可访问域</li>
+<li>抽象类和接口</li>
+<li>包</li>
+<li>命名空间(NameSpaces)</li>
+<li>棒棒糖接口</li>
+<li>箭头从一个类成员到另一个类成员</li>
+</ul>
+<p><em>选修</em></p>
+<ul>
+<li>抽象与静态</li>
+<li>高级类体</li>
+<li>备注和模板</li>
+<li>更多注释</li>
+<li>注释颜色</li>
+<li>使用非字母字符</li>
+<li>泛型</li>
+<li>指定标记</li>
+<li>包样式</li>
+<li>改变箭头方向</li>
+<li>关系类</li>
+<li>菱形</li>
+<li>皮肤参数</li>
+<li>渐变颜色</li>
+<li>使用关键之指定继承和实现</li>
+<li>更多线样式</li>
+<li>更多Item样式</li>
+</ul>
+<p><em>没啥用</em></p>
+<ul>
+<li>隐藏属性,函数等</li>
+<li>Remove关键字</li>
+<li>辅助布局</li>
+<li>拆分大文件</li>
+</ul>
+<hr>
+<h1 id="元素声明"><a href="#元素声明" class="headerlink" title="元素声明"></a>元素声明</h1><p>就是不同样式的Item.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">abstract abstract</span><br><span class="line">abstract class &quot;abstract class&quot;</span><br><span class="line">annotation annotation</span><br><span class="line">circle circle</span><br><span class="line">() &quot;circle_short_form ()&quot;</span><br><span class="line">class class</span><br><span class="line">diamond diamond</span><br><span class="line">&#39;&lt;&gt; diamond_short_form&#39;这个我这里编译不出来</span><br><span class="line">entity entity</span><br><span class="line">enum enum</span><br><span class="line">interface interface</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h1><p>就是箭头,如下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class01 &lt;|-- class02</span><br><span class="line">class03 &lt;--* class04</span><br><span class="line">class05 &lt;--o class06</span><br><span class="line">class07 .. class08</span><br><span class="line">class09 -- class010</span><br><span class="line">class11 --&gt; class012</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>都可以使用<code>..</code>代替<code>--</code>来变为虚线</em></p>
+<p>以下是不常用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class01 #-- class02</span><br><span class="line">class03 x-- class04</span><br><span class="line">class05 &#125;-- class06</span><br><span class="line">class07 +.. class08</span><br><span class="line">class09 ^-- class010</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="关系上的标签"><a href="#关系上的标签" class="headerlink" title="关系上的标签"></a>关系上的标签</h1><p>就是在箭头前,箭头后,目标后三个地方书写注释<br>对应的就是<code>pre</code>,<code>end</code>,<code>center</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class01 &quot;pre&quot; --&gt; &quot;end&quot; class02 : &quot;content&quot;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>还可以添加<code>&gt;</code>或<code>&lt;</code>显示一个箭头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class01 &quot;pre&quot; --&gt; &quot;end&quot; class02 : &quot;content&quot; &gt;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>好像只能在<code>content</code>后面追加</em></p>
+<h1 id="添加方法"><a href="#添加方法" class="headerlink" title="添加方法"></a>添加方法</h1><p>声明字段或者方法<code>className : functionName</code>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">Object &lt;|-- ArrayList</span><br><span class="line">Object : equals()</span><br><span class="line">ArrayList : Object[] elementData</span><br><span class="line">ArrayList : size()</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p><em>上面是延时,下面这个才是比较常用的</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class Dummy &#123;</span><br><span class="line">  String data</span><br><span class="line">  void methods()</span><br><span class="line">&#125;</span><br><span class="line">class Flight &#123;</span><br><span class="line">  &#123;field&#125; flightNumber : Integer</span><br><span class="line">  departureTime : Date</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>还可以在声明前使用<code>&#123;field&#125;</code>,<code>&#123;method&#125;</code>来显示声明字段还是方法</em></p>
+<h1 id="定义可访问域"><a href="#定义可访问域" class="headerlink" title="定义可访问域"></a>定义可访问域</h1><ul>
+<li><code>-</code><ul>
+<li>private</li>
+</ul>
+</li>
+<li><code>#</code><ul>
+<li>protected</li>
+</ul>
+</li>
+<li><code>~</code><ul>
+<li>package private</li>
+</ul>
+</li>
+<li><code>+</code><ul>
+<li>public</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class Dummy &#123;</span><br><span class="line">  -field1</span><br><span class="line">  #field2</span><br><span class="line">  ~method1()</span><br><span class="line">  +method2()</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p>*使用预处理<code>skinparame classAttributeIconSize 0</code>*来关闭Icon</p>
+<h1 id="抽象与静态"><a href="#抽象与静态" class="headerlink" title="抽象与静态"></a>抽象与静态</h1><p>提供修饰符关键字<code>&#123;static&#125;</code>和<code>&#123;abstract&#125;</code><br>用于定义静态或抽象方法属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml </span><br><span class="line">class Dummy &#123;</span><br><span class="line">  &#123;static&#125; String id</span><br><span class="line">  &#123;abstract&#125; void methods()</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可以看到,和之前的<code>&#123;field&#125;</code>,<code>&#123;method&#125;</code>很像</em></p>
+<h1 id="高级类体"><a href="#高级类体" class="headerlink" title="高级类体"></a>高级类体</h1><p>使用线来分区<br>也可以用于给数据添加左右线<br>参阅<code>通用</code></p>
+<h1 id="备注和模板"><a href="#备注和模板" class="headerlink" title="备注和模板"></a>备注和模板</h1><p>老朋友<code>&lt;&lt;cotent&gt;&gt;</code><br>和老朋友<code>note</code><br><em><code>note</code>支持四方向和<code>of</code>关键字</em><br><em>也支持<code>as</code>关键字定义为Item使用</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class Object &lt;&lt;general&gt;&gt;</span><br><span class="line">object &lt;|--- ArrayList</span><br><span class="line">note top of Object : &quot;Object&lt;&lt;general&gt;&gt; top&quot;</span><br><span class="line">note &quot;My N1&quot; as N1</span><br><span class="line">note &quot;My N2&quot; as N2</span><br><span class="line"></span><br><span class="line">object .. N2</span><br><span class="line">N2 .. ArrayList</span><br><span class="line"></span><br><span class="line">class Foo</span><br><span class="line">note left: &quot;Foo Left&quot;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p>*<code>note</code> 可以使用 <code>note left of className::ChileName</code>*来指定注释到那个属性或者方法<br>其中<code>chileName</code>可以使用<code>&quot;&quot;</code>包裹</p>
+<h1 id="更多注释"><a href="#更多注释" class="headerlink" title="更多注释"></a>更多注释</h1><p>可使用<code>HTML</code>标签<br><em>稍微举例如下</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* &lt;b&gt;</span><br><span class="line">* &lt;u&gt;</span><br><span class="line">* &lt;i&gt;</span><br><span class="line">* &lt;s&gt;,&lt;dle&gt;,&lt;strike&gt;</span><br><span class="line">* &lt;font color&#x3D;&quot;#AAAAAA&quot;&gt; or &lt;font color&#x3D;&quot;red&quot;&gt;</span><br><span class="line">* &lt;color:#AAAAAA&gt; or &lt;color:red&gt;</span><br><span class="line">* &lt;size:18&gt; to change font size</span><br><span class="line">* &lt;img src&#x3D;&quot;filePath&quot;&gt; or &lt;img:file&gt; the file must be accessible by the filesystem</span><br></pre></td></tr></table></figure>
+
+<h1 id="注释颜色"><a href="#注释颜色" class="headerlink" title="注释颜色"></a>注释颜色</h1><p><code>note on link #red</code></p>
+<h1 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h1><p>上面有介绍的<code>abstract</code>或<code>abstract class</code>, 还有接口<code>interface</code></p>
+<h1 id="使用非字母字符"><a href="#使用非字母字符" class="headerlink" title="使用非字母字符"></a>使用非字母字符</h1><p>老规矩,使用<code>&quot;&quot;</code>声明功能多样的String和<code>as</code>关键字指定别名</p>
+<h1 id="隐藏属性-函数等"><a href="#隐藏属性-函数等" class="headerlink" title="隐藏属性,函数等"></a>隐藏属性,函数等</h1><p>关键字<code>hide</code>和<code>show</code><br>基础命令 <code>hide empty members</code>,隐藏空白的方法和属性</p>
+<p><em>更多</em></p>
+<ul>
+<li>empty fields</li>
+<li>empty attributes</li>
+<li>empty methods</li>
+<li>fields </li>
+<li>attributes</li>
+<li>methods</li>
+<li>members</li>
+<li>circle 类名的小圈</li>
+<li>stereotype 原型</li>
+<li>class 所有类</li>
+<li>interface 所有接口</li>
+<li>enum 所有枚举</li>
+<li>&lt;<foo1>&gt; 实现foo1的类</li>
+<li>任何类的名称</li>
+<li>@unlinked 未连接的单位</li>
+</ul>
+<p><em>没加 <code>empty</code> 前缀的,都会隐藏即使被定义的属性</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class Dymmy1 &#123;</span><br><span class="line">  +myMethods()</span><br><span class="line">&#125;</span><br><span class="line">class Dymmy2 &#123;</span><br><span class="line">  +hiddenMethod()</span><br><span class="line">&#125;</span><br><span class="line">class Dummy3 &lt;&lt;Serializable&gt;&gt; &#123;</span><br><span class="line">  String name</span><br><span class="line">&#125;</span><br><span class="line">hide members</span><br><span class="line">hide &lt;&lt;Serializable&gt;&gt; circle</span><br><span class="line">show Dymmy1 methods</span><br><span class="line">show &lt;&lt;Serializable&gt;&gt; fields</span><br><span class="line">hide Dymmy1</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,位置还站着,图的面积没有缩小</em></p>
+<h1 id="Remove关键字"><a href="#Remove关键字" class="headerlink" title="Remove关键字"></a>Remove关键字</h1><p><code>remove className</code> 可以删除一个类<br>和<code>hide</code>不一样的是, 他不会留下空白占位符.</p>
+<p>也可以使用<code>@unlinked</code>关键字</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>关键字<code>&lt;content&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class Foo&lt;? extends Element&gt; &#123;</span><br><span class="line">  int size()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo *- Element</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="指定标记"><a href="#指定标记" class="headerlink" title="指定标记"></a>指定标记</h1><p>也就是圆圈,通常他们是由于类型决定的<br>比如<code>class</code>通常是<code>C</code>,<code>interface</code>通常是<code>I</code></p>
+<p>允许使用<code>*&lt;&lt;(name,color)&gt;&gt;</code>来修改圆圈<br>*注意: <code>&lt;&lt;content&gt;&gt;也是模板的用法,所以这个实际上是在模板中生效的*   同</code>&lt;&lt;(name,color) content&gt;&gt;<code>, 如果没有</code>content`你不会看到模板的尖括号.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class System &lt;&lt; (S,#FF7700) Singleton&gt;&gt;</span><br><span class="line">class Date &lt;&lt;(D,red)&gt;&gt;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><p>关键字<code>package</code>声明包<br>同时指定其颜色和标题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">package &quot;Classic Collections&quot; #DDDDDD &#123;</span><br><span class="line">Object &lt;|-- ArrayList</span><br><span class="line">&#125;</span><br><span class="line">package &quot;net.sourceforge.plantuml&quot; &#123;</span><br><span class="line">  Object &lt;|-- Demo1</span><br><span class="line">  Demo1 *- Demo2</span><br><span class="line">&#125;</span><br><span class="line">package &quot;TestPackage&quot; &#123;</span><br><span class="line">  class Mytest &#123;</span><br><span class="line">    +MeFunc</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Mytest -&gt; Mytest2</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,可以在<code>package</code>里声明<code>class</code>,如果第一次使用未声明的<code>class</code>,默认是在使用的地方声明的</em></p>
+<h1 id="包样式"><a href="#包样式" class="headerlink" title="包样式"></a>包样式</h1><p>可以使用预处理关键字<code>skinparam packageStyle</code><br>或者使用对应的内置模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">&#39; skinparam packageStyle Node</span><br><span class="line">&#39; package Test &#123;</span><br><span class="line">&#39;   class ClassTest</span><br><span class="line">&#39; &#125;</span><br><span class="line">package Node &lt;&lt;Node&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">package Rectangle &lt;&lt;Rectangle&gt;&gt; &#123;</span><br><span class="line">  class Class2</span><br><span class="line">&#125;</span><br><span class="line">package Folder &lt;&lt;Folder&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">package Frame &lt;&lt;Frame&gt;&gt; &#123;</span><br><span class="line">  class Class4</span><br><span class="line">&#125;</span><br><span class="line">package Clound &lt;&lt;Clound&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">package Database &lt;&lt;Database&gt;&gt; &#123;</span><br><span class="line">  class Class6</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,默认的包样式是<code>Folder</code></em></p>
+<h1 id="命名空间-NameSpaces"><a href="#命名空间-NameSpaces" class="headerlink" title="命名空间(NameSpaces)"></a>命名空间(NameSpaces)</h1><p>包是一个显示用的定义,实际上包内的类还是在同一个全局命名控件下,所以不同包内的类也不能同名,但是不同命名空间的类可以同名.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">namespace Node &lt;&lt;Node&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">namespace Rectangle &lt;&lt;Rectangle&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">namespace Folder &lt;&lt;Folder&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">namespace Frame &lt;&lt;Frame&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">namespace Clound &lt;&lt;Clound&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">namespace Database &lt;&lt;Database&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见<code>namespace</code>会展示模板内容到图上,<code>package</code>则不会显示</em></p>
+<h2 id="自动命名空间"><a href="#自动命名空间" class="headerlink" title="自动命名空间"></a>自动命名空间</h2><p>可以指定非<code>.</code>分割的命名空间,并由类型自己使用<br>关键字<code>set namespaceSeparator ???</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">set namespaceSeparator ::</span><br><span class="line">class X1::foo1 &#123;</span><br><span class="line">  int Main(String[] age)</span><br><span class="line">&#125;</span><br><span class="line">class X1::X2::foo2 &#123;</span><br><span class="line">  int Main(String[] age)</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,自动命名空间不会自动嵌套,不是很好用</em><br><em>建议手动</em></p>
+<h1 id="棒棒糖接口"><a href="#棒棒糖接口" class="headerlink" title="棒棒糖接口"></a>棒棒糖接口</h1><p>实际就是一个箭头<code>()--</code></p>
+<p>还记得棒棒糖元素(Item)吗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">circle circle</span><br><span class="line">() &quot;circle_short_form ()&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这里实际上就是用了简写模式,将<code>()--</code>括号朝向的一方定义为<code>()</code>.<br>也就是棒棒糖Item</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class Class1 &#123;</span><br><span class="line">  void Main()</span><br><span class="line">&#125;</span><br><span class="line">foo --() bar</span><br><span class="line">foo --() bar1</span><br><span class="line">foo1 --() bar</span><br><span class="line">foo1 --() Class1</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,棒棒糖每次都是重新生成新的,和之前定义的不产生任何关联</em></p>
+<h1 id="改变箭头方向"><a href="#改变箭头方向" class="headerlink" title="改变箭头方向"></a>改变箭头方向</h1><p><code>--</code>两个线表示垂直<br><code>-</code>一个线表示水平</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">Room o- Student</span><br><span class="line">Room *-- Chair</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>老规矩,还可以使用四方向关键字来手动指定方向</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">foo -left-&gt; dummyleft</span><br><span class="line">foo -right-&gt; dummyright</span><br><span class="line">foo -up-&gt; dummytop</span><br><span class="line">foo -down-&gt; dummydown</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>注意: <code>-&gt;</code>箭头要和<code>-方向</code>连在一起</em></p>
+<h1 id="关系类"><a href="#关系类" class="headerlink" title="关系类"></a>关系类</h1><p>定义两个类之间的联系后,还可以定义一个关系类<br>使用关键字<code>(PreClassName, EndClassName) .. ClassName</code>来定义关系类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class Student &#123;</span><br><span class="line">  Name</span><br><span class="line">&#125;</span><br><span class="line">class Enrollment &#123;</span><br><span class="line">  drop()</span><br><span class="line">  cancel()</span><br><span class="line">&#125;</span><br><span class="line">Student &quot;0..*&quot; - &quot;1..*&quot; Course</span><br><span class="line">(Student, Course) .. Enrollment</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见, 可以先定义类,在通过关键字指定其成为关系类</em><br><em>此处的<code>.</code>和<code>-</code>都含有方向定义, 所以关系类要放在中间,其箭头一定是垂直的.</em></p>
+<h1 id="菱形"><a href="#菱形" class="headerlink" title="菱形"></a>菱形</h1><p>和之前的棒棒糖差不多, 不过这个是非重复的,可以当作类来使用<br><em>语法回顾</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">diamond diamond</span><br><span class="line">&#39;&lt;&gt; diamond_short_form&#39;这个我这里编译不出来</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">&lt;&gt; diamond</span><br><span class="line">T1 . diamond</span><br><span class="line">diamond - &quot;For 1&quot; T2</span><br><span class="line">diamond - &quot;For 2&quot; T2</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<h1 id="皮肤参数"><a href="#皮肤参数" class="headerlink" title="皮肤参数"></a>皮肤参数</h1><p>老朋友<code>skinparam</code></p>
+<p>这次有新类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BackGroundColor&lt;&lt;Foo&gt;&gt; red</span><br></pre></td></tr></table></figure>
+<p><em>指定应用在某个模板上</em></p>
+<h1 id="渐变颜色"><a href="#渐变颜色" class="headerlink" title="渐变颜色"></a>渐变颜色</h1><p>使用<code>|</code>,<code>/</code>,<code>\</code>,<code>-</code>来表示渐变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">skinparam backgroundcolor gold|red</span><br><span class="line">skinparam classBackgroundColor 000000&#x2F;FFFFFF</span><br><span class="line">class Foo #red\green</span><br><span class="line">class Foo2 #blue-9932CC</span><br><span class="line">class Foo3</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>可见,符号表示渲染的开始和结束方向</em></p>
+<h1 id="辅助布局"><a href="#辅助布局" class="headerlink" title="辅助布局"></a>辅助布局</h1><p>关键字<code>together</code>会告知引擎尽量将一些类放在一起<br>也可以使用隐藏的链接来强制布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class T6</span><br><span class="line">class T2</span><br><span class="line">class T4</span><br><span class="line">together &#123;</span><br><span class="line"> class T1</span><br><span class="line"> class T3</span><br><span class="line"> class T5</span><br><span class="line">&#125;</span><br><span class="line">T3 -[hidden]-&gt; T2</span><br><span class="line">T2 -[hidden]&gt; T4</span><br><span class="line"></span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>感觉没啥用,不过学到一个关键字<code>[hidden]</code>,在<code>-</code>后使用</em></p>
+<h1 id="拆分大文件"><a href="#拆分大文件" class="headerlink" title="拆分大文件"></a>拆分大文件</h1><p>略</p>
+<h1 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h1><h2 id="使用关键之指定继承和实现"><a href="#使用关键之指定继承和实现" class="headerlink" title="使用关键之指定继承和实现"></a>使用关键之指定继承和实现</h2><p><code>implements</code>,<code>extends</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class ArrayList extends AbstractList implements List &#123;</span><br><span class="line">  int size()</span><br><span class="line">&#125;</span><br><span class="line">&#39; class ArrayList implements List</span><br><span class="line">&#39; class ArrayList extends AbstractList</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>两种方式都行,但都只能在声明<code>class</code>的时候使用</em></p>
+<h2 id="更多线样式"><a href="#更多线样式" class="headerlink" title="更多线样式"></a>更多线样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class foo</span><br><span class="line">class bar_normal</span><br><span class="line">class bar_bold</span><br><span class="line">class bar_dashed</span><br><span class="line">class bar_dotted</span><br><span class="line">class bar_hidden</span><br><span class="line">class bar_plain</span><br><span class="line"></span><br><span class="line">foo --&gt; bar_normal</span><br><span class="line">foo -[bold,#red]-&gt; bar_bold</span><br><span class="line">foo -[dashed,#FFF000]-&gt; bar_dashed </span><br><span class="line">foo -[dotted,#green,thickness&#x3D;8]-&gt; bar_dotted </span><br><span class="line">foo -[hidden,thickness&#x3D;4]-&gt; bar_hidden </span><br><span class="line">foo -[plain,thickness&#x3D;16]-&gt; bar_plain #blue;line.bold;text:blue : bot</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p>可见两种形式</p>
+<ul>
+<li><code>[(bold|dashed|dotted|hidden|plain),#color,thickness=x]</code></li>
+<li><code>#color;line.[bold|dashed|dotted];text:color</code></li>
+</ul>
+<h2 id="更多Item样式"><a href="#更多Item样式" class="headerlink" title="更多Item样式"></a>更多Item样式</h2><p>模式为</p>
+<ul>
+<li>#[color|back:color];header:color;line:color;line.[bold|dashed|dotted];text:color</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class class #palegreen-black;header:red&#x2F;green;line:green;line.dashed;text:blue</span><br><span class="line">interface interface #back:palegreen;header:green;line:blue;line.dashed;text:red</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>当然不能忘了经典的四方向渐变</em></p>
+<h2 id="箭头从一个类成员到另一个类成员"><a href="#箭头从一个类成员到另一个类成员" class="headerlink" title="箭头从一个类成员到另一个类成员"></a>箭头从一个类成员到另一个类成员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">class Foo &#123;</span><br><span class="line">  + field1</span><br><span class="line">  + field2</span><br><span class="line">&#125;</span><br><span class="line">class Bar &#123;</span><br><span class="line">  + field3</span><br><span class="line">  + field4</span><br><span class="line">&#125;</span><br><span class="line">Foo::field1 -&gt; Bar::field2</span><br><span class="line">Foo::field2 -&gt; Bar::field3</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+<p><em>只需以<code>::</code>表明成员即可</em></p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/%E5%86%99%E4%BD%9C/" rel="tag"># 写作</a>
+              <a href="/tags/UML/" rel="tag"># UML</a>
+              <a href="/tags/PlantUML/" rel="tag"># PlantUML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210420-231700-g124/" rel="prev" title="CSharp编程指南_语句关键字">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_语句关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210423-203900-g126/" rel="next" title="CSharp编程指南_方法参数关键字">
+      CSharp编程指南_方法参数关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">简单示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">快速学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB"><span class="nav-number">2.1.</span> <span class="nav-text">关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">2.1.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88"><span class="nav-number">2.1.3.</span> <span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88"><span class="nav-number">2.1.4.</span> <span class="nav-text">聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94"><span class="nav-number">2.1.5.</span> <span class="nav-text">关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.6.</span> <span class="nav-text">依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E9%AB%98%E7%BA%A7%E5%86%85%E5%AE%B9%E7%B4%A2%E5%BC%95"><span class="nav-number">3.</span> <span class="nav-text">重要高级内容索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%A3%B0%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">元素声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">5.</span> <span class="nav-text">类之间的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E4%B8%8A%E7%9A%84%E6%A0%87%E7%AD%BE"><span class="nav-number">6.</span> <span class="nav-text">关系上的标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">添加方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%AF%E8%AE%BF%E9%97%AE%E5%9F%9F"><span class="nav-number">8.</span> <span class="nav-text">定义可访问域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E4%B8%8E%E9%9D%99%E6%80%81"><span class="nav-number">9.</span> <span class="nav-text">抽象与静态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E7%B1%BB%E4%BD%93"><span class="nav-number">10.</span> <span class="nav-text">高级类体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%87%E6%B3%A8%E5%92%8C%E6%A8%A1%E6%9D%BF"><span class="nav-number">11.</span> <span class="nav-text">备注和模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E6%B3%A8%E9%87%8A"><span class="nav-number">12.</span> <span class="nav-text">更多注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%E9%A2%9C%E8%89%B2"><span class="nav-number">13.</span> <span class="nav-text">注释颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"><span class="nav-number">14.</span> <span class="nav-text">抽象类和接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%AD%97%E6%AF%8D%E5%AD%97%E7%AC%A6"><span class="nav-number">15.</span> <span class="nav-text">使用非字母字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7-%E5%87%BD%E6%95%B0%E7%AD%89"><span class="nav-number">16.</span> <span class="nav-text">隐藏属性,函数等</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">17.</span> <span class="nav-text">Remove关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">18.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E6%A0%87%E8%AE%B0"><span class="nav-number">19.</span> <span class="nav-text">指定标记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85"><span class="nav-number">20.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85%E6%A0%B7%E5%BC%8F"><span class="nav-number">21.</span> <span class="nav-text">包样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-NameSpaces"><span class="nav-number">22.</span> <span class="nav-text">命名空间(NameSpaces)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="nav-number">22.1.</span> <span class="nav-text">自动命名空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A3%92%E6%A3%92%E7%B3%96%E6%8E%A5%E5%8F%A3"><span class="nav-number">23.</span> <span class="nav-text">棒棒糖接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E7%AE%AD%E5%A4%B4%E6%96%B9%E5%90%91"><span class="nav-number">24.</span> <span class="nav-text">改变箭头方向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E7%B1%BB"><span class="nav-number">25.</span> <span class="nav-text">关系类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8F%B1%E5%BD%A2"><span class="nav-number">26.</span> <span class="nav-text">菱形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9A%AE%E8%82%A4%E5%8F%82%E6%95%B0"><span class="nav-number">27.</span> <span class="nav-text">皮肤参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%90%E5%8F%98%E9%A2%9C%E8%89%B2"><span class="nav-number">28.</span> <span class="nav-text">渐变颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E5%B8%83%E5%B1%80"><span class="nav-number">29.</span> <span class="nav-text">辅助布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%86%E5%88%86%E5%A4%A7%E6%96%87%E4%BB%B6"><span class="nav-number">30.</span> <span class="nav-text">拆分大文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="nav-number">31.</span> <span class="nav-text">扩展阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B3%E9%94%AE%E4%B9%8B%E6%8C%87%E5%AE%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="nav-number">31.1.</span> <span class="nav-text">使用关键之指定继承和实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%BA%BF%E6%A0%B7%E5%BC%8F"><span class="nav-number">31.2.</span> <span class="nav-text">更多线样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9AItem%E6%A0%B7%E5%BC%8F"><span class="nav-number">31.3.</span> <span class="nav-text">更多Item样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E4%BB%8E%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%88%90%E5%91%98%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%88%90%E5%91%98"><span class="nav-number">31.4.</span> <span class="nav-text">箭头从一个类成员到另一个类成员</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">32.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="也就是大名鼎鼎的LINQ强化写法.类似于SQL语句.    子句 说明    from 指定数据源和范围变量（类似于迭代变量）。   where 基于由逻辑 AND 和 OR 运算符（&amp;&amp; 或 &#96;   select 指定执行查询时，所返回序列中元素的类型和形状。   group 根据指定的密钥值对查询结果分组。   into 提供可作为对 join、group 或 select 子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_查询关键字">
+<meta property="og:url" content="http://example.com/ml-20210426-234200-g133/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="也就是大名鼎鼎的LINQ强化写法.类似于SQL语句.    子句 说明    from 指定数据源和范围变量（类似于迭代变量）。   where 基于由逻辑 AND 和 OR 运算符（&amp;&amp; 或 &#96;   select 指定执行查询时，所返回序列中元素的类型和形状。   group 根据指定的密钥值对查询结果分组。   into 提供可作为对 join、group 或 select 子">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-26T15:42:00.000Z">
+<meta property="article:modified_time" content="2021-04-26T15:42:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210426-234200-g133/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_查询关键字 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210426-234200-g133/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_查询关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-26 23:42:00" itemprop="dateCreated datePublished" datetime="2021-04-26T23:42:00+08:00">2021-04-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>也就是大名鼎鼎的<code>LINQ</code>强化写法.<br>类似于SQL语句.</p>
+<table>
+<thead>
+<tr>
+<th>子句</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>from</td>
+<td>指定数据源和范围变量（类似于迭代变量）。</td>
+</tr>
+<tr>
+<td>where</td>
+<td>基于由逻辑 AND 和 OR 运算符（&amp;&amp; 或 `</td>
+</tr>
+<tr>
+<td>select</td>
+<td>指定执行查询时，所返回序列中元素的类型和形状。</td>
+</tr>
+<tr>
+<td>group</td>
+<td>根据指定的密钥值对查询结果分组。</td>
+</tr>
+<tr>
+<td>into</td>
+<td>提供可作为对 join、group 或 select 子句结果引用的标识符。</td>
+</tr>
+<tr>
+<td>orderby</td>
+<td>根据元素类型的默认比较器对查询结果进行升序或降序排序。</td>
+</tr>
+<tr>
+<td>join</td>
+<td>基于两个指定匹配条件间的相等比较而联接两个数据源。</td>
+</tr>
+<tr>
+<td>let</td>
+<td>引入范围变量，在查询表达式中存储子表达式结果。</td>
+</tr>
+<tr>
+<td>in</td>
+<td>join 子句中的上下文关键字。</td>
+</tr>
+<tr>
+<td>on</td>
+<td>join 子句中的上下文关键字。</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>join 子句中的上下文关键字。</td>
+</tr>
+<tr>
+<td>by</td>
+<td>group 子句中的上下文关键字。</td>
+</tr>
+<tr>
+<td>ascending</td>
+<td>orderby 子句中的上下文关键字。</td>
+</tr>
+<tr>
+<td>descending</td>
+<td>orderby 子句中的上下文关键字。</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h1 id="form"><a href="#form" class="headerlink" title="form"></a>form</h1><p>查询表达式必须以 <code>from</code> 子句开头。 此外，查询表达式可包含也以 <code>from</code> 子句开头的子查询</p>
+<p><code>from</code> 子句指定下列各项：  </p>
+<ul>
+<li>将在其上运行查询或子查询的数据源。</li>
+<li>表示源序列中每个元素的本地范围变量。</li>
+</ul>
+<p><code>from</code> 子句中引用的数据源必须具有 <code>IEnumerable</code>、<code>IEnumerable&lt;T&gt;</code> 类型之一，或 <code>IQueryable&lt;T&gt;</code> 等派生类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> lowNums = <span class="keyword">from</span> num <span class="keyword">in</span> numbers</span><br><span class="line">            <span class="keyword">where</span> num &lt; <span class="number">5</span></span><br><span class="line">            <span class="keyword">select</span> num;</span><br></pre></td></tr></table></figure>
+<p><em>此例子查询所有<code>numbers</code>中小于5的数字,并返回为<code>lowNums</code></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scoreQuery = <span class="keyword">from</span> student <span class="keyword">in</span> students</span><br><span class="line">                <span class="keyword">from</span> score <span class="keyword">in</span> student.Scores</span><br><span class="line">                <span class="keyword">where</span> score &gt; <span class="number">90</span></span><br><span class="line">                <span class="keyword">select</span> <span class="keyword">new</span> &#123; Last = student.LastName, score &#125;;</span><br></pre></td></tr></table></figure>
+<p><em>此例子演示了嵌套<code>from</code></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> joinQuery2 =</span><br><span class="line">    <span class="keyword">from</span> lower <span class="keyword">in</span> lowerCase</span><br><span class="line">    <span class="keyword">where</span> lower != <span class="string">&#x27;x&#x27;</span></span><br><span class="line">    <span class="keyword">from</span> upper <span class="keyword">in</span> upperCase</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">new</span> &#123; lower, upper &#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="where"><a href="#where" class="headerlink" title="where"></a>where</h1><p><code>where</code> 子句用在查询表达式中，用于指定将在查询表达式中返回数据源中的哪些元素</p>
+<p>上面<code>form</code>就有例子.</p>
+<h1 id="select"><a href="#select" class="headerlink" title="select"></a>select</h1><p><code>select</code> 子句指定在执行查询时产生的值的类型</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">int</span>&gt; queryHighScores =</span><br><span class="line">           <span class="keyword">from</span> score <span class="keyword">in</span> Scores</span><br><span class="line">           <span class="keyword">where</span> score &gt; <span class="number">80</span></span><br><span class="line">           <span class="keyword">select</span> score;</span><br></pre></td></tr></table></figure>
+<p><em>推断出<code>score</code>是<code>int</code>类型, 所以最终返回<code>IEnumerable&lt;int&gt;</code></em></p>
+<h1 id="group"><a href="#group" class="headerlink" title="group"></a>group</h1><p><code>group</code> 子句返回一个 <code>IGrouping&lt;TKey,TElement&gt;</code> 对象序列<br>这些对象包含零个或更多与该组的键值匹配的项</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;IGrouping&lt;<span class="built_in">char</span>, Student&gt;&gt; studentQuery1 =</span><br><span class="line">    <span class="keyword">from</span> student <span class="keyword">in</span> students</span><br><span class="line">    <span class="keyword">group</span> student <span class="keyword">by</span> student.Last[<span class="number">0</span>];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果要对每个组执行附加查询操作，可使用上下文关键字 <code>into</code> 指定一个临时标识符</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;IGrouping&lt;<span class="built_in">char</span>, Student&gt;&gt; studentQuery2 =</span><br><span class="line">    <span class="keyword">from</span> student <span class="keyword">in</span> students</span><br><span class="line">    <span class="keyword">group</span> student <span class="keyword">by</span> student.Last[<span class="number">0</span>] <span class="keyword">into</span> g</span><br><span class="line">    <span class="keyword">orderby</span> g.Key</span><br><span class="line">    <span class="keyword">select</span> g;</span><br></pre></td></tr></table></figure>
+
+<h1 id="into"><a href="#into" class="headerlink" title="into"></a>into</h1><p><code>into</code> 上下文关键字创建临时标识符，将 <code>group</code>、<code>join</code> 或 <code>select</code> 子句的结果存储至新标识符</p>
+<p>例子同上.</p>
+<h1 id="orderby"><a href="#orderby" class="headerlink" title="orderby"></a>orderby</h1><p><code>orderby</code> 子句可导致返回的序列或子序列（组）以升序或降序排序</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; sortAscendingQuery =</span><br><span class="line">    <span class="keyword">from</span> fruit <span class="keyword">in</span> fruits</span><br><span class="line">    <span class="keyword">orderby</span> fruit</span><br><span class="line">    <span class="keyword">select</span> fruit;</span><br><span class="line"></span><br><span class="line"> IEnumerable&lt;<span class="built_in">string</span>&gt; sortDescendingQuery =</span><br><span class="line">    <span class="keyword">from</span> w <span class="keyword">in</span> fruits</span><br><span class="line">    <span class="keyword">orderby</span> w <span class="keyword">descending</span></span><br><span class="line">    <span class="keyword">select</span> w;</span><br></pre></td></tr></table></figure>
+
+<p>第一个查询按字母顺序从 A 开始对字词排序，而第二个查询则按降序对相同的字词排序</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;Student&gt; sortedStudents =</span><br><span class="line">    <span class="keyword">from</span> student <span class="keyword">in</span> students</span><br><span class="line">    <span class="keyword">orderby</span> student.Last <span class="keyword">ascending</span>, student.First <span class="keyword">ascending</span></span><br><span class="line">    <span class="keyword">select</span> student;</span><br></pre></td></tr></table></figure>
+<p><em>可连续使用</em><br>对学生的姓氏进行主要排序，然后对其名字进行次要排序</p>
+<blockquote>
+<p>编译时，<code>orderby</code> 子句将转换为对 <code>OrderBy</code> 方法的调用。 <code>orderby</code> 子句中的多个关键值将转换为 <code>ThenBy</code> 方法调用。</p>
+</blockquote>
+<h1 id="join"><a href="#join" class="headerlink" title="join"></a>join</h1><p><code>join</code> 子句可用于将来自不同源序列并且在对象模型中没有直接关系的元素相关联<br>要求是每个源中的元素需要共享某个可以进行比较以判断是否相等的值</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义数据</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">Product</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> CategoryID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Category</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> ID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Specify the first data source.</span></span><br><span class="line">List&lt;Category&gt; categories = <span class="keyword">new</span> List&lt;Category&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Category &#123;Name=<span class="string">&quot;Beverages&quot;</span>, ID=<span class="number">001</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Category &#123;Name=<span class="string">&quot;Condiments&quot;</span>, ID=<span class="number">002</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Category &#123;Name=<span class="string">&quot;Vegetables&quot;</span>, ID=<span class="number">003</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Category &#123;Name=<span class="string">&quot;Grains&quot;</span>, ID=<span class="number">004</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Category &#123;Name=<span class="string">&quot;Fruit&quot;</span>, ID=<span class="number">005</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Specify the second data source.</span></span><br><span class="line">List&lt;Product&gt; products = <span class="keyword">new</span> List&lt;Product&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Cola&quot;</span>,  CategoryID=<span class="number">001</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Tea&quot;</span>,  CategoryID=<span class="number">001</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Mustard&quot;</span>, CategoryID=<span class="number">002</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Pickles&quot;</span>, CategoryID=<span class="number">002</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Carrots&quot;</span>, CategoryID=<span class="number">003</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Bok Choy&quot;</span>, CategoryID=<span class="number">003</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Peaches&quot;</span>, CategoryID=<span class="number">005</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Product &#123;Name=<span class="string">&quot;Melons&quot;</span>, CategoryID=<span class="number">005</span>&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内部联接"><a href="#内部联接" class="headerlink" title="内部联接"></a>内部联接</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerJoinQuery =</span><br><span class="line">    <span class="keyword">from</span> category <span class="keyword">in</span> categories</span><br><span class="line">    <span class="keyword">join</span> prod <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> prod.CategoryID</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">new</span> &#123; ProductName = prod.Name, Category = category.Name &#125;; </span><br></pre></td></tr></table></figure>
+<p>如果 <code>category.ID equals prod.CategoryID</code> 不成立,则该<code>products</code>不会出现在最终列表中</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Cola      1</span></span><br><span class="line"><span class="comment">Tea       1</span></span><br><span class="line"><span class="comment">Mustard   2</span></span><br><span class="line"><span class="comment">Pickles   2</span></span><br><span class="line"><span class="comment">Carrots   3</span></span><br><span class="line"><span class="comment">Bok Choy  3</span></span><br><span class="line"><span class="comment">Peaches   5</span></span><br><span class="line"><span class="comment">Melons    5</span></span><br><span class="line"><span class="comment">InnerJoin: 8 items in 1 group.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="分组链接"><a href="#分组链接" class="headerlink" title="分组链接"></a>分组链接</h2><p>含有 <code>into</code> 表达式的 <code>join</code> 子句称为分组联接</p>
+<p>分组联接会生成分层的结果序列，该序列将左侧源序列中的元素与右侧源序列中的一个或多个匹配元素相关联。 分组联接没有等效的关系术语；它本质上是一个对象数组序列</p>
+<p>如果在右侧源序列中找不到与左侧源中的元素相匹配的元素，则 <code>join</code> 子句会为该项生成一个空数组。 因此，分组联接基本上仍然是一种内部同等联接，区别在于分组联接将结果序列组织为多个组</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> groupJoinQuery =</span><br><span class="line">    <span class="keyword">from</span> category <span class="keyword">in</span> categories</span><br><span class="line">    <span class="keyword">join</span> prod <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> prod.CategoryID <span class="keyword">into</span> prodGroup</span><br><span class="line">    <span class="keyword">select</span> prodGroup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> prodGrouping <span class="keyword">in</span> groupJoinQuery)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Group:&quot;</span>);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> prodGrouping)</span><br><span class="line">    &#123;</span><br><span class="line">        totalItems++;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;   &#123;0,-10&#125;&#123;1&#125;&quot;</span>, item.Name, item.CategoryID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Cola      1</span></span><br><span class="line"><span class="comment">    Tea       1</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Mustard   2</span></span><br><span class="line"><span class="comment">    Pickles   2</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Carrots   3</span></span><br><span class="line"><span class="comment">    Bok Choy  3</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Peaches   5</span></span><br><span class="line"><span class="comment">    Melons    5</span></span><br><span class="line"><span class="comment">Unshaped GroupJoin: 8 items in 5 unnamed groups</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><em>因为<code>join</code>的目标是<code>prod</code>所以,实际上<code>into</code>结果<code>prodGroup</code>里面的小项也都是<code>prod</code></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> groupJoinQuery2 =</span><br><span class="line">    <span class="keyword">from</span> category <span class="keyword">in</span> categories</span><br><span class="line">    <span class="keyword">orderby</span> category.ID</span><br><span class="line">    <span class="keyword">join</span> prod <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> prod.CategoryID <span class="keyword">into</span> prodGroup</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">    &#123;</span><br><span class="line">        Category = category.Name,</span><br><span class="line">        Products = <span class="keyword">from</span> prod2 <span class="keyword">in</span> prodGroup</span><br><span class="line">                    <span class="keyword">orderby</span> prod2.Name</span><br><span class="line">                    <span class="keyword">select</span> prod2</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> productGroup <span class="keyword">in</span> groupJoinQuery2)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(productGroup.Category);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> prodItem <span class="keyword">in</span> productGroup.Products)</span><br><span class="line">    &#123;</span><br><span class="line">        totalItems++;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;  &#123;0,-10&#125; &#123;1&#125;&quot;</span>, prodItem.Name, prodItem.CategoryID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Beverages</span></span><br><span class="line"><span class="comment">    Cola       1</span></span><br><span class="line"><span class="comment">    Tea        1</span></span><br><span class="line"><span class="comment">Condiments</span></span><br><span class="line"><span class="comment">    Mustard    2</span></span><br><span class="line"><span class="comment">    Pickles    2</span></span><br><span class="line"><span class="comment">Vegetables</span></span><br><span class="line"><span class="comment">    Bok Choy   3</span></span><br><span class="line"><span class="comment">    Carrots    3</span></span><br><span class="line"><span class="comment">Grains</span></span><br><span class="line"><span class="comment">Fruit</span></span><br><span class="line"><span class="comment">    Melons     5</span></span><br><span class="line"><span class="comment">    Peaches    5</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><em>比上个例子多出一个<code>Select</code>集合,以及<code>products</code>以<code>Name</code>排序</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> groupJoinQuery3 =</span><br><span class="line">    <span class="keyword">from</span> category <span class="keyword">in</span> categories</span><br><span class="line">    <span class="keyword">join</span> product <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> product.CategoryID <span class="keyword">into</span> prodGroup</span><br><span class="line">    <span class="keyword">from</span> prod <span class="keyword">in</span> prodGroup</span><br><span class="line">    <span class="keyword">orderby</span> prod.CategoryID</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">new</span> &#123; Category = prod.CategoryID, ProductName = prod.Name &#125;;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;GroupJoin3:&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> groupJoinQuery3)</span><br><span class="line">&#123;</span><br><span class="line">    totalItems++;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;   &#123;0&#125;:&#123;1&#125;&quot;</span>, item.ProductName, item.Category);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">GroupJoin3:</span></span><br><span class="line"><span class="comment">    Cola:1</span></span><br><span class="line"><span class="comment">    Tea:1</span></span><br><span class="line"><span class="comment">    Mustard:2</span></span><br><span class="line"><span class="comment">    Pickles:2</span></span><br><span class="line"><span class="comment">    Carrots:3</span></span><br><span class="line"><span class="comment">    Bok Choy:3</span></span><br><span class="line"><span class="comment">    Peaches:5</span></span><br><span class="line"><span class="comment">    Melons:5</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><em>指定了一个新集合,按ID排序</em></p>
+<h2 id="左外部链接"><a href="#左外部链接" class="headerlink" title="左外部链接"></a>左外部链接</h2><p>在左外部联接中，将返回左侧源序列中的所有元素，即使右侧序列中没有其匹配元素也是如此。 若要在 LINQ 中执行左外部联接，请结合使用 <code>DefaultIfEmpty</code> 方法与分组联接</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> leftOuterQuery =</span><br><span class="line">    <span class="keyword">from</span> category <span class="keyword">in</span> categories</span><br><span class="line">    <span class="keyword">join</span> prod <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> prod.CategoryID <span class="keyword">into</span> prodGroup</span><br><span class="line">    <span class="keyword">select</span> prodGroup.DefaultIfEmpty(<span class="keyword">new</span> Product() &#123; Name = <span class="string">&quot;Nothing!&quot;</span>, CategoryID = category.ID &#125;);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> prodGrouping <span class="keyword">in</span> leftOuterQuery)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Group:&quot;</span>);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> prodGrouping)</span><br><span class="line">    &#123;</span><br><span class="line">        totalItems++;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;  &#123;0,-10&#125;&#123;1&#125;&quot;</span>, item.Name, item.CategoryID);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Left Outer Join:</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Cola      1</span></span><br><span class="line"><span class="comment">    Tea       1</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Mustard   2</span></span><br><span class="line"><span class="comment">    Pickles   2</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Carrots   3</span></span><br><span class="line"><span class="comment">    Bok Choy  3</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Nothing!  4</span></span><br><span class="line"><span class="comment">Group:</span></span><br><span class="line"><span class="comment">    Peaches   5</span></span><br><span class="line"><span class="comment">    Melons    5</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><em>这里的左侧是<code>category.ID</code>, 所以生成所有<code>ID</code>. 1,2,3,4,5. 但是没有ID为4的商品, 所以需要指定<code>DefaultIfEmpty(new Product() </code>为无匹配时的商品</em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> leftOuterQuery2 =</span><br><span class="line">    <span class="keyword">from</span> category <span class="keyword">in</span> categories</span><br><span class="line">    <span class="keyword">join</span> prod <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> prod.CategoryID <span class="keyword">into</span> prodGroup</span><br><span class="line">    <span class="keyword">from</span> item <span class="keyword">in</span> prodGroup.DefaultIfEmpty()</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">new</span> &#123; Name = item == <span class="literal">null</span> ? <span class="string">&quot;Nothing!&quot;</span> : item.Name, CategoryID = category.ID &#125;;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> leftOuterQuery2)</span><br><span class="line">&#123;</span><br><span class="line">    totalItems++;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;&#123;0,-10&#125;&#123;1&#125;&quot;</span>, item.Name, item.CategoryID);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Left Outer Join 2:</span></span><br><span class="line"><span class="comment">Cola      1</span></span><br><span class="line"><span class="comment">Tea       1</span></span><br><span class="line"><span class="comment">Mustard   2</span></span><br><span class="line"><span class="comment">Pickles   2</span></span><br><span class="line"><span class="comment">Carrots   3</span></span><br><span class="line"><span class="comment">Bok Choy  3</span></span><br><span class="line"><span class="comment">Nothing!  4</span></span><br><span class="line"><span class="comment">Peaches   5</span></span><br><span class="line"><span class="comment">Melons    5</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p><em>这里最后的<code>Select</code>抹平了<code>Group</code>,所以就是一整组</em></p>
+<h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><p>在查询表达式中，存储子表达式的结果</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> earlyBirdQuery =</span><br><span class="line">    <span class="keyword">from</span> sentence <span class="keyword">in</span> strings</span><br><span class="line">    <span class="keyword">let</span> words = sentence.Split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="keyword">from</span> word <span class="keyword">in</span> words</span><br><span class="line">    <span class="keyword">let</span> w = word.ToLower()</span><br><span class="line">    <span class="keyword">where</span> w[<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span> || w[<span class="number">0</span>] == <span class="string">&#x27;e&#x27;</span></span><br><span class="line">        || w[<span class="number">0</span>] == <span class="string">&#x27;i&#x27;</span> || w[<span class="number">0</span>] == <span class="string">&#x27;o&#x27;</span></span><br><span class="line">        || w[<span class="number">0</span>] == <span class="string">&#x27;u&#x27;</span></span><br><span class="line">    <span class="keyword">select</span> word;</span><br></pre></td></tr></table></figure>
+<p><em>就是查询表达式中的变量类型</em></p>
+<h1 id="in"><a href="#in" class="headerlink" title="in"></a>in</h1><p>在以下上下文中，使用了 in 关键字：</p>
+<ul>
+<li>泛型接口和委托中的泛型类型参数。</li>
+<li>作为参数修饰符，它允许按引用而不是按值向方法传递参数。</li>
+<li><code>foreach</code> 语句。</li>
+<li><strong><code>LINQ</code> 查询表达式中的 <code>from</code> 子句。</strong></li>
+<li><strong><code>LINQ</code> 查询表达式中的 <code>join</code> 子句。</strong></li>
+</ul>
+<h1 id="on"><a href="#on" class="headerlink" title="on"></a>on</h1><p><code>on</code> 上下文关键字用于在查询表达式的 <code>join</code> 子句中指定联接条件</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">join</span> prod <span class="keyword">in</span> products <span class="keyword">on</span> category.ID <span class="keyword">equals</span> prod.CategoryID</span><br></pre></td></tr></table></figure>
+<h1 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h1><p><code>equals</code> 上下文关键字用于在查询表达式的 <code>join</code> 子句中比较两个序列的元素</p>
+<p>同上</p>
+<h1 id="by"><a href="#by" class="headerlink" title="by"></a>by</h1><p><code>by</code> 上下文关键字用于在查询表达式的 <code>group</code> 子句中指定应返回项的分组方式</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> query = <span class="keyword">from</span> student <span class="keyword">in</span> students</span><br><span class="line">    <span class="keyword">group</span> student <span class="keyword">by</span> student.LastName[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<h1 id="ascending"><a href="#ascending" class="headerlink" title="ascending"></a>ascending</h1><p>查询表达式中的 <code>orderby</code> 子句 中使用 <code>ascending</code> 上下文关键字指定排序顺序为从小到大。 由于 <code>ascending</code> 为默认排序顺序，因此无需加以指定。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; sortAscendingQuery =</span><br><span class="line">    <span class="keyword">from</span> vegetable <span class="keyword">in</span> vegetables</span><br><span class="line">    <span class="keyword">orderby</span> vegetable <span class="keyword">ascending</span></span><br><span class="line">    <span class="keyword">select</span> vegetable;</span><br></pre></td></tr></table></figure>
+
+<h1 id="descending"><a href="#descending" class="headerlink" title="descending"></a>descending</h1><p>查询表达式中的 <code>orderby</code> 子句中使用 <code>descending</code> 上下文关键字指定排序顺序为从大到小。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; sortDescendingQuery =</span><br><span class="line">    <span class="keyword">from</span> vegetable <span class="keyword">in</span> vegetables</span><br><span class="line">    <span class="keyword">orderby</span> vegetable <span class="keyword">descending</span></span><br><span class="line">    <span class="keyword">select</span> vegetable;</span><br></pre></td></tr></table></figure>
+
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210425-221800-g132/" rel="prev" title="CSharp编程指南_上下文关键字">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_上下文关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210429-011500-g134/" rel="next" title="CSharp编程指南_运算符和表达式">
+      CSharp编程指南_运算符和表达式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#form"><span class="nav-number">1.</span> <span class="nav-text">form</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#where"><span class="nav-number">2.</span> <span class="nav-text">where</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">3.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#group"><span class="nav-number">4.</span> <span class="nav-text">group</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#into"><span class="nav-number">5.</span> <span class="nav-text">into</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#orderby"><span class="nav-number">6.</span> <span class="nav-text">orderby</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">7.</span> <span class="nav-text">join</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E8%81%94%E6%8E%A5"><span class="nav-number">7.1.</span> <span class="nav-text">内部联接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E9%93%BE%E6%8E%A5"><span class="nav-number">7.2.</span> <span class="nav-text">分组链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">7.3.</span> <span class="nav-text">左外部链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let"><span class="nav-number">8.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in"><span class="nav-number">9.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#on"><span class="nav-number">10.</span> <span class="nav-text">on</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#equals"><span class="nav-number">11.</span> <span class="nav-text">equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#by"><span class="nav-number">12.</span> <span class="nav-text">by</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ascending"><span class="nav-number">13.</span> <span class="nav-text">ascending</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#descending"><span class="nav-number">14.</span> <span class="nav-text">descending</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">15.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
