@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="$：内插的字符串字符 @：逐字字符串标识符字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp编程指南_特殊字符">
+<meta property="og:url" content="http://example.com/ml-20210508-225300-g135/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="$：内插的字符串字符 @：逐字字符串标识符字符">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-28T17:15:00.000Z">
+<meta property="article:modified_time" content="2021-04-28T17:15:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp编程指南">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210508-225300-g135/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSharp编程指南_特殊字符 | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210508-225300-g135/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSharp编程指南_特殊字符
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-29 01:15:00" itemprop="dateCreated datePublished" datetime="2021-04-29T01:15:00+08:00">2021-04-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>$：内插的字符串字符</li>
+<li>@：逐字字符串标识符字符</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="字符串内插"><a href="#字符串内插" class="headerlink" title="$ - 字符串内插"></a>$ - 字符串内插</h1><p>与使用<code>字符串复合格式设置</code>功能创建格式化字符串相比，字符串内插提供的语法更具可读性，且更加方便</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;Hello, &#123;0&#125;! Today is &#123;1&#125;, it&#x27;s &#123;2:HH:mm&#125; now.&quot;</span>, name, date.DayOfWeek, date);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;Hello, <span class="subst">&#123;name&#125;</span>! Today is <span class="subst">&#123;date.DayOfWeek&#125;</span>, it&#x27;s <span class="subst">&#123;date:HH:mm&#125;</span> now.&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>解构示意图</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&lt;interpolationExpression&gt;[,&lt;alignment&gt;][:&lt;formatString&gt;]&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>interpolationExpression</td>
+<td>生成需要设置格式的结果的表达式。 null 的字符串表示形式为 String.Empty</td>
+</tr>
+<tr>
+<td>alignment</td>
+<td>常数表达式，它的值定义表达式结果的字符串表示形式中的最小字符数。 如果值为正，则字符串表示形式为右对齐；如果值为负，则为左对齐。 有关详细信息，请参阅对齐组件</td>
+</tr>
+<tr>
+<td>formatString</td>
+<td>受表达式结果类型支持的格式字符串。 有关更多信息，请参阅格式字符串组件</td>
+</tr>
+</tbody></table>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">$&quot;|<span class="subst">&#123;<span class="string">&quot;Left&quot;</span>,<span class="number">-7</span>&#125;</span>|<span class="subst">&#123;<span class="string">&quot;Right&quot;</span>,<span class="number">7</span>&#125;</span>|&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">int</span> FieldWidthRightAligned = <span class="number">20</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;Math.PI,FieldWidthRightAligned&#125;</span> - default formatting of the pi number&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;Math.PI,FieldWidthRightAligned:F3&#125;</span> - display only three decimal digits of the pi number&quot;</span>);</span><br><span class="line"><span class="comment">// Expected output is:</span></span><br><span class="line"><span class="comment">// |Left   |  Right|</span></span><br><span class="line"><span class="comment">//     3.14159265358979 - default formatting of the pi number</span></span><br><span class="line"><span class="comment">//                3.142 - display only three decimal digits of the pi number</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>要在内插字符串生成的文本中包含大括号 “{“ 或 “}”，请使用两个大括号，即 “ 或 “</p>
+<p>因为冒号（“:”）在内插表达式项中具有特殊含义，为了在内插表达式中使用条件运算符，请将表达式放在括号内</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> name = <span class="string">&quot;Horace&quot;</span>;</span><br><span class="line"><span class="built_in">int</span> age = <span class="number">34</span>;</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;He asked, \&quot;Is your name <span class="subst">&#123;name&#125;</span>?\&quot;, but didn&#x27;t wait for a reply :-&#123;&#123;&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;name&#125;</span> is <span class="subst">&#123;age&#125;</span> year<span class="subst">&#123;(age == <span class="number">1</span> ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;s&quot;</span>)&#125;</span> old.&quot;</span>);</span><br><span class="line"><span class="comment">// Expected output is:</span></span><br><span class="line"><span class="comment">// He asked, &quot;Is your name Horace?&quot;, but didn&#x27;t wait for a reply :-&#123;</span></span><br><span class="line"><span class="comment">// Horace is 34 years old.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="隐式转换和指定-IFormatProvider-实现的方式"><a href="#隐式转换和指定-IFormatProvider-实现的方式" class="headerlink" title="隐式转换和指定 IFormatProvider 实现的方式"></a>隐式转换和指定 IFormatProvider 实现的方式</h2><ul>
+<li><p>将内插字符串转换为 String 实例，该类例是内插字符串的解析结果，其中内插表达式项被替换为结果的格式设置正确的字符串表示形式。 此转换使用 CurrentCulture 设置表达式结果的格式</p>
+</li>
+<li><p>将内插字符串转换为表示复合格式字符串的 FormattableString 实例，同时也将表达式结果格式化。 这允许通过单个 FormattableString 实例创建多个包含区域性特定内容的结果字符串。 要执行此操作，请调用以下方法之一</p>
+<ul>
+<li>ToString() 重载，生成 CurrentCulture 的结果字符串。</li>
+<li>Invariant 方法，生成 InvariantCulture 的结果字符串。</li>
+<li>ToString(IFormatProvider) 方法，生成特定区域性的结果字符串。<br>还可以使用 ToString(IFormatProvider) 方法，以提供支持自定义格式设置的 IFormatProvider 接口的用户定义实现。 有关详细信息，请参阅在 .NET 中设置类型格式一文中的使用 ICustomFormatter 进行自定义格式设置部分</li>
+</ul>
+</li>
+<li><p>将内插字符串转换为 IFormattable 实例，使用此实例也可通过单个 IFormattable 实例创建多个包含区域性特定内容的结果字符串</p>
+</li>
+</ul>
+<h2 id="内插字符串编译"><a href="#内插字符串编译" class="headerlink" title="内插字符串编译"></a>内插字符串编译</h2><p>如果内插字符串类型为 string，则通常将其转换为 String.Format 方法调用</p>
+<p>如果分析的行为等同于串联，则编译器可将 String.Format 替换为 String.Concat</p>
+<p>如果内插字符串类型为 IFormattable 或 FormattableString，则编译器会生成对 FormattableStringFactory.Create 方法的调用</p>
+<h2 id="复合格式设置"><a href="#复合格式设置" class="headerlink" title="复合格式设置"></a>复合格式设置</h2><p>复合格式设置功能受诸如以下方法的支持</p>
+<ul>
+<li>String.Format，它返回格式化的结果字符串。</li>
+<li>StringBuilder.AppendFormat，它将格式化的结果字符串追加到 StringBuilder 对象。</li>
+<li>Console.WriteLine 方法的某些重载，它将格式化的结果字符串显示到控制台上。</li>
+<li>TextWriter.WriteLine 方法的某些重载，它将格式化的结果字符串写入流或文件中。 派生自 TextWriter 的类（如 StreamWriter 和 HtmlTextWriter）也共享此功能。</li>
+<li>Debug.WriteLine(String, Object[])，它将格式化消息输出到跟踪侦听器。</li>
+<li>Trace.TraceError(String, Object[])、Trace.TraceInformation(String, Object[]) 和 Trace.TraceWarning(String, Object[]) 方法，它们将格式化消息输出到跟踪侦听器。</li>
+<li>TraceSource.TraceInformation(String, Object[]) 方法，它将信息性方法写入跟踪侦听器中。</li>
+</ul>
+<p>复合格式字符串和对象列表将用作支持复合格式设置功能的方法的参数。 复合格式字符串由零个或多个固定文本段与一个或多个格式项混和组成</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> name = <span class="string">&quot;Fred&quot;</span>;</span><br><span class="line">String.Format(<span class="string">&quot;Name = &#123;0&#125;, hours = &#123;1:hh&#125;&quot;</span>, name, DateTime.Now);</span><br></pre></td></tr></table></figure>
+
+<h3 id="索引组件"><a href="#索引组件" class="headerlink" title="索引组件"></a>索引组件</h3><p>即<code>&#123;index&#125;</code></p>
+<h3 id="对齐组件"><a href="#对齐组件" class="headerlink" title="对齐组件"></a>对齐组件</h3><p>类似于<code>&#123;0,-20&#125;</code>或<code>&#123;1,5:N1&#125;</code></p>
+<p>使 20 字符字段中的姓名左对齐，使 5 字符字段中的工作小时数右对齐</p>
+<p>注意“N1”标准格式字符串还用于设置带有小数位的小时数格式</p>
+<h1 id="格式字符串组件"><a href="#格式字符串组件" class="headerlink" title="格式字符串组件"></a>格式字符串组件</h1><ul>
+<li>标准日期和时间格式字符串</li>
+<li>自定义日期和时间格式字符串</li>
+<li>枚举格式字符串</li>
+<li>标准数字格式字符串</li>
+<li>自定义数字格式字符串</li>
+<li>Guid.ToString(String)</li>
+<li>标准 TimeSpan 格式字符串</li>
+<li>自定义 TimeSpan 格式字符串</li>
+</ul>
+<h1 id="：逐字字符串标识符字符"><a href="#：逐字字符串标识符字符" class="headerlink" title="@：逐字字符串标识符字符"></a>@：逐字字符串标识符字符</h1><p>@ 特殊字符用作原义标识符。 它具有以下用途</p>
+<ul>
+<li>使 C# 关键字用作标识符, 如<code>@for</code></li>
+<li>指示将原义解释字符串,将按字面解释,而不是转义结果</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> filename1 = <span class="string">@&quot;c:\documents\files\u0066.txt&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> filename2 = <span class="string">&quot;c:\\documents\\files\\u0066.txt&quot;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s1 = <span class="string">&quot;He said, \&quot;This is the last \u0063hance\x0021\&quot;&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> s2 = <span class="string">@&quot;He said, &quot;&quot;This is the last \u0063hance\x0021&quot;&quot;&quot;</span>;</span><br><span class="line">Console.WriteLine(s1);</span><br><span class="line">Console.WriteLine(s2);</span><br><span class="line"><span class="comment">// The example displays the following output:</span></span><br><span class="line"><span class="comment">//     He said, &quot;This is the last chance!&quot;</span></span><br><span class="line"><span class="comment">//     He said, &quot;This is the last \u0063hance\x0021&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使编译器在命名冲突的情况下区分两种属性</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line">[<span class="meta">AttributeUsage(AttributeTargets.Class)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Info</span> : <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="built_in">string</span> information;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Info</span>(<span class="params"><span class="built_in">string</span> info</span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">      information = info;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">AttributeUsage(AttributeTargets.Method)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">InfoAttribute</span> : <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="built_in">string</span> information;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">InfoAttribute</span>(<span class="params"><span class="built_in">string</span> info</span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">      information = info;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Info(<span class="meta-string">&quot;A simple executable.&quot;</span>)</span>] <span class="comment">// &quot;Info”在“Info”和“InfoAttribute”之间不明确；请使用“@Info”或“InfoAttribute”</span></span><br><span class="line"><span class="comment">//[@Info(&quot;A simple executable.&quot;)] </span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span></span><br><span class="line">&#123;</span><br><span class="line">   [<span class="meta">InfoAttribute(<span class="meta-string">&quot;The entry point.&quot;</span>)</span>]</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从 C# 8.0 开始，可以按任意顺序使用 $ 和 @ 标记<br>之前的版本只能以 $ 字符开头，后跟 @ 字符  </p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" rel="tag"># CSharp编程指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210429-011500-g134/" rel="prev" title="CSharp编程指南_运算符和表达式">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_运算符和表达式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210509-224500-g136/" rel="next" title="CSharp编程指南_编译器读取的属性">
+      CSharp编程指南_编译器读取的属性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%85%E6%8F%92"><span class="nav-number">1.</span> <span class="nav-text">$ - 字符串内插</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%8C%87%E5%AE%9A-IFormatProvider-%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">隐式转换和指定 IFormatProvider 实现的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E6%8F%92%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BC%96%E8%AF%91"><span class="nav-number">1.3.</span> <span class="nav-text">内插字符串编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E6%A0%BC%E5%BC%8F%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">复合格式设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%BB%84%E4%BB%B6"><span class="nav-number">1.4.1.</span> <span class="nav-text">索引组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E9%BD%90%E7%BB%84%E4%BB%B6"><span class="nav-number">1.4.2.</span> <span class="nav-text">对齐组件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">格式字符串组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%9A%E9%80%90%E5%AD%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A0%87%E8%AF%86%E7%AC%A6%E5%AD%97%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">@：逐字字符串标识符字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">4.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

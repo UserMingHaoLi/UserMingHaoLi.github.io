@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="语言通常不需要类来声明继承 Object ，因为继承是隐式的 因为 .NET 中的所有类都是从派生的 Object ，所以类中定义的每个方法 Object 都可用于系统中的所有对象 所以, 任何类都有以下方法   public virtual bool Equals(Object? obj);  public virtual int GetHashCode();  public Type GetT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类解析-Object">
+<meta property="og:url" content="http://example.com/ml-20210512-213200-g139/index.html">
+<meta property="og:site_name" content="minghaoli-Blog">
+<meta property="og:description" content="语言通常不需要类来声明继承 Object ，因为继承是隐式的 因为 .NET 中的所有类都是从派生的 Object ，所以类中定义的每个方法 Object 都可用于系统中的所有对象 所以, 任何类都有以下方法   public virtual bool Equals(Object? obj);  public virtual int GetHashCode();  public Type GetT">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-12T13:32:00.000Z">
+<meta property="article:modified_time" content="2021-05-12T13:32:00.000Z">
+<meta property="article:author" content="MingHaoLi">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="CSharp类详解">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/ml-20210512-213200-g139/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>类解析-Object | minghaoli-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">minghaoli-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ML-Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210512-213200-g139/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          类解析-Object
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-12 21:32:00" itemprop="dateCreated datePublished" datetime="2021-05-12T21:32:00+08:00">2021-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%B1%BB%E8%AF%A6%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">CSharp类详解</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>语言通常不需要类来声明继承 <code>Object</code> ，因为继承是隐式的</p>
+<p>因为 .NET 中的所有类都是从派生的 <code>Object</code> ，所以类中定义的每个方法 <code>Object</code> 都可用于系统中的所有对象</p>
+<p>所以, 任何类都有以下方法</p>
+<ul>
+<li> public virtual bool Equals(Object? obj);</li>
+<li> public virtual int GetHashCode();</li>
+<li> public Type GetType();</li>
+<li> public virtual string? ToString();</li>
+</ul>
+<blockquote>
+<p>注意到了吗,<code>GetType</code>是无法重写的,这防止类型隐瞒自身真实的<code>Type</code></p>
+</blockquote>
+<p>然后<code>Object</code>还保留一个  </p>
+<ul>
+<li>protected Object MemberwiseClone();</li>
+</ul>
+<p>之后是两个静态方法  </p>
+<ul>
+<li>Equals(Object? objA, Object? objB);</li>
+<li>ReferenceEquals(Object? objA, Object? objB);</li>
+</ul>
+<blockquote>
+<p>还有构造器<code>public Object();</code>,和构析器<code>~Object();</code></p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="性能注意事项"><a href="#性能注意事项" class="headerlink" title="性能注意事项"></a>性能注意事项</h1><p>对类型进行装箱和取消装箱的过程会产生性能开销</p>
+<ul>
+<li><p>创建接受类型的常规方法 <code>Object</code> ，并创建一组特定于类型的方法重载，这些重载接受你希望类经常处理的每个值类型</p>
+</li>
+<li><p>将类型及其成员设计为使用泛型</p>
+</li>
+</ul>
+<h1 id="Equals"><a href="#Equals" class="headerlink" title="Equals"></a>Equals</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="built_in">bool</span> <span class="title">Equals</span>(<span class="params">Object obj</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> RuntimeHelpers.Equals(<span class="keyword">this</span>, obj);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//RuntimeHelpers.Equals 如下</span></span><br><span class="line">[<span class="meta">System.Security.SecuritySafeCritical</span>]  <span class="comment">// auto-generated</span></span><br><span class="line">[<span class="meta">ResourceExposure(ResourceScope.None)</span>]</span><br><span class="line">[<span class="meta">MethodImplAttribute(MethodImplOptions.InternalCall)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="built_in">bool</span> <span class="title">Equals</span>(<span class="params">Object o1, Object o2</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用object的比较可能产生额外性能开销,建议使用</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IEquatable</span>&lt;<span class="title">T</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><em>不过并不能确认外部调用了那个<code>Equals</code>,所以还是要重写<code>Object</code>的<code>Equals</code></em></p>
+<ul>
+<li>如果当前实例是引用类型，则 <code>Equals(Object)</code> 方法会测试引用相等性，并调用 <code>Equals(Object)</code> 方法等效于调用 <code>ReferenceEquals</code> 方法<ul>
+<li>可以重写引用类型的的默认实现 <code>Equals</code> ，以测试值相等性而不是引用相等性，并定义值相等性的精确含义</li>
+</ul>
+</li>
+<li>如果当前实例是值类型，则方法会 <code>Equals(Object)</code> 测试值是否相等<ul>
+<li>对于值类型，应始终重写 <code>Equals</code> ，因为依赖于反射的相等性测试会<strong>降低性能</strong></li>
+</ul>
+</li>
+<li>枚举    <code>Enum.Equals</code>    值必须具有相同的枚举类型和基础值。</li>
+<li>委托    <code>MulticastDelegate.Equals</code>    委托必须具有相同的调用列表类型。</li>
+<li>接口    <code>Object.Equals(Object)</code>    引用相等性。</li>
+</ul>
+<p>例如，对象的值 <code>String</code> 基于字符串的字符; <code>String.Equals(Object)</code> 方法会重写 <code>Object.Equals(Object)</code> 方法，以便 <code>true</code> 为任意两个包含相同字符的字符串实例返回相同的顺序</p>
+<p>重写示例</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">Equals</span>(<span class="params">Object obj</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Person personObj = obj <span class="keyword">as</span> Person;</span><br><span class="line">	<span class="keyword">if</span> (personObj == <span class="literal">null</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> idNumber.Equals(personObj.idNumber);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>对于相等性比较,要注意一致,传递,交换,Null</strong>  </p>
+<ul>
+<li><code>Equals</code> 不得引发异常*</li>
+</ul>
+<p>重写时，请遵循以下准则 <code>Equals(Object)</code> ：</p>
+<ul>
+<li>实现的类型 <code>IComparable</code> 必须重写 <code>Equals(Object)</code> </li>
+<li>重写的类型 <code>Equals(Object)</code> 还必须重写 <code>GetHashCode</code> ; 否则，哈希表可能无法正常工作</li>
+<li>应考虑实现 <code>IEquatable&lt;T&gt;</code> 接口，以支持强类型化测试是否相等。 你的 <code>IEquatable&lt;T&gt;.Equals</code> 实现应返回与<code>Equals(Object)</code>一致的结果 </li>
+<li>对于<code>==</code>和<code>Equals(Object)</code>,应该一并重载,并得出一致的结果<ul>
+<li>大多数引用类型不得重载相等运算符（即使它们重写<code>Equals</code>） 。 但是，如果要实现的引用类型应具有值语义，则必须重写相等运算符</li>
+</ul>
+</li>
+<li>不应覆盖 <code>Equals</code> 可变引用类型,这意味着可变引用类型的实例的哈希代码在其生存期内可能会更改,导致对象在哈希表中丢失</li>
+</ul>
+<h1 id="GetHashCode"><a href="#GetHashCode" class="headerlink" title="GetHashCode"></a>GetHashCode</h1><p>作为默认哈希函数</p>
+<p>生成哈希代码的一种方法是使用操作来合并这些字段 </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">int</span> <span class="title">GetHashCode</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x ^ y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>但是,这将使(x,y)(y,x)哈希值相等</em></p>
+<p>可以考虑使用元组</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">int</span> <span class="title">GetHashCode</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Tuple.Create(x, y).GetHashCode();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>该对象反映每个字段的顺序</em></p>
+<p>还有一种方法,将两个哈希值按一定权重重叠</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">int</span> <span class="title">GetHashCode</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ShiftAndWrap(x.GetHashCode(), <span class="number">2</span>) ^ y.GetHashCode();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相等的两个对象返回的哈希代码相等。 但是 <strong>相等的哈希代码不意味着对象相等</strong></p>
+<p><code>.NET</code> 不保证方法的默认实现 <code>GetHashCode</code><br>对于不同平台,不同版本,默认的哈希函数可能得到不同的结果</p>
+<ul>
+<li>不要序列化哈希代码值或将其存储在数据库中。</li>
+<li>不要使用哈希代码作为密钥来检索键控集合中的对象。</li>
+<li>不要跨应用程序域或进程发送哈希代码。 在某些情况下，可以基于每个进程或每个应用程序域来计算哈希代码</li>
+<li>如果需要加密型强哈希,参考<code>System.Security.Cryptography.HashAlgorithm</code> 或类的类 <code>System.Security.Cryptography.KeyedHashAlgorithm </code></li>
+<li>不要测试哈希代码是否相等，以确定两个对象是否相等。 (不相等对象可以具有相同的哈希代码。 ) 要测试是否相等，请调用 <code>ReferenceEquals</code> 或 <code>Equals</code> 方法。</li>
+</ul>
+<p>对于此方法的默认实现<code>RuntimeHelpers.GetHashCode</code> 换言之，该方法返回的两个对象 <code>ReferenceEquals true</code> 具有相同的哈希代码</p>
+<p>如果值类型不重写 <code>GetHashCode</code> ，则 <code>ValueType.GetHashCode</code> 基类的方法使用反射根据类型字段的值来计算哈希代码<br>换句话说，其字段具有相等值的值类型具有相同的哈希代码</p>
+<p><em>所以,如果重写 <code>GetHashCode</code> 方法，则还应重写 <code>Equals</code> ，反之亦然</em></p>
+<p>如果用作哈希表中的键的对象不提供有用的实现 <code>GetHashCode</code> ，则可以通过 <code>IEqualityComparer</code> 向 <code>Hashtable</code> 类构造函数的重载之一提供实现来指定哈希代码提供程序</p>
+<p>对于每次允许,同一个对象应返回同样的哈希码,如果重新运行应用程序，则可以返回新的哈希代码(只要本次运行中相同即可)</p>
+<p>对对象状态的小修改应该会导致对生成的哈希代码进行较大的修改，以获得最佳的哈希表性能</p>
+<p>哈希函数的计算成本应较低</p>
+<p><code>GetHashCode()</code> 方法不应引发异常</p>
+<h1 id="Windows运行时"><a href="#Windows运行时" class="headerlink" title="Windows运行时"></a>Windows运行时</h1><p>有些类可能不是继承自<code>Object</code>, 但是会由 <code>.NET Framework</code> 提供这些方法的默认行为</p>
+<h1 id="完毕"><a href="#完毕" class="headerlink" title="完毕"></a>完毕</h1><p><strong>感谢您的观看!</strong><br>本文来自 <a target="_blank" rel="noopener" href="https://userminghaoli.github.io/" title="我的博客">ML-Blog</a></p>
+<!-- 图片 -->
+
+<!-- 链接 -->
+
+<!-- 水印 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSharp/" rel="tag"># CSharp</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/CSharp%E7%B1%BB%E8%AF%A6%E8%A7%A3/" rel="tag"># CSharp类详解</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ml-20210510-231000-g138/" rel="prev" title="CSharp编程指南_编译器读取的属性">
+      <i class="fa fa-chevron-left"></i> CSharp编程指南_编译器读取的属性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ml-20210512-222400-g140/" rel="next" title="鸡汤合集">
+      鸡汤合集 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.</span> <span class="nav-text">性能注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Equals"><span class="nav-number">2.</span> <span class="nav-text">Equals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GetHashCode"><span class="nav-number">3.</span> <span class="nav-text">GetHashCode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows%E8%BF%90%E8%A1%8C%E6%97%B6"><span class="nav-number">4.</span> <span class="nav-text">Windows运行时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%AF%95"><span class="nav-number">5.</span> <span class="nav-text">完毕</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MingHaoLi</p>
+  <div class="site-description" itemprop="description">ML-Blog-By-MingHaoLi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MingHaoLi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

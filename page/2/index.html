@@ -158,6 +158,496 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210425-220900-g130/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20210425-220900-g130/" class="post-title-link" itemprop="url">CSharp编程指南_访问关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-25 22:09:00" itemprop="dateCreated datePublished" datetime="2021-04-25T22:09:00+08:00">2021-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>就是<code>base</code>和<code>this</code>关键字</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20210425-220900-g130/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210424-194300-g129/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20210424-194300-g129/" class="post-title-link" itemprop="url">CSharp编程指南_泛型类型约束关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-24 19:43:00" itemprop="dateCreated datePublished" datetime="2021-04-24T19:43:00+08:00">2021-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>就是常用的<code>where</code>约束,以及其后跟的关键字.</p>
+<p>泛型定义中的 <code>where</code> 子句指定对用作泛型类型、方法、委托或本地函数中类型参数的参数类型的约束</p>
+<p>例1</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class ItemFactory&lt;T&gt; where T : new()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">GetNewItem</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> T();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例2</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemFactory2</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">    where T : IComparable, new()</span><br><span class="line">&#123;  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以声明一个泛型类 <code>AGenericClass</code>，以使类型参数 <code>T</code> 实现 <code>IComparable&lt;T&gt;</code> 接口</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AGenericClass</span>&lt;<span class="title">T</span>&gt; <span class="keyword">where</span> <span class="title">T</span> : <span class="title">IComparable</span>&lt;<span class="title">T</span>&gt; &#123; &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20210424-194300-g129/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210423-220600-g128/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20210423-220600-g128/" class="post-title-link" itemprop="url">CSharp编程指南_类型测试关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-23 22:06:00" itemprop="dateCreated datePublished" datetime="2021-04-23T22:06:00+08:00">2021-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> <code>C# 7.0</code> 开始，<code>is</code> 和 <code>switch</code> 语句支持模式匹配。 </p>
+<p> is 关键字支持以下模式</p>
+<ul>
+<li><strong>类型模式</strong>，用于测试表达式是否可转换为指定类型，如果可以，则将其转换为该类型的一个变量。</li>
+<li><strong>常量模式</strong>，用于测试表达式计算结果是否为指定的常数值。</li>
+<li><strong>var 模式</strong>，始终成功的匹配，可将表达式的值绑定到新局部变量。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20210423-220600-g128/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210423-214900-g127/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20210423-214900-g127/" class="post-title-link" itemprop="url">CSharp编程指南_命名空间关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-23 21:49:00" itemprop="dateCreated datePublished" datetime="2021-04-23T21:49:00+08:00">2021-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>namespace</code> 关键字用于声明包含一组相关对象的作用域,称为<code>命名空间</code></p>
+<p>无论是否在 <code>C#</code> 源文件中显式声明命名空间，编译器都会添加一个默认命名空间</p>
+<p>命名空间隐式具有公共访问权限，这是不可修改的</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20210423-214900-g127/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210423-203900-g126/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20210423-203900-g126/" class="post-title-link" itemprop="url">CSharp编程指南_方法参数关键字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-23 20:39:00" itemprop="dateCreated datePublished" datetime="2021-04-23T20:39:00+08:00">2021-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="快速参考"><a href="#快速参考" class="headerlink" title="快速参考"></a>快速参考</h1><p>为不具有 <code>in</code>、<code>ref</code> 或 <code>out</code> 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为.</p>
+<ul>
+<li><code>params</code> 指定此参数采用可变数量的参数。</li>
+<li><code>in</code> 指定此参数由引用传递，但只由调用方法读取。</li>
+<li><code>ref</code> 指定此参数由引用传递，可能由调用方法读取或写入。</li>
+<li><code>out</code> 指定此参数由引用传递，由调用方法写入。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20210423-203900-g126/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210422-220900-g125/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MingHaoLi">
+      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="minghaoli-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ml-20210422-220900-g125/" class="post-title-link" itemprop="url">plantuml使用指南_用例图</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-22 22:09:00" itemprop="dateCreated datePublished" datetime="2021-04-22T22:09:00+08:00">2021-04-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">写作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line">package &quot;接口&quot; #FFFFFF &#123;</span><br><span class="line">  interface 飞行 &#123;</span><br><span class="line">  + 飞()</span><br><span class="line">  &#125;</span><br><span class="line">  interface 人类讲话 &#123;</span><br><span class="line">  + 讲话()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;雁群&quot; #DDDDDD &#123;</span><br><span class="line">class 大雁 &#123;</span><br><span class="line">  + 飞行()</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">class 雁群 &#123;</span><br><span class="line">  + V字飞()</span><br><span class="line">  + 一字飞()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;环境&quot; #DDDDDD &#123;</span><br><span class="line">class 氧气</span><br><span class="line">class 水</span><br><span class="line">class 动物 &#123;</span><br><span class="line">  + 有生命</span><br><span class="line">  + 新陈代谢(氧气,水)</span><br><span class="line">  + 繁衍()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;企鹅生态&quot; #DDDDDD &#123;</span><br><span class="line">class 气候</span><br><span class="line">class 企鹅 &#123;</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;鸟-翅膀&quot; #DDDDDD &#123;</span><br><span class="line">class 翅膀</span><br><span class="line">class 鸟 &#123;</span><br><span class="line">  + 羽毛</span><br><span class="line">  + 喙</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">package &quot;鸭子-唐老鸭&quot; #DDDDDD &#123;</span><br><span class="line">class 鸭子 &#123;</span><br><span class="line">  + 下蛋()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 唐老鸭 &#123;</span><br><span class="line">  + 讲话</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">动物 -right-&gt; 氧气</span><br><span class="line">动物 -left-&gt; 水</span><br><span class="line">鸟 *-&gt; 翅膀</span><br><span class="line">鸟 --|&gt; 动物</span><br><span class="line">气候 &lt;- 企鹅  </span><br><span class="line">企鹅 --|&gt; 鸟</span><br><span class="line">鸭子 --|&gt; 鸟</span><br><span class="line">人类讲话 &lt;|.. 唐老鸭</span><br><span class="line">唐老鸭 --|&gt; 鸭子</span><br><span class="line">飞行 &lt;|.. 大雁</span><br><span class="line">大雁 --|&gt; 鸟</span><br><span class="line">雁群 o--&gt; 大雁</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ml-20210422-220900-g125/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210420-231700-g124/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -738,666 +1228,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210415-213300-g120/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20210415-213300-g120/" class="post-title-link" itemprop="url">plantuml使用指南_时序图</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-15 21:33:00" itemprop="dateCreated datePublished" datetime="2021-04-15T21:33:00+08:00">2021-04-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">写作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h1><blockquote>
-<p>PlantUML对于每个图片类型的代码有不一样的格式要求.<br>这些图片都可以被任何PlantUML直接反编译为源代码. </p>
-<blockquote>
-<p>或者你可以直接查看文章原文的源代码</p>
-</blockquote>
-</blockquote>
-<h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line">用户 -&gt; 认证中心: 登录操作</span><br><span class="line">认证中心 -&gt; 缓存: 存放(key&#x3D;token+ip,value&#x3D;token)token</span><br><span class="line"></span><br><span class="line">用户 &lt;- 认证中心: 认证成功返回token</span><br><span class="line">用户 -&gt; 认证中心: 下次访问头部携带token认证</span><br><span class="line">认证中心 &lt;- 缓存: key&#x3D;token+ip获取token</span><br><span class="line">其他服务 &lt;- 认证中心: 存在且校验成功则跳转到用户请求的其他服务</span><br><span class="line">其他服务 --&gt; 用户: 信息</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>-&gt;</code> <code>&lt;-</code>来绘制箭头<br>也可以使用<code>--&gt;</code> <code>&lt;--</code>来绘制虚线箭头</p>
-<blockquote>
-<p>下面的高级内容快速过一遍,不必要强行使用,等需要的时候再来学习即可.</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20210415-213300-g120/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210413-222300-g119/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20210413-222300-g119/" class="post-title-link" itemprop="url">CSharp编程指南_基本概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-13 22:23:00" itemprop="dateCreated datePublished" datetime="2021-04-13T22:23:00+08:00">2021-04-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="编码约定"><a href="#编码约定" class="headerlink" title="编码约定"></a>编码约定</h1><p>来自微软官方文档和C#本质论.<br>具体规定还需以实际项目为准.</p>
-<p>总的来说,微软更推荐大家使用更新,更简洁的功能和语法糖.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20210413-222300-g119/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210412-203000-g118/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20210412-203000-g118/" class="post-title-link" itemprop="url">CSharp编程指南_引用类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-12 20:30:00" itemprop="dateCreated datePublished" datetime="2021-04-12T20:30:00+08:00">2021-04-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h1><p>根据C#定义,包含以下类型.</p>
-<ul>
-<li>class]<ul>
-<li>object</li>
-<li>dynamic</li>
-<li>string</li>
-</ul>
-</li>
-<li>interface</li>
-<li>array</li>
-<li>delegate</li>
-</ul>
-<blockquote>
-<p>特别注意,<code>null</code>不是引用类型,但与所有引用类型兼容,代表此引用不包含实例.</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20210412-203000-g118/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210410-181700-g117/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20210410-181700-g117/" class="post-title-link" itemprop="url">plantuml汇总</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-10 18:17:00" itemprop="dateCreated datePublished" datetime="2021-04-10T18:17:00+08:00">2021-04-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">写作</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>用一个plantuml文档第一页展示的时序图,来展示他的强大功能(的一小部分)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@startuml plantuml模板</span><br><span class="line"></span><br><span class="line">scale 1</span><br><span class="line">title title</span><br><span class="line">caption caption</span><br><span class="line">header header</span><br><span class="line">footer footer</span><br><span class="line">legend </span><br><span class="line">legend</span><br><span class="line">end legend</span><br><span class="line"></span><br><span class="line">用户 -&gt; 认证中心: 登录操作</span><br><span class="line">认证中心 -&gt; 缓存: 存放(key&#x3D;token+ip,value&#x3D;token)token</span><br><span class="line"></span><br><span class="line">用户 &lt;- 认证中心: 认证成功返回token</span><br><span class="line">用户 -&gt; 认证中心: 下次访问头部携带token认证</span><br><span class="line">认证中心 &lt;- 缓存: key&#x3D;token+ip获取token</span><br><span class="line">其他服务 &lt;- 认证中心: 存在且校验成功则跳转到用户请求的其他服务</span><br><span class="line">其他服务 --&gt; 用户: 信息</span><br><span class="line"></span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>本文大部分内容来自<code>Plant语言参考指引</code>,并加以本人主观描述.</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20210410-181700-g117/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210408-235400-g116/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20210408-235400-g116/" class="post-title-link" itemprop="url">CSharp编程指南_基本概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-08 23:54:00" itemprop="dateCreated datePublished" datetime="2021-04-08T23:54:00+08:00">2021-04-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>C#编程指南,内容来自 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/" title="CSharp官方文档">Microsoft官方文档</a></p>
-<p>本系列为本人阅读后加工得出,实际内容不止指南篇,还会包含概念,参考等部分.基本等同于全文阅读并笔记.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20210408-235400-g116/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ml-20210407-234000-g115/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="MingHaoLi">
-      <meta itemprop="description" content="ML-Blog-By-MingHaoLi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="minghaoli-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ml-20210407-234000-g115/" class="post-title-link" itemprop="url">CSharp编程指南_值类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-07 23:40:00" itemprop="dateCreated datePublished" datetime="2021-04-07T23:40:00+08:00">2021-04-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80/CSharp%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">CSharp编程指南</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><p>C#共有以下内置类型,背后的class(<em>.NET 类型</em>)先不讲,以后有机会出源码讲解再说.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>关键字</th>
-<th>.NET 类型</th>
-<th>范围</th>
-<th>默认值</th>
-<th>大小</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td><code>sbyte</code></td>
-<td>System.SByte</td>
-<td>-128 到 127</td>
-<td>0</td>
-<td>有符号 8 位整</td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>byte</code></td>
-<td>System.Byte</td>
-<td>0 到 255</td>
-<td>0</td>
-<td>无符号的 8 位整数</td>
-</tr>
-<tr>
-<td>3</td>
-<td><code>short</code></td>
-<td>System.Int16</td>
-<td>-32,768 到 32,767</td>
-<td>0</td>
-<td>有符号 16 位整数</td>
-</tr>
-<tr>
-<td>4</td>
-<td><code>ushort</code></td>
-<td>System.UInt16</td>
-<td>0 到 65,535</td>
-<td>0</td>
-<td>无符号 16 位整数</td>
-</tr>
-<tr>
-<td>5</td>
-<td><code>int</code></td>
-<td>System.Int32</td>
-<td>-2,147,483,648 到 2,147,483,647</td>
-<td>0</td>
-<td>有符号 32 位整数</td>
-</tr>
-<tr>
-<td>6</td>
-<td><code>uint</code></td>
-<td>System.UInt32</td>
-<td>0 到 4,294,967,295</td>
-<td>0</td>
-<td>无符号 32 位整</td>
-</tr>
-<tr>
-<td>7</td>
-<td><code>long</code></td>
-<td>System.Int64</td>
-<td>-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
-<td>0</td>
-<td>有符号 64 位整</td>
-</tr>
-<tr>
-<td>8</td>
-<td><code>ulong</code></td>
-<td>System.UInt64</td>
-<td>0 到 18,446,744,073,709,551,615</td>
-<td>0</td>
-<td>无符号 64 位</td>
-</tr>
-<tr>
-<td>9</td>
-<td><code>nint</code></td>
-<td>System.IntPtr</td>
-<td>取决于平台</td>
-<td>0</td>
-<td>有符号 32 位或64位整数(取决于平台)</td>
-</tr>
-<tr>
-<td>10</td>
-<td><code>nuint</code></td>
-<td>System.UIntPtr</td>
-<td>取决于平台</td>
-<td>0</td>
-<td>无符号 32 位或64位整数(取决于平台)</td>
-</tr>
-<tr>
-<td>11</td>
-<td><code>float</code></td>
-<td>System.Single</td>
-<td>1.5 × 10 ^ −45到3.4 × 10 ^ 38     7位精度</td>
-<td>0.0f</td>
-<td>4 个字节</td>
-</tr>
-<tr>
-<td>12</td>
-<td><code>double</code></td>
-<td>System.Double</td>
-<td>5.0 × 10 ^ −324到1.7 × 10 ^ 308    15位精度</td>
-<td>0.0d</td>
-<td>8 个字节</td>
-</tr>
-<tr>
-<td>13</td>
-<td><code>decimal</code></td>
-<td>System.Decimal</td>
-<td>1.0 × 10 ^ −28到7.9 × 10 ^ 28    28位精度</td>
-<td>0.0m</td>
-<td>16 个字节</td>
-</tr>
-<tr>
-<td>14</td>
-<td><code>bool</code></td>
-<td>System.Boolean</td>
-<td><code>true</code>或<code>false</code></td>
-<td><code>false</code></td>
-<td>1个字节(也有可能是4个或者更多)</td>
-</tr>
-<tr>
-<td>15</td>
-<td><code>char</code></td>
-<td>System.Char</td>
-<td>U+0000 到 U+FFFF</td>
-<td>U+0000</td>
-<td>16位</td>
-</tr>
-<tr>
-<td>16</td>
-<td><code>Enum</code></td>
-<td>System.Enum</td>
-<td>略</td>
-<td>略</td>
-<td>(em)0</td>
-</tr>
-<tr>
-<td>17</td>
-<td><code>struct </code></td>
-<td>System.ValueType</td>
-<td>略</td>
-<td>略</td>
-<td>略</td>
-</tr>
-<tr>
-<td>18</td>
-<td><code>值元组 </code></td>
-<td>System.ValueTuple</td>
-<td>略</td>
-<td>略</td>
-<td>略</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ml-20210407-234000-g115/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1463,20 +1297,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
